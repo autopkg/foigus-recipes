@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads latest Tableau Reader disk image and imports into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.gmarnin.munki.tableau-reader</string>
+	<string>com.github.foigus.munki.tableau-reader</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
