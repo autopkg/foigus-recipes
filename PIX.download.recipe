@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest release of Pix.</string>
+	<string>Downloads the latest release of PIX.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.download.Pix</string>
+	<string>com.github.foigus.download.PIX</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Pix</string>
+		<string>PIX</string>
 		<key>SPARKLE_FEED_URL</key>
 		<string>https://updates.pixsystem.com/products/pixmac/updates.xml</string>
 	</dict>
