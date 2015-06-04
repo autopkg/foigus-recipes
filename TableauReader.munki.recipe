@@ -18,8 +18,12 @@
 			<array>
 				<string>development-tableau-TableauReader</string>
 			</array>
+			<key>category</key>
+			<string>Productivity</string>
 			<key>description</key>
 			<string>Tableau Reader is a free desktop application that you can use to open and view visualizations built in Tableau Desktop. With Tableau Reader you’ll be able to open and interact with visualizations built with Tableau Desktop, data included. You can filter, drill-down and view details of the data as far as the author allows.</string>
+			<key>developer</key>
+			<string>Tableau</string>
 			<key>display_name</key>
 			<string>Tableau Reader</string>
 			<key>name</key>
