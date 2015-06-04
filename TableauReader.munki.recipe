@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Tableau Reader disk image and imports into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.gmarnin.munki.tableau-reader</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>TableauReader</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/tableau</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-tableau-TableauReader</string>
+			</array>
+			<key>description</key>
+			<string>Tableau Reader is a free desktop application that you can use to open and view visualizations built in Tableau Desktop. With Tableau Reader you’ll be able to open and interact with visualizations built with Tableau Desktop, data included. You can filter, drill-down and view details of the data as far as the author allows.</string>
+			<key>display_name</key>
+			<string>Tableau Reader</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.gmarnin.download.tableau-reader</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
