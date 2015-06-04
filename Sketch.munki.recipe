@@ -18,8 +18,12 @@
 			<array>
 				<string>development-bohemiancoding-Sketch</string>
 			</array>
+			<key>category</key>
+			<string>Productivity</string>
 			<key>description</key>
 			<string>Sketch gives you the power, flexibility and speed you always wanted in a lightweight and easy-to-use package. Finally you can focus on what you do best: Design.</string>
+			<key>developer</key>
+			<string>Bohemian Coding</string>
 			<key>display_name</key>
 			<string>Sketch</string>
 			<key>name</key>
