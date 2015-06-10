@@ -17,8 +17,6 @@ https://github.com/autopkg/gmarnin-recipes/tree/master/Tableau</string>
 		<string>TableauDesktopFLEXNet</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/tableau</string>
-		<key>MAKEPKGINFO_PKGNAME</key>
-		<string>Tableau.app/Contents/Installers/Tableau FLEXNet.pkg</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>
