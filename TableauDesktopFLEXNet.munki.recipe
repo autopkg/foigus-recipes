@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest Tableau Desktop installer and imports Tableau FLEXNet.pkg into Munki. Without this pkg installed, Tableau Desktop launches to an administrative username and password prompt.
+
+NOTE THIS RECIPE IS USELESS WITHOUT TABLEAU DESKTOP, HENCE THE UPDATE_FOR.
+Please see gmarnin's fine Tableau Desktop recipe (of which this pkg is intended to be used in tandem) here:
+
+https://github.com/autopkg/gmarnin-recipes/tree/master/Tableau</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.tableau-desktop-FLEXNet</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>TableauDesktopFLEXNet</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/tableau</string>
+		<key>MAKEPKGINFO_PKGNAME</key>
+		<string>Tableau.app/Contents/Installers/Tableau FLEXNet.pkg</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Tableau</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-tableau-TableauDesktopFLEXNet</string>
+			</array>
+			<key>description</key>
+			<string>FLEXNet licensing subsystem for Tableau Desktop</string>
+			<key>display_name</key>
+			<string>Tableau Desktop FLEXNet</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>update_for</key>
+			<array>
+				<string>TableauDesktop</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.tableau-desktop-FLEXNet</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%dmg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>munkiimport_pkgname</key>
+				<string>%MAKEPKGINFO_PKGNAME%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
