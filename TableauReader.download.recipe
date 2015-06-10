@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>TableauDesktop</string>
+		<string>TableauReader</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://downloads.tableau.com/tssoftware/TableauReader.dmg</string>
 	</dict>
