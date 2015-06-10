@@ -5,10 +5,9 @@
 	<key>Description</key>
 	<string>Downloads the latest Tableau Desktop installer and imports Tableau FLEXNet.pkg into Munki. Without this pkg installed, Tableau Desktop launches to an administrative username and password prompt.
 
-NOTE THIS RECIPE IS USELESS WITHOUT TABLEAU DESKTOP, HENCE THE UPDATE_FOR.
-Please see gmarnin's fine Tableau Desktop recipe (of which this pkg is intended to be used in tandem) here:
-
-https://github.com/autopkg/gmarnin-recipes/tree/master/Tableau</string>
+NOTE THIS RECIPE IS USELESS WITHOUT TABLEAU DESKTOP. This recipe is an update_for gmarnin's fine Tableau Desktop recipe here:
+https://github.com/autopkg/gmarnin-recipes/tree/master/Tableau
+</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.tableau-desktop-FLEXNet</string>
 	<key>Input</key>
