@@ -53,7 +53,7 @@ https://github.com/autopkg/gmarnin-recipes/tree/master/Tableau</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
-				<string>%dmg_path%</string>
+				<string>%pathname%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 				<key>munkiimport_pkgname</key>
