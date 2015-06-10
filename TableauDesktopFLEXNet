@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Tableau Desktop disk image, which contains the Tableau FLEXNet pkg.
+Note this assumes the FLEXNet pkg isn't updated any more frequently than Tableau Desktop itself.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.tableau-desktop-FLEXNet</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>TableauDesktopFLEXNet</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://downloads.tableau.com/tssoftware/TableauDesktop.dmg</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
