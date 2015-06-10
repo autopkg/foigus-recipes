@@ -16,7 +16,7 @@ This is necessary because munkiimport refuses to import the Tableau Desktop dmg 
     <key>MinimumVersion</key>
     <string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.pkg.tableau-desktop-FLEXNet</string>
+	<string>com.github.foigus.download.tableau-desktop-FLEXNet</string>
     <key>Process</key>
     <array>
         <dict>
