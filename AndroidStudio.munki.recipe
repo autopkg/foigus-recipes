@@ -19,7 +19,7 @@
 				<string>development-android-AndroidStudio</string>
 			</array>
 			<key>category</key>
-			<string>Productivity</string>
+			<string>Development</string>
 			<key>description</key>
 			<string>Android Studio is the official IDE for Android application development, based on IntelliJ IDEA.</string>
 			<key>developer</key>
