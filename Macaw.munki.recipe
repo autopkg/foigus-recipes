@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest version of Macaw and imports into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.Macaw</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Macaw</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/macaw</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-macaw-Macaw</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>Macaw provides the same flexibility as your favorite image editor but also writes semantic HTML and remarkably succinct CSS. It's time to expect more from a web design tool.</string>
+			<key>developer</key>
+			<string>Macaw</string>
+			<key>display_name</key>
+			<string>Macaw</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.Macaw</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
