@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the current release version of Prepros and imports into Munki.</string>
+	<string>Downloads the current release version of Prepros and imports it into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.Prepros</string>
 	<key>Input</key>

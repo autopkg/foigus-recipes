@@ -3,7 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Android Studio disk image and imports into Munki.</string>
+	<string>Downloads latest Android Studio disk image and imports into Munki.
+
+This recipe is dependent on Sam Novak's Android Studio recipe.  To add his repo:
+
+autopkg repo-add novaksam-recipes</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.AndroidStudio</string>
 	<key>Input</key>

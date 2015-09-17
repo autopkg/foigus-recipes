@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Tableau Public disk image and imports into Munki.</string>
+	<string>Downloads latest Tableau Public disk image and imports it into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.tableau-public</string>
 	<key>Input</key>

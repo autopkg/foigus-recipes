@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the latest Tableau Desktop installer and copies the Tableau FLEXNet package to the build directory.
 
-This is necessary because munkiimport refuses to import the Tableau Desktop dmg (for the purposes of obtaining the Tableau FLEXNet package), and "force_munkiimport" isn't very good if this is automated.</string>
+This is necessary because munkiimport refuses to import the Tableau Desktop dmg (for the purposes of obtaining the Tableau FLEXNet package), and "force_munkiimport" isn't a good idea if this is automated.</string>
     <key>Identifier</key>
     <string>com.github.foigus.pkg.tableau-desktop-FLEXNet</string>
     <key>Input</key>

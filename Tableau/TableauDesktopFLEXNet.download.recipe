@@ -4,6 +4,7 @@
 <dict>
 	<key>Description</key>
 	<string>Downloads latest Tableau Desktop disk image, which contains the Tableau FLEXNet pkg.
+
 Note this assumes the FLEXNet pkg isn't updated any more frequently than Tableau Desktop itself.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.tableau-desktop-FLEXNet</string>

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest version of Macaw and imports into Munki.</string>
+	<string>Downloads latest version of Macaw and imports it into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.Macaw</string>
 	<key>Input</key>

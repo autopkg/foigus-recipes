@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest version of PIX and imports into a Munki repository.</string>
+	<string>Downloads latest version of PIX and imports into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.PIX</string>
 	<key>Input</key>
