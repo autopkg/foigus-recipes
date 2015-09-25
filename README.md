@@ -11,7 +11,12 @@ A couple recipes have parent recipes or are additional software to add to someon
 autopkg repo-add novaksam-recipes
 ```
 
-### Tableau Desktop FLEXNet
+### Tableau Desktop FLEXNet:
 ```
 autopkg repo-add gmarnin-recipes
+```
+
+### XtraFinder:
+```
+autopkg repo-add keeleysam-recipes
 ```
