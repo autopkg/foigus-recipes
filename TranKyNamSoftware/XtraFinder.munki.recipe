@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest version of XtraFinder and imports into Munki.
+
+NOTE: This recipe depends on keeleysam's MunkiPkginfoReceiptsEditor.  Add keeleysam's repo via:
+
+autopkg repo-add keeleysam-recipes
+
+Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (com.trankynam.xtrafinder.preflight.pkg) is disabled since it tries to quit the Finder.  The choice12 choice (com.trankynam.xtrafinder.postflight.pkg) is disabled since it tries to open XtraFinder after installation.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.XtraFinder</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>XtraFinder</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/trankynamsoftware</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-trankynamsoftware-XtraFinder</string>
+			</array>
+			<key>category</key>
+			<string>Utilities</string>
+			<key>description</key>
+			<string>XtraFinder adds tabs and features to the OS X Finder.</string>
+			<key>developer</key>
+			<string>Tran Ky Nam Software</string>
+			<key>display_name</key>
+			<string>XtraFinder</string>
+			<key>installer_choices_xml</key>
+			<array>
+				<dict>
+					<key>attributeSetting</key>
+					<integer>0</integer>
+					<key>choiceAttribute</key>
+					<string>selected</string>
+					<key>choiceIdentifier</key>
+					<string>choice11</string> <!-- preflight, quits Finder -->
+				</dict>
+				<dict>
+					<key>attributeSetting</key>
+					<integer>0</integer>
+					<key>choiceAttribute</key>
+					<string>selected</string>
+					<key>choiceIdentifier</key>
+					<string>choice12</string> <!-- postflight, opens application -->
+				</dict>
+			</array>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.XtraFinder</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>flat_pkg_path</key>
+				<string>%pathname%/XtraFinder.pkg</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications</string>
+				<key>pkgdirs</key>
+				<dict/>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/xtrafinder-1.pkg/Payload</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/XtraFinder.app</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/XtraFinder.app/Contents/Info.plist</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/unpack</string>
+					<string>%RECIPE_CACHE_DIR%/payload</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_ids_set_optional_true</key>
+				<array>
+					<string>com.trankynam.xtrafinder.preflight.pkg</string>
+					<string>com.trankynam.xtrafinder.postflight.pkg</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
