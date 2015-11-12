@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Kindle Previewer disk image and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.kindlepreviewer</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>KindlePreviewer</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/amazon</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-amazon-KindlePreviewer</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>Kindle Previewer is a graphical user interface tool that emulates how books display across Kindle devices and apps.</string>
+			<key>developer</key>
+			<string>Amazon</string>
+			<key>display_name</key>
+			<string>Kindle Previewer</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.kindlepreviewer</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
