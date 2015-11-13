@@ -3,7 +3,20 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Kindle Previewer disk image and imports it into Munki.</string>
+	<string>Downloads latest Kindle Previewer disk image and imports it into Munki.
+
+NOTE: The Kindle Previewer postinstall script (at least as of 2.941) is the following:
+####
+#!/bin/sh
+
+sudo chmod -R 755 /Applications/Kindle\ Previewer.app
+sudo chown -R $USER /Applications/Kindle\ Previewer.app
+####
+
+And Kindle Previewer, when running, writes files and directories under:
+/Applications/Kindle Previewer.app/Contents/MacOS
+
+You will need to address this issue before Kindle Previewer will work correctly.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.kindlepreviewer</string>
 	<key>Input</key>
