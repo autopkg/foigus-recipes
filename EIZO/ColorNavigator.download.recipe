@@ -3,13 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest English ColorNavigator installer.</string>
+	<string>Downloads the latest ColorNavigator installer.
+
+As of this writing, the valid LANGUAGE_CODEs are "en" (English) and "ja" (Japanese).</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.ColorNavigator</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>ColorNavigator</string>
+		<key>LANGUAGE_CODE</key>
+		<string>en</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>
@@ -23,7 +27,7 @@
 				<key>url</key>
 				<string>http://www.eizo.co.jp/update/ColorNavigator.xml</string>
 				<key>re_pattern</key>
-				<string>hreflang="en" href="(.*.dmg)</string>
+				<string>hreflang="%LANGUAGE_CODE%" href="(.*.dmg)</string>
 			</dict>
 		</dict>
 		<dict>
