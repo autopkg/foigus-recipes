@@ -10,6 +10,8 @@
 	<dict>
 		<key>NAME</key>
 		<string>%NAME%</string>
+		<key>PACKAGE_ID</key>
+		<string>com.efi.replace_me_in_an_override.pkg</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -82,7 +84,7 @@
 					<key>pkgtype</key>
 					<string>flat</string>
 					<key>id</key>
-					<string>com.efi.%NAME%.pkg</string>
+					<string>%PACKAGE_ID%</string>
 					<key>version</key>
 					<string>1.50</string>
 					<key>scripts</key>
