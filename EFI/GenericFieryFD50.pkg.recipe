@@ -89,9 +89,6 @@
 					<string>1.50</string>
 					<key>scripts</key>
 					<string>%RECIPE_CACHE_DIR%/unpack/FieryPrinterDriverInstaller.pkg/Scripts</string>
-					<key>chown</key>
-					<array>
-					</array>
 				</dict>
 			</dict>
 		</dict>
