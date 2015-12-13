@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest ColorNavigator installer and imports it into Munki.</string>
+	<string>Downloads the latest ColorNavigator installer and imports it into Munki.
+
+Relying on a package recipe to extract the ColorNavigator package since it currently ships on a read-write disk image.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.ColorNavigator</string>
 	<key>Input</key>
@@ -35,14 +37,12 @@
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.download.ColorNavigator</string>
+	<string>com.github.foigus.pkg.ColorNavigator</string>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>pkg_path</key>
-				<string>%pathname%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
