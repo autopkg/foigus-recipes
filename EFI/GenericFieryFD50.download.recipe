@@ -14,7 +14,7 @@
 		<string>http://set_me_with_an_override/please</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.0</string>
+	<string>0.4.1</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -24,6 +24,21 @@
 			<dict>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Fiery Printer Driver.pkg</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: EFI Inc</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
 			</dict>
 		</dict>
 		<dict>
