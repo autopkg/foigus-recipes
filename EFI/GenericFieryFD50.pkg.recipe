@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Download the driver specified in the override URL, remove Fiery Driver Updater.app, and repack.
+The FD50-revision Fiery drivers appear to properly handle installing when COMMAND_LINE_INSTALL is set. Fiery
+driver download URLs can be scraped from:
+
+http://www.efi.com/support-and-downloads/download-registration/
+
+Log in, find the appropriate FD50-revision (ensure the filename includes "FD50" in the download dmg) driver,
+download it, and copy the download URL from the browser.  An example invocation URL (for a Ricoh Pro 901 with
+E41 v1.0 Fiery):
+
+https://d1m2uyedaojrqy.cloudfront.net/FSO/ricoh/RIC_E41_E81/Mac128/lang_c_notes/v1.0/Ricoh_E41_v1_0R_EFIGSD_FD50_v1.dmg
+
+I'd suggest the override choices are:
+
+- NAME of the downloadable DMG without ".dmg", and adding "_No_Update" (e.g. Ricoh_E41_v1_0R_EFIGSD_FD50_v1_No_Update)
+- PACKAGE_ID of com.efi.DMG-Name-with-hyphens-substituted.pkg (e.g. com.efi.Ricoh-E41-v1-0R-EFIGSD-FD50-v1.pkg)</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.GenericFieryFD50</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>%NAME%</string>
+		<key>PACKAGE_ID</key>
+		<string>com.efi.replace-me-in-an-override.pkg</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.GenericFieryFD50</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+			<key>Arguments</key>
+			<dict>
+				<key>flat_pkg_path</key>
+				<string>%pathname%/Fiery Printer Driver.pkg</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+				<key>pkgdirs</key>
+				<dict>
+					<key>tmp</key>
+					<string>0755</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/FieryPrinterDriverInstaller.pkg/Payload</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/tmp/Fiery Printer Driver Installer.app</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/pkgroot/tmp/Fiery Printer Driver Installer.app/Contents/Resources/User Software/OSX/Printer Driver/Fiery Driver Updater.app</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgdir</key>
+					<string>%RECIPE_CACHE_DIR%</string>
+					<key>pkgname</key>
+					<string>%NAME%</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>id</key>
+					<string>%PACKAGE_ID%</string>
+					<key>version</key>
+					<string>1.50</string>
+					<key>scripts</key>
+					<string>%RECIPE_CACHE_DIR%/unpack/FieryPrinterDriverInstaller.pkg/Scripts</string>
+					<key>chown</key>
+					<array>
+					</array>
+				</dict>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
