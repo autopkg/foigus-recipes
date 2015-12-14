@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>%NAME%</string>
 		<key>PACKAGE_ID</key>
-		<string>com.efi.replace_me_in_an_override.pkg</string>
+		<string>com.efi.replace-me-in-an-override.pkg</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
