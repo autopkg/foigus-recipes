@@ -18,7 +18,7 @@ https://d1m2uyedaojrqy.cloudfront.net/FSO/ricoh/RIC_E41_E81/Mac128/lang_c_notes/
 I'd suggest the override choices are:
 
 - NAME of the downloadable DMG without ".dmg", and adding "_No_Update" (e.g. Ricoh_E41_v1_0R_EFIGSD_FD50_v1_No_Update)
-- PACKAGE_ID of com.efi.<DMG-Name-with-hyphens-substituted>.pkg (e.g. com.efi.Ricoh-E41-v1-0R-EFIGSD-FD50-v1.pkg)</string>
+- PACKAGE_ID of com.efi.DMG-Name-with-hyphens-substituted.pkg (e.g. com.efi.Ricoh-E41-v1-0R-EFIGSD-FD50-v1.pkg)</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.pkg.GenericFieryFD50</string>
 	<key>Input</key>
