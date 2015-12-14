@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Download a Fiery FD50-revision driver as provided by the URL in the override.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.GenericFieryFD50</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>GenericFD50Driver</string>
+		<key>DOWNLOAD_URL</key>
+		<string>http://set_me_with_an_override/please</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.4.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Fiery Printer Driver.pkg</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: EFI Inc</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
