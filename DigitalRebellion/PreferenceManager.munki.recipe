@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the current version of Preference Manager and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.PreferenceManager</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>PreferenceManager</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/digitalrebellion</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-digitalrebellion-%NAME%</string>
+			</array>
+			<key>category</key>
+			<string>Video</string>
+			<key>description</key>
+			<string>Trash, backup, lock and restore your NLE preferences.</string>
+			<key>developer</key>
+			<string>Digital Rebellion</string>
+			<key>display_name</key>
+			<string>Preference Manager</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.PreferenceManager</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
