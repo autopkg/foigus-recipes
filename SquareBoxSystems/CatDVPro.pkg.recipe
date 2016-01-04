@@ -71,7 +71,16 @@
 					<key>version</key>
 					<string>%version%</string>
 					<key>chown</key>
-					<array/>
+					<array>
+						<dict>
+							<key>path</key>
+							<string>Applications</string>
+							<key>user</key>
+							<string>root</string>
+							<key>group</key>
+							<string>admin</string>
+						</dict>
+					</array>
 				</dict>
 			</dict>
 		</dict>
