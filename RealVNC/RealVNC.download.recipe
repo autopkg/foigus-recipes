@@ -3,7 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest RealVNC disk image.</string>
+	<string>Downloads latest RealVNC disk image.
+
+This recipe is known to redownload every time it's run.  Ask RealVNC to put their download
+somewhere AutoPkg can figure out whether it's necessary.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.RealVNC</string>
 	<key>Input</key>
