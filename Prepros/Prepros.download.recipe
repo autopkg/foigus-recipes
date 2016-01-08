@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest compressed Prepros application</string>
+	<string>Downloads latest compressed Prepros application.
+
+Can't add CodeSignatureVerifier because Prepros is unsigned!</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.Prepros</string>
 	<key>Input</key>
