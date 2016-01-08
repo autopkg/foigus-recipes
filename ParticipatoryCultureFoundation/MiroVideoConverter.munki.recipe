@@ -3,20 +3,20 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Miro Video Convertor disk image and imports it into Munki.</string>
+	<string>Downloads latest Miro Video Converter disk image and imports it into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.munki.mirovideoconvertor</string>
+	<string>com.github.foigus.munki.mirovideoconverter</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>MiroVideoConvertor</string>
+		<string>MiroVideoConverter</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/participatoryculturefoundation</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
-				<string>development-participatoryculturefoundation-MiroVideoConvertor</string>
+				<string>development-participatoryculturefoundation-MiroVideoConverter</string>
 			</array>
 			<key>category</key>
 			<string>Productivity</string>
@@ -25,7 +25,7 @@
 			<key>developer</key>
 			<string>Participatory Culture Foundation</string>
 			<key>display_name</key>
-			<string>Miro Video Convertor</string>
+			<string>Miro Video Converter</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -35,7 +35,7 @@
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.download.mirovideoconvertor</string>
+	<string>com.github.foigus.download.mirovideoconverter</string>
 	<key>Process</key>
 	<array>
 		<dict>

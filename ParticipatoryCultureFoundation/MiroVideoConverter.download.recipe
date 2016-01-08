@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Miro Video Convertor disk image.</string>
+	<string>Downloads latest Miro Video Converter disk image.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.download.mirovideoconvertor</string>
+	<string>com.github.foigus.download.mirovideoconverter</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Miro Video Convertor</string>
+		<string>Miro Video Converter</string>
 		<key>DOWNLOAD_URL</key>
 		<string>http://ftp.osuosl.org/pub/pculture.org/mirovideoconverter/mac/Miro%20Video%20Converter.dmg</string>
 	</dict>
