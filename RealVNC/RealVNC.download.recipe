@@ -5,8 +5,7 @@
 	<key>Description</key>
 	<string>Downloads latest RealVNC disk image.
 
-This recipe is known to redownload every time it's run.  Ask RealVNC to put their download
-somewhere AutoPkg can figure out whether it's necessary.</string>
+This recipe is known to redownload every time it's run.  Ask RealVNC to put their download somewhere AutoPkg can figure out whether it's necessary.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.RealVNC</string>
 	<key>Input</key>
@@ -34,6 +33,21 @@ somewhere AutoPkg can figure out whether it's necessary.</string>
 					<key>referer</key>
 					<string>https://www.realvnc.com/download/get/1775/</string>
 				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: RealVNC Limited</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
 			</dict>
 		</dict>
 		<dict>

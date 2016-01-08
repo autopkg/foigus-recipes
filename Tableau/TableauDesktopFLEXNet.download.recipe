@@ -32,6 +32,21 @@ Note this assumes the FLEXNet pkg isn't updated any more frequently than Tableau
 		</dict>
 		<dict>
 			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Tableau.app/Contents/Installers/Tableau FLEXNet.pkg</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>3rd Party Mac Developer Installer: Tableau Software, Inc. (QJ4XPRK37C)</string>
+					<string>Apple Worldwide Developer Relations Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
 	</array>
