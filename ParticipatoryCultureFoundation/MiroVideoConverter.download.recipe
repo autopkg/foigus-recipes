@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Miro Video Converter disk image.</string>
+	<string>Downloads latest Miro Video Converter disk image.
+
+Can't add CodeSignatureVerifier because the current version (3.0) has a version 1 code signature.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.mirovideoconverter</string>
 	<key>Input</key>
