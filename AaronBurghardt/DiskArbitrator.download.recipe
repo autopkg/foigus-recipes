@@ -21,7 +21,7 @@
 				<key>url</key>
 				<string>https://github.com/aburgh/Disk-Arbitrator/wiki/Downloads</string>
 				<key>re_pattern</key>
-				<string>(http://kainjow.com/downloads/.*.dmg)</string>
+				<string>(https://kainjow.com/downloads/.*.dmg)</string>
 				<key>result_output_var_name</key>
 				<string>url</string>
 			</dict>
