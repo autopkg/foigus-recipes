@@ -5,7 +5,11 @@
 	<key>Description</key>
 	<string>Downloads the latest ColorNavigator installer and imports it into Munki.
 
-Relying on a package recipe to extract the ColorNavigator package since it currently ships on a read-write disk image.</string>
+Relying on a package recipe to extract the ColorNavigator package since it currently ships on a read-write disk image.
+
+Note this recipe adds the version number to the "name" of the recipe since EIZO has dropped support for monitors when  releasing new major versions of ColorNavigator
+
+Reference: http://www.eizoglobal.com/support/db/products/software/search?k=colornavigator</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.ColorNavigator</string>
 	<key>Input</key>
@@ -28,8 +32,6 @@ Relying on a package recipe to extract the ColorNavigator package since it curre
 			<string>EIZO</string>
 			<key>display_name</key>
 			<string>ColorNavigator</string>
-			<key>name</key>
-			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
@@ -40,6 +42,18 @@ Relying on a package recipe to extract the ColorNavigator package since it curre
 	<string>com.github.foigus.pkg.ColorNavigator</string>
 	<key>Process</key>
 	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>name</key>
+					<string>%NAME%%major_version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>

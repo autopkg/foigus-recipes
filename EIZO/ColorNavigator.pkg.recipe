@@ -25,9 +25,9 @@
 				<key>url</key>
 				<string>http://www.eizo.co.jp/update/ColorNavigator.xml</string>
 				<key>re_pattern</key>
-				<string>ColorNavigator.*\(Mac OS\)(?:(?:.|\n)*)&lt;softwareVersion&gt;([\.\d)]*)&lt;\/softwareVersion&gt;</string>
+				<string>ColorNavigator.*\(Mac OS\)(?:(?:.|\n)*)&lt;softwareVersion&gt;(\d)[\.\d]*&lt;\/softwareVersion&gt;</string>
 				<key>result_output_var_name</key>
-				<string>version</string>
+				<string>major_version</string>
 			</dict>
 		</dict>
 		<dict>
@@ -38,7 +38,7 @@
 				<key>source_pkg</key>
 				<string>%pathname%/ColorNavigator 6.pkg</string>
 				<key>pkg_path</key>
-				<string>%RECIPE_CACHE_DIR%/ColorNavigator-%version%.pkg</string>
+				<string>%RECIPE_CACHE_DIR%/ColorNavigator%major_version%.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>PkgCopier</string>
