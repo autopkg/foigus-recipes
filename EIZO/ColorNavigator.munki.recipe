@@ -9,7 +9,7 @@ Relying on a package recipe to extract the ColorNavigator package since it curre
 
 Note this recipe adds the version number to the "name" of the recipe since EIZO has dropped support for monitors when  releasing new major versions of ColorNavigator
 
-Reference: http://www.eizoglobal.com/support/db/products/software/search?k=colornavigator</string>
+Reference: http://www.eizoglobal.com/support/db/products/software/search?k=colornavigators
 
 Requiring a logout since the GUI installer reopens ColorNavigator, but not from the CLI.  Also, updating calibration software while a user is using the monitor wouldn't be good.</string>
 	<key>Identifier</key>
