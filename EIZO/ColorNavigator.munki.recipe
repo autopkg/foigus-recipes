@@ -10,10 +10,14 @@ Relying on a package recipe to extract the ColorNavigator package since it curre
 Note this recipe adds the version number to the "name" of the recipe since EIZO has dropped support for monitors when  releasing new major versions of ColorNavigator
 
 Reference: http://www.eizoglobal.com/support/db/products/software/search?k=colornavigator</string>
+
+Requiring a logout since the GUI installer reopens ColorNavigator, but not from the CLI.  Also, updating calibration software while a user is using the monitor wouldn't be good.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.ColorNavigator</string>
 	<key>Input</key>
 	<dict>
+		<key>RestartAction</key>
+		<string>RequireLogout</string>
 		<key>NAME</key>
 		<string>ColorNavigator</string>
 		<key>MUNKI_REPO_SUBDIR</key>

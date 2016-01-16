@@ -5,11 +5,15 @@
 	<key>Description</key>
 	<string>Downloads the latest ColorNavigator NX installer and imports it into Munki.
 
-Relying on a package recipe to extract the ColorNavigator NX package since it currently ships on a read-write disk image.</string>
+Relying on a package recipe to extract the ColorNavigator NX package since it currently ships on a read-write disk image.
+
+Requiring a logout since updating monitor calibration software while a user is using the monitor wouldn't be good.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.ColorNavigatorNX</string>
 	<key>Input</key>
 	<dict>
+		<key>RestartAction</key>
+		<string>RequireLogout</string>
 		<key>NAME</key>
 		<string>ColorNavigatorNX</string>
 		<key>MUNKI_REPO_SUBDIR</key>
