@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest ColorNavigator NX installer and imports it into Munki.
+
+Relying on a package recipe to extract the ColorNavigator package since it currently ships on a read-write disk image.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.ColorNavigatorNX</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>ColorNavigatorNX</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/eizo</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-eizo-ColorNavigatorNX</string>
+			</array>
+			<key>category</key>
+			<string>Utility</string>
+			<key>description</key>
+			<string>ColorNavigator NX offers quality control (QC) and asset management of client ColorEdge monitors.</string>
+			<key>developer</key>
+			<string>EIZO</string>
+			<key>display_name</key>
+			<string>ColorNavigatorNX</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.ColorNavigatorNX</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
