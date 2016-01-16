@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest ColorNavigator NX installer and imports it into Munki.
 
-Relying on a package recipe to extract the ColorNavigator package since it currently ships on a read-write disk image.</string>
+Relying on a package recipe to extract the ColorNavigator NX package since it currently ships on a read-write disk image.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.ColorNavigatorNX</string>
 	<key>Input</key>
