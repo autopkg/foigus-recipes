@@ -47,7 +47,7 @@ As of this writing, the valid LANGUAGE_CODEs are "en" (English) and "ja" (Japane
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/ColorNavigator 6.pkg</string>
+				<string>%pathname%/ColorNavigator *.pkg</string>
 				<key>expected_authority_names</key>
 				<array>
 					<string>Developer ID Installer: EIZO Corporation (FWVNE2DRY7)</string>
