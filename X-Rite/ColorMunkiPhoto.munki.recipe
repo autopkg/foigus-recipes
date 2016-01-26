@@ -39,22 +39,9 @@ http://xritephoto.com/ph_product_overview.aspx?ID=1115&amp;Action=Support&amp;Su
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.download.ColorMunkiPhoto</string>
+	<string>com.github.foigus.pkg.ColorMunkiPhoto</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
-			<key>Arguments</key>
-			<dict>
-				<key>archive_path</key>
-				<string>%pathname%</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>FlatPkgUnpacker</string>
@@ -63,7 +50,7 @@ http://xritephoto.com/ph_product_overview.aspx?ID=1115&amp;Action=Support&amp;Su
 				<key>purge_destination</key>
 				<true/>
 				<key>flat_pkg_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/ColorMunki Photo.pkg</string>
+				<string>%RECIPE_CACHE_DIR%/repack/ColorMunki Photo.pkg</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
 			</dict>
@@ -104,7 +91,7 @@ http://xritephoto.com/ph_product_overview.aspx?ID=1115&amp;Action=Support&amp;Su
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/ColorMunki Photo.pkg</string>
+				<string>%RECIPE_CACHE_DIR%/repack/ColorMunki Photo.pkg</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
