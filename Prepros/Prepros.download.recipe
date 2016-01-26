@@ -21,7 +21,7 @@ Can't add CodeSignatureVerifier because Prepros is unsigned!</string>
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>URLDownloader</string>
+			<string>CURLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>

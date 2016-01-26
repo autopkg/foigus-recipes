@@ -21,7 +21,7 @@ This recipe is known to redownload every time it's run.  Ask RealVNC to put thei
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>URLDownloader</string>
+			<string>CURLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
