@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest SpectraViewII installer.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.SpectraViewII</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>SpectraViewII</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.3.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>CURLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>http://update.necdisplay.com/spectraview/updates.txt</string>
+				<key>re_pattern</key>
+				<string>URL=(http.*dmg)</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%match%</string>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+			</dict>
+			<key>Processor</key>
+			<string>CURLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/SpectraView II.app</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Application: NEC Display Solutions of America</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
