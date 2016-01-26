@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest version of ColorMunki Photo and deletes a postinstall that will likely fail.  The postinstall tries to do the following:
+
+- Add the following to the current user's login items:
+/Library/Application Support/Colormunki/Photo/Tools/ColorMunki Photo Tray.app
+- Delete the existing
+/Applications/ColorMunki Photo
+- Rename /Applications/ColorMunkiPhoto (i.e. as the package installs it) to /Applications/ColorMunki Photo
+
+If any of this is critical, please handle it in your management system.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.ColorMunkiPhoto</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>ColorMunkiPhoto</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.ColorMunkiPhoto</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+			<key>Arguments</key>
+			<dict>
+				<key>purge_destination</key>
+				<true/>
+				<key>flat_pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/ColorMunki Photo.pkg</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/unpack/root.pkg/Scripts/postinstall</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/repack</string>
+				<key>pkgdirs</key>
+				<dict/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>FlatPkgPacker</string>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_pkg</key>
+				<string>%RECIPE_CACHE_DIR%/repack/ColorMunkiPhoto.pkg</string>
+				<key>source_flatpkg_dir</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
