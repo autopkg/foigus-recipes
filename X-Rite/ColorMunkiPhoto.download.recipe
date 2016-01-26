@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of ColorMunki Photo.  Note this patch is required for use of the included "ColorPicker" application under OS X El Capitan:
+http://xritephoto.com/ph_product_overview.aspx?ID=1115&amp;Action=Support&amp;SupportID=5875
+
+Also note there is an update for the included X-Rite device services software in this package.  The Sparkle feed for that software:
+https://www.xrite.com/downloads/autoupdate/xrd/feed_mac.xml
+
+Is out of date, so go here for the package:
+https://www.xrite.com/x-rite-device-services-xrd/support
+</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.ColorMunkiPhoto</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>ColorMunkiPhoto</string>
+		<key>SPARKLE_FEED_URL</key>
+		<string>http://downloads.xrite.com/Downloads/AutoUpdate/ColorMunkiPhoto/ColorMunkiPhoto_mac_appcast.xml</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>SparkleUpdateInfoProvider</string>
+			<key>Arguments</key>
+			<dict>
+				<key>appcast_url</key>
+				<string>%SPARKLE_FEED_URL%</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CURLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/ColorMunki Photo.pkg</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: X-Rite, Incorporated</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
