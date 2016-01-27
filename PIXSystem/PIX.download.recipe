@@ -30,7 +30,7 @@ Can't add CodeSignatureVerifier because the current version (3.0) has a version 
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>CURLDownloader</string>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

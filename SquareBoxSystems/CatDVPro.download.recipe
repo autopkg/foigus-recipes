@@ -21,7 +21,7 @@ Override MAJOR_VERSION for versions of CatDV Pro besides version 11.</string>
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>CURLTextSearcher</string>
+			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
@@ -41,7 +41,7 @@ Override MAJOR_VERSION for versions of CatDV Pro besides version 11.</string>
 				<string>%NAME%-%MAJOR_VERSION%.dmg</string>
 			</dict>
 			<key>Processor</key>
-			<string>CURLDownloader</string>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

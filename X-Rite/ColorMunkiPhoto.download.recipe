@@ -36,7 +36,7 @@ https://www.xrite.com/x-rite-device-services-xrd/support
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>CURLDownloader</string>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

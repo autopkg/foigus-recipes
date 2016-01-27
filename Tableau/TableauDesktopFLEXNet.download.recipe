@@ -21,7 +21,7 @@ Note this assumes the FLEXNet pkg isn't updated any more frequently than Tableau
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>CURLDownloader</string>
+			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>

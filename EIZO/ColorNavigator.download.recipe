@@ -21,7 +21,7 @@ As of this writing, the valid LANGUAGE_CODEs are "en" (English) and "ja" (Japane
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>CURLTextSearcher</string>
+			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
@@ -39,7 +39,7 @@ As of this writing, the valid LANGUAGE_CODEs are "en" (English) and "ja" (Japane
 				<string>%NAME%.dmg</string>
 			</dict>
 			<key>Processor</key>
-			<string>CURLDownloader</string>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
