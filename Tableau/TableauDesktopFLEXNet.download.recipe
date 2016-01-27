@@ -13,7 +13,7 @@ Note this assumes the FLEXNet pkg isn't updated any more frequently than Tableau
 		<key>NAME</key>
 		<string>TableauDesktopFLEXNet</string>
 		<key>DOWNLOAD_URL</key>
-		<string>https://downloads.tableau.com/tssoftware/TableauDesktop.dmg</string>
+		<string>http://www.tableau.com/downloads/desktop/mac</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>

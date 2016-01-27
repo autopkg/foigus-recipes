@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>TableauPublic</string>
 		<key>DOWNLOAD_URL</key>
-		<string>https://downloads.tableau.com/public/TableauPublic.dmg</string>
+		<string>https://public.tableau.com/s/download/public/mac</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
