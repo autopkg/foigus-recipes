@@ -10,20 +10,18 @@
 	<dict>
 		<key>NAME</key>
 		<string>TableauReader</string>
-		<key>DOWNLOAD_URL</key>
-		<string>https://downloads.tableau.com/tssoftware/TableauReader.dmg</string>
+		<key>url</key>
+		<string>http://www.tableau.com/downloads/reader/mac</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.0</string>
+	<string>0.4.1</string>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>CURLDownloader</string>
+			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 			</dict>
