@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>Sketch</string>
 		<key>SPARKLE_FEED_URL</key>
-		<string>http://www.bohemiancoding.com/sketch/appcast3.xml</string>
+		<string>https://www.sketchapp.com/appcast3.xml</string>
 		<key>USER_AGENT</key>
 		<string>Sketch/3.3.2 Sparkle/e759c10</string>
 	</dict>
