@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest release of PIX.
 
-Can't add CodeSignatureVerifier because the current version (3.0) has a version 1 code signature.</string>
+Can't add CodeSignatureVerifier because the current version (2.6) has a version 1 code signature.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.PIX</string>
 	<key>Input</key>
