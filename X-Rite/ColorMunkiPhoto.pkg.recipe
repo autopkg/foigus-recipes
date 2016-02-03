@@ -64,6 +64,22 @@ If any of this is critical, please handle it in your management system.</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
+			<string>FileCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/root.pkg/Scripts/postinstall</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_content</key>
+				<string>#!/bin/bash
+
+#Placeholder script--just exit with success
+exit 0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
