@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Determine working directory
+install_dir=`dirname $0`
+
+# Install AccuBarcode Pro unattended-ly using the pkg from the resources directory
+# Flag taken from here http://resources.ej-technologies.com/install4j/help/doc/index.html
+"${install_dir}/AccuBarcode Pro Installer.app/Contents/MacOS/JavaApplicationStub" -q
