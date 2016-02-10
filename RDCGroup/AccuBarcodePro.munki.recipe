@@ -32,8 +32,6 @@ A logout is required since the AccuBarcode Pro installer bounces the Finder duri
 			<string>AccuBarcode Pro</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>unattended_install</key>
-			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
