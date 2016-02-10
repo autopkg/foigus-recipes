@@ -25,10 +25,7 @@
 				<key>pkgroot</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 				<key>pkgdirs</key>
-				<dict>
-					<key>Applications</key>
-					<string>01775</string>
-				</dict>
+				<dict/>
 			</dict>
 		</dict>
 		<dict>
@@ -50,7 +47,27 @@
 				<key>source_path</key>
 				<string>%pathname%/AccuBarcode Pro Installer.app</string>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/Resources/AccuBarcode Pro Installer.app</string>
+				<string>%RECIPE_CACHE_DIR%/Scripts/AccuBarcode Pro Installer.app</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>FileCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_content</key>
+				<string>#!/bin/bash
+
+# Determine working directory
+install_dir=`dirname $0`
+
+# Install AccuBarcode Pro unattended-ly using the pkg from the resources directory
+# Flag taken from here http://resources.ej-technologies.com/install4j/help/doc/index.html
+"${install_dir}/AccuBarcode Pro Installer.app/Contents/MacOS/JavaApplicationStub" -q</string>
 			</dict>
 		</dict>
 		<dict>
@@ -71,21 +88,21 @@
 					<key>version</key>
 					<string>%version%</string>
 					<key>chown</key>
-					<array>
-						<dict>
-							<key>path</key>
-							<string>Applications</string>
-							<key>user</key>
-							<string>root</string>
-							<key>group</key>
-							<string>admin</string>
-						</dict>
-					</array>
-					<key>resources</key>
-					<string>%RECIPE_CACHE_DIR%/Resources</string>
+					<array/>
 					<key>scripts</key>
 					<string>Scripts</string>
 				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/Scripts/AccuBarcode Pro Installer.app</string>
+				</array>
 			</dict>
 		</dict>
 	</array>
