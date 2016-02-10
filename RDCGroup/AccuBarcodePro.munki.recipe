@@ -17,7 +17,7 @@ A logout is required since the AccuBarcode Pro installer bounces the Finder duri
 		<key>pkginfo</key>
 		<dict>
 			<key>RestartAction</key>
-			<string>RequireLogout</key>
+			<string>RequireLogout</string>
 			<key>catalogs</key>
 			<array>
 				<string>development-rdcgroup-AccuBarcodePro</string>
