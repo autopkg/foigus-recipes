@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of AccuBarcode Pro and imports it into Munki.
+
+A logout is required since the AccuBarcode Pro installer bounces the Finder during installation.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.AccuBarcodePro</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>AccuBarcodePro</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/rdcgroup</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>RestartAction</key>
+			<string>RequireLogout</key>
+			<key>catalogs</key>
+			<array>
+				<string>development-rdcgroup-AccuBarcodePro</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>AccuBarcode Pro helps graphic designers create quality barcodes in EPS and other formats.</string>
+			<key>developer</key>
+			<string>RDC Group</string>
+			<key>display_name</key>
+			<string>AccuBarcode Pro</string>
+			<key>name</key>
+			<string>%NAME%</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.AccuBarcodePro</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
