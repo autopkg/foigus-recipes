@@ -74,11 +74,11 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>Copier</string>
+			<string>Symlinker</string>
 			<key>Arguments</key>
 			<dict>
 				<key>source_path</key>
-				<string>%pathname%/Output Factory Installer.app/Contents/Resources/appPackage/Output Factory.app/Contents/Resources/Output Factory.startup.scpt</string>
+				<string>/Applications/Adobe InDesign CC 2014/Plug-Ins/Zevrix/Output Factory.app/Contents/Resources/Output Factory.startup.scpt</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign CC 2014/Scripts/startup scripts/.Output Factory.startup.scpt</string>
 			</dict>
