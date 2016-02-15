@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>OutputFactoryCC2014</string>
 		<key>MUNKI_REPO_SUBDIR</key>
-		<string>plugins/zevrix</string>
+		<string>plugins/zevrixsolutions</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
