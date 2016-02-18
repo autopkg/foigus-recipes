@@ -66,6 +66,8 @@ I'd suggest the override choices are:
 			<string>PkgPayloadUnpacker</string>
 			<key>Arguments</key>
 			<dict>
+				<key>purge_destination</key>
+				<true/>
 				<key>pkg_payload_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/FieryPrinterDriverInstaller.pkg/Payload</string>
 				<key>destination_path</key>

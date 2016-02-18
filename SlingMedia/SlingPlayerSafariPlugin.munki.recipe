@@ -70,6 +70,8 @@ The "SlingPlayer" listed here is my personal FluidApp--it's probably not necessa
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>purge_destination</key>
+				<true/>
 				<key>pkg_payload_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/slingplayer.pkg/Payload</string>
 				<key>destination_path</key>

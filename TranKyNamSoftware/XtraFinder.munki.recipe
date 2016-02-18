@@ -88,6 +88,8 @@ Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (c
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>purge_destination</key>
+				<true/>
 				<key>pkg_payload_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/xtrafinder-1.pkg/Payload</string>
 				<key>destination_path</key>

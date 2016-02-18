@@ -58,6 +58,8 @@ http://xritephoto.com/ph_product_overview.aspx?ID=1115&amp;Action=Support&amp;Su
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>purge_destination</key>
+				<true/>
 				<key>pkg_payload_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/root.pkg/Payload</string>
 				<key>destination_path</key>
