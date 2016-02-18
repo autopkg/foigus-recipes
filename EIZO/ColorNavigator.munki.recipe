@@ -36,6 +36,8 @@ Requiring a logout since the GUI installer reopens ColorNavigator, but not from 
 			<string>EIZO</string>
 			<key>display_name</key>
 			<string>ColorNavigator</string>
+			<key>name</key>
+			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
