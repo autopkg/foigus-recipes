@@ -16,7 +16,7 @@
 		<dict>
 			<key>catalogs</key>
 			<array>
-				<string>development-purplecover-%NAME%</string>
+				<string>development-purplecover-AnyList</string>
 			</array>
 			<key>category</key>
 			<string>Productivity</string>

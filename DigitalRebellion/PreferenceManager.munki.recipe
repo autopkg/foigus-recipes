@@ -16,7 +16,7 @@
 		<dict>
 			<key>catalogs</key>
 			<array>
-				<string>development-digitalrebellion-%NAME%</string>
+				<string>development-digitalrebellion-PreferenceManager</string>
 			</array>
 			<key>category</key>
 			<string>Video</string>
