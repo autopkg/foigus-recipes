@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the latest InData CC 2014 package and imports it into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.download.InDataCC2014</string>
+	<string>com.github.foigus.munki.InDataCC2014</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
