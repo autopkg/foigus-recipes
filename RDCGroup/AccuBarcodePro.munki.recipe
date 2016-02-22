@@ -57,7 +57,7 @@ mv -f /var/root/Library/fonts/Accu* /Library/Fonts
 rmdir /var/root/Library/fonts</string>
 			<key>requires</key>
 			<array>
-				<string>LegacyJava6</string>
+				<string>Java6forOSX</string>
 			</array>
 			<key>uninstall_method</key>
 			<string>uninstall_script</string>
