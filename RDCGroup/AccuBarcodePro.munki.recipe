@@ -32,6 +32,32 @@ A logout is required since the AccuBarcode Pro installer bounces the Finder duri
 			<string>AccuBarcode Pro</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>postinstall_script</key>
+			<string>#!/bin/bash
+
+#Remove any AccuBarcode Pro fonts from a previous installation (e.g. fonts that
+#had been moved there by a previous installation of this AutoPkg recipe)
+rm -f /Library/Fonts/Accu*
+
+#Move the (assumedly new) AccuBarcode fonts from where they're placed in root's
+#Library/fonts to /Library/Fonts 
+mv -f /var/root/Library/fonts/Accu* /Library/Fonts
+
+#Remove the now-empty Library/fonts from root's home
+rmdir /var/root/Library/fonts</string>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/bash
+
+#Delete the AccuBarcode Pro fonts
+rm -f /Library/Fonts/Accu*
+
+#Delete AccuBarcde Pro
+rm -rf /Applications/AccuBarcode\ Pro
+
+#Forget the package receipt
+pkgutil --forget com.accubarcode.AccuBarcodePro.pkg</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
