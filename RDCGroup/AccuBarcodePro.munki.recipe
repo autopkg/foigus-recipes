@@ -5,7 +5,17 @@
 	<key>Description</key>
 	<string>Downloads the latest version of AccuBarcode Pro and imports it into Munki.
 
-A logout is required since the AccuBarcode Pro installer bounces the Finder during installation.</string>
+NOTE: The underlying installer that runs when the package is installed currently (2/21/2016,
+version 2.50) requires the legacy Java 6 runtime.
+
+NOTE: A logout is required since the AccuBarcode Pro installer bounces the Finder during
+installation.
+
+NOTE: This recipe has been tested under the assumption that the user will be logged out
+during installation.  If the RestartAction of RequireLogout is removed, please be sure to
+verify the postinstall_script that moves the AccuBarcode Pro fonts as well as the
+AccuBarcode Pro installer's attempt to create a symlink to the application on the current
+user's Desktop.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.AccuBarcodePro</string>
 	<key>Input</key>
@@ -45,6 +55,10 @@ mv -f /var/root/Library/fonts/Accu* /Library/Fonts
 
 #Remove the now-empty Library/fonts from root's home
 rmdir /var/root/Library/fonts</string>
+			<key>requires</key>
+			<array>
+				<string>LegacyJava6</string>
+			</array>
 			<key>uninstall_method</key>
 			<string>uninstall_script</string>
 			<key>uninstall_script</key>

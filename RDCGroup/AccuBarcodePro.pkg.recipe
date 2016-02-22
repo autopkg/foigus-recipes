@@ -3,7 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of AccuBarcode Pro and packages it for installation.</string>
+	<string>Downloads the latest version of AccuBarcode Pro and packages it for installation.
+
+NOTE: The underlying installer that runs when the package is installed currently (2/21/2016,
+version 2.50) requires the legacy Java 6 runtime.  Please ensure it is available.
+
+NOTE: The AccuBarcode Pro installer drops a handful of fonts named "Accu*" in ~/Library/fonts
+during installation.  Since I'm not sure about how this package will be used, please ensure
+these fonts are placed somewhere they're available to users (e.g. /Library/Fonts).
+
+NOTE: The AccuBarcode Pro installer creates a symlink to the AccuBarcode Pro application on
+the Desktop.  Please ensure this symlink is addressed to your satisfaction.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.pkg.AccuBarcodePro</string>
 	<key>Input</key>
