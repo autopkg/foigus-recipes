@@ -36,6 +36,8 @@
 			<array>
 				<string>InDesignCC2015</string>
 			</array>
+			<key>unattended_install</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
