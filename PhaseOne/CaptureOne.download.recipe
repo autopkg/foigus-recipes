@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the current release version of Capture One.
+
+Note major version upgrades of Capture One are generally paid upgrades, however Phase One's update URL doesn't stop at major version boundaries (e.g. the update URL for Capture One 7 offers a download of Capture One 9) and new major versions of Capture One are paid updates.
+
+In an attempt to avoid accidentally downloading (and subsequently importing) Capture One updates that require a paid update, we restrict to a MAJOR_VERSION.  When Phase One releases a new major version, this recipe will break until MAJOR_VERSION is updated (either via override or by updating this recipe).</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.CaptureOne</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>CaptureOne</string>
+		<key>MAJOR_VERSION</key>
+		<string>9</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.9</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>http://cormws.phaseone.com/corm.asmx/GetNewSoftwareVersion?Platform=Mac&amp;Version=8.0</string>
+				<key>re_pattern</key>
+				<string>&lt;AvailableVersion&gt;(%MAJOR_VERSION%\.\d+\.\d+).*&lt;\/AvailableVersion&gt;</string>
+				<key>result_output_var_name</key>
+				<string>truncated_version</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>http://7fe726ba7ab35f43f237-3edeb37f3cf7c4dec48387edc64c5c49.r93.cf5.rackcdn.com/International/CaptureOne.Mac.%truncated_version%.dmg</string>
+				<key>filename</key>
+				<string>CaptureOne.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
