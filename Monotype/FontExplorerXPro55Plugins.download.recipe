@@ -49,7 +49,41 @@
 				<string>http://fex.linotype.com/update/client/mac/pro/plugins-5.5/%update_filename%</string>
 			</dict>
 		</dict>
+<!--	CodeSignatureVerifier doesn't support bundles, yet.  If CodeSignatureVerifier.py is
+		modified to support the .bundle file type, the below invocation of CodeSignatureVerifier
+		works.
+
+		https://github.com/autopkg/autopkg/blob/master/Code/autopkglib/CodeSignatureVerifier.py#L244-L248
 		<dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/decompress</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/decompress/PlugIns.bundle</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Application: Linotype GmbH</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+			</dict>
+		</dict>
+ -->
+ 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
