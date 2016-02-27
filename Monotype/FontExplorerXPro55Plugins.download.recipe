@@ -61,8 +61,6 @@
 			<dict>
 				<key>archive_path</key>
 				<string>%pathname%</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/decompress</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
@@ -73,7 +71,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%RECIPE_CACHE_DIR%/decompress/PlugIns.bundle</string>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/PlugIns.bundle</string>
 				<key>expected_authority_names</key>
 				<array>
 					<string>Developer ID Application: Linotype GmbH</string>
