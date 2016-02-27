@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Tableau Desktop disk image, which contains the Tableau FLEXNet pkg.
+	<string>Downloads latest Tableau Desktop disk image, which contains the Tableau FLEXNet pkg. This assumes the FLEXNet pkg isn't updated any more frequently than Tableau Desktop itself.
 
-Note this assumes the FLEXNet pkg isn't updated any more frequently than Tableau Desktop itself.</string>
+NOTE: As of 2/27/2016 (the 9.2.5 release of Tableau's software) the TableauFLEXNet package has been updated with a new code signature but did not receive a new version.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.tableau-desktop-FLEXNet</string>
 	<key>Input</key>
