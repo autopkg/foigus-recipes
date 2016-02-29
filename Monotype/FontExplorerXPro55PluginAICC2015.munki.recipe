@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the most current FontExplorer X Pro 5.5 Plugin for Illustrator CC 2015 and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.FontExplorerXPro55PluginAICC2015</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>FontExplorerXPro55PluginAICC2015</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/monotype</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe Illustrator CC 2015</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-monotype-FontExplorerXPro55PluginAICC2015</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>Plugin to allow Illustrator CC 2015 to activate document fonts from FontExplorer X Pro.</string>
+			<key>developer</key>
+			<string>Monotype</string>
+			<key>display_name</key>
+			<string>FontExplorer X Pro plugin for Illustrator CC 2015</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>update_for</key>
+			<array>
+				<string>IllustratorCC2015</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.FontExplorerXPro55PluginAICC2015</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
