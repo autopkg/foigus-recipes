@@ -3,25 +3,25 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the most current FontExplorer X Pro 5.5 Plugin for Illustrator CS6 and packages it.
+	<string>Downloads the most current FontExplorer X Pro 5.5 Plugin for Photoshop CC 2014 and packages it.
 
 Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.pkg.FontExplorerX55PluginAICS6</string>
+	<string>com.github.foigus.pkg.FontExplorerXPro55PluginPSCC2014</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>FontExplorerX55PluginAICS6</string>
+		<string>FontExplorerXPro55PluginPSCC2014</string>
 		<key>PKGID</key>
-		<string>com.fontexplorerx.fontexplorerxplugins.aics6</string>
+		<string>com.fontexplorerx.fontexplorerxplugins.pscc2014</string>
 		<key>PLUGIN_BUNDLE_CONTENTS</key>
 		<string>PlugIns.bundle/Contents/Resources</string>
 		<key>PLUGIN_ARCHIVE_NAME</key>
-		<string>FontExplorer X for Illustrator CS6.aip.zip</string>
+		<string>FontExplorer X for Photoshop CC 2014.plugin.zip</string>
 		<key>PLUGIN_NAME</key>
-		<string>FontExplorer X for Illustrator CS6.aip</string>
+		<string>FontExplorer X for Photoshop CC 2014.plugin</string>
 		<key>PLUGIN_INSTALL_DIR</key>
-		<string>Applications/Adobe Illustrator CS6/Plug-ins.localized</string>
+		<string>Applications/Adobe Photoshop CC 2014/Plug-ins</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>

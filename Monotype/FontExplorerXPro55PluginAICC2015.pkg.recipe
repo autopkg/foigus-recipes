@@ -3,25 +3,25 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the most current FontExplorer X Pro 5.5 Plugin for InCopy CC 2014 and packages it.
+	<string>Downloads the most current FontExplorer X Pro 5.5 Plugin for Illustrator CC 2015 and packages it.
 
 Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.pkg.FontExplorerX55PluginICCC2014</string>
+	<string>com.github.foigus.pkg.FontExplorerXPro55PluginAICC2015</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>FontExplorerX55PluginICC2014</string>
+		<string>FontExplorerXPro55PluginAICC2015</string>
 		<key>PKGID</key>
-		<string>com.fontexplorerx.fontexplorerxplugins.iccc2014</string>
+		<string>com.fontexplorerx.fontexplorerxplugins.aicc2015</string>
 		<key>PLUGIN_BUNDLE_CONTENTS</key>
 		<string>PlugIns.bundle/Contents/Resources</string>
 		<key>PLUGIN_ARCHIVE_NAME</key>
-		<string>FontExplorer X for InCopy CC 2014.InDesignPlugin.zip</string>
+		<string>FontExplorer X for Illustrator CC 2015.aip.zip</string>
 		<key>PLUGIN_NAME</key>
-		<string>FontExplorer X for InCopy CC 2014.InDesignPlugin</string>
+		<string>FontExplorer X for Illustrator CC 2015.aip</string>
 		<key>PLUGIN_INSTALL_DIR</key>
-		<string>Applications/Adobe InCopy CC 2014/Plug-Ins</string>
+		<string>Applications/Adobe Illustrator CC 2015/Plug-ins.localized</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -71,7 +71,46 @@ Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%/%PLUGIN_NAME%/Versions/Current/Resources/Info.plist</string>
+				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%/%PLUGIN_NAME%/Contents/Info.plist</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/%PLUGIN_BUNDLE_CONTENTS%/libqt.zip</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/libqt</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Copier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/libqt/QtCore.framework</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%/%PLUGIN_NAME%/Contents/Frameworks/QtCore.framework</string>
+				<key>overwrite</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Copier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/libqt/QtGui.framework</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%/%PLUGIN_NAME%/Contents/Frameworks/QtGui.framework</string>
+				<key>overwrite</key>
+				<true/>
 			</dict>
 		</dict>
 		<dict>

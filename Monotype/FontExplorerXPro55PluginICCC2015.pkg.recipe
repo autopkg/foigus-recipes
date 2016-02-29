@@ -3,25 +3,25 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the most current FontExplorer X Pro 5.5 Plugin for Photoshop CS6 and packages it.
+	<string>Downloads the most current FontExplorer X Pro 5.5 Plugin for InCopy CC 2015 and packages it.
 
 Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.pkg.FontExplorerX55PluginPSCS6</string>
+	<string>com.github.foigus.pkg.FontExplorerXPro55PluginICCC2015</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>FontExplorerX55PluginPSCS6</string>
+		<string>FontExplorerXPro55PluginICC2015</string>
 		<key>PKGID</key>
-		<string>com.fontexplorerx.fontexplorerxplugins.pscs6</string>
+		<string>com.fontexplorerx.fontexplorerxplugins.iccc2015</string>
 		<key>PLUGIN_BUNDLE_CONTENTS</key>
 		<string>PlugIns.bundle/Contents/Resources</string>
 		<key>PLUGIN_ARCHIVE_NAME</key>
-		<string>FontExplorer X for Photoshop CS6.plugin.zip</string>
+		<string>FontExplorer X for InCopy CC 2015.InDesignPlugin.zip</string>
 		<key>PLUGIN_NAME</key>
-		<string>FontExplorer X for Photoshop CS6.plugin</string>
+		<string>FontExplorer X for InCopy CC 2015.InDesignPlugin</string>
 		<key>PLUGIN_INSTALL_DIR</key>
-		<string>Applications/Adobe Photoshop CS6/Plug-ins</string>
+		<string>Applications/Adobe InCopy CC 2015/Plug-Ins</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -71,46 +71,7 @@ Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%/%PLUGIN_NAME%/Contents/Info.plist</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
-			<key>Arguments</key>
-			<dict>
-				<key>archive_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/%PLUGIN_BUNDLE_CONTENTS%/libqt.zip</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/libqt</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>Copier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/libqt/QtCore.framework</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%/%PLUGIN_NAME%/Contents/Frameworks/QtCore.framework</string>
-				<key>overwrite</key>
-				<true/>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>Copier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/libqt/QtGui.framework</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%/%PLUGIN_NAME%/Contents/Frameworks/QtGui.framework</string>
-				<key>overwrite</key>
-				<true/>
+				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%/%PLUGIN_NAME%/Versions/Current/Resources/Info.plist</string>
 			</dict>
 		</dict>
 		<dict>

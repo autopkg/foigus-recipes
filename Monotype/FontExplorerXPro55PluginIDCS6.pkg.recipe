@@ -7,11 +7,11 @@
 
 Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.pkg.FontExplorerX55PluginIDCS6</string>
+	<string>com.github.foigus.pkg.FontExplorerXPro55PluginIDCS6</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>FontExplorerX55PluginIDCS6</string>
+		<string>FontExplorerXPro55PluginIDCS6</string>
 		<key>PKGID</key>
 		<string>com.fontexplorerx.fontexplorerxplugins.idcs6</string>
 		<key>PLUGIN_BUNDLE_CONTENTS</key>
