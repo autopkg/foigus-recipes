@@ -7,7 +7,9 @@
 
 Note this patch is required for use of the included "ColorPicker" application under OS X El Capitan
 
-http://xritephoto.com/ph_product_overview.aspx?ID=1115&amp;Action=Support&amp;SupportID=5875</string>
+http://xritephoto.com/ph_product_overview.aspx?ID=1115&amp;Action=Support&amp;SupportID=5875
+
+Restart is required since the original package requires a restart.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.ColorMunkiPhoto</string>
 	<key>Input</key>
@@ -18,6 +20,8 @@ http://xritephoto.com/ph_product_overview.aspx?ID=1115&amp;Action=Support&amp;Su
 		<string>apps/xrite</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>RestartAction</key>
+			<string>RequireRestart</string>
 			<key>catalogs</key>
 			<array>
 				<string>development-xrite-ColorMunkiPhoto</string>
@@ -32,8 +36,6 @@ http://xritephoto.com/ph_product_overview.aspx?ID=1115&amp;Action=Support&amp;Su
 			<string>ColorMunki Photo</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>unattended_install</key>
-			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
