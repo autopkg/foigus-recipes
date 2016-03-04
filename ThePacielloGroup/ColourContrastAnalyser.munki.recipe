@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest version of Colour Contrast Analyser and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.ColourContrastAnalyser</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>ColourContrastAnalyser</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/thepaciellogroup</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-thepaciellogroup-ColourContrastAnalyser</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>The Colour Contrast Analyser (CCA) helps you determine the legibility of text and the contrast of visual elements, such as graphical controls and visual indicators.</string>
+			<key>developer</key>
+			<string>The Paciello Group</string>
+			<key>display_name</key>
+			<string>Colour Contrast Analyser</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.ColourContrastAnalyser</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/expand</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PlistReader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>info_path</key>
+				<string>%RECIPE_CACHE_DIR%/expand/Colour Contrast Analyser.app</string>
+				<key>plist_keys</key>
+				<dict>
+					<key>LSMinimumSystemVersion</key>
+					<string>declared_os_version</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>minimum_os_version</key>
+					<string>%declared_os_version%</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/expand</string>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%dmg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

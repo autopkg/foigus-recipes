@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Colour Contrast Analyser.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.ColourContrastAnalyser</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>ColourContrastAnalyser</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>github_repo</key>
+				<string>ThePacielloGroup/CCA-OSX</string>
+				<key>asset_regex</key>
+				<string>Colour.*.app.zip</string>
+			</dict>
+			<key>Processor</key>
+			<string>GitHubReleasesInfoProvider</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%-%version%.app.zip</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
