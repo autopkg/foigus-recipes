@@ -42,12 +42,8 @@
 			<dict>
 				<key>input_path</key>
 				<string>%pathname%/Preference Manager.app</string>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Application: Digital Rebellion, LLC</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
+				<key>requirement</key>
+				<string>identifier "com.digitalrebellion.PreferenceManager" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7F8QJ989JE"</string>
 			</dict>
 		</dict>
 		<dict>

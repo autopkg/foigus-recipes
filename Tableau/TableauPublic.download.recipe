@@ -35,12 +35,8 @@
 			<dict>
 				<key>input_path</key>
 				<string>%pathname%/Tableau Public.app</string>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Application: Tableau Software, Inc. (QJ4XPRK37C)</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
+				<key>requirement</key>
+				<string>identifier "com.tableausoftware.tableaupublic" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = QJ4XPRK37C</string>
 			</dict>
 		</dict>
 		<dict>

@@ -42,12 +42,8 @@ This recipe is known to redownload every time it's run.  Ask RealVNC to put thei
 			<dict>
 				<key>input_path</key>
 				<string>%pathname%/VNC Viewer.app</string>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Application: RealVNC Limited</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
+				<key>requirement</key>
+				<string>identifier "com.realvnc.vncviewer" and anchor apple generic</string>
 			</dict>
 		</dict>
 		<dict>

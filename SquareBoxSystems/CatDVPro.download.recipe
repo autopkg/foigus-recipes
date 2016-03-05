@@ -50,12 +50,8 @@ Override MAJOR_VERSION for versions of CatDV Pro besides version 11.</string>
 			<dict>
 				<key>input_path</key>
 				<string>%pathname%/CatDV Pro */CatDV Pro.app</string>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Application: Square Box Systems Ltd</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
+				<key>requirement</key>
+				<string>identifier "uk.co.squarebox.CatDVPro" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = P3F2RJCPNA</string>
 			</dict>
 		</dict>
 		<dict>
