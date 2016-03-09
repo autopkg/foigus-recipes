@@ -24,6 +24,11 @@
 				<string>https://www.circularflo.com/download-email-confirm/</string>
 				<key>re_pattern</key>
 				<string>url=(https://www.circularflo.com/.*.dmg)</string>
+				<key>request_headers</key>
+				<dict>
+					<key>User-Agent</key>
+					<string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/600.8.9 (KHTML, like Gecko) Version/8.0.8 Safari/600.8.9</string>
+				</dict>
 			</dict>
 		</dict>
 		<dict>
