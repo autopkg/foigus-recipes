@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Quite Imposing disk image.
+
+Support for Plus or non-Plus versions of Quite Imposing is available from the PLUS variable, which should be set to "plus" for Quite Imposing Plus or an empty string for regular Quite Imposing.
+
+Language support is available via the LANGUAGE variable, although I can't find any other languages to download to test.
+
+Code signature verification isn't possible because the installer isn't signed.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.QuiteImposing</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>QuiteImposing</string>
+		<key>PLUS</key>
+		<string>plus</string>
+		<key>MAJOR_VERSION</key>
+		<string>4</string>
+		<key>LANGUAGE</key>
+		<string>en</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>http://downloads.quite.com/imposing/download/qi%PLUS%%MAJOR_VERSION%_%LANGUAGE%.dmg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
