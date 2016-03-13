@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Quite Imposing disk image.
+	<string>Downloads the latest Quite Imposing disk image.
 
 Support for Plus or non-Plus versions of Quite Imposing is available from the PLUS variable, which should be set to "plus" for Quite Imposing Plus or an empty string for regular Quite Imposing.
 
