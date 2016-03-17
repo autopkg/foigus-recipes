@@ -16,7 +16,7 @@
 		<string>Sketch/3.3.2 Sparkle/e759c10</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.0</string>
+	<string>0.6.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
