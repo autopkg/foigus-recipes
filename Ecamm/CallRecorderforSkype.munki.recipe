@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Call Recorder for Skype installer, packages it, and imports it into Munki.
+
+Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center URL.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.CallRecorderforSkype</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>CallRecorderforSkype</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/ecamm</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Skype</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-ecamm-CallRecorderforSkype</string>
+			</array>
+			<key>category</key>
+			<string>Utility</string>
+			<key>description</key>
+			<string>Record your Skype calls directly to your Mac. It’s that simple.</string>
+			<key>developer</key>
+			<string>Ecamm</string>
+			<key>display_name</key>
+			<string>Call Recorder for Skype</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>Skype</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.CallRecorderforSkype</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
