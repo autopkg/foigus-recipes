@@ -196,7 +196,7 @@
 							<key>user</key>
 							<string>root</string>
 							<key>group</key>
-							<string>admin</string>
+							<string>wheel</string>
 						</dict>
 					</array>
 				</dict>
