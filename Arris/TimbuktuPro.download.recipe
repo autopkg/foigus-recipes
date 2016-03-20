@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the Timbuktu disk image.
+
+CodeSignatureVerifier disabled because of the V1 signature.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.TimbuktuPro</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>TimbuktuPro</string>
+		<key>DOWNLOAD_URL</key>
+		<string>http://betamail.netopia.com/files/shipped/tb2mac885.dmg</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+			</dict>
+		</dict>
+<!--		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Timbuktu Pro/Timbuktu Pro.app</string>
+				<key>requirement</key>
+				<string>identifier "com.motorola.timbuktu.pro" and certificate leaf = H"416995c0ea9f6b3230a853f7aab13fa350b39d6e"</string>
+			</dict>
+		</dict>-->
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
