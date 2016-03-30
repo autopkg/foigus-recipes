@@ -18,15 +18,13 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>https://github.com/aburgh/Disk-Arbitrator/wiki/Downloads</string>
-				<key>re_pattern</key>
-				<string>(https://kainjow.com/downloads/.*.dmg)</string>
-				<key>result_output_var_name</key>
-				<string>url</string>
+				<key>github_repo</key>
+				<string>aburgh/Disk-Arbitrator</string>
+				<key>sort_by_highest_tag_names</key>
+				<true/>
 			</dict>
 			<key>Processor</key>
-			<string>URLTextSearcher</string>
+			<string>GitHubReleasesInfoProvider</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
