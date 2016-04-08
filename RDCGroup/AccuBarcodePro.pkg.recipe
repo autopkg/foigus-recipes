@@ -58,6 +58,8 @@ the Desktop.  Please ensure this symlink is addressed to your satisfaction.</str
 				<string>%pathname%/AccuBarcode Pro Installer.app</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/Scripts/AccuBarcode Pro Installer.app</string>
+				<key>overwrite</key>
+				<true/>
 			</dict>
 		</dict>
 		<dict>
