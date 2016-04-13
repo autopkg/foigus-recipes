@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the current version of Wirecast and imports it into Munki.
+
+Note major version upgrades of Wirecast are generally paid upgrades.  Thus set MAJOR_VERSION to your preferred version (currently 4, 5, and 6 work).</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.Wirecast</string>
+	<key>Input</key>
+	<dict>
+		<key>MAJOR_VERSION</key>
+		<string>6</string>
+		<key>NAME</key>
+		<string>Wirecast</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/telestream</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-telestream-%NAME%%MAJOR_VERSION%</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>Wirecast provides everything you need to stream professional live events. Add multiple cameras, including iOS devices; create composite shots with graphics and transitions; and live encode and stream to your favorite streaming destination.</string>
+			<key>developer</key>
+			<string>Telestream</string>
+			<key>display_name</key>
+			<string>Wirecast %MAJOR_VERSION%</string>
+			<key>name</key>
+			<string>%NAME%%MAJOR_VERSION%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.Wirecast</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
