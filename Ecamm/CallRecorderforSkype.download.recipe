@@ -22,6 +22,15 @@ Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center 
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key> <!-- Stop processing if the Customer Center URL isn't overridden -->
+			<string>StopProcessingIf</string>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>CUSTOMER_CENTER_URL == "http://www.ecamm.com/cgi-bin/custcent?url"</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
 			<key>Arguments</key>
