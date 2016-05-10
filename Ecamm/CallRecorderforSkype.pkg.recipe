@@ -78,8 +78,6 @@ Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center 
 				<dict>
 					<key>Applications</key>
 					<string>0775</string>
-					<key>Applications/Movie Tools</key>
-					<string>0775</string>
 					<key>Library</key>
 					<string>0755</string>
 					<key>Library/Audio</key>
@@ -97,9 +95,9 @@ Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center 
 			<key>Arguments</key>
 			<dict>
 				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive_einstall/Movie Tools</string>
+				<string>%RECIPE_CACHE_DIR%/unarchive_einstall/Ecamm Movie Tools.app</string>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Movie Tools</string>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Ecamm Movie Tools.app</string>
 			</dict>
 		</dict>
 		<dict>
