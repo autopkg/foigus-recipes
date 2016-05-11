@@ -16,7 +16,7 @@
 		<dict>
 			<key>blocking_applications</key>
 			<array>
-				<string>Adobe Illustrator CS6</string>
+				<string>Adobe Illustrator</string>
 			</array>
 			<key>catalogs</key>
 			<array>
