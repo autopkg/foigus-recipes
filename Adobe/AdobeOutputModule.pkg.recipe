@@ -143,10 +143,6 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 				</dict>
 			</dict>
 		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
 	</array>
 </dict>
 </plist>

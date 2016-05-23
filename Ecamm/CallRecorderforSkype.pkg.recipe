@@ -161,10 +161,6 @@ Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center 
 				</dict>
 			</dict>
 		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
 	</array>
 </dict>
 </plist>
