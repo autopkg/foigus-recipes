@@ -2,32 +2,32 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Description</key>
-    <string>Downloads the latest Tableau Desktop installer and copies the Tableau FLEXNet package to the build directory.
+	<key>Description</key>
+	<string>Downloads the latest Tableau Desktop installer and copies the Tableau FLEXNet package to the build directory.
 
 This is necessary because munkiimport refuses to import the Tableau Desktop dmg (for the purposes of obtaining the Tableau FLEXNet package), and "force_munkiimport" isn't a good idea if this is automated.</string>
-    <key>Identifier</key>
-    <string>com.github.foigus.pkg.tableau-desktop-FLEXNet</string>
-    <key>Input</key>
-    <dict>
-        <key>NAME</key>
-        <string>TableauDesktopFLEXNet</string>
-    </dict>
-    <key>MinimumVersion</key>
-    <string>0.2.0</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.tableau-desktop-FLEXNet</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>TableauDesktopFLEXNet</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
 	<key>ParentRecipe</key>
 	<string>com.github.foigus.download.tableau-desktop-FLEXNet</string>
-    <key>Process</key>
-    <array>
-        <dict>
-            <key>Arguments</key>
-            <dict>
-                <key>source_pkg</key>
-                <string>%pathname%/Tableau.app/Contents/Installers/Tableau FLEXNet.pkg</string>
-            </dict>
-            <key>Processor</key>
-            <string>PkgCopier</string>
-        </dict>
-    </array>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>source_pkg</key>
+				<string>%pathname%/Tableau.app/Contents/Installers/Tableau FLEXNet.pkg</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgCopier</string>
+		</dict>
+	</array>
 </dict>
 </plist>
