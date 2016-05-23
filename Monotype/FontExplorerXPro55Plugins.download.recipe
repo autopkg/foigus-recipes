@@ -49,6 +49,10 @@
 				<string>http://fex.linotype.com/update/client/mac/pro/plugins-5.5/%update_filename%</string>
 			</dict>
 		</dict>
+ 		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
 <!--	CodeSignatureVerifier doesn't support bundles, yet.  If CodeSignatureVerifier.py is
 		modified to support the .bundle file type, the below invocation of CodeSignatureVerifier
 		works.
@@ -81,10 +85,6 @@
 			</dict>
 		</dict>
  -->
- 		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
 	</array>
 </dict>
 </plist>

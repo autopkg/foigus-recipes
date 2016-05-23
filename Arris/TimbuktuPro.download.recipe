@@ -30,6 +30,10 @@ CodeSignatureVerifier disabled because of the V1 signature.</string>
 				<string>%NAME%.dmg</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
 <!--		<dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
@@ -41,10 +45,6 @@ CodeSignatureVerifier disabled because of the V1 signature.</string>
 				<string>identifier "com.motorola.timbuktu.pro" and certificate leaf = H"416995c0ea9f6b3230a853f7aab13fa350b39d6e"</string>
 			</dict>
 		</dict>-->
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
 	</array>
 </dict>
 </plist>
