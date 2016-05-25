@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Image Processor Pro and imports a Photoshop CC 2015-aimed package into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.ImageProcessorProPhotoshopCC2015</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>ImageProcessorProPhotoshopCC2015</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/xbytor</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-xbytor-ImageProcessorProPhotoshopCC2015</string>
+			</array>
+			<key>category</key>
+			<string>Utility</string>
+			<key>description</key>
+			<string>A set of scripts for Photoshop.</string>
+			<key>developer</key>
+			<string>Russell Brown</string>
+			<key>display_name</key>
+			<string>Image Processor Pro for Photoshop CC 2015</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>update_for</key>
+			<array>
+				<string>PhotoshopCC2015</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.ImageProcessorProPhotoshopCC2015</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
