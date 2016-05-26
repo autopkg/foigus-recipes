@@ -28,6 +28,8 @@
 			<string>Image Processor Pro for Photoshop CC 2014</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
 			<key>update_for</key>
 			<array>
 				<string>PhotoshopCC2014</string>
