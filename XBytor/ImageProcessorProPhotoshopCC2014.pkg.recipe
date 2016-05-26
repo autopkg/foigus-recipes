@@ -81,6 +81,39 @@
 			<key>Arguments</key>
 			<dict>
 				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/Image Processor Pro.jsx</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2014/Presets/Scripts</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Copier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/Image Processor Pro.xml</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2014/Presets/Scripts</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Copier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/Image Processor Pro</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2014/Presets/Scripts/Image Processor Pro</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Copier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/icons/one.png</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2014/Presets/Scripts/icons</string>
