@@ -43,6 +43,10 @@ As of this writing, the valid LANGUAGE_CODEs are "en" (English) and "ja" (Japane
 		</dict>
 		<dict>
 			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
@@ -55,10 +59,6 @@ As of this writing, the valid LANGUAGE_CODEs are "en" (English) and "ja" (Japane
 					<string>Apple Root CA</string>
 				</array>
 			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
 		</dict>
 	</array>
 </dict>

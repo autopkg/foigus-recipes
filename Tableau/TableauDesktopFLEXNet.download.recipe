@@ -32,6 +32,10 @@ NOTE: As of 2/27/2016 (the 9.2.5 release of Tableau's software) the TableauFLEXN
 		</dict>
 		<dict>
 			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
@@ -44,10 +48,6 @@ NOTE: As of 2/27/2016 (the 9.2.5 release of Tableau's software) the TableauFLEXN
 					<string>Apple Root CA</string>
 				</array>
 			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
 		</dict>
 	</array>
 </dict>

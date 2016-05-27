@@ -38,6 +38,10 @@ Note major version upgrades of Wirecast are generally paid upgrades.  Thus overr
 		</dict>
 		<dict>
 			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
@@ -46,10 +50,6 @@ Note major version upgrades of Wirecast are generally paid upgrades.  Thus overr
 				<key>requirement</key>
 				<string>identifier "com.varasoftware.wirecast"</string>
 			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
 		</dict>
 	</array>
 </dict>

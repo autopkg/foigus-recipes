@@ -132,10 +132,6 @@ Skipped writing a .munki recipe since Timbuktu is never going to be updated agai
 				</dict>
 			</dict>
 		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
 	</array>
 </dict>
 </plist>

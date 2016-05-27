@@ -30,6 +30,10 @@ CodeSignatureVerifier disabled as of 3/22/2016 due to "resource envelope is obso
 				<string>%NAME%.dmg</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
 <!--		<dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
@@ -41,10 +45,6 @@ CodeSignatureVerifier disabled as of 3/22/2016 due to "resource envelope is obso
 				<string>(identifier "com.google.Chrome" or identifier "com.google.Chrome.canary") and certificate leaf = H"85cee8254216185620ddc8851c7a9fc4dfe120ef"</string>
 			</dict>
 		</dict> -->
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
 	</array>
 </dict>
 </plist>
