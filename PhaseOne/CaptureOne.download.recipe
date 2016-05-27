@@ -40,7 +40,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>http://7fe726ba7ab35f43f237-3edeb37f3cf7c4dec48387edc64c5c49.r93.cf5.rackcdn.com/International/CaptureOne.Mac.%truncated_version%.dmg</string>
+				<string>http://downloads.phaseone.com/International/CaptureOne.Mac.%truncated_version%.dmg</string>
 				<key>filename</key>
 				<string>CaptureOne.dmg</string>
 			</dict>
