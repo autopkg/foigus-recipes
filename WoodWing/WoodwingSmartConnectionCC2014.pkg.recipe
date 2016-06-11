@@ -3952,7 +3952,7 @@ exit 0</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>PkgRootCreator</string>
+			<string>PkgRootCreator</string> <!-- Prep to flatten the now-fixed package -->
 			<key>Arguments</key>
 			<dict>
 				<key>pkgroot</key>
@@ -3963,7 +3963,7 @@ exit 0</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>FlatPkgPacker</string>
+			<string>FlatPkgPacker</string> <!-- Flatten the fixed package -->
 			<key>Arguments</key>
 			<dict>
 				<key>destination_pkg</key>
