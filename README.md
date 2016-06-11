@@ -16,6 +16,12 @@ autopkg repo-add novaksam-recipes
 autopkg repo-add gmarnin-recipes
 ```
 
+### WoodWing Recipes:
+```
+autopkg repo-add keeleysam-recipes
+autopkg repo-add hjuutilainen-recipes
+```
+
 ### XtraFinder:
 ```
 autopkg repo-add keeleysam-recipes
