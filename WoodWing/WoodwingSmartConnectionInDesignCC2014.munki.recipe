@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages InDesign Smart Connection for installation for InDesign CC 2014 and imports it into Munki
+
+NOTE: This recipe depends on keeleysam's MunkiPkginfoReceiptsEditor and hjuutilainen's ChecksumVerifier.  Add these repos via:
+
+autopkg repo-add keeleysam-recipes
+autopkg repo-add hjuutilainen-recipes
+
+Also, specific pkgs are disabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.WoodwingSmartConnectionInDesignCC2014</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>WoodwingSmartConnectionInDesignCC2014</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/woodwing</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe InDesign CC 2014</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-woodwing-WoodwingSmartConnectionInDesignCC2014</string>
+			</array>
+			<key>category</key>
+			<string>Plugins</string>
+			<key>description</key>
+			<string>Smart Connection plugins for InDesign CC 2014.</string>
+			<key>developer</key>
+			<string>Woodwing</string>
+			<key>display_name</key>
+			<string>Smart Connection InDesign CC 2014</string>
+			<key>installer_choices_xml</key>
+			<array>
+				<dict>
+					<key>attributeSetting</key>
+					<integer>1</integer>
+					<key>choiceAttribute</key>
+					<string>selected</string>
+					<key>choiceIdentifier</key>
+					<string>choice1</string> <!-- Just InDesign Smart Connection plugins -->
+				</dict>
+			</array>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>InDesignCC2014</string>
+				<string>ExtensionManagerCC</string> <!-- For Sticky Notes plugin install -->
+			</array>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.WoodwingSmartConnectionCC2014</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string> <!-- Unpack the original package -->
+			<key>Arguments</key>
+			<dict>
+				<key>purge_destination</key>
+				<true/>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%PKG%/Smart_Connection_for_Adobe_CC_2014_*.pkg</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string> <!-- Extract the package payload of uninstaller.pkg -->
+			<key>Arguments</key>
+			<dict>
+				<key>purge_destination</key>
+				<true/>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/uninstaller.pkg/Payload</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Copier</string> <!-- Copy out the first uninstall script, working around lack of globs in ChecksumVerifier -->
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/Uninstaller/Uninstall Smart Connection for Adobe CC 2014 v*.app/Contents/MacOS/Uninstall Smart Connection for Adobe CC 2014 v*</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/checksum</string>
+				<key>overwrite</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.2.1, build 75 on the uninstall script -->
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/checksum</string>
+				<key>checksum</key>
+				<string>84a03bad8a17deedde3e01a2661c098b</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Copier</string> <!-- Copy out the second uninstall script, working around lack of globs in ChecksumVerifier -->
+			<key>Arguments</key>
+			<dict>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/Uninstaller/Uninstall Smart Connection for Adobe CC 2014 v*.app/Contents/Resources/Uninstall Smart Connection for Adobe CC 2014 v*.sh</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/checksum.sh</string>
+				<key>overwrite</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.2.1, build 75 on the second uninstall.sh script -->
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/checksum.sh</string>
+				<key>checksum</key>
+				<string>84a03bad8a17deedde3e01a2661c098b</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string> <!-- Extract the package receipt string -->
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/unpack/scenterprise.pkg/PackageInfo</string>
+				<key>re_pattern</key>
+				<string>com\.WoodWing\.(smartConnectionForAdobeCc\d+V\d+)\.SCEnterprise\.pkg"</string>
+				<key>result_output_var_name</key>
+				<string>receipt_string</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string> <!-- Create a root for the expanded scenterprise.pkg payload -->
+			<key>Arguments</key>
+			<dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing</string>
+				<key>pkgdirs</key>
+				<dict/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string> <!-- Extract the package payload of scenterprise.pkg -->
+			<key>Arguments</key>
+			<dict>
+				<key>purge_destination</key>
+				<true/>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/scenterprise.pkg/Payload</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string> <!-- Create an installs array item for SCEnterprise.InDesignPlugin -->
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string> <!-- Merge the installs array into the pkginfo -->
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string> <!-- Extract the version number -->
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+				<key>re_pattern</key>
+				<string>"CFBundleShortVersionString" = "v([\d\.]+)</string>
+				<key>result_output_var_name</key>
+				<string>discovered_version</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string> <!-- Extract the build number -->
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+				<key>re_pattern</key>
+				<string>"CFBundleShortVersionString" = .* build (\d+)</string>
+				<key>result_output_var_name</key>
+				<string>build</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string> <!-- Add Munki pkginfo, set "version" to version plus build as the Munki -->
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%discovered_version%.%build%</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string> <!-- Import the package into Munki -->
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/repack/SmartConnectionCC2014.pkg</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>additional_makepkginfo_options</key>
+				<array>
+					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts/Fixed Scripts/wwuninstall_indesigncc2014_fixed.sh</string>
+					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts/My Scripts/Forget InDesign Receipts.sh</string>
+				</array>
+				<key>force_munkiimport</key>
+				<true/>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string> <!-- Mark receipts optional for items not installed due to installerchoices -->
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_ids_set_optional_true</key>
+				<array>
+					<string>com.WoodWing.%receipt_string%.InCopy.pkg</string>
+					<string>com.WoodWing.%receipt_string%.InCopyOverset.pkg</string>
+					<string>com.WoodWing.%receipt_string%.InDesignDM.pkg</string>
+					<string>com.WoodWing.%receipt_string%.InDesignServer.pkg</string>
+					<string>com.WoodWing.%receipt_string%.InDesignServerDM.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCCoreInCopy.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCCoreInCopyOverset.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCCoreInCopyUI.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCEntDMActiveElement.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCEntDMAudio.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCEntDMDossierLink.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCEntDMHotspot.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCEntDMScrollableArea.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCEntDMSlideShow.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCEntDMVideo.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCEntDMWidget.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCProFramesInCopy.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCProFramesInCopyUI.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SCProInCopyUI.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SmartDPSTools.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SmartDPSToolsUI.pkg</string>
+					<string>com.WoodWing.%receipt_string%.SmartJumpInCopyUI.pkg</string>
+					<string>com.WoodWing.%receipt_string%.WoodWingUI.pkg</string> <!-- Since there's two package IDs that differ by case, ignore both -->
+					<string>com.WoodWing.%receipt_string%.woodwingui.pkg</string> <!-- Since there's two package IDs that differ by case, ignore both -->
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
