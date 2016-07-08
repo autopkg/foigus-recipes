@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the most current FontExplorer X Pro 5.5 Plugin for Photoshop CC 2015 and packages it.
+	<string>Downloads the most current FontExplorer X Pro 5.5 Plugin for Photoshop CC 2015.5 and packages it.
 
 Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.pkg.FontExplorerXPro55PluginPSCC2015</string>
+	<string>com.github.foigus.pkg.FontExplorerXPro55PluginPSCC2015.5</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>FontExplorerXPro55PluginPSCC2015</string>
 		<key>PKGID</key>
-		<string>com.fontexplorerx.fontexplorerxplugins.pscc2015</string>
+		<string>com.fontexplorerx.fontexplorerxplugins.pscc2015-5</string>
 		<key>PLUGIN_BUNDLE_CONTENTS</key>
 		<string>PlugIns.bundle/Contents/Resources</string>
 		<key>PLUGIN_ARCHIVE_NAME</key>
@@ -21,7 +21,7 @@ Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string
 		<key>PLUGIN_NAME</key>
 		<string>FontExplorer X for Photoshop CC 2015.plugin</string>
 		<key>PLUGIN_INSTALL_DIR</key>
-		<string>Applications/Adobe Photoshop CC 2015/Plug-ins</string>
+		<string>Applications/Adobe Photoshop CC 2015.5/Plug-ins</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
