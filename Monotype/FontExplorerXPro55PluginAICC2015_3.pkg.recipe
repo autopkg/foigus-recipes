@@ -11,7 +11,7 @@ Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>FontExplorerXPro55PluginAICC2015-3</string>
+		<string>FontExplorerXPro55PluginAICC2015.3</string>
 		<key>PKGID</key>
 		<string>com.fontexplorerx.fontexplorerxplugins.aicc2015-3</string>
 		<key>PLUGIN_BUNDLE_CONTENTS</key>
