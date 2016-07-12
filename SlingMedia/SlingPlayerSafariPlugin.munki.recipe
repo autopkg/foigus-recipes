@@ -11,10 +11,10 @@ The "SlingPlayer" listed here is my personal FluidApp--it's probably not necessa
 	<string>com.github.foigus.munki.SlingPlayerSafariPlugin</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>SlingPlayerSafariPlugin</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>browserplugins/slingmedia</string>
+		<key>NAME</key>
+		<string>SlingPlayerSafariPlugin</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>
@@ -48,10 +48,10 @@ The "SlingPlayer" listed here is my personal FluidApp--it's probably not necessa
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>flat_pkg_path</key>
-				<string>%pathname%/SlingPlayer Plug-in Installer.pkg</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%pathname%/SlingPlayer Plug-in Installer.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>FlatPkgUnpacker</string>
@@ -59,10 +59,10 @@ The "SlingPlayer" listed here is my personal FluidApp--it's probably not necessa
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/payload/root/Library/Internet Plug-Ins</string>
 				<key>pkgdirs</key>
 				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Library/Internet Plug-Ins</string>
 			</dict>
 			<key>Processor</key>
 			<string>PkgRootCreator</string>
@@ -70,12 +70,12 @@ The "SlingPlayer" listed here is my personal FluidApp--it's probably not necessa
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/slingplayer.pkg/Payload</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload/root/Library/Internet Plug-Ins</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/slingplayer.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
 			<key>Processor</key>
 			<string>PkgPayloadUnpacker</string>

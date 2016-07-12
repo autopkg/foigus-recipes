@@ -14,10 +14,10 @@ Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (c
 	<string>com.github.foigus.munki.XtraFinder</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>XtraFinder</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/trankynamsoftware</string>
+		<key>NAME</key>
+		<string>XtraFinder</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>Comment</key>
@@ -68,10 +68,10 @@ Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (c
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>flat_pkg_path</key>
-				<string>%pathname%/XtraFinder.pkg</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%pathname%/XtraFinder.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>FlatPkgUnpacker</string>
@@ -79,10 +79,10 @@ Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (c
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/payload/root/Applications</string>
 				<key>pkgdirs</key>
 				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications</string>
 			</dict>
 			<key>Processor</key>
 			<string>PkgRootCreator</string>
@@ -90,12 +90,12 @@ Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (c
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/xtrafinder-1.pkg/Payload</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload/root/Applications</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/xtrafinder-1.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
 			<key>Processor</key>
 			<string>PkgPayloadUnpacker</string>
@@ -162,8 +162,6 @@ Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (c
 			<string>MunkiImporter</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_ids_set_optional_true</key>
@@ -172,6 +170,8 @@ Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (c
 					<string>com.trankynam.xtrafinder.postflight.pkg</string>
 				</array>
 			</dict>
+			<key>Processor</key>
+			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
 		</dict>
 	</array>
 </dict>

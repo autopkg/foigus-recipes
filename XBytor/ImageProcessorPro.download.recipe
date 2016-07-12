@@ -18,12 +18,12 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>https://sourceforge.net/projects/ps-scripts/rss?path=/Image%20Processor%20Pro</string>
 				<key>re_pattern</key>
 				<string>/(Image Processor Pro/.*/ImageProcessorPro-.*.zip)</string>
 				<key>result_output_var_name</key>
 				<string>path</string>
+				<key>url</key>
+				<string>https://sourceforge.net/projects/ps-scripts/rss?path=/Image%20Processor%20Pro</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -31,10 +31,10 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>https://sourceforge.net/projects/ps-scripts/files/%path%</string>
 				<key>filename</key>
 				<string>ImageProcessorPro.zip</string>
+				<key>url</key>
+				<string>https://sourceforge.net/projects/ps-scripts/files/%path%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>

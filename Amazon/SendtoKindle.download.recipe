@@ -10,25 +10,25 @@ No code signature check since the package is unsigned.</string>
 	<string>com.github.foigus.download.SendToKindle</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>SendToKindle</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://s3.amazonaws.com/sendtokindle/SendToKindleForMac-installer.pkg</string>
+		<key>NAME</key>
+		<string>SendToKindle</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
 				<key>filename</key>
 				<string>%NAME%.pkg</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

@@ -8,10 +8,10 @@
 	<string>com.github.foigus.munki.Sketch</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>Sketch</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/bohemiancoding</string>
+		<key>NAME</key>
+		<string>Sketch</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -39,8 +39,6 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>archive_path</key>
@@ -50,17 +48,19 @@
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>DmgCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>dmg_root</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 				<key>dmg_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 			</dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>

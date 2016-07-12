@@ -18,10 +18,10 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>github_repo</key>
-				<string>Sigil-Ebook/Sigil</string>
 				<key>asset_regex</key>
 				<string>Sigil-.*-Mac-Package.dmg</string>
+				<key>github_repo</key>
+				<string>Sigil-Ebook/Sigil</string>
 			</dict>
 			<key>Processor</key>
 			<string>GitHubReleasesInfoProvider</string>
@@ -40,8 +40,6 @@
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
@@ -49,6 +47,8 @@
 				<key>requirement</key>
 				<string>identifier "com.sigil-ebook.Sigil.app" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "2SMCVQU3CJ"</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

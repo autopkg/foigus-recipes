@@ -14,10 +14,10 @@ Restart is required since the original package requires a restart.</string>
 	<string>com.github.foigus.munki.ColorMunkiPhoto</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>ColorMunkiPhoto</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/xrite</string>
+		<key>NAME</key>
+		<string>ColorMunkiPhoto</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>RestartAction</key>
@@ -45,39 +45,39 @@ Restart is required since the original package requires a restart.</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>FlatPkgUnpacker</string>
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>flat_pkg_path</key>
-				<string>%RECIPE_CACHE_DIR%/repack/ColorMunki Photo.pkg</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/repack/ColorMunki Photo.pkg</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/root.pkg/Payload</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload/</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/root.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
 			<key>Processor</key>
 			<string>PkgPayloadUnpacker</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload/Applications/ColorMunkiPhoto/ColorMunki Photo.app/Contents/Info.plist</string>
 			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>

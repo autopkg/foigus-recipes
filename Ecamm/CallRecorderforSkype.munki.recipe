@@ -10,10 +10,10 @@ Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center 
 	<string>com.github.foigus.munki.CallRecorderforSkype</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>CallRecorderforSkype</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>plugins/ecamm</string>
+		<key>NAME</key>
+		<string>CallRecorderforSkype</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>

@@ -8,10 +8,10 @@
 	<string>com.github.foigus.munki.InDataCC2015</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>InDataCC2015</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>plugins/emsoftware</string>
+		<key>NAME</key>
+		<string>InDataCC2015</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>
@@ -49,10 +49,10 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>flat_pkg_path</key>
-				<string>%pathname%</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%pathname%</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
@@ -62,24 +62,24 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/InData.pkg/Payload</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload/</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/InData.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
 			<key>Processor</key>
 			<string>PkgPayloadUnpacker</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload/Plug-Ins/Em Software/InData.InDesignPlugin/Versions/A/Resources/Info.plist</string>
 			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>

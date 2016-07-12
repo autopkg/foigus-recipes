@@ -8,10 +8,10 @@
 	<string>com.github.foigus.munki.CatDVPro</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>CatDVPro</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/squareboxsystems</string>
+		<key>NAME</key>
+		<string>CatDVPro</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>

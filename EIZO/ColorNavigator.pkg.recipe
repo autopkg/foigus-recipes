@@ -18,28 +18,28 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>http://www.eizo.co.jp/update/ColorNavigator.xml</string>
 				<key>re_pattern</key>
 				<string>ColorNavigator.*\(Mac OS\)(?:(?:.|\n)*)&lt;softwareVersion&gt;(\d)[\.\d]*&lt;\/softwareVersion&gt;</string>
 				<key>result_output_var_name</key>
 				<string>major_version</string>
+				<key>url</key>
+				<string>http://www.eizo.co.jp/update/ColorNavigator.xml</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Comment</key>
-			<string>Copy the embedded package out of the disk image.</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_pkg</key>
-				<string>%pathname%/ColorNavigator 6.pkg</string>
 				<key>pkg_path</key>
 				<string>%RECIPE_CACHE_DIR%/ColorNavigator%major_version%.pkg</string>
+				<key>source_pkg</key>
+				<string>%pathname%/ColorNavigator 6.pkg</string>
 			</dict>
+			<key>Comment</key>
+			<string>Copy the embedded package out of the disk image.</string>
 			<key>Processor</key>
 			<string>PkgCopier</string>
 		</dict>

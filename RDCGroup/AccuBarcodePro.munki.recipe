@@ -20,10 +20,10 @@ user's Desktop.</string>
 	<string>com.github.foigus.munki.AccuBarcodePro</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>AccuBarcodePro</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/rdcgroup</string>
+		<key>NAME</key>
+		<string>AccuBarcodePro</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>RestartAction</key>

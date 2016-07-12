@@ -10,27 +10,27 @@ Note major version upgrades of Wirecast are generally paid upgrades.  Thus overr
 	<string>com.github.foigus.download.Wirecast</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>Wirecast</string>
 		<key>MAJOR_VERSION</key>
 		<string>6</string>
+		<key>NAME</key>
+		<string>Wirecast</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>http://www.telestream.net/update-check/wirecast/upgrade-%MAJOR_VERSION%.htm?os=mac</string>
 				<key>re_pattern</key>
 				<string>href="(http://www.telestream.net/download-files/wirecast/%MAJOR_VERSION%-0/Wirecast-%MAJOR_VERSION%[\.0-9]*.dmg)"</string>
 				<key>result_output_var_name</key>
 				<string>url</string>
+				<key>url</key>
+				<string>http://www.telestream.net/update-check/wirecast/upgrade-%MAJOR_VERSION%.htm?os=mac</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
@@ -41,8 +41,6 @@ Note major version upgrades of Wirecast are generally paid upgrades.  Thus overr
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
@@ -50,6 +48,8 @@ Note major version upgrades of Wirecast are generally paid upgrades.  Thus overr
 				<key>requirement</key>
 				<string>identifier "com.varasoftware.wirecast"</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

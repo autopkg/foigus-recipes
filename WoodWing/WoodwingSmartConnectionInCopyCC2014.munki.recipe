@@ -15,10 +15,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 	<string>com.github.foigus.munki.WoodwingSmartConnectionInCopyCC2014</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>WoodwingSmartConnectionInCopyCC2014</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>plugins/woodwing</string>
+		<key>NAME</key>
+		<string>WoodwingSmartConnectionInCopyCC2014</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>Comment</key>
@@ -86,143 +86,139 @@ Requirement for ExtensionManagerCC is for Sticky Notes plugin install</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Comment</key>
-			<string>Unpack the original package</string>
-			<key>Processor</key>
-			<string>FlatPkgUnpacker</string>
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
 				<key>flat_pkg_path</key>
 				<string>%PKG%/Smart_Connection_for_Adobe_CC_2014_*.pkg</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
+			<key>Comment</key>
+			<string>Unpack the original package</string>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/uninstaller.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
 			<key>Comment</key>
 			<string>Extract the package payload of uninstaller.pkg</string>
 			<key>Processor</key>
 			<string>PkgPayloadUnpacker</string>
-			<key>Arguments</key>
-			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/uninstaller.pkg/Payload</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/</string>
-			</dict>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/checksum</string>
+				<key>overwrite</key>
+				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/Uninstaller/Uninstall Smart Connection for Adobe CC 2014 v*.app/Contents/MacOS/Uninstall Smart Connection for Adobe CC 2014 v*</string>
+			</dict>
 			<key>Comment</key>
 			<string>Copy out the first uninstall script, working around lack of globs in ChecksumVerifier</string>
 			<key>Processor</key>
 			<string>Copier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/Uninstaller/Uninstall Smart Connection for Adobe CC 2014 v*.app/Contents/MacOS/Uninstall Smart Connection for Adobe CC 2014 v*</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/checksum</string>
-				<key>overwrite</key>
-				<true/>
-			</dict>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>84a03bad8a17deedde3e01a2661c098b</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/checksum</string>
+			</dict>
 			<key>Comment</key>
 			<string>Verify MD5 matches 10.2.1, build 75 on the uninstall script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>algorithm</key>
-				<string>MD5</string>
-				<key>pathname</key>
-				<string>%RECIPE_CACHE_DIR%/checksum</string>
-				<key>checksum</key>
-				<string>84a03bad8a17deedde3e01a2661c098b</string>
-			</dict>
 		</dict>
 		<dict>
-			<key>Comment</key>
-			<string>Copy out the second uninstall script, working around lack of globs in ChecksumVerifier</string>
-			<key>Processor</key>
-			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/Uninstaller/Uninstall Smart Connection for Adobe CC 2014 v*.app/Contents/Resources/Uninstall Smart Connection for Adobe CC 2014 v*.sh</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/checksum.sh</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/Uninstaller/Uninstall Smart Connection for Adobe CC 2014 v*.app/Contents/Resources/Uninstall Smart Connection for Adobe CC 2014 v*.sh</string>
 			</dict>
+			<key>Comment</key>
+			<string>Copy out the second uninstall script, working around lack of globs in ChecksumVerifier</string>
+			<key>Processor</key>
+			<string>Copier</string>
 		</dict>
 		<dict>
-			<key>Comment</key>
-			<string>Verify MD5 matches 10.2.1, build 75 on the second uninstall.sh script</string>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
-				<key>pathname</key>
-				<string>%RECIPE_CACHE_DIR%/checksum.sh</string>
 				<key>checksum</key>
 				<string>84a03bad8a17deedde3e01a2661c098b</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/checksum.sh</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.2.1, build 75 on the second uninstall.sh script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Comment</key>
-			<string>Extract the package receipt string</string>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/unpack/scenterprise.pkg/PackageInfo</string>
 				<key>re_pattern</key>
 				<string>com\.WoodWing\.(smartConnectionForAdobeCc\d+V\d+)\.SCEnterprise\.pkg"</string>
 				<key>result_output_var_name</key>
 				<string>receipt_string</string>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/unpack/scenterprise.pkg/PackageInfo</string>
 			</dict>
+			<key>Comment</key>
+			<string>Extract the package receipt string</string>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy CC 2014/Plug-Ins/Woodwing</string>
+			</dict>
 			<key>Comment</key>
 			<string>Create a root for the expanded scenterprise.pkg payload</string>
 			<key>Processor</key>
 			<string>PkgRootCreator</string>
-			<key>Arguments</key>
-			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy CC 2014/Plug-Ins/Woodwing</string>
-				<key>pkgdirs</key>
-				<dict/>
-			</dict>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy CC 2014/Plug-Ins/Woodwing</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/scenterprise.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
 			<key>Comment</key>
 			<string>Extract the package payload of scenterprise.pkg</string>
 			<key>Processor</key>
 			<string>PkgPayloadUnpacker</string>
-			<key>Arguments</key>
-			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/scenterprise.pkg/Payload</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy CC 2014/Plug-Ins/Woodwing</string>
-			</dict>
 		</dict>
 		<dict>
-			<key>Comment</key>
-			<string>Create an installs array item for SCEnterprise.InDesignPlugin</string>
-			<key>Processor</key>
-			<string>MunkiInstallsItemsCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>faux_root</key>
@@ -232,6 +228,10 @@ Requirement for ExtensionManagerCC is for Sticky Notes plugin install</string>
 					<string>/Applications/Adobe InCopy CC 2014/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin</string>
 				</array>
 			</dict>
+			<key>Comment</key>
+			<string>Create an installs array item for SCEnterprise.InDesignPlugin</string>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
 		</dict>
 		<dict>
 			<key>Comment</key>
@@ -240,40 +240,36 @@ Requirement for ExtensionManagerCC is for Sticky Notes plugin install</string>
 			<string>MunkiPkginfoMerger</string>
 		</dict>
 		<dict>
-			<key>Comment</key>
-			<string>Extract the version number</string>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy CC 2014/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
 				<key>re_pattern</key>
 				<string>"CFBundleShortVersionString" = "v([\d\.]+)</string>
 				<key>result_output_var_name</key>
 				<string>discovered_version</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Comment</key>
-			<string>Extract the build number</string>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-			<key>Arguments</key>
-			<dict>
 				<key>url</key>
 				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy CC 2014/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+			</dict>
+			<key>Comment</key>
+			<string>Extract the version number</string>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>re_pattern</key>
 				<string>"CFBundleShortVersionString" = .* build (\d+)</string>
 				<key>result_output_var_name</key>
 				<string>build</string>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy CC 2014/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
 			</dict>
+			<key>Comment</key>
+			<string>Extract the build number</string>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Comment</key>
-			<string>Add Munki pkginfo, set "version" to version plus build as the Munki</string>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
 			<key>Arguments</key>
 			<dict>
 				<key>additional_pkginfo</key>
@@ -282,18 +278,14 @@ Requirement for ExtensionManagerCC is for Sticky Notes plugin install</string>
 					<string>%discovered_version%.%build%</string>
 				</dict>
 			</dict>
+			<key>Comment</key>
+			<string>Add Munki pkginfo, set "version" to version plus build as the Munki</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
 		</dict>
 		<dict>
-			<key>Comment</key>
-			<string>Import the package into Munki</string>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkg_path</key>
-				<string>%RECIPE_CACHE_DIR%/repack/SmartConnectionCC2014.pkg</string>
-				<key>repo_subdirectory</key>
-				<string>%MUNKI_REPO_SUBDIR%</string>
 				<key>additional_makepkginfo_options</key>
 				<array>
 					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts/Fixed Scripts/wwuninstall_incopycc2014_fixed.sh</string>
@@ -301,13 +293,17 @@ Requirement for ExtensionManagerCC is for Sticky Notes plugin install</string>
 				</array>
 				<key>force_munkiimport</key>
 				<true/>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/repack/SmartConnectionCC2014.pkg</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
+			<key>Comment</key>
+			<string>Import the package into Munki</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 		<dict>
-			<key>Comment</key>
-			<string>Mark receipts optional for items not installed due to installerchoices</string>
-			<key>Processor</key>
-			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_ids_set_optional_true</key>
@@ -337,6 +333,10 @@ Requirement for ExtensionManagerCC is for Sticky Notes plugin install</string>
 					<string>com.WoodWing.%receipt_string%.WoodWingUI.pkg</string>
 				</array>
 			</dict>
+			<key>Comment</key>
+			<string>Mark receipts optional for items not installed due to installerchoices</string>
+			<key>Processor</key>
+			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
 		</dict>
 	</array>
 </dict>

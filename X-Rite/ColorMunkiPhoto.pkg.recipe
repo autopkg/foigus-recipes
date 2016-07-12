@@ -26,8 +26,6 @@ If any of this is critical, please handle it in your management system.</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>archive_path</key>
@@ -37,23 +35,23 @@ If any of this is critical, please handle it in your management system.</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FlatPkgUnpacker</string>
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>flat_pkg_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/ColorMunki Photo.pkg</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/ColorMunki Photo.pkg</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>path_list</key>
@@ -61,37 +59,37 @@ If any of this is critical, please handle it in your management system.</string>
 					<string>%RECIPE_CACHE_DIR%/unpack/root.pkg/Scripts/postinstall</string>
 				</array>
 			</dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FileCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>file_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/root.pkg/Scripts/postinstall</string>
-				<key>file_mode</key>
-				<string>0755</string>
 				<key>file_content</key>
 				<string>#!/bin/bash
 
 #Placeholder script--just exit with success
 exit 0</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/root.pkg/Scripts/postinstall</string>
 			</dict>
+			<key>Processor</key>
+			<string>FileCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/repack</string>
 				<key>pkgdirs</key>
 				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/repack</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FlatPkgPacker</string>
 			<key>Arguments</key>
 			<dict>
 				<key>destination_pkg</key>
@@ -99,6 +97,8 @@ exit 0</string>
 				<key>source_flatpkg_dir</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
 			</dict>
+			<key>Processor</key>
+			<string>FlatPkgPacker</string>
 		</dict>
 	</array>
 </dict>

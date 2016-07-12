@@ -8,10 +8,10 @@
 	<string>com.github.foigus.munki.voila</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>Voila</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/globaldelighttechnologies</string>
+		<key>NAME</key>
+		<string>Voila</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>

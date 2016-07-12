@@ -13,12 +13,8 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>http://komodoide.com/download/ide-osx/</string>
 				<key>re_pattern</key>
 				<string>(?P&lt;url&gt;http://.*?Komodo-IDE.*?dmg)</string>
 				<key>request_headers</key>
@@ -26,7 +22,11 @@
 					<key>User-Agent</key>
 					<string>curl/7.37.1</string>
 				</dict>
+				<key>url</key>
+				<string>http://komodoide.com/download/ide-osx/</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
@@ -37,8 +37,6 @@
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
@@ -46,6 +44,8 @@
 				<key>requirement</key>
 				<string>identifier "com.activestate.KomodoIDE" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4UJ38YBRBK"</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

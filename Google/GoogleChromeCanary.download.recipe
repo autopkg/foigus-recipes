@@ -10,25 +10,25 @@ CodeSignatureVerifier disabled as of 3/22/2016 (verified 7/11/2016) due to "reso
 	<string>com.github.foigus.download.googlechromecanary</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>GoogleChromeCanary</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://dl.google.com/release2/q/canary/googlechrome.dmg</string>
+		<key>NAME</key>
+		<string>GoogleChromeCanary</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

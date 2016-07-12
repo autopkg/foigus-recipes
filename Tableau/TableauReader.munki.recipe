@@ -8,10 +8,10 @@
 	<string>com.github.foigus.munki.tableau-reader</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>TableauReader</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/tableau</string>
+		<key>NAME</key>
+		<string>TableauReader</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>

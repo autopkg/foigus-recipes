@@ -12,10 +12,10 @@ autopkg repo-add novaksam-recipes</string>
 	<string>com.github.foigus.munki.AndroidStudio</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>AndroidStudio</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/android</string>
+		<key>NAME</key>
+		<string>AndroidStudio</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>

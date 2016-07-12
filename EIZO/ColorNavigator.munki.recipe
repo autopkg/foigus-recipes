@@ -16,10 +16,10 @@ Requiring a logout since the GUI installer reopens ColorNavigator, but not from 
 	<string>com.github.foigus.munki.ColorNavigator</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>ColorNavigator</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/eizo</string>
+		<key>NAME</key>
+		<string>ColorNavigator</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>RestartAction</key>

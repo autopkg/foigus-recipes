@@ -10,25 +10,25 @@ Not running CodeSignatureVerifier due to V1 code signature.</string>
 	<string>com.github.foigus.download.TimbuktuPro</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>TimbuktuPro</string>
 		<key>DOWNLOAD_URL</key>
 		<string>http://betamail.netopia.com/files/shipped/tb2mac885.dmg</string>
+		<key>NAME</key>
+		<string>TimbuktuPro</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

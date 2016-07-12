@@ -12,46 +12,44 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 	<string>com.github.foigus.download.CaptureOne</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>CaptureOne</string>
 		<key>MAJOR_VERSION</key>
 		<string>9</string>
+		<key>NAME</key>
+		<string>CaptureOne</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>http://cormws.phaseone.com/corm.asmx/GetNewSoftwareVersion?Platform=Mac&amp;Version=8.0</string>
 				<key>re_pattern</key>
 				<string>&lt;AvailableVersion&gt;(%MAJOR_VERSION%\.\d+\.\d+).*&lt;\/AvailableVersion&gt;</string>
 				<key>result_output_var_name</key>
 				<string>truncated_version</string>
+				<key>url</key>
+				<string>http://cormws.phaseone.com/corm.asmx/GetNewSoftwareVersion?Platform=Mac&amp;Version=8.0</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>http://downloads.phaseone.com/International/CaptureOne.Mac.%truncated_version%.dmg</string>
 				<key>filename</key>
 				<string>CaptureOne.dmg</string>
+				<key>url</key>
+				<string>http://downloads.phaseone.com/International/CaptureOne.Mac.%truncated_version%.dmg</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
@@ -59,6 +57,8 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 				<key>requirement</key>
 				<string>identifier "com.phaseone.captureone9" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5WTDB5F65L"</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

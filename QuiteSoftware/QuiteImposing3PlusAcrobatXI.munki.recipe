@@ -8,16 +8,16 @@
 	<string>com.github.foigus.munki.QuiteImposing3PlusAcrobatXI</string>
 	<key>Input</key>
 	<dict>
+		<key>LANGUAGE</key>
+		<string>en</string>
+		<key>MAJOR_VERSION</key>
+		<string>3</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/quitesoftware</string>
 		<key>NAME</key>
 		<string>QuiteImposing3PlusAcrobatXI</string>
 		<key>PLUS</key>
 		<string>plus</string>
-		<key>MAJOR_VERSION</key>
-		<string>3</string>
-		<key>LANGUAGE</key>
-		<string>en</string>
-		<key>MUNKI_REPO_SUBDIR</key>
-		<string>plugins/quitesoftware</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>

@@ -28,19 +28,17 @@ the Desktop.  Please ensure this symlink is addressed to your satisfaction.</str
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 				<key>pkgdirs</key>
 				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
@@ -48,29 +46,25 @@ the Desktop.  Please ensure this symlink is addressed to your satisfaction.</str
 				<key>plist_version_key</key>
 				<string>CFBundleVersion</string>
 			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%pathname%/AccuBarcode Pro Installer.app</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/Scripts/AccuBarcode Pro Installer.app</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%pathname%/AccuBarcode Pro Installer.app</string>
 			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FileCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>file_path</key>
-				<string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
-				<key>file_mode</key>
-				<string>0755</string>
 				<key>file_content</key>
 				<string>#!/bin/bash
 
@@ -80,35 +74,39 @@ install_dir=`dirname $0`
 # Install AccuBarcode Pro unattended-ly using the pkg from the resources directory
 # Flag taken from here http://resources.ej-technologies.com/install4j/help/doc/index.html
 "${install_dir}/AccuBarcode Pro Installer.app/Contents/MacOS/JavaApplicationStub" -q</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
 			</dict>
+			<key>Processor</key>
+			<string>FileCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_request</key>
 				<dict>
-					<key>pkgroot</key>
-					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
-					<key>pkgname</key>
-					<string>%NAME%-%version%</string>
-					<key>pkgtype</key>
-					<string>flat</string>
-					<key>id</key>
-					<string>com.accubarcode.AccuBarcodePro.pkg</string>
-					<key>version</key>
-					<string>%version%</string>
 					<key>chown</key>
 					<array/>
+					<key>id</key>
+					<string>com.accubarcode.AccuBarcodePro.pkg</string>
+					<key>pkgname</key>
+					<string>%NAME%-%version%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
 					<key>scripts</key>
 					<string>Scripts</string>
+					<key>version</key>
+					<string>%version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>path_list</key>
@@ -116,6 +114,8 @@ install_dir=`dirname $0`
 					<string>%RECIPE_CACHE_DIR%/Scripts/AccuBarcode Pro Installer.app</string>
 				</array>
 			</dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
 		</dict>
 	</array>
 </dict>
