@@ -20,6 +20,8 @@ Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (c
 		<string>apps/trankynamsoftware</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>Comment</key>
+			<string>Disabled choices are choice11 (preinstall, quits Finder) and choice 12 (postinstall, opens application)</string>
 			<key>catalogs</key>
 			<array>
 				<string>development-trankynamsoftware-XtraFinder</string>
@@ -40,7 +42,7 @@ Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (c
 					<key>choiceAttribute</key>
 					<string>selected</string>
 					<key>choiceIdentifier</key>
-					<string>choice11</string> <!-- preflight, quits Finder -->
+					<string>choice11</string>
 				</dict>
 				<dict>
 					<key>attributeSetting</key>
@@ -48,7 +50,7 @@ Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (c
 					<key>choiceAttribute</key>
 					<string>selected</string>
 					<key>choiceIdentifier</key>
-					<string>choice12</string> <!-- postflight, opens application -->
+					<string>choice12</string>
 				</dict>
 			</array>
 			<key>name</key>

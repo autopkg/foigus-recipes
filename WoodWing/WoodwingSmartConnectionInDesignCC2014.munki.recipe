@@ -21,6 +21,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 		<string>plugins/woodwing</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>Comment</key>
+			<string>Choice is choice1 (just InDesign Smart Connection plugins)
+
+Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 			<key>blocking_applications</key>
 			<array>
 				<string>Adobe InDesign CC 2014</string>
@@ -45,7 +49,7 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 					<key>choiceAttribute</key>
 					<string>selected</string>
 					<key>choiceIdentifier</key>
-					<string>choice1</string> <!-- Just InDesign Smart Connection plugins -->
+					<string>choice1</string>
 				</dict>
 			</array>
 			<key>name</key>
@@ -53,7 +57,7 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			<key>requires</key>
 			<array>
 				<string>InDesignCC2014</string>
-				<string>ExtensionManagerCC</string> <!-- For Sticky Notes plugin install -->
+				<string>ExtensionManagerCC</string>
 			</array>
 			<key>unattended_install</key>
 			<true/>
@@ -66,8 +70,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Comment</key>
+			<string>Unpack the original package</string>
 			<key>Processor</key>
-			<string>FlatPkgUnpacker</string> <!-- Unpack the original package -->
+			<string>FlatPkgUnpacker</string>
 			<key>Arguments</key>
 			<dict>
 				<key>purge_destination</key>
@@ -79,8 +85,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Extract the package payload of uninstaller.pkg</string>
 			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string> <!-- Extract the package payload of uninstaller.pkg -->
+			<string>PkgPayloadUnpacker</string>
 			<key>Arguments</key>
 			<dict>
 				<key>purge_destination</key>
@@ -92,8 +100,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Copy out the first uninstall script, working around lack of globs in ChecksumVerifier</string>
 			<key>Processor</key>
-			<string>Copier</string> <!-- Copy out the first uninstall script, working around lack of globs in ChecksumVerifier -->
+			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>source_path</key>
@@ -105,8 +115,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.2.1, build 75 on the uninstall script</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.2.1, build 75 on the uninstall script -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -118,8 +130,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Copy out the second uninstall script, working around lack of globs in ChecksumVerifier</string>
 			<key>Processor</key>
-			<string>Copier</string> <!-- Copy out the second uninstall script, working around lack of globs in ChecksumVerifier -->
+			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>source_path</key>
@@ -131,8 +145,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.2.1, build 75 on the second uninstall.sh script</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.2.1, build 75 on the second uninstall.sh script -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -144,8 +160,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Extract the package receipt string</string>
 			<key>Processor</key>
-			<string>URLTextSearcher</string> <!-- Extract the package receipt string -->
+			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
@@ -157,8 +175,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Create a root for the expanded scenterprise.pkg payload</string>
 			<key>Processor</key>
-			<string>PkgRootCreator</string> <!-- Create a root for the expanded scenterprise.pkg payload -->
+			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkgroot</key>
@@ -168,8 +188,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Extract the package payload of scenterprise.pkg</string>
 			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string> <!-- Extract the package payload of scenterprise.pkg -->
+			<string>PkgPayloadUnpacker</string>
 			<key>Arguments</key>
 			<dict>
 				<key>purge_destination</key>
@@ -181,8 +203,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Create an installs array item for SCEnterprise.InDesignPlugin</string>
 			<key>Processor</key>
-			<string>MunkiInstallsItemsCreator</string> <!-- Create an installs array item for SCEnterprise.InDesignPlugin -->
+			<string>MunkiInstallsItemsCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>faux_root</key>
@@ -194,12 +218,16 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Merge the installs array into the pkginfo</string>
 			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string> <!-- Merge the installs array into the pkginfo -->
+			<string>MunkiPkginfoMerger</string>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Extract the version number</string>
 			<key>Processor</key>
-			<string>URLTextSearcher</string> <!-- Extract the version number -->
+			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
@@ -211,8 +239,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Extract the build number</string>
 			<key>Processor</key>
-			<string>URLTextSearcher</string> <!-- Extract the build number -->
+			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
@@ -224,8 +254,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Add Munki pkginfo, set "version" to version plus build as the Munki</string>
 			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string> <!-- Add Munki pkginfo, set "version" to version plus build as the Munki -->
+			<string>MunkiPkginfoMerger</string>
 			<key>Arguments</key>
 			<dict>
 				<key>additional_pkginfo</key>
@@ -236,8 +268,10 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Import the package into Munki</string>
 			<key>Processor</key>
-			<string>MunkiImporter</string> <!-- Import the package into Munki -->
+			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
@@ -254,8 +288,12 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Mark receipts optional for items not installed due to installerchoices.
+
+Since there's two package IDs that differ by case, ignore both</string>
 			<key>Processor</key>
-			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string> <!-- Mark receipts optional for items not installed due to installerchoices -->
+			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_ids_set_optional_true</key>
@@ -282,8 +320,8 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 					<string>com.WoodWing.%receipt_string%.SmartDPSTools.pkg</string>
 					<string>com.WoodWing.%receipt_string%.SmartDPSToolsUI.pkg</string>
 					<string>com.WoodWing.%receipt_string%.SmartJumpInCopyUI.pkg</string>
-					<string>com.WoodWing.%receipt_string%.WoodWingUI.pkg</string> <!-- Since there's two package IDs that differ by case, ignore both -->
-					<string>com.WoodWing.%receipt_string%.woodwingui.pkg</string> <!-- Since there's two package IDs that differ by case, ignore both -->
+					<string>com.WoodWing.%receipt_string%.WoodWingUI.pkg</string>
+					<string>com.WoodWing.%receipt_string%.woodwingui.pkg</string>
 				</array>
 			</dict>
 		</dict>

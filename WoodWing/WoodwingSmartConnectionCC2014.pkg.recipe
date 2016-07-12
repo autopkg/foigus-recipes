@@ -22,12 +22,16 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Comment</key>
+			<string>Not going to tackle downloading the software right now</string>
 			<key>Processor</key>
-			<string>PackageRequired</string> <!-- Not going to tackle downloading the software right now -->
+			<string>PackageRequired</string>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Unpack the package</string>
 			<key>Processor</key>
-			<string>FlatPkgUnpacker</string> <!-- Unpack the package -->
+			<string>FlatPkgUnpacker</string>
 			<key>Arguments</key>
 			<dict>
 				<key>purge_destination</key>
@@ -39,8 +43,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesign" addRight.sh</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesign" addRight.sh -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -52,8 +58,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesign" postinstall</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesign" postinstall -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -65,8 +73,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesign" postinstall.sh</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesign" postinstall.sh -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -78,8 +88,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesign" total.sh</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesign" total.sh -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -91,8 +103,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesigndm" addRight.sh</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesigndm" addRight.sh -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -104,8 +118,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesigndm" postinstall</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesigndm" postinstall -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -117,8 +133,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesigndm" postinstall.sh</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesigndm" postinstall.sh -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -130,8 +148,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesigndm" total.sh</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesigndm" total.sh -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -143,8 +163,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopy" addRight.sh</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopy" addRight.sh -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -156,8 +178,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopy" postinstall</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopy" postinstall -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -169,8 +193,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopy" postinstall.sh</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopy" postinstall.sh -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -182,8 +208,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopy" total.sh</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopy" total.sh -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -195,8 +223,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopyoverset" addRight.sh</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopyoverset" addRight.sh -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -208,8 +238,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopyoverset" postinstall</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopyoverset" postinstall -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -221,8 +253,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopyoverset" postinstall.sh</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopyoverset" postinstall.sh -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -234,8 +268,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopyoverset" total.sh</string>
 			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopyoverset" total.sh -->
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
@@ -247,8 +283,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Delete "indesign" total.sh in prep for it to be replaced</string>
 			<key>Processor</key>
-			<string>PathDeleter</string> <!-- Delete "indesign" total.sh in prep for it to be replaced -->
+			<string>PathDeleter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>path_list</key>
@@ -258,8 +296,10 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Overwrite "indesign" total.sh with an InDesign-specific version, note this is the same script as InDesign_fixed_total.sh in this repo</string>
 			<key>Processor</key>
-			<string>FileCreator</string> <!-- Overwrite "indesign" total.sh with an InDesign-specific version, note this is the same script as InDesign_fixed_total.sh in this repo -->
+			<string>FileCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>file_path</key>
@@ -1173,8 +1213,10 @@ exit 0</string>
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Delete "indesigndm" total.sh in prep for it to be replaced</string>
 			<key>Processor</key>
-			<string>PathDeleter</string> <!-- Delete "indesigndm" total.sh in prep for it to be replaced -->
+			<string>PathDeleter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>path_list</key>
@@ -1184,8 +1226,10 @@ exit 0</string>
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Overwrite "indesigndm" total.sh with an InDesign-specific version, note this is the same script as InDesign_total.sh in this repo</string>
 			<key>Processor</key>
-			<string>FileCreator</string> <!-- Overwrite "indesigndm" total.sh with an InDesign-specific version, note this is the same script as InDesign_total.sh in this repo -->
+			<string>FileCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>file_path</key>
@@ -2099,8 +2143,10 @@ exit 0</string>
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Delete "incopy" total.sh in prep for it to be replaced</string>
 			<key>Processor</key>
-			<string>PathDeleter</string> <!-- Delete "incopy" total.sh in prep for it to be replaced -->
+			<string>PathDeleter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>path_list</key>
@@ -2110,8 +2156,10 @@ exit 0</string>
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Overwrite "incopy" total.sh with an InCopy-specific version, note this is the same script as InCopy_fixed_total.sh in this repo</string>
 			<key>Processor</key>
-			<string>FileCreator</string> <!-- Overwrite "incopy" total.sh with an InCopy-specific version, note this is the same script as InCopy_fixed_total.sh in this repo -->
+			<string>FileCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>file_path</key>
@@ -3025,8 +3073,10 @@ exit 0</string>
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Delete "incopyoverset" total.sh in prep for it to be replaced</string>
 			<key>Processor</key>
-			<string>PathDeleter</string> <!-- Delete "incopyoverset" total.sh in prep for it to be replaced -->
+			<string>PathDeleter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>path_list</key>
@@ -3036,8 +3086,10 @@ exit 0</string>
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Overwrite "incopyoverset" total.sh with an InCopy-specific version, note this is the same script as InCopy_total.sh in this repo</string>
 			<key>Processor</key>
-			<string>FileCreator</string> <!-- Overwrite "incopyoverset" total.sh with an InCopy-specific version, note this is the same script as InCopy_total.sh in this repo -->
+			<string>FileCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>file_path</key>
@@ -3951,8 +4003,10 @@ exit 0</string>
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Prep to flatten the now-fixed package</string>
 			<key>Processor</key>
-			<string>PkgRootCreator</string> <!-- Prep to flatten the now-fixed package -->
+			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkgroot</key>
@@ -3962,8 +4016,10 @@ exit 0</string>
 			</dict>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Flatten the fixed package</string>
 			<key>Processor</key>
-			<string>FlatPkgPacker</string> <!-- Flatten the fixed package -->
+			<string>FlatPkgPacker</string>
 			<key>Arguments</key>
 			<dict>
 				<key>destination_pkg</key>

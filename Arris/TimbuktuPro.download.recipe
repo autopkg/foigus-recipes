@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the Timbuktu disk image.
 
-CodeSignatureVerifier disabled because of the V1 signature.</string>
+Not running CodeSignatureVerifier due to V1 code signature.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.TimbuktuPro</string>
 	<key>Input</key>
@@ -34,17 +34,6 @@ CodeSignatureVerifier disabled because of the V1 signature.</string>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
-<!--		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_path</key>
-				<string>%pathname%/Timbuktu Pro/Timbuktu Pro.app</string>
-				<key>requirement</key>
-				<string>identifier "com.motorola.timbuktu.pro" and certificate leaf = H"416995c0ea9f6b3230a853f7aab13fa350b39d6e"</string>
-			</dict>
-		</dict>-->
 	</array>
 </dict>
 </plist>

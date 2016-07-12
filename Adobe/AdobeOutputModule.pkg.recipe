@@ -35,6 +35,8 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
+				<key>Comment</key>
+				<string>"Workspaces" permissions are Adobe's default</string>
 				<key>pkgroot</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 				<key>pkgdirs</key>
@@ -48,7 +50,7 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 					<key>Library/Application Support/Adobe/Bridge CC Extensions</key>
 					<string>0775</string>
 					<key>Library/Application Support/Adobe/Bridge CC Extensions/Workspaces</key>
-					<string>0777</string> <!-- Really, this is the Adobe default -->
+					<string>0777</string>
 				</dict>
 			</dict>
 		</dict>

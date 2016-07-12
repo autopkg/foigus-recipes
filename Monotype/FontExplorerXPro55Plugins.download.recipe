@@ -3,14 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Download FontExplorer X Pro 5.5 plugins from Monotype's plugin update URL.</string>
+	<string>Download FontExplorer X Pro 5.5 plugins from Monotype's plugin update URL.
+
+CodeSignatureVerifier currently skipped since the processor does not support bundles at this time.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.FontExplorerXPro55Plugins</string>
 	<key>Input</key>
 	<dict>
+		<key>Comment</key>
+		<string>Note UPDATE_URL isn't Sparkle-formatted XML, it's a plist</string>
 		<key>NAME</key>
 		<string>FontExplorerXPro55Plugins</string>
-		<key>UPDATE_URL</key>  <!-- Note this isn't Sparkle-formatted XML, it's a plist -->
+		<key>UPDATE_URL</key>
 		<string>https://fex.linotype.com/update/client/mac/pro/plugins-5.5/appcast-small.plist</string>
 	</dict>
 	<key>MinimumVersion</key>
@@ -53,38 +57,6 @@
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
-<!--	CodeSignatureVerifier doesn't support bundles, yet.  If CodeSignatureVerifier.py is
-		modified to support the .bundle file type, the below invocation of CodeSignatureVerifier
-		works.
-
-		https://github.com/autopkg/autopkg/blob/master/Code/autopkglib/CodeSignatureVerifier.py#L244-L248
-		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
-			<key>Arguments</key>
-			<dict>
-				<key>archive_path</key>
-				<string>%pathname%</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/PlugIns.bundle</string>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Application: Linotype GmbH</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
-			</dict>
-		</dict>
- -->
 	</array>
 </dict>
 </plist>

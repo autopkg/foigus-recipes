@@ -22,7 +22,9 @@ Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center 
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key> <!-- Stop processing if the Customer Center URL isn't overridden -->
+			<key>Comment</key>
+			<string>Stop processing if the Customer Center URL isn't overridden</string>
+			<key>Processor</key>
 			<string>StopProcessingIf</string>
 			<key>Arguments</key>
 			<dict>
