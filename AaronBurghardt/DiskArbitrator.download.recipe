@@ -8,6 +8,8 @@
 	<string>com.github.foigus.download.DiskArbitrator</string>
 	<key>Input</key>
 	<dict>
+		<key>GITHUB_REPO</key>
+		<string>aburgh/Disk-Arbitrator</string>
 		<key>NAME</key>
 		<string>DiskArbitrator</string>
 	</dict>
@@ -19,7 +21,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>github_repo</key>
-				<string>aburgh/Disk-Arbitrator</string>
+				<string>%GITHUB_REPO%</string>
 				<key>sort_by_highest_tag_names</key>
 				<true/>
 			</dict>
