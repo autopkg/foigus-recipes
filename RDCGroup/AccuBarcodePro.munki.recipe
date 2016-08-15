@@ -20,6 +20,8 @@ user's Desktop.</string>
 	<string>com.github.foigus.munki.AccuBarcodePro</string>
 	<key>Input</key>
 	<dict>
+		<key>LEGACY_JAVA_6_PACKAGE_NAME</key>
+		<string>Java6forOSX</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/rdcgroup</string>
 		<key>NAME</key>
@@ -57,7 +59,7 @@ mv -f /var/root/Library/fonts/Accu* /Library/Fonts
 rmdir /var/root/Library/fonts</string>
 			<key>requires</key>
 			<array>
-				<string>Java6forOSX</string>
+				<string>%LEGACY_JAVA_6_PACKAGE_NAME%</string>
 			</array>
 			<key>uninstall_method</key>
 			<string>uninstall_script</string>
