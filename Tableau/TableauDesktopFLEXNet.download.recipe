@@ -39,8 +39,8 @@ NOTE: As of 2/27/2016 (the 9.2.5 release of Tableau's software) the TableauFLEXN
 			<dict>
 				<key>expected_authority_names</key>
 				<array>
-					<string>3rd Party Mac Developer Installer: Tableau Software, Inc. (QJ4XPRK37C)</string>
-					<string>Apple Worldwide Developer Relations Certification Authority</string>
+					<string>Developer ID Installer: Tableau Software, Inc. (QJ4XPRK37C)</string>
+					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
 				<key>input_path</key>
