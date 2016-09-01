@@ -9,7 +9,7 @@ Note major version upgrades of Wirecast are generally paid upgrades.  Thus overr
 
 This is necessary because munkiimport refuses to import the Wirecast dmg (for the purposes of obtaining the Wirecast Virtual Camera package), and "force_munkiimport" isn't a good idea if this is automated.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.pkg.WirecastVirtualCamera</string>
+	<string>com.github.foigus.pkg.WirecastVirtualCamera7</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -18,7 +18,7 @@ This is necessary because munkiimport refuses to import the Wirecast dmg (for th
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.download.Wirecast</string>
+	<string>com.github.foigus.download.Wirecast7</string>
 	<key>Process</key>
 	<array>
 		<dict>
