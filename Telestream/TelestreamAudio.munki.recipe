@@ -3,11 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the current version of Wirecast (versions 4 through 6) and imports it into Munki.
+	<string>Downloads the latest Telestream Audio package and imports it into Munki.
 
-Note major version upgrades of Wirecast are generally paid upgrades.  Thus override MAJOR_VERSION with your preferred version (this recipe covers Wirecast 4, 5, and 6).</string>
+Note major version upgrades of Wirecast are generally paid upgrades.  Thus override MAJOR_VERSION with your preferred version (this recipe covers Wirecast 4, 5, and 6).
+
+Since this package does not appear to have been upgraded in a while, not spending time figuring out where the "real" version number lies _yet_.
+
+NOTE THIS RECIPE DOESN'T DO A WHOLE LOT WITHOUT WIRECAST. This recipe is an update_for Wirecast</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.munki.Wirecast</string>
+	<string>com.github.foigus.munki.TelestreamAudio</string>
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
@@ -15,9 +19,13 @@ Note major version upgrades of Wirecast are generally paid upgrades.  Thus overr
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/telestream</string>
 		<key>NAME</key>
-		<string>Wirecast</string>
+		<string>TelestreamAudio</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Wirecast</string>
+			</array>
 			<key>catalogs</key>
 			<array>
 				<string>development-telestream-%NAME%%MAJOR_VERSION%</string>
@@ -25,28 +33,30 @@ Note major version upgrades of Wirecast are generally paid upgrades.  Thus overr
 			<key>category</key>
 			<string>Productivity</string>
 			<key>description</key>
-			<string>Wirecast provides everything you need to stream professional live events. Add multiple cameras, including iOS devices; create composite shots with graphics and transitions; and live encode and stream to your favorite streaming destination.</string>
+			<string>Additional drivers for Wirecast features.</string>
 			<key>developer</key>
 			<string>Telestream</string>
 			<key>display_name</key>
-			<string>Wirecast %MAJOR_VERSION%</string>
+			<string>Telestream Audio Driver %MAJOR_VERSION%</string>
 			<key>name</key>
 			<string>%NAME%%MAJOR_VERSION%</string>
 			<key>unattended_install</key>
 			<true/>
+			<key>update_for</key>
+			<array>
+				<string>Wirecast%MAJOR_VERSION%</string>
+			</array>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.download.Wirecast</string>
+	<string>com.github.foigus.pkg.TelestreamAudio</string>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>pkg_path</key>
-				<string>%pathname%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>

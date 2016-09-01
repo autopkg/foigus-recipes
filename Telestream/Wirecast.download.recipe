@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Downloads the current version of Wirecast.
 
-Note major version upgrades of Wirecast are generally paid upgrades.  Thus override MAJOR_VERSION with your preferred version (currently 4, 5, and 6 work).</string>
+Note major version upgrades of Wirecast are generally paid upgrades.  Thus override MAJOR_VERSION with your preferred version (this recipe covers Wirecast 4, 5, and 6).</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.Wirecast</string>
 	<key>Input</key>

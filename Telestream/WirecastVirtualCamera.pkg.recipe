@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the current version of the Wirecast Virtual Camera driver for Wirecast and imports it into Munki.
+
+Note major version upgrades of Wirecast are generally paid upgrades.  Thus override MAJOR_VERSION with your preferred version (this recipe covers Wirecast 4, 5, and 6).
+
+This is necessary because munkiimport refuses to import the Wirecast dmg (for the purposes of obtaining the Wirecast Virtual Camera package), and "force_munkiimport" isn't a good idea if this is automated.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.WirecastVirtualCamera</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>WirecastVirtualCamera</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.Wirecast</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>source_pkg</key>
+				<string>%pathname%/Wirecast.app/Contents/Resources/InstallWirecastVirtualCamera.pkg</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgCopier</string>
+		</dict>
+	</array>
+</dict>
+</plist>
