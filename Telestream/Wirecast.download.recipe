@@ -23,7 +23,7 @@ Note major version upgrades of Wirecast are generally paid upgrades.  Thus overr
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>href="(http://www.telestream.net/download-files/wirecast/%MAJOR_VERSION%-0/Wirecast-%MAJOR_VERSION%[\.0-9]*.dmg)"</string>
+				<string>href="(http://www.telestream.net/download-files/wirecast/%MAJOR_VERSION%[0-9-]+/Wirecast-%MAJOR_VERSION%[\.0-9]+\.dmg)"</string>
 				<key>result_output_var_name</key>
 				<string>url</string>
 				<key>url</key>
