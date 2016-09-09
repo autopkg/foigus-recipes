@@ -288,8 +288,8 @@ Requirement for ExtensionManagerCC is for Sticky Notes plugin install</string>
 			<dict>
 				<key>additional_makepkginfo_options</key>
 				<array>
-					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts/Fixed Scripts/wwuninstall_incopycc2014_fixed.sh</string>
-					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts/My Scripts/Forget InCopy Receipts.sh</string>
+					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts CS6/Fixed Scripts/wwuninstall_incopycc2014_fixed.sh</string>
+					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts CS6/My Scripts/Forget InCopy Receipts.sh</string>
 				</array>
 				<key>force_munkiimport</key>
 				<true/>
