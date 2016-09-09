@@ -22,7 +22,7 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 		<key>pkginfo</key>
 		<dict>
 			<key>Comment</key>
-			<string>Choices are choice3 (Smart Connection Plug-Ins for Adobe InCopy CS6 parent), choice4 (Smart Connection Plug-Ins for Adobe InCopy CS6), and choice5 (Overset Plug-In for InCopy for Adobe InCopy CS6)
+			<string>Choices are choice3 (Smart Connection Plug-Ins for Adobe InCopy CC 2014 parent), choice4 (Smart Connection Plug-Ins for Adobe InCopy CC 2014), and choice5 (Overset Plug-In for InCopy for Adobe InCopy CC 2014)
 
 Requirement for ExtensionManagerCC is for Sticky Notes plugin install</string>
 			<key>blocking_applications</key>
@@ -288,8 +288,8 @@ Requirement for ExtensionManagerCC is for Sticky Notes plugin install</string>
 			<dict>
 				<key>additional_makepkginfo_options</key>
 				<array>
-					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts CS6/Fixed Scripts/wwuninstall_incopycc2014_fixed.sh</string>
-					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts CS6/My Scripts/Forget InCopy Receipts.sh</string>
+					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts CC 2014/Fixed Scripts/wwuninstall_incopycc2014_fixed.sh</string>
+					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts CC 2014/My Scripts/Forget InCopy Receipts.sh</string>
 				</array>
 				<key>force_munkiimport</key>
 				<true/>

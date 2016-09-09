@@ -272,8 +272,8 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 			<dict>
 				<key>additional_makepkginfo_options</key>
 				<array>
-					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts CS6/Fixed Scripts/wwuninstall_indesigncc2014_fixed.sh</string>
-					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts CS6/My Scripts/Forget InDesign Receipts.sh</string>
+					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts CC 2014/Fixed Scripts/wwuninstall_indesigncc2014_fixed.sh</string>
+					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts CC 2014/My Scripts/Forget InDesign Receipts.sh</string>
 				</array>
 				<key>force_munkiimport</key>
 				<true/>
