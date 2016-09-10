@@ -5,12 +5,16 @@
 	<key>Description</key>
 	<string>Packages InDesign Digital Magazine plugins for installation for InDesign CC 2014 and imports it into Munki
 
-NOTE: This recipe depends on keeleysam's MunkiPkginfoReceiptsEditor and hjuutilainen's ChecksumVerifier.  Add these repos via:
+NOTES:
+- This recipe depends on keeleysam's MunkiPkginfoReceiptsEditor and hjuutilainen's ChecksumVerifier.  Add these repos via:
 
 autopkg repo-add keeleysam-recipes
 autopkg repo-add hjuutilainen-recipes
 
-Also, specific pkgs are disabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true.</string>
+- Specific pkgs are disabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true
+- This recipe does not download the Smart Connection disk image--feed the disk image into the recipe via the following format:
+
+autopkg run WoodwingSmartConnectionInDesignDigitalMagazineCC2014.munki -p /path/to/Smart_Connection_for_Adobe_CC_2014_v10.2.2_Build75.dmg</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.WoodwingSmartConnectionInDesignDigitalMagazineCC2014</string>
 	<key>Input</key>

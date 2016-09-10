@@ -5,11 +5,15 @@
 	<key>Description</key>
 	<string>Packages Smart Connection CC 2015 for installation.
 
-NOTE: This recipe depends on hjuutilainen's ChecksumVerifier.  Add hjuutilainen's repo via:
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add hjuutilainen's repo via:
 
 autopkg repo-add hjuutilainen-recipes
 
-Note this recipe does _not_ fix the InDesign Server packages, since these are very likely to be installed by hand.</string>
+- This recipe does not fix the InDesign Server packages, since these are very likely to be installed by hand
+- This recipe does not download the Smart Connection disk image--feed the disk image into the recipe via the following format:
+
+autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_Adobe_CC_2015_v11.0.2_Build9.dmg</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.pkg.WoodwingSmartConnectionCC2015</string>
 	<key>Input</key>
@@ -4003,7 +4007,7 @@ exit 0</string>
 			<key>Arguments</key>
 			<dict>
 				<key>destination_pkg</key>
-				<string>%RECIPE_CACHE_DIR%/repack/SmartConnectionCC2014.pkg</string>
+				<string>%RECIPE_CACHE_DIR%/repack/SmartConnectionCC2015.pkg</string>
 				<key>source_flatpkg_dir</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
 			</dict>

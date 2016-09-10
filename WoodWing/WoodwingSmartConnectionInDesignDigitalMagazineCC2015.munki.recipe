@@ -3,48 +3,45 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Packages InDesign Smart Connection for installation for InDesign CC 2014 and imports it into Munki
+	<string>Packages InDesign Digital Magazine plugins for installation for InDesign CC 2015 and imports it into Munki
 
 NOTES:
-- This recipe depends on keeleysam's MunkiPkginfoReceiptsEditor and hjuutilainen's ChecksumVerifier.  Add these repos via:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add this repos via:
 
-autopkg repo-add keeleysam-recipes
 autopkg repo-add hjuutilainen-recipes
 
 - Specific pkgs are disabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true
 - This recipe does not download the Smart Connection disk image--feed the disk image into the recipe via the following format:
 
-autopkg run WoodwingSmartConnectionInDesignCC2014.munki -p /path/to/Smart_Connection_for_Adobe_CC_2014_v10.2.2_Build75.dmg</string>
+autopkg run WoodwingSmartConnectionInDesignDigitalMagazineCC2015.munki -p /path/to/Smart_Connection_for_Adobe_CC_2015_v11.0.2_Build9.dmg</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.munki.WoodwingSmartConnectionInDesignCC2014</string>
+	<string>com.github.foigus.munki.WoodwingSmartConnectionInDesignDigitalMagazineCC2015</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>plugins/woodwing</string>
 		<key>NAME</key>
-		<string>WoodwingSmartConnectionInDesignCC2014</string>
+		<string>WoodwingSmartConnectionInDesignDigitalMagazineCC2015</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>Comment</key>
-			<string>Choice is choice1 (just InDesign Smart Connection plugins)
-
-Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
+			<string>Choice is choice2 (InDesign Digital Publishing Plug-Ins)</string>
 			<key>blocking_applications</key>
 			<array>
-				<string>Adobe InDesign CC 2014</string>
+				<string>Adobe InDesign CC 2015</string>
 			</array>
 			<key>catalogs</key>
 			<array>
-				<string>development-woodwing-WoodwingSmartConnectionInDesignCC2014</string>
+				<string>development-woodwing-WoodwingSmartConnectionInDesignDigitalMagazineCC2015</string>
 			</array>
 			<key>category</key>
 			<string>Plugins</string>
 			<key>description</key>
-			<string>Smart Connection plugins for InDesign CC 2014.</string>
+			<string>Digital Magazine plugins for InDesign CC 2015.</string>
 			<key>developer</key>
 			<string>Woodwing</string>
 			<key>display_name</key>
-			<string>Smart Connection InDesign CC 2014</string>
+			<string>Smart Connection Digital Magazine InDesign CC 2015</string>
 			<key>installer_choices_xml</key>
 			<array>
 				<dict>
@@ -53,15 +50,14 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 					<key>choiceAttribute</key>
 					<string>selected</string>
 					<key>choiceIdentifier</key>
-					<string>choice1</string>
+					<string>choice2</string>
 				</dict>
 			</array>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>requires</key>
 			<array>
-				<string>InDesignCC2014</string>
-				<string>ExtensionManagerCC</string>
+				<string>WoodwingSmartConnectionInDesignCC2015</string>
 			</array>
 			<key>unattended_install</key>
 			<true/>
@@ -70,7 +66,7 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.pkg.WoodwingSmartConnectionCC2014</string>
+	<string>com.github.foigus.pkg.WoodwingSmartConnectionCC2015</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -79,7 +75,7 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
 				<key>flat_pkg_path</key>
-				<string>%PKG%/Smart_Connection_for_Adobe_CC_2014_*.pkg</string>
+				<string>%PKG%/Smart_Connection_for_Adobe_CC_2015_*.pkg</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
@@ -111,7 +107,7 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 				<key>overwrite</key>
 				<true/>
 				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/Uninstaller/Uninstall Smart Connection for Adobe CC 2014 v*.app/Contents/MacOS/Uninstall Smart Connection for Adobe CC 2014 v*</string>
+				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/Uninstaller/Uninstall Smart Connection for Adobe CC 2015 v*.app/Contents/MacOS/Uninstall Smart Connection for Adobe CC 2015 v*</string>
 			</dict>
 			<key>Comment</key>
 			<string>Copy out the first uninstall script, working around lack of globs in ChecksumVerifier</string>
@@ -124,12 +120,12 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>84a03bad8a17deedde3e01a2661c098b</string>
+				<string>2842ff2bbed8070adb787bb85fe416b6</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/checksum</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 10.2.1, build 75 on the uninstall script</string>
+			<string>Verify MD5 matches 11.0.2, build 9 on the uninstall script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
@@ -141,7 +137,7 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 				<key>overwrite</key>
 				<true/>
 				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/Uninstaller/Uninstall Smart Connection for Adobe CC 2014 v*.app/Contents/Resources/Uninstall Smart Connection for Adobe CC 2014 v*.sh</string>
+				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/Uninstaller/Uninstall Smart Connection for Adobe CC 2015 v*.app/Contents/Resources/Uninstall Smart Connection for Adobe CC 2015 v*.sh</string>
 			</dict>
 			<key>Comment</key>
 			<string>Copy out the second uninstall script, working around lack of globs in ChecksumVerifier</string>
@@ -154,29 +150,14 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>84a03bad8a17deedde3e01a2661c098b</string>
+				<string>2842ff2bbed8070adb787bb85fe416b6</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/checksum.sh</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 10.2.1, build 75 on the second uninstall.sh script</string>
+			<string>Verify MD5 matches 11.0.2, build 9 on the second uninstall.sh script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>re_pattern</key>
-				<string>com\.WoodWing\.(smartConnectionForAdobeCc\d+V\d+)\.SCEnterprise\.pkg"</string>
-				<key>result_output_var_name</key>
-				<string>receipt_string</string>
-				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/unpack/scenterprise.pkg/PackageInfo</string>
-			</dict>
-			<key>Comment</key>
-			<string>Extract the package receipt string</string>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
@@ -184,10 +165,10 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 				<key>pkgdirs</key>
 				<dict/>
 				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing</string>
+				<string>%RECIPE_CACHE_DIR%/payload_smartdpstools/root/Applications/Adobe InDesign CC 2015/Plug-Ins/Woodwing</string>
 			</dict>
 			<key>Comment</key>
-			<string>Create a root for the expanded scenterprise.pkg payload</string>
+			<string>Create a root for the expanded smartdpstools.pkg payload</string>
 			<key>Processor</key>
 			<string>PkgRootCreator</string>
 		</dict>
@@ -195,7 +176,43 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing</string>
+				<string>%RECIPE_CACHE_DIR%/payload_smartdpstools/root/Applications/Adobe InDesign CC 2015/Plug-Ins/Woodwing</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/smartdpstools.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Extract the package payload of smartdpstools.pkg</string>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/payload_smartdpstools/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Adobe InDesign CC 2015/Plug-Ins/Woodwing/SmartDPSTools.InDesignPlugin</string>
+				</array>
+			</dict>
+			<key>Comment</key>
+			<string>Create an installs array item for SmartDPSTools.InDesignPlugin</string>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>Merge the installs array into the pkginfo</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise</string>
 				<key>pkg_payload_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/scenterprise.pkg/Payload</string>
 				<key>purge_destination</key>
@@ -209,33 +226,12 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>faux_root</key>
-				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root</string>
-				<key>installs_item_paths</key>
-				<array>
-					<string>/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin</string>
-				</array>
-			</dict>
-			<key>Comment</key>
-			<string>Create an installs array item for SCEnterprise.InDesignPlugin</string>
-			<key>Processor</key>
-			<string>MunkiInstallsItemsCreator</string>
-		</dict>
-		<dict>
-			<key>Comment</key>
-			<string>Merge the installs array into the pkginfo</string>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
 				<key>re_pattern</key>
 				<string>"CFBundleShortVersionString" = "v([\d\.]+)</string>
 				<key>result_output_var_name</key>
 				<string>discovered_version</string>
 				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
 			</dict>
 			<key>Comment</key>
 			<string>Extract the version number</string>
@@ -250,7 +246,7 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 				<key>result_output_var_name</key>
 				<string>build</string>
 				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
 			</dict>
 			<key>Comment</key>
 			<string>Extract the build number</string>
@@ -276,13 +272,13 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 			<dict>
 				<key>additional_makepkginfo_options</key>
 				<array>
-					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts CC 2014/Fixed Scripts/wwuninstall_indesigncc2014_fixed.sh</string>
-					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts CC 2014/My Scripts/Forget InDesign Receipts.sh</string>
+					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts CC 2015/Fixed Scripts/wwuninstall_indesigncc2015_fixed.sh</string>
+					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts CC 2015/My Scripts/Forget InDesign Digital Magazine Receipts CC2015.sh</string>
 				</array>
 				<key>force_munkiimport</key>
 				<true/>
 				<key>pkg_path</key>
-				<string>%RECIPE_CACHE_DIR%/repack/SmartConnectionCC2014.pkg</string>
+				<string>%RECIPE_CACHE_DIR%/repack/SmartConnectionCC2015.pkg</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
@@ -290,44 +286,6 @@ Requirement of ExtensionManagerCC is for Sticky Notes plugin install.</string>
 			<string>Import the package into Munki</string>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pkg_ids_set_optional_true</key>
-				<array>
-					<string>com.WoodWing.%receipt_string%.InCopy.pkg</string>
-					<string>com.WoodWing.%receipt_string%.InCopyOverset.pkg</string>
-					<string>com.WoodWing.%receipt_string%.InDesignDM.pkg</string>
-					<string>com.WoodWing.%receipt_string%.InDesignServer.pkg</string>
-					<string>com.WoodWing.%receipt_string%.InDesignServerDM.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCCoreInCopy.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCCoreInCopyOverset.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCCoreInCopyUI.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCEntDMActiveElement.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCEntDMAudio.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCEntDMDossierLink.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCEntDMHotspot.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCEntDMScrollableArea.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCEntDMSlideShow.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCEntDMVideo.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCEntDMWidget.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCProFramesInCopy.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCProFramesInCopyUI.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SCProInCopyUI.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SmartDPSTools.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SmartDPSToolsUI.pkg</string>
-					<string>com.WoodWing.%receipt_string%.SmartJumpInCopyUI.pkg</string>
-					<string>com.WoodWing.%receipt_string%.WoodWingUI.pkg</string>
-					<string>com.WoodWing.%receipt_string%.woodwingui.pkg</string>
-				</array>
-			</dict>
-			<key>Comment</key>
-			<string>Mark receipts optional for items not installed due to installerchoices.
-
-Since there's two package IDs that differ by case, ignore both</string>
-			<key>Processor</key>
-			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
 		</dict>
 	</array>
 </dict>
