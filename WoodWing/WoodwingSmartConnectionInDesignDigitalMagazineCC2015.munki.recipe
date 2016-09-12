@@ -21,7 +21,7 @@ autopkg run WoodwingSmartConnectionInDesignDigitalMagazineCC2015.munki -p /path/
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>plugins/woodwing</string>
 		<key>NAME</key>
-		<string>WoodwingSmartConnectionInDesignDigitalMagazineCC2015</string>
+		<string>WoodwingSmartConnectionDigitalMagazineInDesignCC2015</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>Comment</key>
