@@ -77,6 +77,8 @@ autopkg run WoodwingSmartConnectionInCopyCC2015.munki -p /path/to/Smart_Connecti
 			</array>
 			<key>unattended_install</key>
 			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

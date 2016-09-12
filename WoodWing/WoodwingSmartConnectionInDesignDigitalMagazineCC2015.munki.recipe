@@ -61,6 +61,8 @@ autopkg run WoodwingSmartConnectionInDesignDigitalMagazineCC2015.munki -p /path/
 			</array>
 			<key>unattended_install</key>
 			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
