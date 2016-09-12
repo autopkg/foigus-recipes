@@ -1,9 +1,6 @@
 #!/bin/bash
 
 #List of receipt names to forget
-#Note there really are package IDs for "woodwingui" and "WoodWingUI"
-#Since it appears that pkgutil is case-sensitive and there's no solid way to know which
-#receipt is there, remove them both
 receiptsToForget=( ElementLabel ElementLabelUI InDesign PluginConfig SCCoreContent SCCoreDataLink SCCoreDataLinkUI SCCoreInDesign SCCoreStickyNotes SCCoreStickyNotesUI SCCoreTemplate SCEntAccessUI SCEntEditioning SCEntEditioningUI SCEnterprise SCEnterpriseUI SCEntFields SCEntFieldsUI SCEntScripting SCEntWidgets SCProElementsPanel SCProFramesInDesign SCProInDesignUI SCProPanel SmartConnectionBookSupport SmartImage SmartImageUI SmartJump SmartJumpInDesignUI style WoodWing woodwingui WoodWingWidgets WoodWingZXP WWActivate WWSettings )
 
 #Forget the single outlier receipt
