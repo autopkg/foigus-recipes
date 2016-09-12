@@ -7,7 +7,7 @@
 #Note there really are package IDs for "woodwingui" and "WoodWingUI"
 #Since it appears that pkgutil is case-sensitive and there's no solid way to know which
 #receipt is there, remove them both
-receiptsToForget=( ElementLabel ElementLabelUI InDesign InDesignDM SCCoreContent SCCoreDataLink SCCoreDataLinkUI SCCoreGeometry SCCoreInDesign SCCoreStickyNotes SCCoreStickyNotesUI SCCoreTemplate SCEntAccessUI SCEntDMActiveElement SCEntDMAudio SCEntDMDossierLink SCEntDMHotspot SCEntDMScrollableArea SCEntDMSlideShow SCEntDMVideo SCEntDMWidget SCEntEditioning SCEntEditioningUI SCEnterprise SCEnterpriseUI SCEntFields SCEntFieldsUI SCEntScripting SCEntWidgets SCProElementsPanel SCProFramesInDesign SCProInDesignUI SCProPanel SmartConnectionBookSupport SmartDPSTools SmartDPSToolsUI SmartImage SmartImageUI SmartJump SmartJumpInDesignUI StickyNotesPanel_CC2014 style WoodWing woodwingui WoodWingUI WoodWingWidgets WWActivate WWSettings )
+receiptsToForget=( InDesignDM PluginConfig SCEntDMActiveElement SCEntDMAudio SCEntDMDossierLink SCEntDMHotspot SCEntDMScrollableArea SCEntDMSlideShow SCEntDMVideo SCEntDMWidget SmartDPSTools SmartDPSToolsUI WWActivate WWSettings )
 
 #Forget the single outlier receipt
 if pkgutil --pkg-info com.WoodWing.smartconnectioncs5vxyzbuild.Uninstaller.pkg > /dev/null 2>&1
