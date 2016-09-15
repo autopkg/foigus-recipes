@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Download FontExplorer X Pro 6 plugins from Monotype's plugin update URL.
+
+CodeSignatureVerifier currently skipped since the processor does not support bundles at this time.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.FontExplorerXPro6Plugins</string>
+	<key>Input</key>
+	<dict>
+		<key>Comment</key>
+		<string>Note UPDATE_URL isn't Sparkle-formatted XML, it's a plist</string>
+		<key>NAME</key>
+		<string>FontExplorerXPro55Plugins</string>
+		<key>UPDATE_URL</key>
+		<string>http://fex.linotype.com/update/client/mac/pro/plugins-6/appcast-small.plist</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%UPDATE_URL%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>info_path</key>
+				<string>%pathname%</string>
+				<key>plist_keys</key>
+				<dict>
+					<key>url</key>
+					<string>update_filename</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PlistReader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>http://fex.linotype.com/update/client/mac/pro/plugins-6/%update_filename%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
