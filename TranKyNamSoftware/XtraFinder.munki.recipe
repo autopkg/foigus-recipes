@@ -5,11 +5,9 @@
 	<key>Description</key>
 	<string>Downloads latest version of XtraFinder and imports into Munki.
 
-NOTE: This recipe depends on keeleysam's MunkiPkginfoReceiptsEditor.  Add keeleysam's repo via:
+NOTE: Since XtraFinder's pkg is inconsistent about package numbering, disabling packages via Installer Choices is difficult.  Thus this recipe now requires a logout to install XtraFinder.
 
-autopkg repo-add keeleysam-recipes
-
-Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (com.trankynam.xtrafinder.preflight.pkg) is disabled since it tries to quit the Finder.  The choice12 choice (com.trankynam.xtrafinder.postflight.pkg) is disabled since it tries to open XtraFinder after installation.</string>
+If you'd like to avoid the logout, create an "installer_choices_xml" that avoids the com.trankynam.xtrafinder.preflight.pkg package (since it tries to quit the Finder) and the com.trankynam.xtrafinder.postflight.pkg (since it tries to open XtraFinder after installation).</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.XtraFinder</string>
 	<key>Input</key>
@@ -20,8 +18,8 @@ Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (c
 		<string>XtraFinder</string>
 		<key>pkginfo</key>
 		<dict>
-			<key>Comment</key>
-			<string>Disabled choices are choice11 (preinstall, quits Finder) and choice 12 (postinstall, opens application)</string>
+			<key>RestartAction</key>
+			<string>RequireLogout</string>
 			<key>catalogs</key>
 			<array>
 				<string>development-trankynamsoftware-XtraFinder</string>
@@ -34,25 +32,6 @@ Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (c
 			<string>Tran Ky Nam Software</string>
 			<key>display_name</key>
 			<string>XtraFinder</string>
-			<key>installer_choices_xml</key>
-			<array>
-				<dict>
-					<key>attributeSetting</key>
-					<integer>0</integer>
-					<key>choiceAttribute</key>
-					<string>selected</string>
-					<key>choiceIdentifier</key>
-					<string>choice11</string>
-				</dict>
-				<dict>
-					<key>attributeSetting</key>
-					<integer>0</integer>
-					<key>choiceAttribute</key>
-					<string>selected</string>
-					<key>choiceIdentifier</key>
-					<string>choice12</string>
-				</dict>
-			</array>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -160,18 +139,6 @@ Also, specific pkgs are disabled via InstallerChoices.  The "choice11" choice (c
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pkg_ids_set_optional_true</key>
-				<array>
-					<string>com.trankynam.xtrafinder.preflight.pkg</string>
-					<string>com.trankynam.xtrafinder.postflight.pkg</string>
-				</array>
-			</dict>
-			<key>Processor</key>
-			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
 		</dict>
 	</array>
 </dict>
