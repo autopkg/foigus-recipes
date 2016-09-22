@@ -13,7 +13,7 @@ CodeSignatureVerifier currently skipped since the processor does not support bun
 		<key>Comment</key>
 		<string>Note UPDATE_URL isn't Sparkle-formatted XML, it's a plist</string>
 		<key>NAME</key>
-		<string>FontExplorerXPro55Plugins</string>
+		<string>FontExplorerXPro6Plugins</string>
 		<key>UPDATE_URL</key>
 		<string>http://fex.linotype.com/update/client/mac/pro/plugins-6/appcast-small.plist</string>
 	</dict>
