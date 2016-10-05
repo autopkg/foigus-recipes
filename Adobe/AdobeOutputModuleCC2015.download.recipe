@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads Adobe Output Module for Bridge CC.  Version was chosen because that's the date of most of the component files in the download.
+	<string>Downloads Adobe Output Module for Bridge CC 2015.  Version was chosen because that's the date of most of the component files in the download.
 
 No code signature check since the package is unsigned.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.download.AdobeOutputModule</string>
+	<string>com.github.foigus.download.AdobeOutputModuleCC2015</string>
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
 		<string>https://helpx.adobe.com/content/help/en/bridge/kb/install-output-module-bridge-cc/_jcr_content/main-pars/download_section/download-3/file.res/AOM_Package_Mac.zip</string>
 		<key>NAME</key>
-		<string>AdobeOutputModule</string>
+		<string>AdobeOutputModuleCC2015</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>

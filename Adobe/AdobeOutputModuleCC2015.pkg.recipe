@@ -7,18 +7,18 @@
 
 Skipped writing a .munki recipe since Adobe Output Module is unlikely to be updated again.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.pkg.AdobeOutputModule</string>
+	<string>com.github.foigus.pkg.AdobeOutputModuleCC2015</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>AdobeOutputModule</string>
+		<string>AdobeOutputModuleCC2015</string>
 		<key>version</key>
 		<string>2016.5.31</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.download.AdobeOutputModule</string>
+	<string>com.github.foigus.download.AdobeOutputModuleCC2015</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -45,6 +45,8 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 					<string>0775</string>
 					<key>Library/Application Support/Adobe/Bridge CC 2015 Extensions</key>
 					<string>0775</string>
+					<key>Library/Application Support/Adobe/Bridge CC 2015 Extensions/Workspaces</key>
+					<string>0777</string>
 				</dict>
 				<key>pkgroot</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
@@ -56,7 +58,7 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/Bridge CC 2015 Extensions/AdobeOutputModule.workspace</string>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/Bridge CC 2015 Extensions/Workspaces/AdobeOutputModule.workspace</string>
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%/AOM_Mac/AdobeOutputModule.workspace</string>
 			</dict>
@@ -111,15 +113,25 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 							<key>group</key>
 							<string>admin</string>
 							<key>mode</key>
+							<string>777</string>
+							<key>path</key>
+							<string>Library/Application Support/Adobe/Bridge CC 2015 Extensions/Workspaces</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+						<dict>
+							<key>group</key>
+							<string>admin</string>
+							<key>mode</key>
 							<string>755</string>
 							<key>path</key>
-							<string>Library/Application Support/Adobe/Bridge CC 2015 Extensions/AdobeOutputModule.workspace</string>
+							<string>Library/Application Support/Adobe/Bridge CC 2015 Extensions/Workspaces/AdobeOutputModule.workspace</string>
 							<key>user</key>
 							<string>root</string>
 						</dict>
 					</array>
 					<key>id</key>
-					<string>com.adobe.AdobeOutputModule.pkg</string>
+					<string>com.adobe.AdobeOutputModuleCC2015.pkg</string>
 					<key>pkgname</key>
 					<string>%NAME%-%version%</string>
 					<key>pkgroot</key>
