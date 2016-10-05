@@ -8,10 +8,10 @@
 	<string>com.github.foigus.munki.ExpressScribe</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>ExpressScribe</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/nchsoftware</string>
+		<key>NAME</key>
+		<string>ExpressScribe</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -39,15 +39,15 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>

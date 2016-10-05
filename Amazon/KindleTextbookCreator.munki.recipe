@@ -10,10 +10,10 @@ Note that since all the packages from Amazon have version "0", this recipe will 
 	<string>com.github.foigus.munki.KindleTextbookCreator</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>KindleTextbookCreator</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/amazon</string>
+		<key>NAME</key>
+		<string>KindleTextbookCreator</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>
@@ -47,12 +47,12 @@ Note that since all the packages from Amazon have version "0", this recipe will 
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>http://www.amazon.com/gp/feature.html?docId=1002998671</string>
 				<key>re_pattern</key>
 				<string>Kindle Textbook Creator v([\.0-9]+) </string>
 				<key>result_output_var_name</key>
 				<string>version</string>
+				<key>url</key>
+				<string>http://www.amazon.com/gp/feature.html?docId=1002998671</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -72,10 +72,10 @@ Note that since all the packages from Amazon have version "0", this recipe will 
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>flat_pkg_path</key>
-				<string>%pathname%</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%pathname%</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
@@ -85,10 +85,10 @@ Note that since all the packages from Amazon have version "0", this recipe will 
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/payload/root/Applications</string>
 				<key>pkgdirs</key>
 				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications</string>
 			</dict>
 			<key>Processor</key>
 			<string>PkgRootCreator</string>
@@ -96,12 +96,12 @@ Note that since all the packages from Amazon have version "0", this recipe will 
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/KITCAppComponent.pkg/Payload</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload/root/Applications</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/KITCAppComponent.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
 			<key>Processor</key>
 			<string>PkgPayloadUnpacker</string>
@@ -109,12 +109,12 @@ Note that since all the packages from Amazon have version "0", this recipe will 
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root</string>
 				<key>installs_item_paths</key>
 				<array>
 					<string>/Applications/Kindle Textbook Creator.app/Contents/MacOS/Kindle Textbook Creator</string>
 				</array>
-				<key>faux_root</key>
-				<string>%RECIPE_CACHE_DIR%/payload/root</string>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiInstallsItemsCreator</string>

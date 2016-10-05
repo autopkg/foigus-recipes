@@ -14,14 +14,14 @@ Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string
 		<string>FontExplorerXPro55PluginIDCC2014</string>
 		<key>PKGID</key>
 		<string>com.fontexplorerx.fontexplorerxplugins.idcc2014</string>
-		<key>PLUGIN_BUNDLE_CONTENTS</key>
-		<string>PlugIns.bundle/Contents/Resources</string>
 		<key>PLUGIN_ARCHIVE_NAME</key>
 		<string>FontExplorer X for InDesign CC 2014.InDesignPlugin.zip</string>
-		<key>PLUGIN_NAME</key>
-		<string>FontExplorer X for InDesign CC 2014.InDesignPlugin</string>
+		<key>PLUGIN_BUNDLE_CONTENTS</key>
+		<string>PlugIns.bundle/Contents/Resources</string>
 		<key>PLUGIN_INSTALL_DIR</key>
 		<string>Applications/Adobe InDesign CC 2014/Plug-Ins</string>
+		<key>PLUGIN_NAME</key>
+		<string>FontExplorer X for InDesign CC 2014.InDesignPlugin</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -30,31 +30,29 @@ Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/pkg_root</string>
 				<key>pkgdirs</key>
 				<dict>
 					<key>Applications</key>
 					<string>0775</string>
 				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkg_root</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>archive_path</key>
@@ -64,46 +62,48 @@ Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%/%PLUGIN_NAME%/Versions/Current/Resources/Info.plist</string>
 			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_request</key>
 				<dict>
-					<key>pkgroot</key>
-					<string>%RECIPE_CACHE_DIR%/pkg_root</string>
-					<key>pkgdir</key>
-					<string>%RECIPE_CACHE_DIR%</string>
-					<key>id</key>
-					<string>%PKGID%</string>
-					<key>pkgname</key>
-					<string>%NAME%</string>
-					<key>version</key>
-					<string>%version%</string>
 					<key>chown</key>
 					<array>
 						<dict>
+							<key>group</key>
+							<string>admin</string>
 							<key>path</key>
 							<string>Applications</string>
 							<key>user</key>
 							<string>root</string>
-							<key>group</key>
-							<string>admin</string>
 						</dict>
 					</array>
+					<key>id</key>
+					<string>%PKGID%</string>
+					<key>pkgdir</key>
+					<string>%RECIPE_CACHE_DIR%</string>
+					<key>pkgname</key>
+					<string>%NAME%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkg_root</string>
+					<key>version</key>
+					<string>%version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
 		</dict>
 	</array>
 </dict>

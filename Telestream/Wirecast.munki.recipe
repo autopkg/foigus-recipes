@@ -3,19 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the current version of Wirecast and imports it into Munki.
+	<string>Downloads the current version of Wirecast (versions 4 through 6) and imports it into Munki.
 
-Note major version upgrades of Wirecast are generally paid upgrades.  Thus set MAJOR_VERSION to your preferred version (currently 4, 5, and 6 work).</string>
+Note major version upgrades of Wirecast are generally paid upgrades.  Thus override MAJOR_VERSION with your preferred version (this recipe covers Wirecast 4, 5, and 6).</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.Wirecast</string>
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
 		<string>6</string>
-		<key>NAME</key>
-		<string>Wirecast</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/telestream</string>
+		<key>NAME</key>
+		<string>Wirecast</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>

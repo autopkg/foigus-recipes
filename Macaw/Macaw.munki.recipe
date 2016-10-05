@@ -8,10 +8,10 @@
 	<string>com.github.foigus.munki.Macaw</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>Macaw</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/macaw</string>
+		<key>NAME</key>
+		<string>Macaw</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>

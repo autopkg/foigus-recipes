@@ -18,21 +18,17 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
 				<string>%pathname%/InPreflight Pro Installer.app/Contents/Resources/appPackage/InPreflight Pro.app/Contents/Info.plist</string>
 			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 				<key>pkgdirs</key>
 				<dict>
 					<key>Applications</key>
@@ -48,71 +44,75 @@
 					<key>Applications/Adobe InDesign CC 2015/Scripts/startup scripts</key>
 					<string>0775</string>
 				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%pathname%/InPreflight Pro Installer.app/Contents/Resources/Deliver.app</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Deliver.app</string>
+				<key>source_path</key>
+				<string>%pathname%/InPreflight Pro Installer.app/Contents/Resources/Deliver.app</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Copier</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%pathname%/InPreflight Pro Installer.app/Contents/Resources/appPackage/InPreflight Pro.app</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign CC 2015/Plug-Ins/Zevrix/InPreflight Pro.app</string>
+				<key>source_path</key>
+				<string>%pathname%/InPreflight Pro Installer.app/Contents/Resources/appPackage/InPreflight Pro.app</string>
 			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Symlinker</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>/Applications/Adobe InDesign CC 2015/Plug-Ins/Zevrix/InPreflight Pro.app/Contents/Resources/Scripts/InPreflight Pro.startup.scpt</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign CC 2015/Scripts/startup scripts/.InPreflight Pro.startup.scpt</string>
+				<key>source_path</key>
+				<string>/Applications/Adobe InDesign CC 2015/Plug-Ins/Zevrix/InPreflight Pro.app/Contents/Resources/Scripts/InPreflight Pro.startup.scpt</string>
 			</dict>
+			<key>Processor</key>
+			<string>Symlinker</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_request</key>
 				<dict>
-					<key>pkgroot</key>
-					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
-					<key>pkgname</key>
-					<string>%NAME%-%version%</string>
-					<key>pkgtype</key>
-					<string>flat</string>
-					<key>id</key>
-					<string>com.zevrix.InPreflightProCC2015.pkg</string>
-					<key>version</key>
-					<string>%version%</string>
 					<key>chown</key>
 					<array>
 						<dict>
+							<key>group</key>
+							<string>admin</string>
 							<key>path</key>
 							<string>Applications</string>
 							<key>user</key>
 							<string>root</string>
-							<key>group</key>
-							<string>admin</string>
 						</dict>
 					</array>
+					<key>id</key>
+					<string>com.zevrix.InPreflightProCC2015.pkg</string>
+					<key>pkgname</key>
+					<string>%NAME%-%version%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>version</key>
+					<string>%version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
 		</dict>
 	</array>
 </dict>

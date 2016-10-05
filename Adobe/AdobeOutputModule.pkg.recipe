@@ -22,21 +22,19 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+				<key>Comment</key>
+				<string>"Workspaces" permissions are Adobe's default</string>
 				<key>pkgdirs</key>
 				<dict>
 					<key>Library</key>
@@ -48,100 +46,104 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 					<key>Library/Application Support/Adobe/Bridge CC Extensions</key>
 					<string>0775</string>
 					<key>Library/Application Support/Adobe/Bridge CC Extensions/Workspaces</key>
-					<string>0777</string> <!-- Really, this is the Adobe default -->
+					<string>0777</string>
 				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/AOM_Mac/AdobeOutputModule.workspace</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/Bridge CC Extensions/Workspaces/AdobeOutputModule.workspace</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/AOM_Mac/AdobeOutputModule.workspace</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Copier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/AOM_Mac/Adobe Output Module</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/Bridge CC Extensions/Adobe Output Module</string>
-			</dict>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/Bridge CC Extensions/Adobe Output Module</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/AOM_Mac/Adobe Output Module</string>
+			</dict>
 			<key>Processor</key>
-			<string>PkgCreator</string>
+			<string>Copier</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_request</key>
 				<dict>
-					<key>pkgroot</key>
-					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
-					<key>pkgname</key>
-					<string>%NAME%-%version%</string>
-					<key>pkgtype</key>
-					<string>flat</string>
-					<key>id</key>
-					<string>com.adobe.AdobeOutputModule.pkg</string>
-					<key>version</key>
-					<string>%version%</string>
 					<key>chown</key>
 					<array>
 						<dict>
+							<key>group</key>
+							<string>wheel</string>
 							<key>path</key>
 							<string>Library</string>
 							<key>user</key>
 							<string>root</string>
-							<key>group</key>
-							<string>wheel</string>
 						</dict>
 						<dict>
+							<key>group</key>
+							<string>admin</string>
 							<key>path</key>
 							<string>Library/Application Support</string>
 							<key>user</key>
 							<string>root</string>
-							<key>group</key>
-							<string>admin</string>
 						</dict>
 						<dict>
+							<key>group</key>
+							<string>admin</string>
+							<key>mode</key>
+							<string>755</string>
 							<key>path</key>
 							<string>Library/Application Support/Adobe/Bridge CC Extensions</string>
 							<key>user</key>
 							<string>root</string>
-							<key>group</key>
-							<string>admin</string>
-							<key>mode</key>
-							<string>755</string>
 						</dict>
 						<dict>
-							<key>path</key>
-							<string>Library/Application Support/Adobe/Bridge CC Extensions/Workspaces</string>
-							<key>user</key>
-							<string>root</string>
 							<key>group</key>
 							<string>admin</string>
 							<key>mode</key>
 							<string>777</string>
-						</dict>
-						<dict>
 							<key>path</key>
-							<string>Library/Application Support/Adobe/Bridge CC Extensions/Workspaces/AdobeOutputModule.workspace</string>
+							<string>Library/Application Support/Adobe/Bridge CC Extensions/Workspaces</string>
 							<key>user</key>
 							<string>root</string>
+						</dict>
+						<dict>
 							<key>group</key>
 							<string>admin</string>
 							<key>mode</key>
 							<string>755</string>
+							<key>path</key>
+							<string>Library/Application Support/Adobe/Bridge CC Extensions/Workspaces/AdobeOutputModule.workspace</string>
+							<key>user</key>
+							<string>root</string>
 						</dict>
 					</array>
+					<key>id</key>
+					<string>com.adobe.AdobeOutputModule.pkg</string>
+					<key>pkgname</key>
+					<string>%NAME%-%version%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>version</key>
+					<string>%version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
 		</dict>
 	</array>
 </dict>

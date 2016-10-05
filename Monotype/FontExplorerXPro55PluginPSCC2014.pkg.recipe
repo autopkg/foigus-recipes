@@ -14,14 +14,14 @@ Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string
 		<string>FontExplorerXPro55PluginPSCC2014</string>
 		<key>PKGID</key>
 		<string>com.fontexplorerx.fontexplorerxplugins.pscc2014</string>
-		<key>PLUGIN_BUNDLE_CONTENTS</key>
-		<string>PlugIns.bundle/Contents/Resources</string>
 		<key>PLUGIN_ARCHIVE_NAME</key>
 		<string>FontExplorer X for Photoshop CC 2014.plugin.zip</string>
-		<key>PLUGIN_NAME</key>
-		<string>FontExplorer X for Photoshop CC 2014.plugin</string>
+		<key>PLUGIN_BUNDLE_CONTENTS</key>
+		<string>PlugIns.bundle/Contents/Resources</string>
 		<key>PLUGIN_INSTALL_DIR</key>
 		<string>Applications/Adobe Photoshop CC 2014/Plug-ins</string>
+		<key>PLUGIN_NAME</key>
+		<string>FontExplorer X for Photoshop CC 2014.plugin</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -30,31 +30,29 @@ Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/pkg_root</string>
 				<key>pkgdirs</key>
 				<dict>
 					<key>Applications</key>
 					<string>0775</string>
 				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkg_root</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>archive_path</key>
@@ -64,19 +62,19 @@ Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%/%PLUGIN_NAME%/Contents/Info.plist</string>
 			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>archive_path</key>
@@ -86,63 +84,65 @@ Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/libqt/QtCore.framework</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%/%PLUGIN_NAME%/Contents/Frameworks/QtCore.framework</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/libqt/QtCore.framework</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Copier</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/libqt/QtGui.framework</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%/%PLUGIN_NAME%/Contents/Frameworks/QtGui.framework</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/libqt/QtGui.framework</string>
 			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_request</key>
 				<dict>
-					<key>pkgroot</key>
-					<string>%RECIPE_CACHE_DIR%/pkg_root</string>
-					<key>pkgdir</key>
-					<string>%RECIPE_CACHE_DIR%</string>
-					<key>id</key>
-					<string>%PKGID%</string>
-					<key>pkgname</key>
-					<string>%NAME%</string>
-					<key>version</key>
-					<string>%version%</string>
 					<key>chown</key>
 					<array>
 						<dict>
+							<key>group</key>
+							<string>admin</string>
 							<key>path</key>
 							<string>Applications</string>
 							<key>user</key>
 							<string>root</string>
-							<key>group</key>
-							<string>admin</string>
 						</dict>
 					</array>
+					<key>id</key>
+					<string>%PKGID%</string>
+					<key>pkgdir</key>
+					<string>%RECIPE_CACHE_DIR%</string>
+					<key>pkgname</key>
+					<string>%NAME%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkg_root</string>
+					<key>version</key>
+					<string>%version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
 		</dict>
 	</array>
 </dict>

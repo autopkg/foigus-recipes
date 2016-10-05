@@ -21,8 +21,3 @@ autopkg repo-add gmarnin-recipes
 autopkg repo-add keeleysam-recipes
 autopkg repo-add hjuutilainen-recipes
 ```
-
-### XtraFinder:
-```
-autopkg repo-add keeleysam-recipes
-```

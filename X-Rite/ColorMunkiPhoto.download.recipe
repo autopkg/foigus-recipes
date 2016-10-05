@@ -26,13 +26,13 @@ https://www.xrite.com/x-rite-device-services-xrd/support
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>SparkleUpdateInfoProvider</string>
 			<key>Arguments</key>
 			<dict>
 				<key>appcast_url</key>
 				<string>%SPARKLE_FEED_URL%</string>
 			</dict>
+			<key>Processor</key>
+			<string>SparkleUpdateInfoProvider</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
@@ -43,8 +43,6 @@ https://www.xrite.com/x-rite-device-services-xrd/support
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>archive_path</key>
@@ -54,21 +52,23 @@ https://www.xrite.com/x-rite-device-services-xrd/support
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>input_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/ColorMunki Photo.pkg</string>
 				<key>expected_authority_names</key>
 				<array>
 					<string>Developer ID Installer: X-Rite, Incorporated</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/ColorMunki Photo.pkg</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

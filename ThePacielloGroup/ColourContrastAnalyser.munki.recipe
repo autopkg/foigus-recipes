@@ -8,10 +8,10 @@
 	<string>com.github.foigus.munki.ColourContrastAnalyser</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>ColourContrastAnalyser</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/thepaciellogroup</string>
+		<key>NAME</key>
+		<string>ColourContrastAnalyser</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -39,8 +39,6 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
@@ -48,10 +46,10 @@
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PlistReader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>info_path</key>
@@ -62,10 +60,10 @@
 					<string>declared_os_version</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>PlistReader</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
 			<key>Arguments</key>
 			<dict>
 				<key>additional_pkginfo</key>
@@ -74,17 +72,19 @@
 					<string>%declared_os_version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>DmgCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>dmg_root</key>
-				<string>%RECIPE_CACHE_DIR%/expand</string>
 				<key>dmg_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/expand</string>
 			</dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>

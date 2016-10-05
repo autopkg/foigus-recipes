@@ -10,25 +10,25 @@ No code signature check since the package is unsigned.</string>
 	<string>com.github.foigus.download.AdobeOutputModule</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>AdobeOutputModule</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://helpx.adobe.com/content/help/en/bridge/kb/install-output-module-bridge-cc/_jcr_content/main-pars/download_1/file.res/AOM_Mac_New.zip</string>
+		<key>NAME</key>
+		<string>AdobeOutputModule</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
 				<key>filename</key>
 				<string>%NAME%.zip</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

@@ -5,11 +5,15 @@
 	<key>Description</key>
 	<string>Packages Smart Connection CC 2014 for installation.
 
-NOTE: This recipe depends on hjuutilainen's ChecksumVerifier.  Add hjuutilainen's repo via:
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add hjuutilainen's repo via:
 
 autopkg repo-add hjuutilainen-recipes
 
-Note this recipe does _not_ fix the InDesign Server packages, since these are very likely to be installed by hand.</string>
+- This recipe does not fix the InDesign Server packages, since these are very likely to be installed by hand
+- This recipe does not download the Smart Connection disk image--feed the disk image into the recipe via the following format:
+
+autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_Adobe_CC_2014_v10.2.2_Build75.dmg</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.pkg.WoodwingSmartConnectionCC2014</string>
 	<key>Input</key>
@@ -22,233 +26,267 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Comment</key>
+			<string>Not going to tackle downloading the software right now</string>
 			<key>Processor</key>
-			<string>PackageRequired</string> <!-- Not going to tackle downloading the software right now -->
+			<string>PackageRequired</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FlatPkgUnpacker</string> <!-- Unpack the package -->
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
 				<key>flat_pkg_path</key>
 				<string>%PKG%/Smart_Connection_for_Adobe_CC_2014_*.pkg</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
+			<key>Comment</key>
+			<string>Unpack the package</string>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesign" addRight.sh -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>4506d51028b560c6bb7dfef0c26018fe</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesign.pkg/Scripts/addRight.sh</string>
-				<key>checksum</key>
-				<string>4506d51028b560c6bb7dfef0c26018fe</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesign" addRight.sh</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesign" postinstall -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesign.pkg/Scripts/postinstall</string>
-				<key>checksum</key>
-				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesign" postinstall</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesign" postinstall.sh -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesign.pkg/Scripts/postinstall.sh</string>
-				<key>checksum</key>
-				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesign" postinstall.sh</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesign" total.sh -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>6a76506595c1492c08b21a904ea67759</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesign.pkg/Scripts/total.sh</string>
-				<key>checksum</key>
-				<string>6a76506595c1492c08b21a904ea67759</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesign" total.sh</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesigndm" addRight.sh -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>4506d51028b560c6bb7dfef0c26018fe</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesigndm.pkg/Scripts/addRight.sh</string>
-				<key>checksum</key>
-				<string>4506d51028b560c6bb7dfef0c26018fe</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesigndm" addRight.sh</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesigndm" postinstall -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesigndm.pkg/Scripts/postinstall</string>
-				<key>checksum</key>
-				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesigndm" postinstall</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesigndm" postinstall.sh -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesigndm.pkg/Scripts/postinstall.sh</string>
-				<key>checksum</key>
-				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesigndm" postinstall.sh</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "indesigndm" total.sh -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>6a76506595c1492c08b21a904ea67759</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesigndm.pkg/Scripts/total.sh</string>
-				<key>checksum</key>
-				<string>6a76506595c1492c08b21a904ea67759</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "indesigndm" total.sh</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopy" addRight.sh -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>4506d51028b560c6bb7dfef0c26018fe</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopy.pkg/Scripts/addRight.sh</string>
-				<key>checksum</key>
-				<string>4506d51028b560c6bb7dfef0c26018fe</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopy" addRight.sh</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopy" postinstall -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopy.pkg/Scripts/postinstall</string>
-				<key>checksum</key>
-				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopy" postinstall</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopy" postinstall.sh -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopy.pkg/Scripts/postinstall.sh</string>
-				<key>checksum</key>
-				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopy" postinstall.sh</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopy" total.sh -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>6a76506595c1492c08b21a904ea67759</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopy.pkg/Scripts/total.sh</string>
-				<key>checksum</key>
-				<string>6a76506595c1492c08b21a904ea67759</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopy" total.sh</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopyoverset" addRight.sh -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
-				<key>pathname</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/incopyoverset.pkg/Scripts/addRight.sh</string>
 				<key>checksum</key>
 				<string>4506d51028b560c6bb7dfef0c26018fe</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/incopyoverset.pkg/Scripts/addRight.sh</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopyoverset" addRight.sh</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopyoverset" postinstall -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopyoverset.pkg/Scripts/postinstall</string>
-				<key>checksum</key>
-				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopyoverset" postinstall</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopyoverset" postinstall.sh -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
+				<key>checksum</key>
+				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopyoverset.pkg/Scripts/postinstall.sh</string>
-				<key>checksum</key>
-				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopyoverset" postinstall.sh</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.0.3, build 38 on "incopyoverset" total.sh -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
-				<key>pathname</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/incopyoverset.pkg/Scripts/total.sh</string>
 				<key>checksum</key>
 				<string>6a76506595c1492c08b21a904ea67759</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/incopyoverset.pkg/Scripts/total.sh</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.3, build 38 on "incopyoverset" total.sh</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string> <!-- Delete "indesign" total.sh in prep for it to be replaced -->
 			<key>Arguments</key>
 			<dict>
 				<key>path_list</key>
@@ -256,16 +294,14 @@ Note this recipe does _not_ fix the InDesign Server packages, since these are ve
 					<string>%RECIPE_CACHE_DIR%/unpack/indesign.pkg/Scripts/total.sh</string>
 				</array>
 			</dict>
+			<key>Comment</key>
+			<string>Delete "indesign" total.sh in prep for it to be replaced</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FileCreator</string> <!-- Overwrite "indesign" total.sh with an InDesign-specific version, note this is the same script as InDesign_fixed_total.sh in this repo -->
 			<key>Arguments</key>
 			<dict>
-				<key>file_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/indesign.pkg/Scripts/total.sh</string>
-				<key>file_mode</key>
-				<string>0755</string>
 				<key>file_content</key>
 				<string>#!/bin/bash
 
@@ -1170,11 +1206,17 @@ GiveAllRightsToPath "${UNINSTALL_APP_PATH_IDS}"
 rm -rf ${BASE_PATH}
 
 exit 0</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/indesign.pkg/Scripts/total.sh</string>
 			</dict>
+			<key>Comment</key>
+			<string>Overwrite "indesign" total.sh with an InDesign-specific version, note this is the same script as InDesign_fixed_total.sh in this repo</string>
+			<key>Processor</key>
+			<string>FileCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string> <!-- Delete "indesigndm" total.sh in prep for it to be replaced -->
 			<key>Arguments</key>
 			<dict>
 				<key>path_list</key>
@@ -1182,16 +1224,14 @@ exit 0</string>
 					<string>%RECIPE_CACHE_DIR%/unpack/indesigndm.pkg/Scripts/total.sh</string>
 				</array>
 			</dict>
+			<key>Comment</key>
+			<string>Delete "indesigndm" total.sh in prep for it to be replaced</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FileCreator</string> <!-- Overwrite "indesigndm" total.sh with an InDesign-specific version, note this is the same script as InDesign_total.sh in this repo -->
 			<key>Arguments</key>
 			<dict>
-				<key>file_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/indesigndm.pkg/Scripts/total.sh</string>
-				<key>file_mode</key>
-				<string>0755</string>
 				<key>file_content</key>
 				<string>#!/bin/bash
 
@@ -2096,11 +2136,17 @@ GiveAllRightsToPath "${UNINSTALL_APP_PATH_IDS}"
 rm -rf ${BASE_PATH}
 
 exit 0</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/indesigndm.pkg/Scripts/total.sh</string>
 			</dict>
+			<key>Comment</key>
+			<string>Overwrite "indesigndm" total.sh with an InDesign-specific version, note this is the same script as InDesign_total.sh in this repo</string>
+			<key>Processor</key>
+			<string>FileCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string> <!-- Delete "incopy" total.sh in prep for it to be replaced -->
 			<key>Arguments</key>
 			<dict>
 				<key>path_list</key>
@@ -2108,16 +2154,14 @@ exit 0</string>
 					<string>%RECIPE_CACHE_DIR%/unpack/incopy.pkg/Scripts/total.sh</string>
 				</array>
 			</dict>
+			<key>Comment</key>
+			<string>Delete "incopy" total.sh in prep for it to be replaced</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FileCreator</string> <!-- Overwrite "incopy" total.sh with an InCopy-specific version, note this is the same script as InCopy_fixed_total.sh in this repo -->
 			<key>Arguments</key>
 			<dict>
-				<key>file_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/incopy.pkg/Scripts/total.sh</string>
-				<key>file_mode</key>
-				<string>0755</string>
 				<key>file_content</key>
 				<string>#!/bin/bash
 
@@ -3022,11 +3066,17 @@ GiveAllRightsToPath "${UNINSTALL_APP_PATH_IDS}"
 rm -rf ${BASE_PATH}
 
 exit 0</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/incopy.pkg/Scripts/total.sh</string>
 			</dict>
+			<key>Comment</key>
+			<string>Overwrite "incopy" total.sh with an InCopy-specific version, note this is the same script as InCopy_fixed_total.sh in this repo</string>
+			<key>Processor</key>
+			<string>FileCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string> <!-- Delete "incopyoverset" total.sh in prep for it to be replaced -->
 			<key>Arguments</key>
 			<dict>
 				<key>path_list</key>
@@ -3034,16 +3084,14 @@ exit 0</string>
 					<string>%RECIPE_CACHE_DIR%/unpack/incopyoverset.pkg/Scripts/total.sh</string>
 				</array>
 			</dict>
+			<key>Comment</key>
+			<string>Delete "incopyoverset" total.sh in prep for it to be replaced</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FileCreator</string> <!-- Overwrite "incopyoverset" total.sh with an InCopy-specific version, note this is the same script as InCopy_total.sh in this repo -->
 			<key>Arguments</key>
 			<dict>
-				<key>file_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/incopyoverset.pkg/Scripts/total.sh</string>
-				<key>file_mode</key>
-				<string>0755</string>
 				<key>file_content</key>
 				<string>#!/bin/bash
 
@@ -3948,22 +3996,30 @@ GiveAllRightsToPath "${UNINSTALL_APP_PATH_IDS}"
 rm -rf ${BASE_PATH}
 
 exit 0</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/incopyoverset.pkg/Scripts/total.sh</string>
 			</dict>
+			<key>Comment</key>
+			<string>Overwrite "incopyoverset" total.sh with an InCopy-specific version, note this is the same script as InCopy_total.sh in this repo</string>
+			<key>Processor</key>
+			<string>FileCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string> <!-- Prep to flatten the now-fixed package -->
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/repack</string>
 				<key>pkgdirs</key>
 				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/repack</string>
 			</dict>
+			<key>Comment</key>
+			<string>Prep to flatten the now-fixed package</string>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>FlatPkgPacker</string> <!-- Flatten the fixed package -->
 			<key>Arguments</key>
 			<dict>
 				<key>destination_pkg</key>
@@ -3971,6 +4027,10 @@ exit 0</string>
 				<key>source_flatpkg_dir</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
 			</dict>
+			<key>Comment</key>
+			<string>Flatten the fixed package</string>
+			<key>Processor</key>
+			<string>FlatPkgPacker</string>
 		</dict>
 	</array>
 </dict>

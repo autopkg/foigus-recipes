@@ -8,42 +8,42 @@
 	<string>com.github.foigus.download.GenericFieryFD50</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>GenericFD50Driver</string>
 		<key>DOWNLOAD_URL</key>
 		<string>http://set_me_with_an_override/please</string>
+		<key>NAME</key>
+		<string>GenericFD50Driver</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.1</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>input_path</key>
-				<string>%pathname%/Fiery Printer Driver.pkg</string>
 				<key>expected_authority_names</key>
 				<array>
 					<string>Developer ID Installer: EFI Inc</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
+				<key>input_path</key>
+				<string>%pathname%/Fiery Printer Driver.pkg</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

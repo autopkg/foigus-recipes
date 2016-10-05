@@ -10,25 +10,25 @@ Can't add CodeSignatureVerifier because Prepros is unsigned!</string>
 	<string>com.github.foigus.download.Prepros</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>Prepros</string>
 		<key>DOWNLOAD_URL</key>
 		<string>http://bit.ly/prepros-mac</string>
+		<key>NAME</key>
+		<string>Prepros</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
 				<key>filename</key>
 				<string>%NAME%.zip</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

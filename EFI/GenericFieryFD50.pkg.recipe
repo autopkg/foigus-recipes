@@ -35,48 +35,46 @@ I'd suggest the override choices are:
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>FlatPkgUnpacker</string>
 			<key>Arguments</key>
 			<dict>
-				<key>flat_pkg_path</key>
-				<string>%pathname%/Fiery Printer Driver.pkg</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%pathname%/Fiery Printer Driver.pkg</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 				<key>pkgdirs</key>
 				<dict>
 					<key>tmp</key>
 					<string>0755</string>
 				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string>
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/FieryPrinterDriverInstaller.pkg/Payload</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/tmp/Fiery Printer Driver Installer.app</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/FieryPrinterDriverInstaller.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string>
 			<key>Arguments</key>
 			<dict>
 				<key>path_list</key>
@@ -84,33 +82,34 @@ I'd suggest the override choices are:
 					<string>%RECIPE_CACHE_DIR%/pkgroot/tmp/Fiery Printer Driver Installer.app/Contents/Resources/User Software/OSX/Printer Driver/Fiery Driver Updater.app</string>
 				</array>
 			</dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_request</key>
 				<dict>
-					<key>pkgroot</key>
-					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>chown</key>
+					<array/>
+					<key>id</key>
+					<string>%PACKAGE_ID%</string>
 					<key>pkgdir</key>
 					<string>%RECIPE_CACHE_DIR%</string>
 					<key>pkgname</key>
 					<string>%NAME%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 					<key>pkgtype</key>
 					<string>flat</string>
-					<key>id</key>
-					<string>%PACKAGE_ID%</string>
-					<key>version</key>
-					<string>1.50</string>
 					<key>scripts</key>
 					<string>%RECIPE_CACHE_DIR%/unpack/FieryPrinterDriverInstaller.pkg/Scripts</string>
-					<key>chown</key>
-					<array>
-					</array>
+					<key>version</key>
+					<string>1.50</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
 		</dict>
 	</array>
 </dict>

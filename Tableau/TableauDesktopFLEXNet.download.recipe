@@ -10,44 +10,44 @@ NOTE: As of 2/27/2016 (the 9.2.5 release of Tableau's software) the TableauFLEXN
 	<string>com.github.foigus.download.tableau-desktop-FLEXNet</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>TableauDesktopFLEXNet</string>
 		<key>DOWNLOAD_URL</key>
 		<string>http://www.tableau.com/downloads/desktop/mac</string>
+		<key>NAME</key>
+		<string>TableauDesktopFLEXNet</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>input_path</key>
-				<string>%pathname%/Tableau.app/Contents/Installers/Tableau FLEXNet.pkg</string>
 				<key>expected_authority_names</key>
 				<array>
-					<string>3rd Party Mac Developer Installer: Tableau Software, Inc. (QJ4XPRK37C)</string>
-					<string>Apple Worldwide Developer Relations Certification Authority</string>
+					<string>Developer ID Installer: Tableau Software, Inc. (QJ4XPRK37C)</string>
+					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
+				<key>input_path</key>
+				<string>%pathname%/Tableau.app/Contents/Installers/Tableau FLEXNet.pkg</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

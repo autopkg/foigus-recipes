@@ -16,25 +16,25 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>http://plugin.slingbox.com/installer_v2/</string>
 				<key>re_pattern</key>
 				<string>"falconplugintarget":{.*,"mac":{"minPluginVersion":"[\d\.]*","maxPluginVersion":"([\d\.]*)"</string>
 				<key>result_output_var_name</key>
 				<string>slingplayersafariversion</string>
+				<key>url</key>
+				<string>http://plugin.slingbox.com/installer_v2/</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>http://autoupdate-origin.sling.com/plugin_binary/downloads/dmg/%slingplayersafariversion%/SlingPlayer_Plugin_%slingplayersafariversion%.dmg</string>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>http://autoupdate-origin.sling.com/plugin_binary/downloads/dmg/%slingplayersafariversion%/SlingPlayer_Plugin_%slingplayersafariversion%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -44,19 +44,19 @@
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>input_path</key>
-				<string>%pathname%/SlingPlayer Plug-in Installer.pkg</string>
 				<key>expected_authority_names</key>
 				<array>
 					<string>Developer ID Installer: Sling Media</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
+				<key>input_path</key>
+				<string>%pathname%/SlingPlayer Plug-in Installer.pkg</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

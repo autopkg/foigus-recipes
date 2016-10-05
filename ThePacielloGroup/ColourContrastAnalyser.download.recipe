@@ -18,10 +18,10 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>github_repo</key>
-				<string>ThePacielloGroup/CCA-OSX</string>
 				<key>asset_regex</key>
 				<string>Colour.*.app.zip</string>
+				<key>github_repo</key>
+				<string>ThePacielloGroup/CCA-OSX</string>
 			</dict>
 			<key>Processor</key>
 			<string>GitHubReleasesInfoProvider</string>

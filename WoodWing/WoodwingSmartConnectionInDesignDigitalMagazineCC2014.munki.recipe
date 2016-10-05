@@ -5,22 +5,28 @@
 	<key>Description</key>
 	<string>Packages InDesign Digital Magazine plugins for installation for InDesign CC 2014 and imports it into Munki
 
-NOTE: This recipe depends on keeleysam's MunkiPkginfoReceiptsEditor and hjuutilainen's ChecksumVerifier.  Add these repos via:
+NOTES:
+- This recipe depends on keeleysam's MunkiPkginfoReceiptsEditor and hjuutilainen's ChecksumVerifier.  Add these repos via:
 
 autopkg repo-add keeleysam-recipes
 autopkg repo-add hjuutilainen-recipes
 
-Also, specific pkgs are disabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true.</string>
+- Specific pkgs are disabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true
+- This recipe does not download the Smart Connection disk image--feed the disk image into the recipe via the following format:
+
+autopkg run WoodwingSmartConnectionInDesignDigitalMagazineCC2014.munki -p /path/to/Smart_Connection_for_Adobe_CC_2014_v10.2.2_Build75.dmg</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.WoodwingSmartConnectionInDesignDigitalMagazineCC2014</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>WoodwingSmartConnectionInDesignDigitalMagazineCC2014</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>plugins/woodwing</string>
+		<key>NAME</key>
+		<string>WoodwingSmartConnectionInDesignDigitalMagazineCC2014</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>Comment</key>
+			<string>Choice is choice2 (InDesign Digital Publishing Plug-Ins)</string>
 			<key>blocking_applications</key>
 			<array>
 				<string>Adobe InDesign CC 2014</string>
@@ -45,7 +51,7 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 					<key>choiceAttribute</key>
 					<string>selected</string>
 					<key>choiceIdentifier</key>
-					<string>choice2</string> <!-- Digital Publishing Plug-Ins for Adobe InDesign CC 2014 -->
+					<string>choice2</string>
 				</dict>
 			</array>
 			<key>name</key>
@@ -65,123 +71,139 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>FlatPkgUnpacker</string> <!-- Unpack the original package -->
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
 				<key>flat_pkg_path</key>
 				<string>%PKG%/Smart_Connection_for_Adobe_CC_2014_*.pkg</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string> <!-- Extract the package payload of uninstaller.pkg -->
-			<key>Arguments</key>
-			<dict>
 				<key>purge_destination</key>
 				<true/>
-				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/uninstaller.pkg/Payload</string>
+			</dict>
+			<key>Comment</key>
+			<string>Unpack the original package</string>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/uninstaller.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
+			<key>Comment</key>
+			<string>Extract the package payload of uninstaller.pkg</string>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Copier</string> <!-- Copy out the first uninstall script, working around lack of globs in ChecksumVerifier -->
 			<key>Arguments</key>
 			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/checksum</string>
+				<key>overwrite</key>
+				<true/>
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/Uninstaller/Uninstall Smart Connection for Adobe CC 2014 v*.app/Contents/MacOS/Uninstall Smart Connection for Adobe CC 2014 v*</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/checksum</string>
-				<key>overwrite</key>
-				<true/>
 			</dict>
+			<key>Comment</key>
+			<string>Copy out the first uninstall script, working around lack of globs in ChecksumVerifier</string>
+			<key>Processor</key>
+			<string>Copier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.2.1, build 75 on the uninstall script -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
-				<key>pathname</key>
-				<string>%RECIPE_CACHE_DIR%/checksum</string>
 				<key>checksum</key>
 				<string>84a03bad8a17deedde3e01a2661c098b</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/checksum</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.2.1, build 75 on the uninstall script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Copier</string> <!-- Copy out the second uninstall script, working around lack of globs in ChecksumVerifier -->
 			<key>Arguments</key>
 			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/checksum.sh</string>
+				<key>overwrite</key>
+				<true/>
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload_uninstaller/Uninstaller/Uninstall Smart Connection for Adobe CC 2014 v*.app/Contents/Resources/Uninstall Smart Connection for Adobe CC 2014 v*.sh</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/checksum.sh</string>
-				<key>overwrite</key>
-				<true/>
 			</dict>
+			<key>Comment</key>
+			<string>Copy out the second uninstall script, working around lack of globs in ChecksumVerifier</string>
+			<key>Processor</key>
+			<string>Copier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string> <!-- Verify MD5 matches 10.2.1, build 75 on the second uninstall.sh script -->
 			<key>Arguments</key>
 			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
-				<key>pathname</key>
-				<string>%RECIPE_CACHE_DIR%/checksum.sh</string>
 				<key>checksum</key>
 				<string>84a03bad8a17deedde3e01a2661c098b</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/checksum.sh</string>
 			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.2.1, build 75 on the second uninstall.sh script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string> <!-- Extract the package receipt string -->
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/unpack/scenterprise.pkg/PackageInfo</string>
 				<key>re_pattern</key>
 				<string>com\.WoodWing\.(smartConnectionForAdobeCc\d+V\d+)\.SCEnterprise\.pkg"</string>
 				<key>result_output_var_name</key>
 				<string>receipt_string</string>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/unpack/scenterprise.pkg/PackageInfo</string>
 			</dict>
+			<key>Comment</key>
+			<string>Extract the package receipt string</string>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string> <!-- Create a root for the expanded smartdpstools.pkg payload -->
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/payload_smartdpstools/root/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing</string>
 				<key>pkgdirs</key>
 				<dict/>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string> <!-- Extract the package payload of smartdpstools.pkg -->
-			<key>Arguments</key>
-			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/smartdpstools.pkg/Payload</string>
-				<key>destination_path</key>
+				<key>pkgroot</key>
 				<string>%RECIPE_CACHE_DIR%/payload_smartdpstools/root/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing</string>
 			</dict>
+			<key>Comment</key>
+			<string>Create a root for the expanded smartdpstools.pkg payload</string>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_smartdpstools/root/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/smartdpstools.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Extract the package payload of smartdpstools.pkg</string>
 			<key>Processor</key>
-			<string>MunkiInstallsItemsCreator</string> <!-- Create an installs array item for SmartDPSTools.InDesignPlugin -->
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>faux_root</key>
@@ -191,53 +213,63 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 					<string>/Applications/Adobe InDesign CC 2014/Plug-Ins/Woodwing/SmartDPSTools.InDesignPlugin</string>
 				</array>
 			</dict>
+			<key>Comment</key>
+			<string>Create an installs array item for SmartDPSTools.InDesignPlugin</string>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
 		</dict>
 		<dict>
+			<key>Comment</key>
+			<string>Merge the installs array into the pkginfo</string>
 			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string> <!-- Merge the installs array into the pkginfo -->
+			<string>MunkiPkginfoMerger</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string> <!-- Extract the package payload of scenterprise.pkg -->
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
-				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/scenterprise.pkg/Payload</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload_scenterprise</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/scenterprise.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
+			<key>Comment</key>
+			<string>Extract the package payload of scenterprise.pkg</string>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string> <!-- Extract the version number -->
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
 				<key>re_pattern</key>
 				<string>"CFBundleShortVersionString" = "v([\d\.]+)</string>
 				<key>result_output_var_name</key>
 				<string>discovered_version</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string> <!-- Extract the build number -->
-			<key>Arguments</key>
-			<dict>
 				<key>url</key>
 				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+			</dict>
+			<key>Comment</key>
+			<string>Extract the version number</string>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>re_pattern</key>
 				<string>"CFBundleShortVersionString" = .* build (\d+)</string>
 				<key>result_output_var_name</key>
 				<string>build</string>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
 			</dict>
+			<key>Comment</key>
+			<string>Extract the build number</string>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string> <!-- Add Munki pkginfo, set "version" to version plus build as the Munki -->
 			<key>Arguments</key>
 			<dict>
 				<key>additional_pkginfo</key>
@@ -246,28 +278,32 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 					<string>%discovered_version%.%build%</string>
 				</dict>
 			</dict>
+			<key>Comment</key>
+			<string>Add Munki pkginfo, set "version" to version plus build as the Munki</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string> <!-- Import the package into Munki -->
 			<key>Arguments</key>
 			<dict>
+				<key>additional_makepkginfo_options</key>
+				<array>
+					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts CC 2014/Fixed Scripts/wwuninstall_indesigncc2014_fixed.sh</string>
+					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts CC 2014/My Scripts/Forget InDesign Digital Magazine Receipts.sh</string>
+				</array>
+				<key>force_munkiimport</key>
+				<true/>
 				<key>pkg_path</key>
 				<string>%RECIPE_CACHE_DIR%/repack/SmartConnectionCC2014.pkg</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
-				<key>additional_makepkginfo_options</key>
-				<array>
-					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts/Fixed Scripts/wwuninstall_indesigncc2014_fixed.sh</string>
-					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts/My Scripts/Forget InDesign Digital Magazine Receipts.sh</string>
-				</array>
-				<key>force_munkiimport</key>
-				<true/>
 			</dict>
+			<key>Comment</key>
+			<string>Import the package into Munki</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_ids_set_optional_true</key>
@@ -320,6 +356,8 @@ Also, specific pkgs are disabled via InstallerChoices depending on the product t
 					<string>com.WoodWing.%receipt_string%.woodwingui.pkg</string>
 				</array>
 			</dict>
+			<key>Processor</key>
+			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
 		</dict>
 	</array>
 </dict>

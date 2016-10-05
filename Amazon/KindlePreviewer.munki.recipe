@@ -21,10 +21,10 @@ You will need to address this issue before Kindle Previewer will work correctly.
 	<string>com.github.foigus.munki.kindlepreviewer</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>KindlePreviewer</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/amazon</string>
+		<key>NAME</key>
+		<string>KindlePreviewer</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>

@@ -20,21 +20,17 @@ Skipped writing a .munki recipe since Timbuktu is never going to be updated agai
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
 				<string>%pathname%/Timbuktu Pro/Timbuktu Pro.app/Contents/Info.plist</string>
 			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 				<key>pkgdirs</key>
 				<dict>
 					<key>Applications</key>
@@ -44,93 +40,97 @@ Skipped writing a .munki recipe since Timbuktu is never going to be updated agai
 					<key>Library/LaunchAgents</key>
 					<string>0755</string>
 				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%pathname%/Timbuktu Pro</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Timbuktu Pro</string>
+				<key>source_path</key>
+				<string>%pathname%/Timbuktu Pro</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Copier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_DIR%/com.netopia.timbuktu.pro.host.plist</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/LaunchAgents/com.netopia.timbuktu.pro.host.plist</string>
-			</dict>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgInfoCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>template_path</key>
-				<string>%RECIPE_DIR%/PackageInfoTemplate</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/LaunchAgents/com.netopia.timbuktu.pro.host.plist</string>
+				<key>source_path</key>
+				<string>%RECIPE_DIR%/com.netopia.timbuktu.pro.host.plist</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>infofile</key>
 				<string>%RECIPE_CACHE_DIR%/PackageInfo</string>
 				<key>pkgtype</key>
 				<string>flat</string>
+				<key>template_path</key>
+				<string>%RECIPE_DIR%/PackageInfoTemplate</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgInfoCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_request</key>
 				<dict>
-					<key>pkgroot</key>
-					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
-					<key>pkgname</key>
-					<string>TimbuktuPro-%version%</string>
-					<key>pkgtype</key>
-					<string>flat</string>
-					<key>id</key>
-					<string>com.arris.TimbuktuPro.pkg</string>
-					<key>infofile</key>
-					<string>%RECIPE_CACHE_DIR%/PackageInfo</string>
-					<key>version</key>
-					<string>%version%</string>
 					<key>chown</key>
 					<array>
 						<dict>
+							<key>group</key>
+							<string>admin</string>
 							<key>path</key>
 							<string>Applications</string>
 							<key>user</key>
 							<string>root</string>
-							<key>group</key>
-							<string>admin</string>
 						</dict>
 						<dict>
-							<key>path</key>
-							<string>Applications/Timbuktu Pro/Timbuktu Pro.app/Contents/SharedSupport/Timbuktu Host.app/Contents/MacOS/Timbuktu Host</string>
-							<key>user</key>
-							<string>root</string>
 							<key>group</key>
 							<string>admin</string>
 							<key>mode</key>
 							<string>4755</string>
+							<key>path</key>
+							<string>Applications/Timbuktu Pro/Timbuktu Pro.app/Contents/SharedSupport/Timbuktu Host.app/Contents/MacOS/Timbuktu Host</string>
+							<key>user</key>
+							<string>root</string>
 						</dict>
 						<dict>
+							<key>group</key>
+							<string>wheel</string>
 							<key>path</key>
 							<string>Library</string>
 							<key>user</key>
 							<string>root</string>
-							<key>group</key>
-							<string>wheel</string>
 						</dict>
 					</array>
+					<key>id</key>
+					<string>com.arris.TimbuktuPro.pkg</string>
+					<key>infofile</key>
+					<string>%RECIPE_CACHE_DIR%/PackageInfo</string>
+					<key>pkgname</key>
+					<string>TimbuktuPro-%version%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>version</key>
+					<string>%version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
 		</dict>
 	</array>
 </dict>

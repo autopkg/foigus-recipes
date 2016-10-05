@@ -17,9 +17,7 @@
 	<string>com.github.foigus.download.ImageProcessorPro</string>
 	<key>Process</key>
 	<array>
- 		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>archive_path</key>
@@ -29,27 +27,25 @@
 				<key>purge_destination</key>
 				<true/>
 			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/README.txt</string>
 				<key>re_pattern</key>
 				<string>-- v([\d\.a-zA-Z]+) --</string>
 				<key>result_output_var_name</key>
 				<string>discovered_version</string>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/README.txt</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 				<key>pkgdirs</key>
 				<dict>
 					<key>Applications</key>
@@ -73,145 +69,149 @@
 					<key>Library/Application Support/Adobe/Startup Scripts CC/Adobe Photoshop</key>
 					<string>0755</string>
 				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts</string>
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/Image Processor Pro.jsx</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Copier</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts</string>
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/Image Processor Pro.xml</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Copier</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/Image Processor Pro</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts/Image Processor Pro</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/Image Processor Pro</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Copier</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts/icons</string>
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/icons/one.png</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts/icons</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Copier</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts/icons</string>
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/icons/two.png</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts/icons</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Copier</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts/icons</string>
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/icons/three.png</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts/icons</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Copier</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts/icons</string>
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/icons/four.png</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts/icons</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Copier</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts/icons</string>
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/icons/five.png</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015/Presets/Scripts/icons</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>Copier</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/photoshop_ximage_processor_pro.jsx</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/Startup Scripts CC/Adobe Photoshop</string>
-			</dict>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/Startup Scripts CC/Adobe Photoshop</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/ImageProcessorPro/photoshop_ximage_processor_pro.jsx</string>
+			</dict>
 			<key>Processor</key>
-			<string>PkgCreator</string>
+			<string>Copier</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_request</key>
 				<dict>
-					<key>pkgroot</key>
-					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
-					<key>pkgname</key>
-					<string>%NAME%-%discovered_version%</string>
-					<key>pkgtype</key>
-					<string>flat</string>
-					<key>id</key>
-					<string>net.sourceforge.ImageProcessorProPhotoshopCC2015.pkg</string>
-					<key>version</key>
-					<string>%discovered_version%</string>
 					<key>chown</key>
 					<array>
 						<dict>
+							<key>group</key>
+							<string>admin</string>
 							<key>path</key>
 							<string>Applications</string>
 							<key>user</key>
 							<string>root</string>
-							<key>group</key>
-							<string>admin</string>
 						</dict>
 						<dict>
+							<key>group</key>
+							<string>wheel</string>
 							<key>path</key>
 							<string>Library</string>
 							<key>user</key>
 							<string>root</string>
-							<key>group</key>
-							<string>wheel</string>
 						</dict>
 					</array>
+					<key>id</key>
+					<string>net.sourceforge.ImageProcessorProPhotoshopCC2015.pkg</string>
+					<key>pkgname</key>
+					<string>%NAME%-%discovered_version%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>version</key>
+					<string>%discovered_version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
 		</dict>
 	</array>
 </dict>

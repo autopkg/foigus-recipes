@@ -15,10 +15,10 @@ And then add his recipe for "Tableau".
 	<string>com.github.foigus.munki.tableau-desktop-FLEXNet</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>TableauDesktopFLEXNet</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/tableau</string>
+		<key>NAME</key>
+		<string>TableauDesktopFLEXNet</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>
@@ -35,12 +35,12 @@ And then add his recipe for "Tableau".
 			<string>Tableau Desktop FLEXNet</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
 			<key>update_for</key>
 			<array>
 				<string>TableauDesktop</string>
 			</array>
-			<key>unattended_install</key>
-			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

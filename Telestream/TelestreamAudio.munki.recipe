@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest Telestream Audio package and imports it into Munki.
+
+Note major version upgrades of Wirecast are generally paid upgrades.  Thus override MAJOR_VERSION with your preferred version (this recipe covers Wirecast 4, 5, and 6).
+
+Since this package does not appear to have been upgraded in a while, not spending time figuring out where the "real" version number lies _yet_.
+
+NOTE THIS RECIPE DOESN'T DO A WHOLE LOT WITHOUT WIRECAST. This recipe is an update_for Wirecast</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.TelestreamAudio</string>
+	<key>Input</key>
+	<dict>
+		<key>MAJOR_VERSION</key>
+		<string>6</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/telestream</string>
+		<key>NAME</key>
+		<string>TelestreamAudio</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Wirecast</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-telestream-%NAME%%MAJOR_VERSION%</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>Additional drivers for Wirecast features.</string>
+			<key>developer</key>
+			<string>Telestream</string>
+			<key>display_name</key>
+			<string>Telestream Audio Driver %MAJOR_VERSION%</string>
+			<key>name</key>
+			<string>%NAME%%MAJOR_VERSION%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>update_for</key>
+			<array>
+				<string>Wirecast%MAJOR_VERSION%</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.TelestreamAudio</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
