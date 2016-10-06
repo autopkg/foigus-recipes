@@ -3,22 +3,22 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads Adobe Output Module for Bridge CC and creates a package.  Version was chosen because that's the date of most of the component files in the download.
+	<string>Downloads Adobe Output Module for Bridge CC 2015 and creates a package.  Version was chosen based on AdobeOutputModule.jsx modified date.
 
 Skipped writing a .munki recipe since Adobe Output Module is unlikely to be updated again.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.pkg.AdobeOutputModule</string>
+	<string>com.github.foigus.pkg.AdobeOutputModuleCC2015</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>AdobeOutputModule</string>
+		<string>AdobeOutputModuleCC2015</string>
 		<key>version</key>
-		<string>2013.6.14</string>
+		<string>2016.5.31</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.download.AdobeOutputModule</string>
+	<string>com.github.foigus.download.AdobeOutputModuleCC2015</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -43,9 +43,9 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 					<string>0755</string>
 					<key>Library/Application Support/Adobe</key>
 					<string>0775</string>
-					<key>Library/Application Support/Adobe/Bridge CC Extensions</key>
+					<key>Library/Application Support/Adobe/Bridge CC 2015 Extensions</key>
 					<string>0775</string>
-					<key>Library/Application Support/Adobe/Bridge CC Extensions/Workspaces</key>
+					<key>Library/Application Support/Adobe/Bridge CC 2015 Extensions/Workspaces</key>
 					<string>0777</string>
 				</dict>
 				<key>pkgroot</key>
@@ -58,7 +58,7 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/Bridge CC Extensions/Workspaces/AdobeOutputModule.workspace</string>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/Bridge CC 2015 Extensions/Workspaces/AdobeOutputModule.workspace</string>
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%/AOM_Mac/AdobeOutputModule.workspace</string>
 			</dict>
@@ -69,7 +69,7 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/Bridge CC Extensions/Adobe Output Module</string>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/Bridge CC 2015 Extensions/Adobe Output Module</string>
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%/AOM_Mac/Adobe Output Module</string>
 			</dict>
@@ -105,7 +105,7 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 							<key>mode</key>
 							<string>755</string>
 							<key>path</key>
-							<string>Library/Application Support/Adobe/Bridge CC Extensions</string>
+							<string>Library/Application Support/Adobe/Bridge CC 2015 Extensions</string>
 							<key>user</key>
 							<string>root</string>
 						</dict>
@@ -115,7 +115,7 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 							<key>mode</key>
 							<string>777</string>
 							<key>path</key>
-							<string>Library/Application Support/Adobe/Bridge CC Extensions/Workspaces</string>
+							<string>Library/Application Support/Adobe/Bridge CC 2015 Extensions/Workspaces</string>
 							<key>user</key>
 							<string>root</string>
 						</dict>
@@ -125,13 +125,13 @@ Skipped writing a .munki recipe since Adobe Output Module is unlikely to be upda
 							<key>mode</key>
 							<string>755</string>
 							<key>path</key>
-							<string>Library/Application Support/Adobe/Bridge CC Extensions/Workspaces/AdobeOutputModule.workspace</string>
+							<string>Library/Application Support/Adobe/Bridge CC 2015 Extensions/Workspaces/AdobeOutputModule.workspace</string>
 							<key>user</key>
 							<string>root</string>
 						</dict>
 					</array>
 					<key>id</key>
-					<string>com.adobe.AdobeOutputModule.pkg</string>
+					<string>com.adobe.AdobeOutputModuleCC2015.pkg</string>
 					<key>pkgname</key>
 					<string>%NAME%-%version%</string>
 					<key>pkgroot</key>
