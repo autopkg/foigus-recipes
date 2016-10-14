@@ -11,7 +11,7 @@ No code signature check since the package is unsigned.</string>
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://authoring-tools.s3.amazonaws.com/KindleTextbookCreatorInstaller.pkg</string>
+		<string>https://authoring-tools.s3.amazonaws.com/KindleTextbookCreatorInstaller.pkg</string>
 		<key>NAME</key>
 		<string>KindleTextbookCreator</string>
 	</dict>
