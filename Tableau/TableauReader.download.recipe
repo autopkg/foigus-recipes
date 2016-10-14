@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>TableauReader</string>
 		<key>url</key>
-		<string>http://www.tableau.com/downloads/reader/mac</string>
+		<string>https://www.tableau.com/downloads/reader/mac</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.4.1</string>
