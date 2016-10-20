@@ -29,7 +29,7 @@ https://www.ecamm.com/cgi-bin/customercenter ? u=john%2Edoe%40example%2Ecom &amp
 			</array>
 			<key>catalogs</key>
 			<array>
-				<string>development-ecamm-CallRecorderforSkype</string>
+				<string>testing</string>
 			</array>
 			<key>category</key>
 			<string>Utility</string>
