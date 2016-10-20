@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the most current FontExplorer X Pro 5.5 Plugin for Photoshop CC 2015 and imports it into Munki.</string>
+	<string>Downloads the most current FontExplorer X Pro 5.5 Plugin for Photoshop CC 2015.5 and imports it into Munki.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.munki.FontExplorerXPro55PluginPSCC2015</string>
+	<string>com.github.foigus.munki.FontExplorerXPro55PluginPSCC20155</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
