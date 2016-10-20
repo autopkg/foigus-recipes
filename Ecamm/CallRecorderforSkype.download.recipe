@@ -5,17 +5,24 @@
 	<key>Description</key>
 	<string>Downloads latest Call Recorder for Skype installer.
 
-Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center URL.</string>
+Note: CUSTOMER_EMAIL and REG_CODE _must_ be overridden in order for this recipe to work.
+
+Log in to your Ecamm customer center and inspect the URL for these values:
+- The CUSTOMER_EMAIL is the "u" parameter. It's your customer email address, URL-encoded.
+- The REG_CODE is the "c" parameter, a six-character string.
+
+Example (spaces added for clarity):
+https://www.ecamm.com/cgi-bin/customercenter ? u=john%2Edoe%40example%2Ecom &amp; c=XYZ123</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.CallRecorderforSkype</string>
 	<key>Input</key>
 	<dict>
-		<key>CUSTOMER_CENTER_URL</key>
-		<string>http://www.ecamm.com/cgi-bin/custcent?url</string>
+		<key>CUSTOMER_EMAIL</key>
+		<string>john%2Edoe%40example%2Ecom</string>
+		<key>REG_CODE</key>
+		<string>XYZ123</string>
 		<key>NAME</key>
 		<string>CallRecorderforSkype</string>
-		<key>USER_AGENT</key>
-		<string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/601.4.4 (KHTML, like Gecko) Version/9.0.3 Safari/601.4.4</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -25,10 +32,17 @@ Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center 
 			<key>Arguments</key>
 			<dict>
 				<key>predicate</key>
-				<string>CUSTOMER_CENTER_URL == "http://www.ecamm.com/cgi-bin/custcent?url"</string>
+				<string>CUSTOMER_EMAIL CONTAINS "40example"</string>
 			</dict>
-			<key>Comment</key>
-			<string>Stop processing if the Customer Center URL isn't overridden</string>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>REG_CODE == "XYZ123"</string>
+			</dict>
 			<key>Processor</key>
 			<string>StopProcessingIf</string>
 		</dict>
@@ -36,14 +50,11 @@ Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center 
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>http://www.ecamm.com/cgi-bin/downloadreg.*CallRecorder.*zip</string>
-				<key>request_headers</key>
-				<dict>
-					<key>user-agent</key>
-					<string>%USER_AGENT%</string>
-				</dict>
+				<string>p=callrecorder&amp;format=zip&amp;a=\/CallRecorder([\d\.]+).zip</string>
+				<key>result_output_var_name</key>
+				<string>version</string>
 				<key>url</key>
-				<string>%CUSTOMER_CENTER_URL%</string>
+				<string>https://www.ecamm.com/cgi-bin/customercenter?u=%CUSTOMER_EMAIL%&amp;c=%REG_CODE%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -52,7 +63,7 @@ Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center 
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%match%</string>
+				<string>https://cdn2.ecamm.com/cgi-bin/downloadreg?c=%REG_CODE%&amp;email=%CUSTOMER_EMAIL%&amp;p=callrecorder&amp;format=zip&amp;a=/CallRecorder%version%.zip</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>

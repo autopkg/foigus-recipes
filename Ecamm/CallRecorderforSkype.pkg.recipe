@@ -5,7 +5,14 @@
 	<key>Description</key>
 	<string>Downloads latest Call Recorder for Skype installer and uses it to create a package.
 
-Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center URL.</string>
+Note: CUSTOMER_EMAIL and REG_CODE _must_ be overridden in order for this recipe to work.
+
+Log in to your Ecamm customer center and inspect the URL for these values:
+- The CUSTOMER_EMAIL is the "u" parameter. It's your customer email address, URL-encoded.
+- The REG_CODE is the "c" parameter, a six-character string.
+
+Example (spaces added for clarity):
+https://www.ecamm.com/cgi-bin/customercenter ? u=john%2Edoe%40example%2Ecom &amp; c=XYZ123</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.pkg.CallRecorderforSkype</string>
 	<key>Input</key>
