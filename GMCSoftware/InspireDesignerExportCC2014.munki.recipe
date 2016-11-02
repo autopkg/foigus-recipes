@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Inspire Designer Export plugin for InDesign CC 2014 and imports it into Munki
+
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add hjuutilainen's repo via:
+
+autopkg repo-add hjuutilainen-recipes
+
+- This recipe points to the default installation location of InDesign CC 2014.  Adjust the path as needed.
+- This recipe does not download the Inspire Designer Export plugin disk image--feed the disk image into the recipe via the following format:
+
+autopkg run InspireDesignerExportCC2014.munki -p /path/to/Adobe-InDesign-CC-Plugin-10.0.1-GA.dmg</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.InspireDesignerExportPluginCC2014</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/gmcsoftware</string>
+		<key>NAME</key>
+		<string>InspireDesignerExportPluginCC2014</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe InDesign CC 2014</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-gmscosftware-InspireDesignerExportPluginCC2014</string>
+			</array>
+			<key>category</key>
+			<string>Plugins</string>
+			<key>description</key>
+			<string>This plugin for Adobe InDesign CC exports InDesign documents into XML and/or WFD files that can be imported into Inspire Designer.</string>
+			<key>developer</key>
+			<string>GMC Software</string>
+			<key>display_name</key>
+			<string>Inspire Designer Export Plugin CC 2014</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>InDesignCC2014</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.InspireDesignerExportPluginCC2014</string>
+	<key>Process</key>
+	<array>
+        <dict>
+            <key>Processor</key>
+            <string>DmgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>dmg_root</key>
+                <string>%RECIPE_CACHE_DIR%/copied</string>
+                <key>dmg_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+            </dict>
+        </dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Comment</key>
+			<string>Import the package into Munki</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
