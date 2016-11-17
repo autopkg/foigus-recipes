@@ -23,7 +23,7 @@
 				<key>result_output_var_name</key>
 				<string>url</string>
 				<key>url</key>
-				<string>http://accubarcode.com</string>
+				<string>https://accubarcode.com</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
