@@ -10,8 +10,8 @@ Can't add CodeSignatureVerifier because Prepros is unsigned!</string>
 	<string>com.github.foigus.download.Prepros</string>
 	<key>Input</key>
 	<dict>
-		<key>DOWNLOAD_URL</key>
-		<string>http://bit.ly/prepros-mac</string>
+		<key>DOWNLOAD_PAGE</key>
+		<string>https://prepros.io/downloads</string>
 		<key>NAME</key>
 		<string>Prepros</string>
 	</dict>
@@ -22,10 +22,21 @@ Can't add CodeSignatureVerifier because Prepros is unsigned!</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_PAGE%</string>
+				<key>re_pattern</key>
+				<string>https:\/\/bit.ly\/prepros-[\d\.]+-mac</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>filename</key>
 				<string>%NAME%.zip</string>
 				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
+				<string>%match%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -33,6 +44,26 @@ Can't add CodeSignatureVerifier because Prepros is unsigned!</string>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/Prepros.app</string>
+				<key>requirement</key>
+				<string>identifier "io.prepros.prepros" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "6G48VEZSW6"</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

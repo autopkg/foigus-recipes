@@ -39,7 +39,7 @@ Requiring a logout since the GUI installer reopens ColorNavigator, but not from 
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
-			<true/>
+			<false/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

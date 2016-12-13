@@ -19,7 +19,7 @@ https://www.xrite.com/x-rite-device-services-xrd/support
 		<key>NAME</key>
 		<string>ColorMunkiPhoto</string>
 		<key>SPARKLE_FEED_URL</key>
-		<string>http://downloads.xrite.com/Downloads/AutoUpdate/ColorMunkiPhoto/ColorMunkiPhoto_mac_appcast.xml</string>
+		<string>https://downloads.xrite.com/Downloads/AutoUpdate/ColorMunkiPhoto/ColorMunkiPhoto_mac_appcast.xml</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>

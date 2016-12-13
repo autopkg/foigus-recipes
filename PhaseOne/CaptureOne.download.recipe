@@ -13,7 +13,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
-		<string>9</string>
+		<string>10</string>
 		<key>NAME</key>
 		<string>CaptureOne</string>
 	</dict>
@@ -40,7 +40,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 				<key>filename</key>
 				<string>CaptureOne.dmg</string>
 				<key>url</key>
-				<string>http://downloads.phaseone.com/06b2b300-a450-41e4-b84b-a975d29ce6e8/International/CaptureOne.Mac.%truncated_version%.dmg</string>
+				<string>http://downloads.phaseone.com/9c7cb7b7-1525-4cfc-86a8-7d8f5a51f38e/International/CaptureOne.Mac.%truncated_version%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -55,7 +55,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 				<key>input_path</key>
 				<string>%pathname%/Capture One %MAJOR_VERSION%.app</string>
 				<key>requirement</key>
-				<string>identifier "com.phaseone.captureone9" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5WTDB5F65L"</string>
+				<string>identifier "com.phaseone.captureone10" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5WTDB5F65L"</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>

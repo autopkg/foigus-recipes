@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest release of XtraFinder.</string>
+	<string>Downloads the latest release of XtraFinder.
+
+Dropped CodeSignatureVerifier October 17, 2016 because it doesn't seem the lack of a signed package is going to be fixed any time soon.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.XtraFinder</string>
 	<key>Input</key>
@@ -33,21 +35,6 @@
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>expected_authority_names</key>
-				<array>
-					<string>Developer ID Installer: Tran Ky Nam (KHEMQ2FD9E)</string>
-					<string>Developer ID Certification Authority</string>
-					<string>Apple Root CA</string>
-				</array>
-				<key>input_path</key>
-				<string>%pathname%/XtraFinder.pkg</string>
-			</dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

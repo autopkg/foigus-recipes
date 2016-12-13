@@ -11,7 +11,7 @@ NOTE: As of 2/27/2016 (the 9.2.5 release of Tableau's software) the TableauFLEXN
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://www.tableau.com/downloads/desktop/mac</string>
+		<string>https://www.tableau.com/downloads/desktop/mac</string>
 		<key>NAME</key>
 		<string>TableauDesktopFLEXNet</string>
 	</dict>

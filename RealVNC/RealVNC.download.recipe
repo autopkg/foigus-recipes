@@ -3,9 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest RealVNC disk image.
-
-This recipe is known to redownload every time it's run.  Ask RealVNC to put their download somewhere AutoPkg can figure out whether it's necessary.</string>
+	<string>Downloads latest RealVNC disk image.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.RealVNC</string>
 	<key>Input</key>
@@ -21,11 +19,11 @@ This recipe is known to redownload every time it's run.  Ask RealVNC to put thei
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>download\/vnc\/macosx\/file\/" method="post"\n.*data-ga-label="vnc ([\d.]*)</string>
+				<string>&lt;button id="download" type="submit"&gt;Download VNC Connect ([\d\.]+)&lt;\/button&gt;</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
-				<string>https://www.realvnc.com/download/vnc/macosx/</string>
+				<string>https://www.realvnc.com/download/vnc/</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
