@@ -11,7 +11,7 @@ Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center 
 	<key>Input</key>
 	<dict>
 		<key>CUSTOMER_CENTER_URL</key>
-		<string>http://www.ecamm.com/cgi-bin/custcent?url</string>
+		<string>https://www.ecamm.com/cgi-bin/custcent?url</string>
 		<key>NAME</key>
 		<string>CallRecorderforSkype</string>
 		<key>USER_AGENT</key>
@@ -25,7 +25,7 @@ Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center 
 			<key>Arguments</key>
 			<dict>
 				<key>predicate</key>
-				<string>CUSTOMER_CENTER_URL == "http://www.ecamm.com/cgi-bin/custcent?url"</string>
+				<string>CUSTOMER_CENTER_URL == "https://www.ecamm.com/cgi-bin/custcent?url"</string>
 			</dict>
 			<key>Comment</key>
 			<string>Stop processing if the Customer Center URL isn't overridden</string>
@@ -36,7 +36,7 @@ Note CUSTOMER_CENTER_URL _must_ be overridden with _your_ Ecamm Customer Center 
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>http://www.ecamm.com/cgi-bin/downloadreg.*CallRecorder.*zip</string>
+				<string>https://www.ecamm.com/cgi-bin/downloadreg.*CallRecorder.*zip</string>
 				<key>request_headers</key>
 				<dict>
 					<key>user-agent</key>
