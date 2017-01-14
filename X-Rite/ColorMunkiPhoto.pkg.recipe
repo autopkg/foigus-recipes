@@ -54,33 +54,6 @@ If any of this is critical, please handle it in your management system.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>path_list</key>
-				<array>
-					<string>%RECIPE_CACHE_DIR%/unpack/root.pkg/Scripts/postinstall</string>
-				</array>
-			</dict>
-			<key>Processor</key>
-			<string>PathDeleter</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>file_content</key>
-				<string>#!/bin/bash
-
-#Placeholder script--just exit with success
-exit 0</string>
-				<key>file_mode</key>
-				<string>0755</string>
-				<key>file_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/root.pkg/Scripts/postinstall</string>
-			</dict>
-			<key>Processor</key>
-			<string>FileCreator</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
 				<key>pkgdirs</key>
 				<dict/>
 				<key>pkgroot</key>
