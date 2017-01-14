@@ -3,15 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest version of ColorMunki Photo and deletes a postinstall that will likely fail.  The postinstall tries to do the following:
+	<string>Downloads latest version of ColorMunki Photo and modifies a postinstall to handle a potentially not-renamed /Applications/ColorMunkiPhoto from versions of ColorMunki Photo before 1.2.2. 
 
-- Add the following to the current user's login items:
-/Library/Application Support/Colormunki/Photo/Tools/ColorMunki Photo Tray.app
-- Delete the existing
-/Applications/ColorMunki Photo
-- Rename /Applications/ColorMunkiPhoto (i.e. as the package installs it) to /Applications/ColorMunki Photo
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add this repo via:
 
-If any of this is critical, please handle it in your management system.</string>
+autopkg repo-add hjuutilainen-recipes</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.pkg.ColorMunkiPhoto</string>
 	<key>Input</key>
