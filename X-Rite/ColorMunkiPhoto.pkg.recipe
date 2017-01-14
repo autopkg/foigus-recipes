@@ -84,7 +84,7 @@ autopkg repo-add hjuutilainen-recipes</string>
 ##Edit to remove /Applications/ColorMunkiPhoto, if it exists
 ##Realize that this package will still not install properly on a non-boot volume
 pathToDelete="/Applications/ColorMunkiPhoto"
-if [ -d "${pathToDelete}"
+if [ -d "${pathToDelete}" ]
 then
 	rm -rf "${pathToDelete}"
 fi
