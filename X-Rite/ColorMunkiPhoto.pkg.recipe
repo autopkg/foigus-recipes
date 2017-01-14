@@ -74,8 +74,47 @@ If any of this is critical, please handle it in your management system.</string>
 					<string>%RECIPE_CACHE_DIR%/unpack/XRD_Manager_Component.pkg/Scripts/postinstall</string>
 				</array>
 			</dict>
+			<key>Comment</key>
+			<string>A mix of their postinstall plus my deletion of /Applications/ColorMunkiPhoto, if necessary</string>
 			<key>Processor</key>
 			<string>PathDeleter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>#!/bin/sh
+##Edit to remove /Applications/ColorMunkiPhoto, if it exists
+##Realize that this package will still not install properly on a non-boot volume
+pathToDelete="/Applications/ColorMunkiPhoto"
+if [ -d "${pathToDelete}"
+then
+	rm -rf "${pathToDelete}"
+fi
+
+echo "Updating launch agent permissions..."
+chown root:wheel "/Library/LaunchAgents"
+chmod 755 "/Library/LaunchAgents"
+chown root:wheel "/Library/LaunchAgents/com.xrite.device.softwareupdate.plist"
+chmod 644 "/Library/LaunchAgents/com.xrite.device.softwareupdate.plist"
+
+echo "Updating launch daemon permissions..."
+chown root:wheel "/Library/LaunchDaemons"
+chmod 755 "/Library/LaunchDaemons"
+chown root:wheel "/Library/LaunchDaemons/com.xrite.device.xrdd.plist"
+chmod 644 "/Library/LaunchDaemons/com.xrite.device.xrdd.plist"
+
+echo "Creating symlink in /Library/Frameworks..."
+ln -Ffs "/Library/Application Support/X-Rite/Frameworks/XRiteDevice.framework" "/Library/Frameworks/XRiteDevice.framework"
+
+exit 0</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/XRD_Manager_Component.pkg/Scripts/postinstall</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileCreator</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
