@@ -34,6 +34,8 @@ Restart is required since the original package requires a restart.</string>
 			<string>X-Rite</string>
 			<key>display_name</key>
 			<string>ColorMunki Photo</string>
+			<key>minimum_os_version</string>
+			<string>10.10</string>
 			<key>name</key>
 			<string>%NAME%</string>
 		</dict>
