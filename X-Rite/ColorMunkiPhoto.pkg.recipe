@@ -54,6 +54,21 @@ If any of this is critical, please handle it in your management system.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>74964896c7c9d33a8c3ff1eae9bdc2a8</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/XRD_Manager_Component.pkg/Scripts/postinstall</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches XRD_Manager_Component.pkg postinstall script from ColorMunki Photo 1.2.2</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>pkgdirs</key>
 				<dict/>
 				<key>pkgroot</key>
