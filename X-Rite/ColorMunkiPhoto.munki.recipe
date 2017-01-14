@@ -63,7 +63,7 @@ Restart is required since the original package requires a restart.</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload/</string>
 				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/root.pkg/Payload</string>
+				<string>%RECIPE_CACHE_DIR%/unpack/colormunkiPhoto.pkg/Payload</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
