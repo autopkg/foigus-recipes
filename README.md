@@ -11,6 +11,11 @@ A couple recipes have parent recipes or are additional software to add to someon
 autopkg repo-add novaksam-recipes
 ```
 
+### ColorMunki Photo
+```
+autopkg repo-add hjuutilainen-recipes
+```
+
 ### Tableau Desktop FLEXNet:
 ```
 autopkg repo-add gmarnin-recipes
