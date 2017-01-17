@@ -22,10 +22,10 @@ Can't add CodeSignatureVerifier because Prepros is unsigned!</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_PAGE%</string>
 				<key>re_pattern</key>
 				<string>https:\/\/bit.ly\/prepros-[\d\.]+-mac</string>
+				<key>url</key>
+				<string>%DOWNLOAD_PAGE%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>

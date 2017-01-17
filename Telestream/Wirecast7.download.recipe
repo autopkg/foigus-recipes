@@ -31,10 +31,10 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>http://www.telestream.net%url_suffix%</string>
 				<key>filename</key>
 				<string>Wirecast7.dmg</string>
+				<key>url</key>
+				<string>http://www.telestream.net%url_suffix%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>

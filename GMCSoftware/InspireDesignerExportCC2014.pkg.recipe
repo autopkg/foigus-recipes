@@ -34,10 +34,10 @@ autopkg run InspireDesignerExportCC2014.pkg -p /path/to/Adobe-InDesign-CC-Plugin
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>overwrite</key>
-				<true/>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg</string>
+				<key>overwrite</key>
+				<true/>
 				<key>source_path</key>
 				<string>%PKG%/*.mpkg</string>
 			</dict>

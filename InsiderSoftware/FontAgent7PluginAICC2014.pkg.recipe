@@ -12,14 +12,14 @@
 		<string>FontAgent7PluginAICC2014</string>
 		<key>PKGID</key>
 		<string>com.insidersoftware.fontagentplugins.aicc2014</string>
+		<key>PLUGIN_INSTALL_DIR</key>
+		<string>Applications/Adobe Illustrator CC 2014/Plug-ins.localized</string>
+		<key>PLUGIN_PATH_FOR_VERSIONER</key>
+		<string>FontAgent.aip/Contents/Info.plist</string>
 		<key>PLUGIN_SOURCE_TITLE</key>
 		<string>Illustrator</string>
 		<key>REVISION</key>
 		<string>CC 2014</string>
-		<key>PLUGIN_PATH_FOR_VERSIONER</key>
-		<string>FontAgent.aip/Contents/Info.plist</string>
-		<key>PLUGIN_INSTALL_DIR</key>
-		<string>Applications/Adobe Illustrator CC 2014/Plug-ins.localized</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -65,71 +65,71 @@
 			<string>PkgPayloadUnpacker</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/pkg_root</string>
 				<key>pkgdirs</key>
 				<dict>
 					<key>Applications</key>
 					<string>0775</string>
 				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkg_root</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Copier</string>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload/Applications/FontAgent 7/FontAgent.app/Contents/Library/Plugins/Adobe Creative Suite/%PLUGIN_SOURCE_TITLE%/%REVISION%</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload/Applications/FontAgent 7/FontAgent.app/Contents/Library/Plugins/Adobe Creative Suite/%PLUGIN_SOURCE_TITLE%/%REVISION%</string>
 			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkg_root/%PLUGIN_INSTALL_DIR%/%PLUGIN_PATH_FOR_VERSIONER%</string>
 			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgCreator</string>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_request</key>
 				<dict>
-					<key>pkgroot</key>
-					<string>%RECIPE_CACHE_DIR%/pkg_root</string>
-					<key>pkgdir</key>
-					<string>%RECIPE_CACHE_DIR%</string>
-					<key>id</key>
-					<string>%PKGID%</string>
-					<key>pkgname</key>
-					<string>%NAME%</string>
-					<key>version</key>
-					<string>%version%</string>
 					<key>chown</key>
 					<array>
 						<dict>
+							<key>group</key>
+							<string>admin</string>
 							<key>path</key>
 							<string>Applications</string>
 							<key>user</key>
 							<string>root</string>
-							<key>group</key>
-							<string>admin</string>
 						</dict>
 					</array>
+					<key>id</key>
+					<string>%PKGID%</string>
+					<key>pkgdir</key>
+					<string>%RECIPE_CACHE_DIR%</string>
+					<key>pkgname</key>
+					<string>%NAME%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkg_root</string>
+					<key>version</key>
+					<string>%version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
 		</dict>
 	</array>
 </dict>
