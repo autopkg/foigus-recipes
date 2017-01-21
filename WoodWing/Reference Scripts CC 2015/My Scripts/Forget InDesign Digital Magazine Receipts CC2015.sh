@@ -1,5 +1,13 @@
 #!/bin/bash
 
+#Wipe out the Smart Connection Book Support folder, if it exists
+smartConnectionBookSupportDirectory="/Applications/Adobe InDesign CC 2015/Scripts/Scripts Panel/Smart Connection Book Support"                                        
+
+if [ -d "${smartConnectionBookSupportDirectory}" ]
+then
+        rm -rf "${smartConnectionBookSupportDirectory}"                                                                                                               
+fi
+
 #List of receipt names to forget
 #
 #The same uninstaller is used for Digital Magazine plugins as is used for the regular
