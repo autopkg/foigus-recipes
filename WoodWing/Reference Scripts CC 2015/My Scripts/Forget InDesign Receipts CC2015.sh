@@ -1,5 +1,13 @@
 #!/bin/bash
 
+#Wipe out the Smart Connection Book Support folder, if it exists
+smartConnectionBookSupportDirectory="/Applications/Adobe InDesign CC 2015/Scripts/Scripts Panel/Smart Connection Book Support"                                        
+
+if [ -d "${smartConnectionBookSupportDirectory}" ]
+then
+        rm -rf "${smartConnectionBookSupportDirectory}"                                                                                                               
+fi
+
 #List of receipt names to forget
 receiptsToForget=( ElementLabel ElementLabelUI InDesign PluginConfig SCCoreContent SCCoreDataLink SCCoreDataLinkUI SCCoreInDesign SCCoreStickyNotes SCCoreStickyNotesUI SCCoreTemplate SCEntAccessUI SCEntEditioning SCEntEditioningUI SCEnterprise SCEnterpriseUI SCEntFields SCEntFieldsUI SCEntScripting SCEntWidgets SCProElementsPanel SCProFramesInDesign SCProInDesignUI SCProPanel SmartConnectionBookSupport SmartImage SmartImageUI SmartJump SmartJumpInDesignUI style WoodWing woodwingui WoodWingWidgets WoodWingZXP WWActivate WWSettings )
 
