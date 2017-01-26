@@ -11,7 +11,7 @@
 		<key>DOWNLOAD_URL</key>
 		<string>https://dl.google.com/adwords_editor/Google_AdWords_Editor.dmg</string>
 		<key>NAME</key>
-		<string>GoogleAdWords</string>
+		<string>GoogleAdWordsEditor</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
