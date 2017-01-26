@@ -35,30 +35,28 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%pathname%/.keystone_install</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/keystone_install</string>
+				<key>source_path</key>
+				<string>%pathname%/.keystone_install</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/keystone_install</string>
 				<key>re_pattern</key>
 				<string>\nversion="([\d\.]+)"</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/keystone_install</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
@@ -66,6 +64,8 @@
 				<key>requirement</key>
 				<string>identifier "com.google.googleadwordseditorlauncher" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = EQHXZ8M8AV</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>
