@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest Quite Imposing 4 Plus disk image an imports an Acrobat DC-focused package into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.QuiteImposing4PlusAcrobatDC</string>
+	<key>Input</key>
+	<dict>
+		<key>LANGUAGE</key>
+		<string>en</string>
+		<key>MAJOR_VERSION</key>
+		<string>4</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/quitesoftware</string>
+		<key>NAME</key>
+		<string>QuiteImposing4PlusAcrobatDC</string>
+		<key>PLUS</key>
+		<string>plus</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe Acrobat</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-quitesoftware-QuiteImposing4PlusAcrobatDC</string>
+			</array>
+			<key>category</key>
+			<string>Utility</string>
+			<key>description</key>
+			<string>Quite Imposing Plus is an imposition plug-in for Adobe’s Acrobat. This is all about combining pages onto larger sheets to make books, booklets, or special arrangements. Creating booklets or arranging complex imposition layouts has never been easier and all without leaving Acrobat!</string>
+			<key>developer</key>
+			<string>Quite Software</string>
+			<key>display_name</key>
+			<string>Quite Imposing Plus for Acrobat DC</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>AcrobatDC</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.QuiteImposing4PlusAcrobatDC</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
