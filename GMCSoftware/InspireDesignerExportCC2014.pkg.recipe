@@ -49,6 +49,20 @@ autopkg run InspireDesignerExportCC2014.pkg -p /path/to/Adobe-InDesign-CC-Plugin
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>info_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/Description.plist</string>
+				<key>plist_keys</key>
+				<dict>
+					<key>IFPkgDescriptionTitle</key>
+					<string>fancy_package_name</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PlistReader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
@@ -143,20 +157,9 @@ TestInDesignFolder()
 				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/plugin-utils.sh</string>
 			</dict>
 			<key>Comment</key>
-			<string>Write a fixed "plugin-utils.sh" with an InDesign cc 2014-specific version, note this is the same script as plugin-utils_fixed_cc2014.sh in this repo</string>
+			<string>Write a fixed "plugin-utils.sh" with an InDesign CC 2014-specific version, note this is the same script as plugin-utils_fixed_cc2014.sh in this repo</string>
 			<key>Processor</key>
 			<string>FileCreator</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/Adobe InDesign CC Plugin * GA.pkg</string>
-			</dict>
-			<key>Comment</key>
-			<string>Find path to the "Adobe InDesign CC Plugin * GA.pkg"</string>
-			<key>Processor</key>
-			<string>FileFinder</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
@@ -166,7 +169,7 @@ TestInDesignFolder()
 				<key>checksum</key>
 				<string>f638ab030aa7c4f58d607b0f905e3a48</string>
 				<key>pathname</key>
-				<string>%found_filename%/Contents/Resources/plugin-utils.sh</string>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/%fancy_package_name%.pkg/Contents/Resources/plugin-utils.sh</string>
 			</dict>
 			<key>Comment</key>
 			<string>Verify MD5 matches 10.0.1 GA "plugin-utils.sh" script</string>
@@ -178,7 +181,7 @@ TestInDesignFolder()
 			<dict>
 				<key>path_list</key>
 				<array>
-					<string>%found_filename%/Contents/Resources/plugin-utils.sh</string>
+					<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/%fancy_package_name%.pkg/Contents/Resources/plugin-utils.sh</string>
 				</array>
 			</dict>
 			<key>Comments</key>
@@ -252,23 +255,12 @@ TestInDesignFolder()
 				<key>file_mode</key>
 				<string>0755</string>
 				<key>file_path</key>
-				<string>%found_filename%/Contents/Resources/plugin-utils.sh</string>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/%fancy_package_name%.pkg/Contents/Resources/plugin-utils.sh</string>
 			</dict>
 			<key>Comment</key>
-			<string>Write a fixed "plugin-utils.sh" with an InDesign cc 2014-specific version, note this is the same script as plugin-utils_fixed_cc2014.sh in this repo</string>
+			<string>Write a fixed "plugin-utils.sh" with an InDesign CC 2014-specific version, note this is the same script as plugin-utils_fixed_cc2014.sh in this repo</string>
 			<key>Processor</key>
 			<string>FileCreator</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/Adobe InDesign CC Plugin * GA Configuration File.pkg</string>
-			</dict>
-			<key>Comment</key>
-			<string>Find path to the "Adobe InDesign CC Plugin * Configuration File.pkg"</string>
-			<key>Processor</key>
-			<string>FileFinder</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
@@ -278,7 +270,7 @@ TestInDesignFolder()
 				<key>checksum</key>
 				<string>f638ab030aa7c4f58d607b0f905e3a48</string>
 				<key>pathname</key>
-				<string>%found_filename%/Contents/Resources/plugin-utils.sh</string>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/%fancy_package_name% Configuration File.pkg/Contents/Resources/plugin-utils.sh</string>
 			</dict>
 			<key>Comment</key>
 			<string>Verify MD5 matches 10.0.1 GA "plugin-utils.sh" script</string>
@@ -290,7 +282,7 @@ TestInDesignFolder()
 			<dict>
 				<key>path_list</key>
 				<array>
-					<string>%found_filename%/Contents/Resources/plugin-utils.sh</string>
+					<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/%fancy_package_name% Configuration File.pkg/Contents/Resources/plugin-utils.sh</string>
 				</array>
 			</dict>
 			<key>Comments</key>
@@ -364,10 +356,10 @@ TestInDesignFolder()
 				<key>file_mode</key>
 				<string>0755</string>
 				<key>file_path</key>
-				<string>%found_filename%/Contents/Resources/plugin-utils.sh</string>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/%fancy_package_name% Configuration File.pkg/Contents/Resources/plugin-utils.sh</string>
 			</dict>
 			<key>Comment</key>
-			<string>Write a fixed "plugin-utils.sh" with an InDesign cc 2014-specific version, note this is the same script as plugin-utils_fixed_cc2014.sh in this repo</string>
+			<string>Write a fixed "plugin-utils.sh" with an InDesign CC 2014-specific version, note this is the same script as plugin-utils_fixed_cc2014.sh in this repo</string>
 			<key>Processor</key>
 			<string>FileCreator</string>
 		</dict>

@@ -75,6 +75,99 @@ rm -rf /Applications/Adobe\ InDesign\ CC\ 2014/Plug-Ins/UI/PNetTIn.ini
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg</string>
+				<key>overwrite</key>
+				<true/>
+				<key>source_path</key>
+				<string>%PKG%/*.mpkg</string>
+			</dict>
+			<key>Comment</key>
+			<string>Pull the mpkg out of the dmg</string>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>info_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/Description.plist</string>
+				<key>plist_keys</key>
+				<dict>
+					<key>IFPkgDescriptionTitle</key>
+					<string>fancy_package_name</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PlistReader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>purge_destination</key>
+				<true/>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpacked</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/%fancy_package_name%.pkg/Contents/Archive.pax.gz</string>
+			</dict>
+			<key>Comment</key>
+			<string></string>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/expanded/root/Applications/Adobe InDesign CC 2014/Plug-Ins/UI</string>
+			</dict>
+			<key>Comment</key>
+			<string>Create a root for the plugin payload</string>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/expanded/root/Applications/Adobe InDesign CC 2014/Plug-Ins/UI</string>
+				<key>overwrite</key>
+				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpacked/private/tmp</string>
+			</dict>
+			<key>Comment</key>
+			<string>Copy over the plug for an installs item</string>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/expanded/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Adobe InDesign CC 2014/Plug-Ins/UI/PNetTIn.InDesignPlugin</string>
+				</array>
+			</dict>
+			<key>Comment</key>
+			<string>Create an installs array item for PNetTIn.InDesignPlugin</string>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>Merge the installs array into the pkginfo</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>dmg_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
 				<key>dmg_root</key>
