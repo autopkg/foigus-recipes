@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Inspire Designer Export plugin for InDesign CC 2015 and imports it into Munki
+
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add hjuutilainen's repo via:
+
+autopkg repo-add hjuutilainen-recipes
+
+- This recipe points to the default installation location of InDesign CC 2015.  Adjust the path as needed.
+- This recipe does not download the Inspire Designer Export plugin disk image--feed the disk image into the recipe via the following format:
+
+autopkg run InspireDesignerExportCC2015.munki -p /path/to/Adobe-InDesign-CC-2015-Mac_Plugin-10.0.4.0-Hotfix.dmg</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.InspireDesignerExportPluginCC2015</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/gmcsoftware</string>
+		<key>NAME</key>
+		<string>InspireDesignerExportPluginCC2015</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe InDesign CC 2015</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-gmcsoftware-InspireDesignerExportPluginCC2015</string>
+			</array>
+			<key>category</key>
+			<string>Plugins</string>
+			<key>description</key>
+			<string>This plugin for Adobe InDesign CC exports InDesign documents into XML and/or WFD files that can be imported into Inspire Designer.</string>
+			<key>developer</key>
+			<string>GMC Software</string>
+			<key>display_name</key>
+			<string>Inspire Designer Export Plugin CC 2015</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>InDesignCC2015</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.InspireDesignerExportPluginCC2015</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg</string>
+				<key>overwrite</key>
+				<true/>
+				<key>source_path</key>
+				<string>%PKG%/*.mpkg</string>
+			</dict>
+			<key>Comment</key>
+			<string>Pull the mpkg out of the dmg</string>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>info_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg/Contents/Resources/Description.plist</string>
+				<key>plist_keys</key>
+				<dict>
+					<key>IFPkgDescriptionTitle</key>
+					<string>fancy_package_name</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PlistReader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>purge_destination</key>
+				<true/>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpacked</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg/Contents/Resources/%fancy_package_name%.pkg/Contents/Archive.pax.gz</string>
+			</dict>
+			<key>Comment</key>
+			<string></string>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/expanded/root/Applications/Adobe InDesign CC 2015/Plug-Ins/UI</string>
+			</dict>
+			<key>Comment</key>
+			<string>Create a root for the plugin payload</string>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/expanded/root/Applications/Adobe InDesign CC 2015/Plug-Ins/UI</string>
+				<key>overwrite</key>
+				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpacked/private/tmp</string>
+			</dict>
+			<key>Comment</key>
+			<string>Copy over the plug for an installs item</string>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/expanded/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Adobe InDesign CC 2015/Plug-Ins/UI/PNetTIn.InDesignPlugin</string>
+				</array>
+			</dict>
+			<key>Comment</key>
+			<string>Create an installs array item for PNetTIn.InDesignPlugin</string>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>Merge the installs array into the pkginfo</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/copied</string>
+			</dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Comment</key>
+			<string>Import the package into Munki</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

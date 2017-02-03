@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Inspire Designer Export plugin for InDesign CC 2015 
+
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add hjuutilainen's repo via:
+
+autopkg repo-add hjuutilainen-recipes
+
+- This recipe points to the default installation location of InDesign CC 2015.  Adjust the path as needed.
+- This recipe does not download the Inspire Designer Export plugin disk image--feed the disk image into the recipe via the following format:
+
+autopkg run InspireDesignerExportCC2015.pkg -p /path/to/Adobe-InDesign-CC-2015-Mac_Plugin-10.0.4.0-Hotfix.dmg</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.InspireDesignerExportPluginCC2015</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>InspireDesignerExportPluginCC2015</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Comment</key>
+			<string>Not going to tackle downloading the software right now</string>
+			<key>Processor</key>
+			<string>PackageRequired</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg</string>
+				<key>overwrite</key>
+				<true/>
+				<key>source_path</key>
+				<string>%PKG%/*.mpkg</string>
+			</dict>
+			<key>Comment</key>
+			<string>Pull the mpkg out of the dmg</string>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>info_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg/Contents/Resources/Description.plist</string>
+				<key>plist_keys</key>
+				<dict>
+					<key>IFPkgDescriptionTitle</key>
+					<string>fancy_package_name</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PlistReader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>f638ab030aa7c4f58d607b0f905e3a48</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg/Contents/Resources/plugin-utils.sh</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.4.0 Hotfix "plugin-utils.sh" script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg/Contents/Resources/plugin-utils.sh</string>
+				</array>
+			</dict>
+			<key>Comments</key>
+			<string>Remove this copy of "plugin-utils.sh" script</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>#!/bin/sh
+
+#-------------------------------------------------------------------
+#
+#  Auxilary functions
+#
+
+ID_TMP_FILE="/tmp/gmc-id-plugins"
+ID_STAMP_FILE="/tmp/gmc-id-stamp"
+ID_CHOOSER="InDesignChooser"
+ID_PKGS_COUNT=3
+
+
+# $1 = bad TMP_FILE error
+# $2 = TMP_FILE
+# $3 = STAMP_FILE
+# $4 = REQUIRED_PKGS_COUNT
+# $5 = chooser
+TestPlugInsFolder()
+{
+	if [ -f "$3" ]; then
+		# read stamp count
+		local stampCount=`cat "$3"`
+		if [ $stampCount = "1" ]; then
+			# last package - deleting stamp
+			rm "$3"
+		else
+			# decrease stamp count
+			echo `expr $stampCount - 1` &gt; "$3"
+		fi
+		# check whether Plug-Ins folder was correctly set in the first run
+		if [ ! -s "$2" ]; then
+			echo "You must choose Plug-Ins folder."
+			exit $1
+		else
+			# do not run chooser
+			exit 0
+		fi
+	else
+		# create stamp with count - 1
+		echo `expr $4 - 1` &gt; "$3"
+		# remove TMP_FILE if exists (previous install cancelled)
+		rm -f "$2"
+	fi
+		
+	#"`dirname "$0"`/"$5".app/Contents/MacOS/$5"
+	echo -n "/Applications/Adobe InDesign CC 2015/Plug-Ins" &gt; /private/tmp/gmc-id-plugins
+	if [ ! -s "$2" ]; then
+		echo "You must choose Plug-Ins folder."
+		exit $1
+	else
+		exit 0
+	fi
+}
+
+TestInDesignFolder()
+{
+	TestPlugInsFolder $1 "$ID_TMP_FILE" "$ID_STAMP_FILE" "$ID_PKGS_COUNT" "$ID_CHOOSER"
+}</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg/Contents/Resources/plugin-utils.sh</string>
+			</dict>
+			<key>Comment</key>
+			<string>Write a fixed "plugin-utils.sh" with an InDesign CC 2015-specific version, note this is the same script as plugin-utils_fixed_cc2015.sh in this repo</string>
+			<key>Processor</key>
+			<string>FileCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>f638ab030aa7c4f58d607b0f905e3a48</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg/Contents/Resources/%fancy_package_name%.pkg/Contents/Resources/plugin-utils.sh</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.4.0 Hotfix "plugin-utils.sh" script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg/Contents/Resources/%fancy_package_name%.pkg/Contents/Resources/plugin-utils.sh</string>
+				</array>
+			</dict>
+			<key>Comments</key>
+			<string>Remove this copy of "plugin-utils.sh" script</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>#!/bin/sh
+
+#-------------------------------------------------------------------
+#
+#  Auxilary functions
+#
+
+ID_TMP_FILE="/tmp/gmc-id-plugins"
+ID_STAMP_FILE="/tmp/gmc-id-stamp"
+ID_CHOOSER="InDesignChooser"
+ID_PKGS_COUNT=3
+
+
+# $1 = bad TMP_FILE error
+# $2 = TMP_FILE
+# $3 = STAMP_FILE
+# $4 = REQUIRED_PKGS_COUNT
+# $5 = chooser
+TestPlugInsFolder()
+{
+	if [ -f "$3" ]; then
+		# read stamp count
+		local stampCount=`cat "$3"`
+		if [ $stampCount = "1" ]; then
+			# last package - deleting stamp
+			rm "$3"
+		else
+			# decrease stamp count
+			echo `expr $stampCount - 1` &gt; "$3"
+		fi
+		# check whether Plug-Ins folder was correctly set in the first run
+		if [ ! -s "$2" ]; then
+			echo "You must choose Plug-Ins folder."
+			exit $1
+		else
+			# do not run chooser
+			exit 0
+		fi
+	else
+		# create stamp with count - 1
+		echo `expr $4 - 1` &gt; "$3"
+		# remove TMP_FILE if exists (previous install cancelled)
+		rm -f "$2"
+	fi
+		
+	#"`dirname "$0"`/"$5".app/Contents/MacOS/$5"
+	echo -n "/Applications/Adobe InDesign CC 2015/Plug-Ins" &gt; /private/tmp/gmc-id-plugins
+	if [ ! -s "$2" ]; then
+		echo "You must choose Plug-Ins folder."
+		exit $1
+	else
+		exit 0
+	fi
+}
+
+TestInDesignFolder()
+{
+	TestPlugInsFolder $1 "$ID_TMP_FILE" "$ID_STAMP_FILE" "$ID_PKGS_COUNT" "$ID_CHOOSER"
+}</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg/Contents/Resources/%fancy_package_name%.pkg/Contents/Resources/plugin-utils.sh</string>
+			</dict>
+			<key>Comment</key>
+			<string>Write a fixed "plugin-utils.sh" with an InDesign CC 2015-specific version, note this is the same script as plugin-utils_fixed_cc2015.sh in this repo</string>
+			<key>Processor</key>
+			<string>FileCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>f638ab030aa7c4f58d607b0f905e3a48</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg/Contents/Resources/%fancy_package_name% Configuration File.pkg/Contents/Resources/plugin-utils.sh</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 10.0.4.0 Hotfix "plugin-utils.sh" script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg/Contents/Resources/%fancy_package_name% Configuration File.pkg/Contents/Resources/plugin-utils.sh</string>
+				</array>
+			</dict>
+			<key>Comments</key>
+			<string>Remove this copy of "plugin-utils.sh" script</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>#!/bin/sh
+
+#-------------------------------------------------------------------
+#
+#  Auxilary functions
+#
+
+ID_TMP_FILE="/tmp/gmc-id-plugins"
+ID_STAMP_FILE="/tmp/gmc-id-stamp"
+ID_CHOOSER="InDesignChooser"
+ID_PKGS_COUNT=3
+
+
+# $1 = bad TMP_FILE error
+# $2 = TMP_FILE
+# $3 = STAMP_FILE
+# $4 = REQUIRED_PKGS_COUNT
+# $5 = chooser
+TestPlugInsFolder()
+{
+	if [ -f "$3" ]; then
+		# read stamp count
+		local stampCount=`cat "$3"`
+		if [ $stampCount = "1" ]; then
+			# last package - deleting stamp
+			rm "$3"
+		else
+			# decrease stamp count
+			echo `expr $stampCount - 1` &gt; "$3"
+		fi
+		# check whether Plug-Ins folder was correctly set in the first run
+		if [ ! -s "$2" ]; then
+			echo "You must choose Plug-Ins folder."
+			exit $1
+		else
+			# do not run chooser
+			exit 0
+		fi
+	else
+		# create stamp with count - 1
+		echo `expr $4 - 1` &gt; "$3"
+		# remove TMP_FILE if exists (previous install cancelled)
+		rm -f "$2"
+	fi
+		
+	#"`dirname "$0"`/"$5".app/Contents/MacOS/$5"
+	echo -n "/Applications/Adobe InDesign CC 2015/Plug-Ins" &gt; /private/tmp/gmc-id-plugins
+	if [ ! -s "$2" ]; then
+		echo "You must choose Plug-Ins folder."
+		exit $1
+	else
+		exit 0
+	fi
+}
+
+TestInDesignFolder()
+{
+	TestPlugInsFolder $1 "$ID_TMP_FILE" "$ID_STAMP_FILE" "$ID_PKGS_COUNT" "$ID_CHOOSER"
+}</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg/Contents/Resources/%fancy_package_name% Configuration File.pkg/Contents/Resources/plugin-utils.sh</string>
+			</dict>
+			<key>Comment</key>
+			<string>Write a fixed "plugin-utils.sh" with an InDesign CC 2015-specific version, note this is the same script as plugin-utils_fixed_cc2015.sh in this repo</string>
+			<key>Processor</key>
+			<string>FileCreator</string>
+		</dict>
+	</array>
+</dict>
+</plist>
