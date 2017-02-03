@@ -104,12 +104,12 @@ rm -rf /Applications/Adobe\ InDesign\ CC\ 2015/Plug-Ins/UI/PNetTIn.ini
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>purge_destination</key>
-				<true/>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpacked</string>
 				<key>pkg_payload_path</key>
 				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2015.mpkg/Contents/Resources/%fancy_package_name%.pkg/Contents/Archive.pax.gz</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
 			<key>Comment</key>
 			<string></string>
