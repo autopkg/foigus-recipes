@@ -50,6 +50,8 @@ autopkg run InspireDesignerExportCC2015.munki -p /path/to/Adobe-InDesign-CC-2015
 			<true/>
 			<key>unattended_uninstall</key>
 			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
 			<key>uninstall_script</key>
 			<string>#!/bin/bash
 
