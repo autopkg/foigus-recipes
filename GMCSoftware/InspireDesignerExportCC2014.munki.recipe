@@ -30,7 +30,7 @@ autopkg run InspireDesignerExportCC2014.munki -p /path/to/Adobe-InDesign-CC-Plug
 			</array>
 			<key>catalogs</key>
 			<array>
-				<string>development-gmscosftware-InspireDesignerExportPluginCC2014</string>
+				<string>development-gmcsoftware-InspireDesignerExportPluginCC2014</string>
 			</array>
 			<key>category</key>
 			<string>Plugins</string>
