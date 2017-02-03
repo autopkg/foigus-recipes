@@ -50,6 +50,20 @@ autopkg run InspireDesignerExportCC2014.munki -p /path/to/Adobe-InDesign-CC-Plug
 			<true/>
 			<key>unattended_uninstall</key>
 			<true/>
+			<key>uninstall_script</key>
+			<string>#!/bin/bash
+
+rm -rf /Applications/Adobe\ InDesign\ CC\ 2014/Plug-Ins/UI/PNetTIn.InDesignPlugin
+rm -rf /Applications/Adobe\ InDesign\ CC\ 2014/Plug-Ins/UI/PNetTIn.ini
+
+#The remaining items might be used with other GMC Software products.  Listing them
+#here but commenting them out.  Note these are empty directories created by this
+#package.
+#
+#rm -rf /Library/Application\ Support/GMC/Fonts
+#rm -rf /Library/Application\ Support/GMC/PrintNet\ T/Barcode\ Locks
+#rm -rf /Library/Application\ Support/GMC/PrintNet\ T/Temporary\ Fonts
+#rm -rf /private/etc/Chimenix/</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
