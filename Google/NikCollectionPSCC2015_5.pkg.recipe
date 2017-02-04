@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Nik Collection and packages it for Photoshop CC 2015.5.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.NikCollectionPSCC2015.5</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>NikCollectionPSCC2015.5</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.NikCollection</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied_resources</string>
+				<key>overwrite</key>
+				<true/>
+				<key>source_path</key>
+				<string>%pathname%/Nik Collection.app/Contents/Resources</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict>
+					<key>Applications</key>
+					<string>0775</string>
+					<key>Applications/Adobe Photoshop CC 2015.5</key>
+					<string>0775</string>
+					<key>Applications/Adobe Photoshop CC 2015.5/Plug-ins</key>
+					<string>0775</string>
+					<key>Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google</key>
+					<string>0775</string>
+					<key>Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Analog Efex Pro 2</key>
+					<string>0755</string>
+					<key>Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Color Efex Pro 4</key>
+					<string>0755</string>
+					<key>Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Dfine 2</key>
+					<string>0755</string>
+					<key>Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/HDR Efex Pro 2</key>
+					<string>0755</string>
+					<key>Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Selective Tool</key>
+					<string>0755</string>
+					<key>Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Sharpener Pro 3</key>
+					<string>0755</string>
+					<key>Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Silver Efex Pro 2</key>
+					<string>0755</string>
+					<key>Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Viveza 2</key>
+					<string>0755</string>
+					<key>Applications/Nik Collection</key>
+					<string>0775</string>
+					<key>Library</key>
+					<string>0755</string>
+					<key>Library/Preferences</key>
+					<string>0755</string>
+					<key>Library/Preferences/Google</key>
+					<string>0755</string>
+					<key>Library/Preferences/Google/Nik Collection</key>
+					<string>0755</string>
+				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied_resources/AnalogEfexPro2.tar.gz</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Analog Efex Pro 2/Analog Efex Pro 2.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Analog Efex Pro 2.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Analog Efex Pro 2/AnalogEfexPro2.config</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/AnalogEfexPro2.config</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Nik Collection/Analog Efex Pro 2.app</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Analog Efex Pro 2.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Analog Efex Pro 2/Analog Efex Pro 2.plugin/Contents/PlugIns/Analog Efex Pro 2.bundle/Contents/Frameworks/Breakpad.framework</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Analog Efex Pro 2.app/Contents/Frameworks/Breakpad.framework</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Analog Efex Pro 2/Analog Efex Pro 2.plugin/Contents/PlugIns/Analog Efex Pro 2.bundle/Contents/Resources</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Analog Efex Pro 2.app/Contents/Resources</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied_resources/ColorEfexPro4.tar.gz</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Color Efex Pro 4/Color Efex Pro 4.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Color Efex Pro 4.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Color Efex Pro 4/ColorEfexPro4.config</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/ColorEfexPro4.config</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Nik Collection/Color Efex Pro 4.app</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Color Efex Pro 4.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Color Efex Pro 4/Color Efex Pro 4.plugin/Contents/PlugIns/Color Efex Pro 4.bundle/Contents/Frameworks/Breakpad.framework</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Color Efex Pro 4.app/Contents/Frameworks/Breakpad.framework</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Color Efex Pro 4/Color Efex Pro 4.plugin/Contents/PlugIns/Color Efex Pro 4.bundle/Contents/Resources</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Color Efex Pro 4.app/Contents/Resources</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied_resources/Dfine2.tar.gz</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Dfine 2/BackgroundFilter.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/BackgroundFilter.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Dfine 2/Dfine2.config</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Dfine2.config</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Dfine 2/Dfine2.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Dfine2.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Dfine 2/FineStructuresFilter.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/FineStructuresFilter.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Dfine 2/HotPixelsFilter.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/HotPixelsFilter.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Dfine 2/ShadowsFilter.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/ShadowsFilter.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Dfine 2/SkinFilter.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/SkinFilter.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Dfine 2/SkyFilter.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/SkyFilter.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Dfine 2/StrongNoiseFilter.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/StrongNoiseFilter.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Nik Collection/Dfine2.app</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Dfine2.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied_resources/HDREfexPro2.tar.gz</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/HDR Efex Pro 2/HDR Efex Pro 2 Automation.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/HDR Efex Pro 2 Automation.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/HDR Efex Pro 2/HDR Efex Pro 2.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/HDR Efex Pro 2.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/HDR Efex Pro 2/HDREfexPro2.config</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/HDREfexPro2.config</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Nik Collection/HDR Efex Pro 2.app</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/HDR Efex Pro 2.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/HDR Efex Pro 2/HDR Efex Pro 2.plugin/Contents/PlugIns/HDR Efex Pro 2.bundle/Contents/Frameworks/Breakpad.framework</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/HDR Efex Pro 2.app/Contents/Frameworks/Breakpad.framework</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/HDR Efex Pro 2/HDR Efex Pro 2.plugin/Contents/PlugIns/HDR Efex Pro 2.bundle/Contents/Resources</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/HDR Efex Pro 2.app/Contents/Resources</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied_resources/SelectiveTool.tar.gz</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Selective Tool/SelectivePalette.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/SelectivePalette.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Selective Tool/SelToolInst.cfg</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/SelectivePalette.plugin/Contents/Resources/SelToolInst.cfg</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied_resources/SharpenerPro3.tar.gz</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Sharpener Pro 3/SHP3.config</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/SHP3.config</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Sharpener Pro 3/SHP3OS.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/SHP3OS.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Sharpener Pro 3/SHP3RPS.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/SHP3RPS.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Nik Collection/Sharpener Pro 3 Output Sharpening.app</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Sharpener Pro 3 Output Sharpening.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Nik Collection/Sharpener Pro 3 Raw Presharpening.app</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Sharpener Pro 3 Raw Presharpening.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied_resources/SilverEfexPro2.tar.gz</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Silver Efex Pro 2/Silver Efex Pro 2.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Silver Efex Pro 2.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Silver Efex Pro 2/SilverEfexPro2.config</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/SilverEfexPro2.config</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Nik Collection/Silver Efex Pro 2.app</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Silver Efex Pro 2.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Silver Efex Pro 2/Silver Efex Pro 2.plugin/Contents/PlugIns/Silver Efex Pro 2.bundle/Contents/Frameworks/Breakpad.framework</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Silver Efex Pro 2.app/Contents/Frameworks/Breakpad.framework</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Silver Efex Pro 2/Silver Efex Pro 2.plugin/Contents/PlugIns/Silver Efex Pro 2.bundle/Contents/Resources</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Silver Efex Pro 2.app/Contents/Resources</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/copied_resources/Viveza2.tar.gz</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Viveza 2/Viveza2.plugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Viveza2.plugin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe Photoshop CC 2015.5/Plug-ins/Google/Viveza 2/Viveza2.config</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Viveza2.config</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Nik Collection/Viveza 2.app</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Viveza 2.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Nik Collection/Uninstaller.app</string>
+				<key>source_path</key>
+				<string>%pathname%/Nik Collection.app/Contents/Helpers/Uninstaller.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>&lt;configuration&gt;
+	&lt;group name="Update"&gt;
+		&lt;key name="Version" type="string" value="%version%"/&gt;
+	&lt;/group&gt;
+	&lt;group name="Installer"&gt;
+		&lt;key name="LicensePath" type="string" value="/Library/Documentation/Nik Collection"/&gt;
+		&lt;key name="Version" type="string" value="%version%"/&gt;
+		&lt;key name="edition" type="string" value="full"/&gt;
+		&lt;key name="identifier" type="string" value="1415926535"/&gt;
+	&lt;/group&gt;
+	&lt;group name="Instrumentation"&gt;
+		&lt;key name="AllowSending" type="bool" value="0"/&gt;
+		&lt;key name="ShowInstrumentationScreen" type="bool" value="0"/&gt;
+	&lt;/group&gt;
+&lt;/configuration&gt;</string>
+				<key>file_mode</key>
+				<string>0666</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Preferences/Google/Nik Collection/NikCollection.cfg</string>
+			</dict>
+			<key>Comment</key>
+			<string>If the mode isn't read-write for everyone it causes Photoshop to hang when the plugins are invoked.</string>
+			<key>Processor</key>
+			<string>FileCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+					<key>chown</key>
+					<array>
+						<dict>
+							<key>group</key>
+							<string>admin</string>
+							<key>path</key>
+							<string>Applications</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+						<dict>
+							<key>group</key>
+							<string>wheel</string>
+							<key>path</key>
+							<string>Library</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+					</array>
+					<key>id</key>
+					<string>com.google.NikCollectionPSCC2015.5.pkg</string>
+					<key>pkgname</key>
+					<string>%NAME%-%version%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+		</dict>
+	</array>
+</dict>
+</plist>
