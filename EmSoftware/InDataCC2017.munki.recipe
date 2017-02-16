@@ -38,6 +38,21 @@
 			</array>
 			<key>unattended_install</key>
 			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/bash
+
+#Delete the plugins
+rm -rf "/Applications/Adobe InDesign CC 2017/Plug-Ins/Em Software/InData UI.InDesignPlugin"
+rm -rf "/Applications/Adobe InDesign CC 2017/Plug-Ins/Em Software/InData.InDesignPlugin"
+rm -rf "/Applications/Adobe InDesign CC 2017/Plug-Ins/Em Software/InFlow UI.InDesignPlugin"
+rm -rf "/Applications/Adobe InDesign CC 2017/Plug-Ins/Em Software/InFlow.InDesignPlugin"
+
+#In theory we could forget the package receipts, but all revisions of InData (e.g. 
+#CC 2014, CC 2015, CC 2017) have the same package IDs.  We'll leave them behind.
+#pkgutil --forget com.emsoftware.indata
+#pkgutil --forget com.emsoftware.inflow</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
