@@ -62,8 +62,19 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/Adobe InDesign CC 2015</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload/</string>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/Adobe InDesign CC 2015</string>
 				<key>pkg_payload_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/InData.pkg/Payload</string>
 				<key>purge_destination</key>
@@ -76,7 +87,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload/Plug-Ins/Em Software/InData.InDesignPlugin/Versions/A/Resources/Info.plist</string>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/Adobe InDesign CC 2015/Plug-Ins/Em Software/InData.InDesignPlugin/Versions/A/Resources/Info.plist</string>
 			</dict>
 			<key>Processor</key>
 			<string>Versioner</string>
@@ -90,6 +101,23 @@
 					<string>%version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Adobe InDesign CC 2015/Plug-Ins/Em Software/InData.InDesignPlugin</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
 			<key>Processor</key>
 			<string>MunkiPkginfoMerger</string>
 		</dict>
