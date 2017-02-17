@@ -1,5 +1,13 @@
 #!/bin/bash
 
+#Wipe out the Smart Connection Book Support folder, if it exists
+smartConnectionBookSupportDirectory="/Applications/Adobe InDesign CC 2014/Scripts/Scripts Panel/Smart Connection Book Support"                                        
+
+if [ -d "${smartConnectionBookSupportDirectory}" ]
+then
+        rm -rf "${smartConnectionBookSupportDirectory}"                                                                                                               
+fi
+
 #List of receipt names to forget
 #Note there really are package IDs for "woodwingui" and "WoodWingUI"
 #Since it appears that pkgutil is case-sensitive and there's no solid way to know which
