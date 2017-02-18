@@ -10,6 +10,8 @@
 	<dict>
 		<key>NAME</key>
 		<string>RealVNCViewer</string>
+		<key>USER_AGENT</key>
+		<string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -19,9 +21,14 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>&lt;button id="download" type="submit"&gt;Download VNC Viewer ([\d\.]+)&lt;\/button&gt;</string>
+				<string>VNC-Viewer-[0-9\.]+-MacOSX-x86_64\.dmg</string>
+				<key>request_headers</key>
+				<dict>
+					<key>user-agent</key>
+					<string>%USER_AGENT%</string>
+				</dict>
 				<key>result_output_var_name</key>
-				<string>version</string>
+				<string>dmg_name</string>
 				<key>url</key>
 				<string>https://www.realvnc.com/download/viewer/</string>
 			</dict>
@@ -34,7 +41,7 @@
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 				<key>url</key>
-				<string>https://www.realvnc.com/download/file/viewer.files/VNC-Viewer-%version%-MacOSX-x86_64.dmg</string>
+				<string>https://www.realvnc.com/download/file/viewer.files/%dmg_name%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>

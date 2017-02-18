@@ -10,6 +10,8 @@
 	<dict>
 		<key>NAME</key>
 		<string>RealVNC</string>
+		<key>USER_AGENT</key>
+		<string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -19,9 +21,14 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>&lt;button id="download" type="submit"&gt;Download VNC Connect ([\d\.]+)&lt;\/button&gt;</string>
+				<string>VNC-[0-9\.]+-MacOSX-x86_64\.pkg</string>
+				<key>request_headers</key>
+				<dict>
+					<key>user-agent</key>
+					<string>%USER_AGENT%</string>
+				</dict>
 				<key>result_output_var_name</key>
-				<string>version</string>
+				<string>package_name</string>
 				<key>url</key>
 				<string>https://www.realvnc.com/download/vnc/</string>
 			</dict>
@@ -34,7 +41,7 @@
 				<key>filename</key>
 				<string>%NAME%.pkg</string>
 				<key>url</key>
-				<string>https://www.realvnc.com/download/file/vnc.files/VNC-%version%-MacOSX-x86_64.pkg</string>
+				<string>https://www.realvnc.com/download/file/vnc.files/%package_name%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
