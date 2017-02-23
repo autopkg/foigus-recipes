@@ -11,7 +11,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://webapp.movetv.com/player/osx/slingtv.dmg</string>
+		<string>https://webapp.movetv.com/player/osx/slingtv.dmg</string>
 		<key>NAME</key>
 		<string>SlingTV</string>
 	</dict>
