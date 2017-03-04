@@ -36,9 +36,13 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/Tableau Public.app</string>
-				<key>requirement</key>
-				<string>identifier "com.tableausoftware.tableaupublic" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = QJ4XPRK37C</string>
+				<string>%pathname%/Tableau Public.pkg</string>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: Tableau Software, Inc. (QJ4XPRK37C)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
