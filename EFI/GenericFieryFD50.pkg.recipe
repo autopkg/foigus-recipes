@@ -27,6 +27,8 @@ I'd suggest the override choices are:
 		<string>%NAME%</string>
 		<key>PACKAGE_ID</key>
 		<string>com.efi.replace-me-in-an-override.pkg</string>
+		<key>PACKAGE_VERSION</key>
+		<string>1.50</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -105,7 +107,7 @@ I'd suggest the override choices are:
 					<key>scripts</key>
 					<string>%RECIPE_CACHE_DIR%/unpack/FieryPrinterDriverInstaller.pkg/Scripts</string>
 					<key>version</key>
-					<string>1.50</string>
+					<string>%PACKAGE_VERSION%</string>
 				</dict>
 			</dict>
 			<key>Processor</key>
