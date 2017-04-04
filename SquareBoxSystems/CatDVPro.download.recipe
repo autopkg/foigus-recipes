@@ -27,7 +27,7 @@ Override MAJOR_VERSION for versions of CatDV Pro besides version 11.</string>
 				<key>result_output_var_name</key>
 				<string>download_url</string>
 				<key>url</key>
-				<string>http://www.squarebox.com/download-links/</string>
+				<string>http://www.squarebox.com/support/download/</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
