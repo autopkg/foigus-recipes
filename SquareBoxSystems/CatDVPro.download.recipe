@@ -11,7 +11,7 @@ Override MAJOR_VERSION for versions of CatDV Pro besides version 11.</string>
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
-		<string>11</string>
+		<string>12</string>
 		<key>NAME</key>
 		<string>CatDVPro</string>
 	</dict>
