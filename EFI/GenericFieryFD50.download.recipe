@@ -8,8 +8,6 @@
 	<string>com.github.foigus.download.GenericFieryFD50</string>
 	<key>Input</key>
 	<dict>
-		<key>DOWNLOAD_URL</key>
-		<string>http://set_me_with_an_override/please</string>
 		<key>NAME</key>
 		<string>GenericFD50Driver</string>
 	</dict>
@@ -18,17 +16,10 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
-			</dict>
+			<key>Comment</key>
+			<string>A lot less effort to download the package by hand for a one-off transformation of the package</string>
 			<key>Processor</key>
-			<string>URLDownloader</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
+			<string>PackageRequired</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
