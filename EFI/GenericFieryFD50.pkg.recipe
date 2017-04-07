@@ -3,23 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Download the driver specified in the override URL, remove Fiery Driver Updater.app, and repack.
-The FD50-revision Fiery drivers appear to properly handle installing when COMMAND_LINE_INSTALL is set. Fiery
-driver download URLs can be scraped from:
+	<string>Deconstruct a Fiery driver package, remove the Fiery Driver Updater.app, and repack.  The FD50 and FD51-revision Fiery drivers appear to properly handle installing when COMMAND_LINE_INSTALL is set.
 
+To start, download a FD50 or FD51 driver from:
 http://www.efi.com/support-and-downloads/download-registration/
 
-Log in, find the appropriate FD50-revision (ensure the filename includes "FD50" in the download dmg) driver,
-download it, and copy the download URL from the browser.  An example invocation URL (for a Ricoh Pro 901 with
-E41 v1.0 Fiery):
+Note the name of the downloaded driver dmg (e.g. "Ricoh_E41_v1_0R_FD51_v1Cert.dmg") and create an override using the dmg name:
+autopkg make-override GenericFieryFD50.pkg -n Ricoh_E41_v1_0R_FD51_v1Cert.pkg
 
-https://d1m2uyedaojrqy.cloudfront.net/FSO/ricoh/RIC_E41_E81/Mac128/lang_c_notes/v1.0/Ricoh_E41_v1_0R_EFIGSD_FD50_v1.dmg
-
-I'd suggest the override choices are:
-
-- NAME of the downloadable DMG without ".dmg", and adding "_No_Update" (e.g. Ricoh_E41_v1_0R_EFIGSD_FD50_v1_No_Update)
-- PACKAGE_ID of com.efi.DMG-Name-with-hyphens-substituted.pkg (e.g. com.efi.Ricoh-E41-v1-0R-EFIGSD-FD50-v1.pkg)
-- PACKAGE_VERSION of 1.$version, where $version is the digits after "FD" in the downloaded driver (e.g. 1.50)</string>
+Set the Input in the override to the following suggested items:
+- NAME of the downloadable DMG without ".dmg", and adding "_No_Update" (e.g. Ricoh_E41_v1_0R_FD51_v1Cert_No_Update)
+- PACKAGE_ID of com.efi.DMG-Name-with-hyphens-substituted-for-underscores.pkg
+  (e.g. com.efi.Ricoh-E41-v1-0R-FD51-v1Cert.pkg)
+- PACKAGE_VERSION of 1.$version, where $version is the digits after "FD" in the downloaded driver (e.g. 1.51)</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.pkg.GenericFieryFD50</string>
 	<key>Input</key>
