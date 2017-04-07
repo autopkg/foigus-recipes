@@ -42,7 +42,7 @@ autopkg run Ricoh_E41_v1_0R_FD51_v1Cert.pkg -p /path/to/Ricoh_E41_v1_0R_FD51_v1C
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
 				<key>flat_pkg_path</key>
-				<string>%pathname%/Fiery Printer Driver.pkg</string>
+				<string>%PKG%/Fiery Printer Driver.pkg</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>

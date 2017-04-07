@@ -31,7 +31,7 @@
 					<string>Apple Root CA</string>
 				</array>
 				<key>input_path</key>
-				<string>%pathname%/Fiery Printer Driver.pkg</string>
+				<string>%PKG%/Fiery Printer Driver.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
