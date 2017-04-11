@@ -77,7 +77,7 @@ rm -rf /Applications/Adobe\ InDesign\ CC\ 2014/Plug-Ins/UI/PNetTIn.ini
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg</string>
+				<string>%RECIPE_CACHE_DIR%/copied_munki_recipe/Inspire Designer Export CC 2014.mpkg</string>
 				<key>overwrite</key>
 				<true/>
 				<key>source_path</key>
@@ -92,7 +92,7 @@ rm -rf /Applications/Adobe\ InDesign\ CC\ 2014/Plug-Ins/UI/PNetTIn.ini
 			<key>Arguments</key>
 			<dict>
 				<key>info_path</key>
-				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/Description.plist</string>
+				<string>%RECIPE_CACHE_DIR%/copied_munki_recipe/Inspire Designer Export CC 2014.mpkg/Contents/Resources/Description.plist</string>
 				<key>plist_keys</key>
 				<dict>
 					<key>IFPkgDescriptionTitle</key>
@@ -108,7 +108,7 @@ rm -rf /Applications/Adobe\ InDesign\ CC\ 2014/Plug-Ins/UI/PNetTIn.ini
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpacked</string>
 				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/copied/Inspire Designer Export CC 2014.mpkg/Contents/Resources/%fancy_package_name%.pkg/Contents/Archive.pax.gz</string>
+				<string>%RECIPE_CACHE_DIR%/copied_munki_recipe/Inspire Designer Export CC 2014.mpkg/Contents/Resources/%fancy_package_name%.pkg/Contents/Archive.pax.gz</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
@@ -172,7 +172,7 @@ rm -rf /Applications/Adobe\ InDesign\ CC\ 2014/Plug-Ins/UI/PNetTIn.ini
 				<key>dmg_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
 				<key>dmg_root</key>
-				<string>%RECIPE_CACHE_DIR%/copied</string>
+				<string>%RECIPE_CACHE_DIR%/copied_pkg_recipe</string>
 			</dict>
 			<key>Processor</key>
 			<string>DmgCreator</string>
