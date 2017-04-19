@@ -30,7 +30,7 @@
 				<key>result_output_var_name</key>
 				<string>package_name</string>
 				<key>url</key>
-				<string>https://www.realvnc.com/download/vnc/</string>
+				<string>https://www.realvnc.com/download/vnc/macosx/</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
