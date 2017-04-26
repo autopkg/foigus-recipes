@@ -23,7 +23,7 @@
 					<string>curl/7.37.1</string>
 				</dict>
 				<key>url</key>
-				<string>http://komodoide.com/download/ide-osx/</string>
+				<string>https://www.activestate.com/komodo-ide/downloads/ide</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
