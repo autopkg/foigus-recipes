@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Verify a previously-downloaded Media Management Connector for Adobe Creative Cloud.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.MediaManagementConnectorforAdobeCreativeCloud</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>MediaManagementConnectorforAdobeCreativeCloud</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.4.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Comment</key>
+			<string>Don't want to tackle downloading it at this time.</string>
+			<key>Processor</key>
+			<string>PackageRequired</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%PKG%</string>
+				<key>requirement</key>
+				<string>identifier "com.flexera.authenticator" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4B9GHJ9X43"</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+				<string>%PKG%/Contents/Resources/InstallOtmmAdobeCcConnector*.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%found_filename%/Contents/Resources/Java/Disk1/InstData/Resource1.zip</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/ResourceExtract</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/ResourceExtract/MyDev/AD_POC/AD_POC/dist/Extension/com.opentext.extension.zip</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/ExtensionExtract</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>&lt;Extension Id="com\.opentext\.extension" Version="([\.\d]+)"\/&gt;</string>
+				<key>result_output_var_name</key>
+				<string>version</string>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/ExtensionExtract/CSXS/manifest.xml</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+	</array>
+</dict>
+</plist>
