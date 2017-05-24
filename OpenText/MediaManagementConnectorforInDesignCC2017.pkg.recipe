@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Repackage the Media Management plugin.</string>
+	<string>Repackage the Media Management plugin for InDesign CC 2017.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.pkg.MediaManagementConnectorforInDesignCC2017</string>
 	<key>Input</key>
