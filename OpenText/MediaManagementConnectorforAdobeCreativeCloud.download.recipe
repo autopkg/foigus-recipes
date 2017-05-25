@@ -71,11 +71,11 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>&lt;Extension Id="com\.opentext\.extension" Version="([\.\d]+)"\/&gt;</string>
+				<string>version=([\.\da-zA-Z]+)</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/ExtensionExtract/CSXS/manifest.xml</string>
+				<string>file:////%RECIPE_CACHE_DIR%/ExtensionExtract/version.properties</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
