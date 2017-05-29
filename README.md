@@ -16,6 +16,11 @@ autopkg repo-add novaksam-recipes
 autopkg repo-add hjuutilainen-recipes
 ```
 
+### OpenEmu
+```
+autopkg repo-add sheagcraig-recipes
+```
+
 ### Tableau Desktop FLEXNet:
 ```
 autopkg repo-add gmarnin-recipes
