@@ -150,7 +150,7 @@ TestInDesignFolder()
 				<string>%found_filename%/Scripts/plugin-utils.sh</string>
 			</dict>
 			<key>Comment</key>
-			<string>Write a fixed "plugin-utils.sh" with an InDesign CC 2015-specific version, note this is the same script as plugin-utils_fixed_cc2015.sh in this repo</string>
+			<string>Write a fixed "plugin-utils.sh" with an InDesign CC 2015-specific version, note this is the same script as plugin-utils_fixed_11_cc2015.sh in this repo</string>
 			<key>Processor</key>
 			<string>FileCreator</string>
 		</dict>
@@ -251,7 +251,7 @@ TestInDesignFolder()
 				<string>%RECIPE_CACHE_DIR%/expand_pkg_recipe/Configuration_File.pkg/Scripts/plugin-utils.sh</string>
 			</dict>
 			<key>Comment</key>
-			<string>Write a fixed "plugin-utils.sh" with an InDesign CC 2015-specific version, note this is the same script as plugin-utils_fixed_cc2015.sh in this repo</string>
+			<string>Write a fixed "plugin-utils.sh" with an InDesign CC 2015-specific version, note this is the same script as plugin-utils_fixed_11_cc2015.sh in this repo</string>
 			<key>Processor</key>
 			<string>FileCreator</string>
 		</dict>
