@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Inspire Designer 11 Export plugin for InDesign CC 2017.
+
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add hjuutilainen's repo via:
+
+autopkg repo-add hjuutilainen-recipes
+
+- This recipe points to the default installation location of InDesign CC 2017.  Adjust the path as needed.
+- This recipe does not download the Inspire Designer 11 Export plugin disk image--feed the disk image into the recipe via the following format:
+
+autopkg run InspireDesigner11ExportCC2017.pkg -p /path/to/Adobe-InDesign-CC-2017-Plugin-11.0.4-HotFix.dmg</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.InspireDesigner11ExportCC2017</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>InspireDesigner11ExportCC2017</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.InspireDesigner11ExportCC2017</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>flat_pkg_path</key>
+				<string>%PKG%/*.pkg</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/expand_pkg_recipe</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Expand the package</string>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+				<string>%RECIPE_CACHE_DIR%/expand_pkg_recipe/Adobe_InDesign_CC_2017_Plugin_*.pkg</string>
+			</dict>
+			<key>Comment</key>
+			<string>Find the name of the plugin package.</string>
+			<key>Processor</key>
+			<string>FileFinder</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>f9ade25f8f8379e8ac7216366812f20b</string>
+				<key>pathname</key>
+				<string>%found_filename%/Scripts/plugin-utils.sh</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 11.0.4 HotFix Hotfix "plugin-utils.sh" script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%found_filename%/Scripts/plugin-utils.sh</string>
+				</array>
+			</dict>
+			<key>Comments</key>
+			<string>Remove this copy of "plugin-utils.sh" script</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>#!/bin/bash
+
+#-------------------------------------------------------------------
+#
+#  Auxilary functions
+#
+
+ID_TMP_FILE="/tmp/gmc-id-plugins"
+ID_STAMP_FILE="/tmp/gmc-id-stamp"
+ID_CHOOSER="InDesignChooser"
+ID_PKGS_COUNT=3
+
+
+# $1 = bad TMP_FILE error
+# $2 = TMP_FILE
+# $3 = STAMP_FILE
+# $4 = REQUIRED_PKGS_COUNT
+# $5 = chooser
+TestPlugInsFolder()
+{
+	if [ -f "$3" ]; then
+		# read stamp count
+		local stampCount=`cat "$3"`
+		if [ $stampCount = "1" ]; then
+			# last package - deleting stamp
+			rm "$3"
+		else
+			# decrease stamp count
+			echo `expr $stampCount - 1` &gt; "$3"
+		fi
+		# check whether Plug-Ins folder was correctly set in the first run
+		if [ ! -s "$2" ]; then
+			echo "You must choose Plug-Ins folder."
+			exit $1
+		else
+			# do not run chooser
+			exit 0
+		fi
+	else
+		# create stamp with count - 1
+		echo `expr $4 - 1` &gt; "$3"
+		# remove TMP_FILE if exists (previous install cancelled)
+		rm -f "$2"
+	fi
+		
+	#"`dirname "$0"`/"$5".app/Contents/MacOS/$5"
+	echo -n "/Applications/Adobe InDesign CC 2017/Plug-Ins" &gt; /private/tmp/gmc-id-plugins
+	if [ ! -s "$2" ]; then
+		echo "You must choose Plug-Ins folder."
+		exit $1
+	else
+		exit 0
+	fi
+}
+
+TestInDesignFolder()
+{
+	TestPlugInsFolder $1 "$ID_TMP_FILE" "$ID_STAMP_FILE" "$ID_PKGS_COUNT" "$ID_CHOOSER"
+}</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%found_filename%/Scripts/plugin-utils.sh</string>
+			</dict>
+			<key>Comment</key>
+			<string>Write a fixed "plugin-utils.sh" with an InDesign CC 2017-specific version, note this is the same script as plugin-utils_fixed_cc2017.sh in this repo</string>
+			<key>Processor</key>
+			<string>FileCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack_pkg_recipe</string>
+				<key>pkg_payload_path</key>
+				<string>%found_filename%/Payload</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string></string>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack_pkg_recipe/tmp/InspireDesignerIn.InDesignPlugin/Versions/A/Resources/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleShortVersionString</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/flatten</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_pkg</key>
+				<string>%RECIPE_CACHE_DIR%/flatten/InspireDesigner11ExportCC2017-%version%.pkg</string>
+				<key>source_flatpkg_dir</key>
+				<string>%RECIPE_CACHE_DIR%/expand_pkg_recipe</string>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgPacker</string>
+		</dict>
+	</array>
+</dict>
+</plist>
