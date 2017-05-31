@@ -59,12 +59,12 @@ autopkg run InspireDesigner11ExportCC2017.pkg -p /path/to/Adobe-InDesign-CC-2017
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>f9ade25f8f8379e8ac7216366812f20b</string>
+				<string>09b113d35dda57c47c09ce91fdea057c</string>
 				<key>pathname</key>
-				<string>%found_filename%/Scripts/plugin-utils.sh</string>
+				<string>%found_filename%/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 11.0.4 HotFix Hotfix "plugin-utils.sh" script</string>
+			<string>Verify MD5 matches 11.0.4 HotFix "postinstall" script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
@@ -73,11 +73,11 @@ autopkg run InspireDesigner11ExportCC2017.pkg -p /path/to/Adobe-InDesign-CC-2017
 			<dict>
 				<key>path_list</key>
 				<array>
-					<string>%found_filename%/Scripts/plugin-utils.sh</string>
+					<string>%found_filename%/Scripts/postinstall</string>
 				</array>
 			</dict>
 			<key>Comments</key>
-			<string>Remove this copy of "plugin-utils.sh" script</string>
+			<string>Remove this copy of "postinstall" script</string>
 			<key>Processor</key>
 			<string>PathDeleter</string>
 		</dict>
@@ -87,70 +87,47 @@ autopkg run InspireDesigner11ExportCC2017.pkg -p /path/to/Adobe-InDesign-CC-2017
 				<key>file_content</key>
 				<string>#!/bin/bash
 
-#-------------------------------------------------------------------
-#
-#  Auxilary functions
-#
+script_dir=`dirname "$0"`
 
-ID_TMP_FILE="/tmp/gmc-id-plugins"
-ID_STAMP_FILE="/tmp/gmc-id-stamp"
-ID_CHOOSER="InDesignChooser"
-ID_PKGS_COUNT=3
+. "$script_dir/common.sh"
+. "$script_dir/plugin-utils.sh"
+. "$script_dir/installer.data"
 
+SOURCE="/tmp/InspireDesignerIn.InDesignPlugin"
+DESTINATION="/tmp/net.gmc.InDesignPlugin.destination"
+LICENSE_CFG="/tmp/net.gmc.InDesignPlugin.config"
+LICENSE_LIC="/tmp/net.gmc.PNetT.lic"
+echo -n "/Applications/Adobe InDesign CC 2017" &gt; /tmp/net.gmc.InDesignPlugin.destination
 
-# $1 = bad TMP_FILE error
-# $2 = TMP_FILE
-# $3 = STAMP_FILE
-# $4 = REQUIRED_PKGS_COUNT
-# $5 = chooser
-TestPlugInsFolder()
-{
-	if [ -f "$3" ]; then
-		# read stamp count
-		local stampCount=`cat "$3"`
-		if [ $stampCount = "1" ]; then
-			# last package - deleting stamp
-			rm "$3"
-		else
-			# decrease stamp count
-			echo `expr $stampCount - 1` &gt; "$3"
+if [ -f "$DESTINATION" ]; then
+	PLUGIN_DESTINATION="$(cat "$DESTINATION")/Plug-Ins"
+	INIFILE_DESTINATION="$PLUGIN_DESTINATION/UI/InspireDesignerIn.ini"
+	if [ -d "$PLUGIN_DESTINATION" ]; then
+		ditto --rsrc "$SOURCE" "$PLUGIN_DESTINATION/UI/InspireDesignerIn.InDesignPlugin" &amp;&amp; rm -f  "$DESTINATION" &amp;&amp; rm -rf "$SOURCE"
+		echo "LINESPACE=EXACT,GADIALOG=YES,OUTPUT=FLOWAREA"&gt;"$INIFILE_DESTINATION" &amp;&amp; chmod 777 "$INIFILE_DESTINATION"
+		if [ -f "$LICENSE_CFG" ]; then
+			cp -f "$LICENSE_CFG" "$PLUGIN_DESTINATION/UI/InspireDesignerIn.InDesignPlugin/License/PrintNetTExporter.config" &amp;&amp; rm -f "$LICENSE_CFG"
 		fi
-		# check whether Plug-Ins folder was correctly set in the first run
-		if [ ! -s "$2" ]; then
-			echo "You must choose Plug-Ins folder."
-			exit $1
-		else
-			# do not run chooser
-			exit 0
+		if [ -f "$LICENSE_LIC" ]; then
+			cp -f "$(cat "$LICENSE_LIC")" "$PLUGIN_DESTINATION/UI/InspireDesignerIn.InDesignPlugin/License/" &amp;&amp; rm -f "$LICENSE_LIC"
 		fi
-	else
-		# create stamp with count - 1
-		echo `expr $4 - 1` &gt; "$3"
-		# remove TMP_FILE if exists (previous install cancelled)
-		rm -f "$2"
 	fi
-		
-	#"`dirname "$0"`/"$5".app/Contents/MacOS/$5"
-	echo -n "/Applications/Adobe InDesign CC 2017/Plug-Ins" &gt; /private/tmp/gmc-id-plugins
-	if [ ! -s "$2" ]; then
-		echo "You must choose Plug-Ins folder."
-		exit $1
-	else
-		exit 0
-	fi
-}
+fi
 
-TestInDesignFolder()
-{
-	TestPlugInsFolder $1 "$ID_TMP_FILE" "$ID_STAMP_FILE" "$ID_PKGS_COUNT" "$ID_CHOOSER"
-}</string>
+# Cleanup temporary folder dirty from previous versions
+rm -rf "$HOME/Library/Application Support/GMC/InspireExportInd"
+
+ForgetPackageWithDelay 10 "$INDD_PLUGIN_IDENTIFIER" &amp;
+
+exit 0
+</string>
 				<key>file_mode</key>
 				<string>0755</string>
 				<key>file_path</key>
-				<string>%found_filename%/Scripts/plugin-utils.sh</string>
+				<string>%found_filename%/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
-			<string>Write a fixed "plugin-utils.sh" with an InDesign CC 2017-specific version, note this is the same script as plugin-utils_fixed_11_cc2017.sh in this repo</string>
+			<string>Write a fixed "postinstall" with an InDesign CC 2017-specific version, note this is the same script as postinstall_fixed in this repo</string>
 			<key>Processor</key>
 			<string>FileCreator</string>
 		</dict>

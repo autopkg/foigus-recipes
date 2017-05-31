@@ -1,0 +1,34 @@
+#!/bin/bash
+
+script_dir=`dirname "$0"`
+
+. "$script_dir/common.sh"
+. "$script_dir/plugin-utils.sh"
+. "$script_dir/installer.data"
+
+SOURCE="/tmp/InspireDesignerIn.InDesignPlugin"
+DESTINATION="/tmp/net.gmc.InDesignPlugin.destination"
+LICENSE_CFG="/tmp/net.gmc.InDesignPlugin.config"
+LICENSE_LIC="/tmp/net.gmc.PNetT.lic"
+
+if [ -f "$DESTINATION" ]; then
+	PLUGIN_DESTINATION="$(cat "$DESTINATION")/Plug-Ins"
+	INIFILE_DESTINATION="$PLUGIN_DESTINATION/UI/InspireDesignerIn.ini"
+	if [ -d "$PLUGIN_DESTINATION" ]; then
+		ditto --rsrc "$SOURCE" "$PLUGIN_DESTINATION/UI/InspireDesignerIn.InDesignPlugin" && rm -f  "$DESTINATION" && rm -rf "$SOURCE"
+		echo "LINESPACE=EXACT,GADIALOG=YES,OUTPUT=FLOWAREA">"$INIFILE_DESTINATION" && chmod 777 "$INIFILE_DESTINATION"
+		if [ -f "$LICENSE_CFG" ]; then
+			cp -f "$LICENSE_CFG" "$PLUGIN_DESTINATION/UI/InspireDesignerIn.InDesignPlugin/License/PrintNetTExporter.config" && rm -f "$LICENSE_CFG"
+		fi
+		if [ -f "$LICENSE_LIC" ]; then
+			cp -f "$(cat "$LICENSE_LIC")" "$PLUGIN_DESTINATION/UI/InspireDesignerIn.InDesignPlugin/License/" && rm -f "$LICENSE_LIC"
+		fi
+	fi
+fi
+
+# Cleanup temporary folder dirty from previous versions
+rm -rf "$HOME/Library/Application Support/GMC/InspireExportInd"
+
+ForgetPackageWithDelay 10 "$INDD_PLUGIN_IDENTIFIER" &
+
+exit 0
