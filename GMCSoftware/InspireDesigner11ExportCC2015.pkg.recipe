@@ -258,6 +258,56 @@ TestInDesignFolder()
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>b300783770bc19a56699566e8ba2820c</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/expand_pkg_recipe/Scripts/InstallationTargetChooser.sh</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 11.0 GA "InstallationTargetChooser.sh" script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/expand_pkg_recipe/Scripts/InstallationTargetChooser.sh</string>
+				</array>
+			</dict>
+			<key>Comments</key>
+			<string>Remove this copy of "InstallationTargetChooser.sh" script</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>#!/bin/bash
+
+SCRIPT_DIR=`dirname "$0"`
+
+#open "$SCRIPT_DIR/InDesignChooser.app"
+echo -n "/Applications/Adobe InDesign CC 2015/Plug-Ins" &gt; /private/tmp/gmc-id-plugins
+
+exit 0</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/expand_pkg_recipe/Scripts/InstallationTargetChooser.sh</string>
+			</dict>
+			<key>Comment</key>
+			<string>Write a fixed "InstallationTargetChooser.sh" with an InDesign CC 2015-specific version, note this is the same script as InstallationTargetChooser_fixed.sh in this repo</string>
+			<key>Processor</key>
+			<string>FileCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack_pkg_recipe</string>
 				<key>pkg_payload_path</key>
