@@ -11,7 +11,7 @@ No code signature check since the package is unsigned.</string>
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>https://helpx.adobe.com/de/bridge/kb/install-output-module-bridge-cc/_jcr_content/main-pars/download_section_393125832/download-3/file.res/AOM_Mac_New.zip</string>
+		<string>https://helpx.adobe.com/en/bridge/kb/install-output-module-bridge-cc/_jcr_content/main-pars/download_section_393125832/download-3/file.res/AOM_Mac_New.zip</string>
 		<key>NAME</key>
 		<string>AdobeOutputModule</string>
 	</dict>
