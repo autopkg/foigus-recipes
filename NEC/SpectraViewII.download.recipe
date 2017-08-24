@@ -19,9 +19,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>URL=(http.*dmg)</string>
+				<string>http.*dmg</string>
 				<key>url</key>
-				<string>http://update.necdisplay.com/spectraview/updates.txt</string>
+				<string>http://www.necdisplay.com/support-and-services/spectra-view-II/Downloads</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
