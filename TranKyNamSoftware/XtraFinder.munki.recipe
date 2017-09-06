@@ -50,7 +50,7 @@ If you'd like to avoid the logout, create an "installer_choices_xml" that avoids
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
 				<key>flat_pkg_path</key>
-				<string>%pathname%/XtraFinder.pkg</string>
+				<string>%pathname%/XtraFinderInstaller.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>FlatPkgUnpacker</string>
@@ -72,7 +72,7 @@ If you'd like to avoid the logout, create an "installer_choices_xml" that avoids
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload/root/Applications</string>
 				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/xtrafinder-1.pkg/Payload</string>
+				<string>%RECIPE_CACHE_DIR%/unpack/xtrafinder.pkg/Payload</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
