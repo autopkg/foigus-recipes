@@ -11,7 +11,7 @@ Dropped CodeSignatureVerifier October 17, 2016 because it doesn't seem the lack 
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>PIX</string>
+		<string>XtraFinder</string>
 		<key>SPARKLE_FEED_URL</key>
 		<string>https://www.trankynam.com/xtrafinder/XtraFinder-Appcast.xml</string>
 	</dict>
