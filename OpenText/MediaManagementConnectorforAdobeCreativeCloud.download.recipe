@@ -24,19 +24,34 @@
 		<dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
+		<key>Arguments</key>   
+		<dict>   
+			<key>input_path</key>   
+			<string>%PKG%</string>
+			<key>expected_authority_names</key>
+			<array>
+				<string>Developer ID Installer: Open Text  Corporation</string>
+				<string>Developer ID Certification Authority</string>
+				<string>Apple Root CA</string>
+			</array>
+		</dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>input_path</key>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/expand</string>
+				<key>flat_pkg_path</key>
 				<string>%PKG%</string>
-				<key>requirement</key>
-				<string>identifier "com.flexera.authenticator" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4B9GHJ9X43"</string>
 			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>pattern</key>
-				<string>%PKG%/Contents/Resources/InstallOtmmAdobeCcConnector*.app</string>
+				<string>%RECIPE_CACHE_DIR%/expand/Media_Management_Connector_for_Adobe_Creative_Cloud_*/PackageInfo</string>
 			</dict>
 			<key>Processor</key>
 			<string>FileFinder</string>
@@ -44,38 +59,12 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%found_filename%/Contents/Resources/Java/Disk1/InstData/Resource1.zip</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/ResourceExtract</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>archive_path</key>
-				<string>%RECIPE_CACHE_DIR%/ResourceExtract/MyDev/AD_POC/AD_POC/dist/Extension/com.opentext.extension.zip</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/ExtensionExtract</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
 				<key>re_pattern</key>
-				<string>version=([\.\da-zA-Z]+)</string>
+				<string> version="([\d\.]+)"</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/ExtensionExtract/version.properties</string>
+				<string>file://%found_filename%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
