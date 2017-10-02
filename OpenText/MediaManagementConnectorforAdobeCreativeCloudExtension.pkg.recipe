@@ -22,8 +22,21 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%PKG%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>pattern</key>
-				<string>%PKG%/Contents/Resources/InstallOtmmAdobeCcConnector*.app</string>
+				<string>%RECIPE_CACHE_DIR%/unpack/Media_Management_Connector_for_Adobe_Creative_Cloud_*/Payload</string>
 			</dict>
 			<key>Processor</key>
 			<string>FileFinder</string>
@@ -31,15 +44,15 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%found_filename%/Contents/Resources/Java/Disk1/InstData/Resource1.zip</string>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/ResourceExtract</string>
+				<string>%RECIPE_CACHE_DIR%/payload/</string>
+				<key>pkg_payload_path</key>
+				<string>%found_filename%</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
 			<key>Processor</key>
-			<string>Unarchiver</string>
+			<string>PkgPayloadUnpacker</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
@@ -68,15 +81,15 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%RECIPE_CACHE_DIR%/ResourceExtract/MyDev/AD_POC/AD_POC/dist/Extension/com.opentext.extension.zip</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload/Library/Application Support/Adobe/CEP/extensions/com.opentext.extension</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/CEP/extensions/com.opentext.extension</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
 			<key>Processor</key>
-			<string>Unarchiver</string>
+			<string>Copier</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
