@@ -30,7 +30,7 @@
 			<string>%PKG%</string>
 			<key>expected_authority_names</key>
 			<array>
-				<string>Developer ID Installer: Open Text  Corporation</string>
+				<string>Developer ID Installer: Open Text  Corporation (4B9GHJ9X43)</string>
 				<string>Developer ID Certification Authority</string>
 				<string>Apple Root CA</string>
 			</array>
