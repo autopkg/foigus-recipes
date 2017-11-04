@@ -18,34 +18,55 @@ path_only="/Applications/Adobe InDesign CC 2015"
 # Boolean to show message on success.
 B_MSG=true
 
-# Ask the user for the administrator username and password.
-# IF the user cancels then nothing will be done.
-##This isn't necessary unless someone has dinked with the permissions--these are the default permissions of these files per the installer
-##DO_SUDO=$(osascript \
-##			-e	'set the_password to ""' \
-##			-e	'try' \
-##			-e		'tell application "Finder"' \
-##			-e			'set the_username to do shell script "whoami"' \
-##			-e			'set the_password to ""' \
-##        	-e 			'do shell script "sudo chmod -R 777 $path_only/Plug-Ins/WoodWing" password the_password with administrator privileges' \
-##			-e 			'do shell script "sudo chmod -R 777 $path_only/Plug-Outs" password the_password with administrator privileges' \
-##			-e			'set the_password to "1"' \
-##			-e		'end tell' \
-##			-e	'on error number -128' \
-##			-e		'set the_password to "0"' \
-##			-e	'end try' \
-##			-e 'return {the_password}')
+#---------------------------------------------------------------------
+# Uninstalls the ZXP extensions
+
+function UninstallZXPExtensions()
+{
+##	Don't need these variables any more
+##	USERNAME=`id -un`
+##	BASENAME=`basename "$0"`
+##	#BASENAME="${BASENAME/Uninstall }"
+##	#BASENAME="${BASENAME/DAILY }"
+##	BASENAME="${BASENAME/.sh}"
+
+	# Get the password from the currect user.
+##	We're already root, don't need to run this
+##	pw="$(osascript -e 'Tell application "System Events" to display dialog "Please enter the password for '"'"$USERNAME"'"':" default answer "" with hidden answer with title "'"$BASENAME"'"' -e 'text returned of result' 2>/dev/null)" 
 ##
-##echo "USER ACTION: ${DO_SUDO}"
-##echo ""
-##
-### Check if the user has canceled (0) or not (1).
-##if [ "${DO_SUDO}" == "0" ]; then
-##	echo "${DO_SUDO}"
-##	exit 1;
-##else
-##	echo "NO CANCEL"
-##fi
+##	# If the password is emprt (cancel) we stop the uninstaller.
+##	if [ "$pw" == "" ]; then
+##		exit 1
+##	fi
+
+	# Get the path to the ExManCmd tool.
+##	I reject your reality of EXMANPATH and substitute my own, since "dirname" isn't
+##	effective if I'm not running the script from just the right directory.
+##	EXMANPATH=`dirname "${0}"`
+##	EXMANPATH=`dirname "${EXMANPATH}"`
+
+	# Give all rights to installation paths.
+##	We're already root, we don't need additional rights
+##	echo "$pw" | sudo -S chmod -R 777 "$path_only/Plug-Ins/WoodWing"
+##	echo "$pw" | sudo -S chmod -R 777 "$path_only/Plug-Outs"
+
+	# Uninstall the ZXP extensions.
+##	I again reject your reality of EXMANPATH and substitute my own, since "dirname" isn't
+##	effective if I'm not running the script from just the right directory.
+##	echo "$pw" | sudo -S "${EXMANPATH}/ExManCmd/MacOS/ExManCmd" --remove "Sticky Notes"
+##	echo "$pw" | sudo -S "${EXMANPATH}/ExManCmd/MacOS/ExManCmd" --remove "Smart Caching 2015"
+	"/Applications/Adobe InDesign CC 2015/Uninstall Smart Connection for Adobe CC 2015 v* Build*.app/Contents/ExManCmd/MacOS/ExManCmd" --remove "Sticky Notes"
+	"/Applications/Adobe InDesign CC 2015/Uninstall Smart Connection for Adobe CC 2015 v* Build*.app/Contents/ExManCmd/MacOS/ExManCmd" --remove "Smart Caching 2015"
+
+	# If the password was not correct we let the user try again.
+##	Again, we're root--this no longer applies
+##	if [ "$?" == "1" ]; then
+##		UninstallZXPExtensions		
+##	fi
+}
+# Uninstall the installed ZXP extensions from Adobe Extension Manager.
+UninstallZXPExtensions
+
 
 #---------------------------------------------------------------------
 # Check if a certain (sent) product currently is installed.
@@ -226,23 +247,6 @@ function ReInstallPlugOuts()
 }
 
 #---------------------------------------------------------------------
-# Uninstalls the sticky notes panel
-
-function UninstallStickyNotesPanel()
-{
-	"${path_only}/WoodWing ZXP/ExManCmd/MacOS/ExManCmd" --remove "Sticky Notes"
-
-	rm -Rf "${path_only}/WoodWing ZXP"
-}
-
-# Uninstall the installed Sticky Notes panel from Adobe Extension Manager.
-#
-UninstallPluginConfig()
-{
-	rm -f "${path_only}/PluginConfig.txt"
-}
-
-#---------------------------------------------------------------------
 # Main script.
 
 # Check if we can uninstall the Smart Connection product.
@@ -271,12 +275,6 @@ fi
 # we set back all original InCopyWorkflow and UI plugins during
 # the de-installation of the Smart Connection product.
 ReInstallPlugOuts
-
-# Uninstall the installed Sticky Notes panel from Adobe Extension Manager.
-UninstallStickyNotesPanel
-
-#Uninsatll the PluginConfig.txt file.
-UninstallPluginConfig
 
 # Show a message to the user on success.
 ##Want this to be silent--removing this bit of UI
