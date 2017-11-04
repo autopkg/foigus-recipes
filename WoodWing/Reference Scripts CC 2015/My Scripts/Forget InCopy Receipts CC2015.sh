@@ -11,7 +11,7 @@ fi
 #Wipe out PluginConfig.txt, if it exists
 pluginConfigLocation="/Applications/Adobe InCopy CC 2015/PluginConfig.txt"                                        
 
-if [ -d "${pluginConfigLocation}" ]
+if [ -f "${pluginConfigLocation}" ]
 then
         rm -rf "${pluginConfigLocation}"                                                                                                               
 fi
