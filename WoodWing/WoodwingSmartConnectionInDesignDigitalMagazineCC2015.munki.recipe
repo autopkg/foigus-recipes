@@ -32,7 +32,7 @@ autopkg run WoodwingSmartConnectionInDesignDigitalMagazineCC2015.munki -p /path/
 			</array>
 			<key>catalogs</key>
 			<array>
-				<string>development-woodwing-WoodwingSmartConnectionInDesignDigitalMagazineCC2015</string>
+				<string>development-woodwing-WoodwingSmartConnectionDigitalMagazineInDesignCC2015</string>
 			</array>
 			<key>category</key>
 			<string>Plugins</string>
