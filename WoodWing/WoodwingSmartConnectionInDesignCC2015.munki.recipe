@@ -13,7 +13,7 @@ autopkg repo-add hjuutilainen-recipes
 - Specific pkgs are disabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true
 - This recipe does not download the Smart Connection disk image--feed the disk image into the recipe via the following format:
 
-autopkg run WoodwingSmartConnectionInDesignCC2015.munki -p /path/to/Smart_Connection_for_Adobe_CC_2015_v11.0.2_Build9.dmg</string>
+autopkg run WoodwingSmartConnectionInDesignCC2015.munki -p /path/to/Smart_Connection_for_Adobe_CC_2015_v11.2.0_Build42.dmg</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.WoodwingSmartConnectionInDesignCC2015</string>
 	<key>Input</key>
@@ -122,12 +122,12 @@ autopkg run WoodwingSmartConnectionInDesignCC2015.munki -p /path/to/Smart_Connec
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>2842ff2bbed8070adb787bb85fe416b6</string>
+				<string>e6a61acf275e0e5c4b77480be1517b57</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/checksum</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 11.0.2, build 9 on the uninstall script</string>
+			<string>Verify MD5 matches 11.2.0, build 42 on the uninstall script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
@@ -152,12 +152,12 @@ autopkg run WoodwingSmartConnectionInDesignCC2015.munki -p /path/to/Smart_Connec
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>2842ff2bbed8070adb787bb85fe416b6</string>
+				<string>e6a61acf275e0e5c4b77480be1517b57</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/checksum.sh</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 11.0.2, build 9 on the second uninstall.sh script</string>
+			<string>Verify MD5 matches 11.2.0, build 42 on the second uninstall.sh script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
