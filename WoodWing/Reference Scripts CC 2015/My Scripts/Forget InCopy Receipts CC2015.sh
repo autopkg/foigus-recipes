@@ -1,5 +1,29 @@
 #!/bin/bash
 
+#Wipe out the Woodwing ZXP folder, if it exists
+woodwingZXPFolder="/Applications/Adobe InCopy CC 2015/WoodWing ZXP"                                        
+
+if [ -d "${woodwingZXPFolder}" ]
+then
+        rm -rf "${woodwingZXPFolder}"                                                                                                               
+fi
+
+#Wipe out PluginConfig.txt, if it exists
+pluginConfigLocation="/Applications/Adobe InCopy CC 2015/PluginConfig.txt"                                        
+
+if [ -d "${pluginConfigLocation}" ]
+then
+        rm -rf "${pluginConfigLocation}"                                                                                                               
+fi
+
+#Wipe out stickyNotesExtension, if it exists
+stickyNotesExtension="/Library/Application Support/Adobe/CEP/extensions/Sticky Notes"                                        
+
+if [ -d "${stickyNotesExtension}" ]
+then
+        rm -rf "${stickyNotesExtension}"                                                                                                               
+fi
+
 #List of receipt names to forget
 receiptsToForget=( ElementLabel InCopy InCopyOverset PluginConfig SCCoreContent SCCoreDataLink SCCoreDataLinkUI SCCoreInCopy SCCoreInCopyOverset SCCoreInCopyUI SCCoreStickyNotes SCCoreStickyNotesUI SCCoreTemplate SCEntAccessUI SCEntEditioning SCEntEditioningUI SCEnterprise SCEnterpriseUI SCEntFields SCEntFieldsUI SCEntScripting SCEntWidgets SCProFramesInCopy SCProFramesInCopyUI SCProInCopyUI SCProPanel SmartImage SmartImageUI SmartJump SmartJumpInCopyUI style WoodWing woodwingui WoodWingWidgets WoodWingZXP WWActivate WWSettings )
 

@@ -8,6 +8,30 @@ then
         rm -rf "${smartConnectionBookSupportDirectory}"                                                                                                               
 fi
 
+#Wipe out the Woodwing ZXP folder, if it exists
+woodwingZXPFolder="/Applications/Adobe InDesign CC 2015/WoodWing ZXP"                                        
+
+if [ -d "${woodwingZXPFolder}" ]
+then
+        rm -rf "${woodwingZXPFolder}"                                                                                                               
+fi
+
+#Wipe out PluginConfig.txt, if it exists
+pluginConfigLocation="/Applications/Adobe InDesign CC 2015/PluginConfig.txt"                                        
+
+if [ -d "${pluginConfigLocation}" ]
+then
+        rm -rf "${pluginConfigLocation}"                                                                                                               
+fi
+
+#Wipe out stickyNotesExtension, if it exists
+stickyNotesExtension="/Library/Application Support/Adobe/CEP/extensions/Sticky Notes"                                        
+
+if [ -d "${stickyNotesExtension}" ]
+then
+        rm -rf "${stickyNotesExtension}"                                                                                                               
+fi
+
 #List of receipt names to forget
 receiptsToForget=( ElementLabel ElementLabelUI InDesign PluginConfig SCCoreContent SCCoreDataLink SCCoreDataLinkUI SCCoreInDesign SCCoreStickyNotes SCCoreStickyNotesUI SCCoreTemplate SCEntAccessUI SCEntEditioning SCEntEditioningUI SCEnterprise SCEnterpriseUI SCEntFields SCEntFieldsUI SCEntScripting SCEntWidgets SCProElementsPanel SCProFramesInDesign SCProInDesignUI SCProPanel SmartConnectionBookSupport SmartImage SmartImageUI SmartJump SmartJumpInDesignUI style WoodWing woodwingui WoodWingWidgets WoodWingZXP WWActivate WWSettings )
 

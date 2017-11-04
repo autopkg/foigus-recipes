@@ -8,6 +8,30 @@ then
         rm -rf "${smartConnectionBookSupportDirectory}"                                                                                                               
 fi
 
+#Wipe out the Woodwing ZXP folder, if it exists
+woodwingZXPFolder="/Applications/Adobe InDesign CC 2015/WoodWing ZXP"                                        
+
+if [ -d "${woodwingZXPFolder}" ]
+then
+        rm -rf "${woodwingZXPFolder}"                                                                                                               
+fi
+
+#Wipe out PluginConfig.txt, if it exists
+pluginConfigLocation="/Applications/Adobe InDesign CC 2015/PluginConfig.txt"                                        
+
+if [ -d "${pluginConfigLocation}" ]
+then
+        rm -rf "${pluginConfigLocation}"                                                                                                               
+fi
+
+#Wipe out stickyNotesExtension, if it exists
+stickyNotesExtension="/Library/Application Support/Adobe/CEP/extensions/Sticky Notes"                                        
+
+if [ -d "${stickyNotesExtension}" ]
+then
+        rm -rf "${stickyNotesExtension}"                                                                                                               
+fi
+
 #List of receipt names to forget
 #
 #The same uninstaller is used for Digital Magazine plugins as is used for the regular
