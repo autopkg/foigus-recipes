@@ -55,8 +55,8 @@ function UninstallZXPExtensions()
 ##	effective if I'm not running the script from just the right directory.
 ##	echo "$pw" | sudo -S "${EXMANPATH}/ExManCmd/MacOS/ExManCmd" --remove "Sticky Notes"
 ##	echo "$pw" | sudo -S "${EXMANPATH}/ExManCmd/MacOS/ExManCmd" --remove "Smart Caching 2015"
-	"/Applications/Adobe InDesign CC 2015/Uninstall Smart Connection for Adobe CC 2015 v* Build*.app/Contents/ExManCmd/MacOS/ExManCmd" --remove "Sticky Notes"
-	"/Applications/Adobe InDesign CC 2015/Uninstall Smart Connection for Adobe CC 2015 v* Build*.app/Contents/ExManCmd/MacOS/ExManCmd" --remove "Smart Caching 2015"
+	/Applications/Adobe\ InDesign\ CC\ 2015/Uninstall\ Smart\ Connection\ for\ Adobe\ CC\ 2015\ v*\ Build*.app/Contents/ExManCmd/MacOS/ExManCmd --remove "Sticky Notes"
+	/Applications/Adobe\ InDesign\ CC\ 2015/Uninstall\ Smart\ Connection\ for\ Adobe\ CC\ 2015\ v*\ Build*.app/Contents/ExManCmd/MacOS/ExManCmd --remove "Smart Caching 2015"
 
 	# If the password was not correct we let the user try again.
 ##	Again, we're root--this no longer applies
