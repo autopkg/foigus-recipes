@@ -36,6 +36,10 @@
 			<array>
 				<string>InDesignCC2017</string>
 			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
