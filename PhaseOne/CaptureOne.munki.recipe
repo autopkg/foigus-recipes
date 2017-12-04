@@ -12,8 +12,6 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 	<string>com.github.foigus.munki.CaptureOne</string>
 	<key>Input</key>
 	<dict>
-		<key>MAJOR_VERSION</key>
-		<string>10</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/phaseone</string>
 		<key>NAME</key>
