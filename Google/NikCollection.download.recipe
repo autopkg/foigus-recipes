@@ -16,30 +16,10 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>re_pattern</key>
-				<string>https.+nikcollection.+\.dmg</string>
-				<key>result_output_var_name</key>
-				<string>url</string>
-				<key>url</key>
-				<string>https://www.google.com/nikcollection/</string>
-			</dict>
+			<key>Comment</key>
+			<string>Not going to tackle downloading the software right now</string>
 			<key>Processor</key>
-			<string>URLTextSearcher</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>filename</key>
-				<string>NikCollection.dmg</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
+			<string>PackageRequired</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
