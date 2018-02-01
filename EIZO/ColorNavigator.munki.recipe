@@ -38,8 +38,22 @@ Requiring a logout since the GUI installer reopens ColorNavigator, but not from 
 			<string>ColorNavigator</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>uninstallable</key>
+			<true/>
 			<key>unattended_install</key>
 			<false/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/sh
+			# Run the uninstaller script provided with the app.
+
+			UNINSTALL_SCRIPT="/Library/Application Support/EIZO/ColorNavigator 6/ColorNavigator 6 Uninstaller.app/Contents/Resources/uninstall"
+
+			[ -x "${UNINSTALL_SCRIPT}" ] || exit 1
+			"${UNINSTALL_SCRIPT}"
+			
+			pkgutil --forget com.EIZO.pkg.ColorNavigator6</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
