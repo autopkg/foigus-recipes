@@ -50,7 +50,7 @@ If you'd like to avoid the logout, create an "installer_choices_xml" that avoids
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
 				<key>flat_pkg_path</key>
-				<string>%pathname%/XtraFinderInstaller.pkg</string>
+				<string>%pathname%/XtraFinder.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>FlatPkgUnpacker</string>

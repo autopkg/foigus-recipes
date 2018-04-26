@@ -46,7 +46,7 @@ Dropped CodeSignatureVerifier October 17, 2016 because it doesn't seem the lack 
 					<string>Apple Root CA</string>
 				</array>
 				<key>input_path</key>
-				<string>%pathname%/XtraFinderInstaller.pkg</string>
+				<string>%pathname%/XtraFinder.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
