@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Wirecast 8.</string>
+	<string>Downloads the latest version of Wirecast 9.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.download.Wirecast8</string>
+	<string>com.github.foigus.download.Wirecast9</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>Wirecast8</string>
+		<string>Wirecast9</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
@@ -19,7 +19,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>href="(/download-files/wirecast/8[0-9-]+/Wirecast-8[\.0-9]+\.dmg)"</string>
+				<string>href="(/download-files/wirecast/9[0-9-]+/Wirecast-9[\.0-9]+\.dmg)"</string>
 				<key>result_output_var_name</key>
 				<string>url_suffix</string>
 				<key>url</key>
@@ -32,7 +32,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>Wirecast8.dmg</string>
+				<string>Wirecast9.dmg</string>
 				<key>url</key>
 				<string>http://www.telestream.net%url_suffix%</string>
 			</dict>

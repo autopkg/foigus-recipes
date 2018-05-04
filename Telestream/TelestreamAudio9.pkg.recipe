@@ -3,22 +3,22 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the current version of the Telestream Audio driver for Wirecast 8 extracts the package from the dmg.
+	<string>Downloads the current version of the Telestream Audio driver for Wirecast 9 extracts the package from the dmg.
 
 Note major version upgrades of Wirecast are generally paid upgrades.
 
 This is necessary because munkiimport refuses to import the Wirecast dmg (for the purposes of obtaining the Telestream Audio package), and "force_munkiimport" isn't a good idea if this is automated.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.pkg.TelestreamAudio8</string>
+	<string>com.github.foigus.pkg.TelestreamAudio9</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>TelestreamAudio8</string>
+		<string>TelestreamAudio9</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.download.Wirecast8</string>
+	<string>com.github.foigus.download.Wirecast9</string>
 	<key>Process</key>
 	<array>
 		<dict>

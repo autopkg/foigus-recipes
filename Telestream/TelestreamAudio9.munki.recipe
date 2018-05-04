@@ -3,19 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest Wirecast Virtual Camera package for Wirecast 8 and imports it into Munki.
+	<string>Downloads the latest Telestream Audio package and imports it into Munki.
 
 Note major version upgrades of Wirecast are generally paid upgrades.
 
-NOTE THIS RECIPE DOESN'T DO A WHOLE LOT WITHOUT WIRECAST. This recipe is an update_for Wirecast</string>
+Since this package does not appear to have been upgraded in a while, not spending time figuring out where the "real" version number lies _yet_.
+
+NOTE THIS RECIPE DOESN'T DO A WHOLE LOT WITHOUT WIRECAST 9. This recipe is an update_for Wirecast 9.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.munki.WirecastVirtualCamera8</string>
+	<string>com.github.foigus.munki.TelestreamAudio9</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/telestream</string>
 		<key>NAME</key>
-		<string>WirecastVirtualCamera8</string>
+		<string>TelestreamAudio9</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>
@@ -33,21 +35,21 @@ NOTE THIS RECIPE DOESN'T DO A WHOLE LOT WITHOUT WIRECAST. This recipe is an upda
 			<key>developer</key>
 			<string>Telestream</string>
 			<key>display_name</key>
-			<string>Wirecast Virtual Camera 8</string>
+			<string>Telestream Audio Driver 9</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
 			<key>update_for</key>
 			<array>
-				<string>Wirecast8</string>
+				<string>Wirecast9</string>
 			</array>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.pkg.WirecastVirtualCamera8</string>
+	<string>com.github.foigus.pkg.TelestreamAudio9</string>
 	<key>Process</key>
 	<array>
 		<dict>
