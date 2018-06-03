@@ -69,7 +69,7 @@ rmdir /var/root/Library/fonts</string>
 #Delete the AccuBarcode Pro fonts
 rm -f /Library/Fonts/Accu*
 
-#Delete AccuBarcde Pro
+#Delete AccuBarcode Pro
 rm -rf /Applications/AccuBarcode\ Pro
 
 #Forget the package receipt
