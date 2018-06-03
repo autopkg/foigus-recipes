@@ -10,8 +10,8 @@ Can't add CodeSignatureVerifier because Prepros is unsigned!</string>
 	<string>com.github.foigus.download.Prepros</string>
 	<key>Input</key>
 	<dict>
-		<key>DOWNLOAD_PAGE</key>
-		<string>https://prepros.io/downloads</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://prepros.io/downloads/stable/mac</string>
 		<key>NAME</key>
 		<string>Prepros</string>
 	</dict>
@@ -22,21 +22,10 @@ Can't add CodeSignatureVerifier because Prepros is unsigned!</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>re_pattern</key>
-				<string>https:\/\/bit.ly\/prepros-[\d\.]+-mac</string>
-				<key>url</key>
-				<string>%DOWNLOAD_PAGE%</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
 				<key>filename</key>
 				<string>%NAME%.zip</string>
 				<key>url</key>
-				<string>%match%</string>
+				<string>%DOWNLOAD_URL%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
