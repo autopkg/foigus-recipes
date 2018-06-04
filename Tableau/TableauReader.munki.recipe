@@ -30,6 +30,8 @@
 			<string>Tableau</string>
 			<key>display_name</key>
 			<string>Tableau Reader</string>
+			<key>minimum_os_version</key>
+			<string>10.11</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
