@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Repackage the Media Management plugin for InDesign CC 2018 and import it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.MediaManagementConnectorforInDesignCC2018</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/opentext</string>
+		<key>NAME</key>
+		<string>MediaManagementConnectorforInDesignCC2018</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe InDesign CC 2018</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-opentext-MediaManagementConnectorforInDesignCC2018</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>OpenText Media Management for Adobe Creative Cloud (OTMM Connector for Adobe CC) enables seamless integration of Adobe Creative Cloud applications with OpenText Media Management.</string>
+			<key>developer</key>
+			<string>OpenText</string>
+			<key>display_name</key>
+			<string>Media Management Connector for InDesign CC 2018</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>InDesignCC2018</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.MediaManagementConnectorforInDesignCC2018</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
