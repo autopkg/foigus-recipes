@@ -20,6 +20,8 @@
 			<array>
 				<string>development-xnsoft-XnConvert</string>
 			</array>
+			<key>category</key>
+			<string>Utilities</string>
 			<key>description</key>
 			<string>XnConvert is a powerful and free cross-platform batch image processing, allowing you to combine over 80 actions.</string>
 			<key>developer</key>
