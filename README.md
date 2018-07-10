@@ -16,6 +16,11 @@ autopkg repo-add novaksam-recipes
 autopkg repo-add hjuutilainen-recipes
 ```
 
+### Google Web Designer
+```
+autopkg repo-add peshay-recipes
+```
+
 ### OpenEmu
 ```
 autopkg repo-add sheagcraig-recipes
