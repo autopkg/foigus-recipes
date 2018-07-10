@@ -37,6 +37,7 @@
 			<array>
 				<string>MediaManagementConnectorforInDesignCC2015</string>
 				<string>MediaManagementConnectorforInDesignCC2017</string>
+				<string>MediaManagementConnectorforInDesignCC2018</string>
 			</array>
 			<key>unattended_install</key>
 			<true/>
