@@ -21,7 +21,7 @@
 				<key>re_pattern</key>
 				<string>http:\/\/update\.necdisplay\.com\/spectraview\/NEC_SpectraView_MacOS_v[\d\.]+_multilanguage\.dmg</string>
 				<key>url</key>
-				<string>http://www.necdisplay.com/support-and-services/spectra-view-II/Downloads</string>
+				<string>https://www.necdisplay.com/support-and-services/spectra-view-II/Downloads</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
