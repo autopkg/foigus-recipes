@@ -34,7 +34,7 @@
 				<key>filename</key>
 				<string>AccuBarcodeProSpecial.dmg</string>
 				<key>url</key>
-				<string>https://www.accubarcode.com/special/%discoveredfilename%</string>
+				<string>https://www.accubarcode.com/sites/default/files/barcode/%discoveredfilename%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
