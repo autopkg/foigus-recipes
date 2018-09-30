@@ -16,6 +16,8 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 		<string>11</string>
 		<key>NAME</key>
 		<string>CaptureOne</string>
+		<key>LANGUAGE</key>
+		<string>English</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
@@ -40,7 +42,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 				<key>filename</key>
 				<string>CaptureOne.dmg</string>
 				<key>url</key>
-				<string>http://downloads.phaseone.com/73bc2bdb-c7e0-45ec-bffc-3b2ec2adeb03/International/CaptureOne.Mac.%truncated_version%.dmg</string>
+				<string>http://downloads.phaseone.com/73bc2bdb-c7e0-45ec-bffc-3b2ec2adeb03/%LANGUAGE%/CaptureOne.Mac.%truncated_version%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
