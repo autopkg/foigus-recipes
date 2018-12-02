@@ -17,7 +17,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 		<key>NAME</key>
 		<string>CaptureOne</string>
 		<key>LANGUAGE</key>
-		<string>English</string>
+		<string>International</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
