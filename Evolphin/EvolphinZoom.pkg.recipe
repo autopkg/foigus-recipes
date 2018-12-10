@@ -6,10 +6,9 @@
 	<string>Packages Evolphin Zoom for installation.
 
 NOTES:
-- This recipe depends on hjuutilainen's ChecksumVerifier and homebysix's VersionSplitter.  Add their repos via:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add this repo via:
 
 autopkg repo-add hjuutilainen-recipes
-autopkg repo-add homebysix-recipes
 
 - This recipe does not download the Evolphin Zoom package--feed the package into the recipe via the following format:
 
