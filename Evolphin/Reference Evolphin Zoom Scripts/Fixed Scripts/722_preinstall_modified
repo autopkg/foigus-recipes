@@ -1,0 +1,168 @@
+#!/bin/sh
+
+SCRIPT_PATH="`dirname "$0"`"
+PACKAGE_PATH="$1"
+TARGET_LOCATION="$2"
+TARGET_VOL="$3"
+
+NO_AIR=$4
+
+FAILED_TO_STOP_ZOOM_SERVER=50
+FAILED_TO_STOP_PREVIEW_SERVER=51
+
+
+
+echo "Script path: $SCRIPT_PATH";
+echo "Package location: $PACKAGE_PATH";
+echo "Target location:$TARGET_LOCATION";
+echo "Target volume: $TARGET_VOL";
+echo "User: $USER";
+
+
+msg(){
+  echo "Message: $1"
+}
+
+error(){
+  osascript "$SCRIPT_PATH/msg.applescript" "$1"  
+}
+
+#By default, $TARGET_LOCATION == /Applications/Evolphin
+#ZOOM_INSTALL_DIR points to Evolphin/zoom, but all zoom files are present in Evolphin/zoom/Resources
+ZOOM_INSTALL_DIR="$TARGET_LOCATION/zoom"
+ZOOM_RESOURCES="$ZOOM_INSTALL_DIR/Resources"
+
+# Delete tmp and tmp2 folders to avoid issues w/ Jetty's JSP compilation
+rm -rf "/Library/Application Support/Evolphin"
+rm -rf "/Users/$USER/Library/Application Support/Evolphin"
+rm -rf $ZOOM_RESOURCES/tmp
+rm -rf $ZOOM_RESOURCES/tmp2
+
+mkdir -p "$TARGET_LOCATION"
+if [ ! -d "$TARGET_LOCATION" ]; then
+  msg "Stopping installer, target location does not exist"
+  exit 1;
+fi
+cd "$TARGET_LOCATION"
+
+msg "Stopping zoom server if possible...."
+zoomFilePath=$(which zoom)
+msg "$zoomFilePath"
+
+if [ -f "$zoomFilePath" ]; then
+  msg "Zoom file path found: $zoomFilePath"
+  "$zoomFilePath" stop
+  sleep 2
+  ZOOM_FOUND="true"
+else
+  msg "Zoom server not found at system path. Checking current target location"
+  if [ -f /Applications/Evolphin/zoom/Resources/bin/zoom ]; then
+    msg "Install destination contains Zoom server. Stopping zoom..."
+    /Applications/Evolphin/zoom/Resources/bin/zoom stop
+    sleep 2
+    ZOOM_FOUND="true"
+  else
+    msg "Zoom server is not found at $TARGET_LOCATION. Proceeding with normal install"
+  fi
+fi
+
+msg "Stopping preview server if possible...."
+previewFilePath=$(which preview-server)
+msg "$previewFilePath"
+
+if [ -f "$previewFilePath" ]; then
+  msg "Preview Server file path found: $previewFilePath"
+  "$previewFilePath" stop
+  sleep 2
+  PREVIEW_FOUND="true"
+else
+  msg "Preview server not found at system path. Checking current target location"
+  if [ -f /Applications/Evolphin/zoom/Resources/bin/preview-server ]; then
+    msg "Install destination contains Preview Server. Stopping preview server..."
+    /Applications/Evolphin/zoom/Resources/bin/preview-server stop
+    sleep 2
+    PREVIEW_FOUND="true"
+  else
+    msg "Preview Server is not found at $TARGET_LOCATION. Proceeding with normal install"
+  fi
+fi
+
+#Stop client proxy
+if [ -d zoom ]; then
+ cd zoom
+
+  LAUNCH_AGENTS_DIR="/Library/LaunchAgents"
+  CL_PROXY_PLIST="com.evolphin.zoom.clientproxy.plist"
+  LIB_CL_PROXY_PLIST="$LAUNCH_AGENTS_DIR/$CL_PROXY_PLIST"
+  CL_FSCUE_PLIST="com.evolphin.zoom.FSCue.plist"
+  LIB_CL_FSCUE_PLIST="$LAUNCH_AGENTS_DIR/$CL_FSCUE_PLIST"
+
+  msg "Client proxy launch plist path: $LIB_CL_PROXY_PLIST"
+
+  if [ -f "$LIB_CL_PROXY_PLIST" ]; then
+    msg "Calling cmd: launchctl unload -S Aqua -F $LIB_CL_PROXY_PLIST"
+    su -m $USER -c "launchctl unload -S Aqua -F \"$LIB_CL_PROXY_PLIST\""
+    msg "Removing... $LIB_CL_PROXY_PLIST"
+    rm -f "$LIB_CL_PROXY_PLIST"
+  fi
+
+  msg "FSCue launch plist path: $LIB_CL_FSCUE_PLIST"
+
+  if [ -f "$LIB_CL_FSCUE_PLIST" ]; then
+    msg "Calling cmd: launchctl unload -S Aqua -F $LIB_CL_FSCUE_PLIST"
+    su -m $USER -c "launchctl unload -S Aqua -F \"$LIB_CL_FSCUE_PLIST\""
+    msg "Removing... $LIB_CL_FSCUE_PLIST"
+    rm -f "$LIB_CL_FSCUE_PLIST"
+  fi
+  cd -
+fi
+
+# Backup previous conf dir, if any
+if [ -d zoom/Resources/conf ]; then
+  msg "Backing up previous conf -> conf.old"
+  rm -rf zoom/Resources/conf.old
+  mv zoom/Resources/conf zoom/Resources/conf.old
+fi
+
+#final check for zoom status, It should've stopped
+msg "Sleeping for 3 seconds"
+sleep 3
+
+
+if [ "$ZOOM_FOUND" = "true" ]; then
+  status=$(zoom/Resources/bin/zoom status)
+  isRunning=$(echo "$status" |grep -c "not")
+  echo "$isRunning"
+  if [ $isRunning -eq 0 ]; then
+    echo "SEVERE: Failed to stop zoom server. Halting installer"
+    error "Failed to stop zoom server! Please stop zoom server first then try again."
+    exit $FAILED_TO_STOP_ZOOM_SERVER
+  fi
+fi
+
+if [ "$PREVIEW_FOUND" = "true" ]; then
+  status=$(zoom/Resources/bin/preview-server status)
+  isRunning=$(echo "$status" |grep -c "not")
+  echo "$isRunning"
+  if [ $isRunning -eq 0 ]; then
+    echo "SEVERE: Failed to stop Preview Server. Halting installer"
+    error "Failed to stop Preview Server! Please stop Preview Server first then try again."
+    exit $FAILED_TO_STOP_PREVIEW_SERVER
+  fi
+fi
+
+# Uninstall Zoom Plugin from Adobe CS
+##Commenting this out, since we don't have CS-era applications with Zoom installed
+##ADOBE_EXTENSION_MNG6_PATH="/Applications/Adobe Extension Manager CS6/Adobe Extension Manager CS6.app/Contents/MacOS/Adobe Extension Manager CS6"
+## if [ -f "$ADOBE_EXTENSION_MNG6_PATH" ]; then
+##   su -l $USER -c '"/Applications/Adobe Extension Manager CS5/Adobe Extension Manager CS5.app/Contents/MacOS/Adobe Extension Manager CS5" -suppress -remove product="Photoshop CS5" extension="com.zoom.plugin"'
+## fi
+##
+##ADOBE_EXTENSION_MNG_PATH="/Applications/Adobe Extension Manager CS5/Adobe Extension Manager CS5.app/Contents/MacOS/Adobe Extension Manager CS5"
+##  if [ -f "$ADOBE_EXTENSION_MNG_PATH" ]; then
+##    su -l $USER -c '"/Applications/Adobe Extension Manager CS6/Adobe Extension Manager CS6.app/Contents/MacOS/Adobe Extension Manager CS6" -suppress -remove product="Photoshop CS6" extension="com.zoom.plugin"'
+##  fi
+
+exit 0
+
+
