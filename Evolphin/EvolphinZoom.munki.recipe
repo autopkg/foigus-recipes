@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Packages InDesign Smart Connection for installation for InDesign CC 2015 and imports it into Munki
+	<string>Packages Evolphin Zoom for installation and imports it into Munki.
 
 NOTES:
 - This recipe depends on hjuutilainen's ChecksumVerifier and homebysix's VersionSplitter.  Add their repos via:
