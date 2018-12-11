@@ -13,7 +13,11 @@ autopkg repo-add homebysix-recipes
 
 - This recipe does not download the Evolphin Zoom package--feed the package into the recipe via the following format:
 
-autopkg run EvolphinZoom.munki -p /path/to/EvolphinZoom.pkg</string>
+autopkg run EvolphinZoom.munki -p /path/to/EvolphinZoom.pkg
+
+- Evolphin recommends non-current versions of AIR.  See here:
+
+http://help.evolphin.com/docs/drag-and-drop-stopped-working-in-the-asset-browser/</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.EvolphinZoom</string>
 	<key>Input</key>
