@@ -60,6 +60,71 @@ autopkg run EvolphinZoom.munki -p /path/to/EvolphinZoom.pkg</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%PKG%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Unpack the package</string>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_zoom/</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/zoom.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Extract the package payload of zoom.pkg</string>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>5c9aa8340bf5186d4baa4344f852cf77</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/payload_zoom/zoom/Resources/bin/uninstall</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify "uninstall" MD5 matches 7.2.2 release 58</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>dcfaf53236397eab4ff0e9baf5e60d71</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/payload_zoom/zoom/Uninstall Zoom.app/Contents/Resources/Scripts/main.scpt</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify "main.scpt" MD5 matches 7.2.2 release 58</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_makepkginfo_options</key>
+				<array>
+					<string>--uninstall_script=%RECIPE_DIR%/Reference Evolphin Zoom Scripts/Fixed Scripts/722_uninstall_modified</string>
+					<string>--postuninstall_script=%RECIPE_DIR%/Reference Evolphin Zoom Scripts/My Scripts/postuninstall_script.sh</string>
+				</array>
 				<key>pkg_path</key>
 				<string>%PKG%</string>
 				<key>repo_subdirectory</key>
