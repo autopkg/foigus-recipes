@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages InDesign Smart Connection for installation for InDesign CC 2015 and imports it into Munki
+
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier and homebysix's VersionSplitter.  Add their repos via:
+
+autopkg repo-add hjuutilainen-recipes
+autopkg repo-add homebysix-recipes
+
+- This recipe does not download the Evolphin Zoom package--feed the package into the recipe via the following format:
+
+autopkg run EvolphinZoom.munki -p /path/to/EvolphinZoom.pkg</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.EvolphinZoom</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/evolphin</string>
+		<key>NAME</key>
+		<string>EvolphinZoom</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>RestartAction</key>
+			<string>RequireLogout</string>
+			<key>catalogs</key>
+			<array>
+				<string>development-evolphin-EvolphinZoom</string>
+			</array>
+			<key>category</key>
+			<string>Video Production</string>
+			<key>description</key>
+			<string>Zoom video DAM plugins.</string>
+			<key>developer</key>
+			<string>Evolphin</string>
+			<key>display_name</key>
+			<string>Zoom</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>AdobeAIR</string>
+				<string>XQuartz</string>
+			</array>
+			<key>unattended_install</key>
+			<false/>
+			<key>unattended_uninstall</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.EvolphinZoom</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%PKG%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Comment</key>
+			<string>Import the package into Munki</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
