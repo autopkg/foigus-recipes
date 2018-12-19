@@ -16,12 +16,14 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>(?P&lt;url&gt;http://.*?Komodo-IDE.*?dmg)</string>
+				<string>https://downloads\.activestate\.com/Komodo/releases/[\d\.]+/Komodo-IDE-[\d\.-]+-macosx-x86_64\.dmg</string>
 				<key>request_headers</key>
 				<dict>
 					<key>User-Agent</key>
 					<string>curl/7.37.1</string>
 				</dict>
+				<key>result_output_var_name</key>
+				<string>url</string>
 				<key>url</key>
 				<string>https://www.activestate.com/komodo-ide/downloads/ide</string>
 			</dict>
