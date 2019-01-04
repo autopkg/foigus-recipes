@@ -53,6 +53,10 @@ Note that since all the packages from Amazon have version "0", this recipe will 
 				<string>version</string>
 				<key>url</key>
 				<string>http://www.amazon.com/gp/feature.html?docId=1002998671</string>
+				<key>curl_opts</key>
+				<array>
+					<string>--compress</string>
+				</array>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
