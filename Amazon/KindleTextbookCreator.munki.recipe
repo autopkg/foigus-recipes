@@ -52,7 +52,7 @@ Note that since all the packages from Amazon have version "0", this recipe will 
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
-				<string>http://www.amazon.com/gp/feature.html?docId=1002998671</string>
+				<string>https://www.amazon.com/gp/feature.html?docId=1002998671</string>
 				<key>curl_opts</key>
 				<array>
 					<string>--compress</string>
