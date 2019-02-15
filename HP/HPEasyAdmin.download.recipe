@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Comment</key>
-	<string>Created with Recipe Robot v1.0.5 (https://github.com/homebysix/recipe-robot)</string>
+	<string>Originally created with Recipe Robot v1.0.5 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
 	<string>Downloads the latest version of HP Easy Admin.</string>
 	<key>Identifier</key>
@@ -50,6 +50,19 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>filename</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/HP Easy Admin.app/Contents/_CodeSignature</string>
+				<key>mode</key>
+				<string>u+w</string>
+			</dict>
+			<key>Comment</key>
+			<string>555 POSIX permissions here need to be fixed, or else we can't delete the application</string>
+			<key>Processor</key>
+			<string>com.github.jessepeterson.munki.UniversalTypeClient6/ModeChanger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>input_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%/HP Easy Admin.app</string>
 				<key>requirement</key>
@@ -68,6 +81,30 @@
 			</dict>
 			<key>Processor</key>
 			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/HP Easy Admin.app/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleShortVersionString</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/%NAME%/HP Easy Admin.app</string>
+				</array>
+			</dict>
+			<key>Comments</key>
+			<string>Clean up the permissions-changed HP Easy Admin.app--want to stay idempotent.</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
 		</dict>
 	</array>
 </dict>
