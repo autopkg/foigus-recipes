@@ -5,7 +5,12 @@
 	<key>Comment</key>
 	<string>Originally created with Recipe Robot v1.0.5 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
-	<string>Downloads the latest version of HP Easy Admin.</string>
+	<string>Downloads the latest version of HP Easy Admin.
+
+NOTES:
+- This recipe depends on jessepeterson's ModeChanger.  Add jessepeterson's repo via:
+
+autopkg repo-add jessepeterson-recipes</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.HPEasyAdmin</string>
 	<key>Input</key>
