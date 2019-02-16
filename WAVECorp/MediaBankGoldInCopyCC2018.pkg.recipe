@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Repackage the MediaBank Gold plugin for InCopy CC 2018.</string>
+	<string>Repackage the MediaBank Gold plugin for InCopy CC 2018.  This recipe does not download the MediaBank Gold disk image--feed the disk image into the recipe via the following format:
+
+autopkg run MediaBankGoldInCopyCC2018.pkg -p /path/to/MediaBankGold_Installer_osx_CC_2018_20190127.tar</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.pkg.MediaBankGoldInCopyCC2018</string>
 	<key>Input</key>
