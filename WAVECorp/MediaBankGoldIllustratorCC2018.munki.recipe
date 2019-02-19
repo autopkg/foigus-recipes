@@ -37,6 +37,7 @@ autopkg run MediaBankGoldIllustratorCC2018.pkg -p /path/to/MediaBankGold_Install
 			<key>requires</key>
 			<array>
 				<string>IllustratorCC2018</string>
+				<string>MediaBankGoldClient</string>
 			</array>
 			<key>unattended_install</key>
 			<true/>

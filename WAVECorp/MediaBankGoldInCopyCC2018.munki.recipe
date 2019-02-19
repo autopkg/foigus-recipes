@@ -37,6 +37,7 @@ autopkg run MediaBankGoldInCopyCC2018.pkg -p /path/to/MediaBankGold_Installer_os
 			<key>requires</key>
 			<array>
 				<string>InCopyCC2018</string>
+				<string>MediaBankGoldClient</string>
 			</array>
 			<key>unattended_install</key>
 			<true/>
