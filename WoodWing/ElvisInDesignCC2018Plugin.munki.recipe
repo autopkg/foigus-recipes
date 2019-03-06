@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads Elvis Plugin and imports it into Munki for installation for InDesign CC 2018.
+
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add this repo via:
+
+autopkg repo-add hjuutilainen-recipes
+
+- Specific pkgs are enabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true
+- This recipe does not download the Elvis package--feed the package into the recipe via the following format:
+
+autopkg run ElvisInDesignCC2018Plugin.munki -p /path/to/Elvis\ InDesign.pkg</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.ElvisInDesignCC2018Plugin</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/woodwing</string>
+		<key>NAME</key>
+		<string>ElvisInDesignCC2018Plugin</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>Comment</key>
+			<string>Choice is installer_choice_7 (Elvis for InDesign CC 2018)</string>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe InDesign CC 2018</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-woodwing-ElvisInDesignCC2018Plugin</string>
+			</array>
+			<key>category</key>
+			<string>Plugins</string>
+			<key>description</key>
+			<string>Elvis DAM helps you to create incredible assets, and enables creatives to collaborate more effectively. All files are stored in a single location, giving you maximum control over when and where assets are used.</string>
+			<key>developer</key>
+			<string>Woodwing</string>
+			<key>display_name</key>
+			<string>Elvis InDesign CC 2018</string>
+			<key>installer_choices_xml</key>
+			<array>
+				<dict>
+					<key>attributeSetting</key>
+					<integer>1</integer>
+					<key>choiceAttribute</key>
+					<string>selected</string>
+					<key>choiceIdentifier</key>
+					<string>installer_choice_7</string>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>InDesignCC2018</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.ElvisInDesignPlugin</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%PKG%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Unpack the original package</string>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>3a78c255a552075bb97240abd60ebba5</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Elvis InDesign Plug-ins.app/Contents/MacOS/Uninstall Elvis InDesign Plug-ins</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 3.4.0 on the uninstall script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/root/Applications/Adobe InDesign CC 2018/Plug-Ins/Elvis</string>
+			</dict>
+			<key>Comment</key>
+			<string>Create a root for creating the installs array</string>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/root/Applications/Adobe InDesign CC 2018/Plug-Ins/Elvis/Elvis.InDesignPlugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/cc2018/Elvis.InDesignPlugin</string>
+				<key>overwrite</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Copy the InDesign plugin to the fake destination to allow creation of an installs array</string>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Adobe InDesign CC 2018/Plug-Ins/Elvis/Elvis.InDesignPlugin</string>
+				</array>
+			</dict>
+			<key>Comment</key>
+			<string>Create an installs array item for Elvis.InDesignPlugin</string>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>Merge the installs array into the pkginfo</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/root/Applications/Adobe InDesign CC 2018/Plug-Ins/Elvis/Elvis.InDesignPlugin/Resources/Info.plist</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_makepkginfo_options</key>
+				<array>
+					<string>--uninstall_script=%RECIPE_DIR%/Elvis Scripts InDesign CC 2018/Fixed Scripts/Uninstall Elvis InDesign CC 2018 Plug-ins.sh</string>
+					<string>--postuninstall_script=%RECIPE_DIR%/Elvis Scripts InDesign CC 2018/My Scripts/Forget InDesign Receipts CC 2018.sh</string>
+				</array>
+				<key>force_munkiimport</key>
+				<true/>
+				<key>pkg_path</key>
+				<string>%PKG%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Comment</key>
+			<string>Import the package into Munki</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
