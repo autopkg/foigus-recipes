@@ -1,0 +1,38 @@
+#!/bin/bash
+
+scriptDir=$(dirname "$0")
+
+. "$scriptDir/common.sh"
+. "$scriptDir/installer.data"
+
+src="/tmp/InspireDesignerIn.InDesignPlugin"
+dest="/tmp/com.quadient.InDesignPlugin.destination"
+licenseCFG="/tmp/com.quadient.InDesignPlugin.config"
+licenseLIC="/tmp/com.quadient.PNetT.lic"
+echo -n "/Applications/Adobe InDesign CC 2018" > /tmp/com.quadient.InDesignPlugin.destination
+
+if [ -f "$dest" ]; then
+	pluginDest="$(cat "$dest")/Plug-Ins"
+	iniFileDest="$pluginDest/InspireDesignerIn.ini"
+	if [ -d "$pluginDest" ]; then
+		ditto --rsrc "$src" "$pluginDest/InspireDesignerIn.InDesignPlugin" && rm -f  "$dest" && rm -rf "$src"
+		echo "LINESPACE=EXACT,GADIALOG=YES,OUTPUT=FLOWAREA">"$iniFileDest" && chmod 777 "$iniFileDest"
+		mkdir -p "$pluginDest/InspireDesignerIn.InDesignPlugin/Frameworks/License"
+		if [ -f "$licenseCFG" ]; then
+			cp -f "$licenseCFG" "$pluginDest/InspireDesignerIn.InDesignPlugin/Frameworks/License/PrintNetTExporter.config" && rm -f "$licenseCFG"
+		fi
+		if [ -f "$licenseLIC" ]; then
+			cp -f "$(cat "$licenseLIC")" "$pluginDest/InspireDesignerIn.InDesignPlugin/Frameworks/License/" && rm -f "$licenseLIC"
+		fi
+		pushd "$pluginDest/InspireDesignerIn.InDesignPlugin/"
+		ln -s "./Frameworks/License"
+		popd
+	fi
+fi
+
+# Cleanup temporary folder dirty from previous versions
+rm -rf "$HOME/Library/Application Support/Quadient/InspireExportInd"
+
+ForgetPackageWithDelay 10 "$INDD_PLUGIN_IDENTIFIER" &
+
+exit 0
