@@ -10,7 +10,7 @@ NOTE:
 
 autopkg run InspireDesigner12ExportCC2018.download -p /path/to/Adobe-InDesign-CC-2018-Plugin-12.0.2.2-Hotfix.dmg</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.download.InspireDesigner11ExportCC2015</string>
+	<string>com.github.foigus.download.InspireDesigner12ExportCC2018</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
