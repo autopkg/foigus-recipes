@@ -119,7 +119,7 @@ rm -rf /Applications/Adobe InDesign CC 2018/Plug-Ins/InspireDesignerIn.ini
 				<key>pkgdirs</key>
 				<dict/>
 				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign CC 2018/Plug-Ins/UI</string>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign CC 2018/Plug-Ins</string>
 			</dict>
 			<key>Comment</key>
 			<string>Create a root for the plugin payload</string>
@@ -130,7 +130,7 @@ rm -rf /Applications/Adobe InDesign CC 2018/Plug-Ins/InspireDesignerIn.ini
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign CC 2018/Plug-Ins/UI</string>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign CC 2018/Plug-Ins</string>
 				<key>overwrite</key>
 				<true/>
 				<key>source_path</key>
@@ -145,7 +145,7 @@ rm -rf /Applications/Adobe InDesign CC 2018/Plug-Ins/InspireDesignerIn.ini
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign CC 2018/Plug-Ins/UI/InspireDesignerIn.InDesignPlugin/Versions/A/Resources/Info.plist</string>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign CC 2018/Plug-Ins/InspireDesignerIn.InDesignPlugin/Versions/A/Resources/Info.plist</string>
 				<key>plist_version_key</key>
 				<string>CFBundleShortVersionString</string>
 			</dict>
@@ -171,7 +171,7 @@ rm -rf /Applications/Adobe InDesign CC 2018/Plug-Ins/InspireDesignerIn.ini
 				<string>%RECIPE_CACHE_DIR%/pkgroot/</string>
 				<key>installs_item_paths</key>
 				<array>
-					<string>/Applications/Adobe InDesign CC 2018/Plug-Ins/UI/InspireDesignerIn.InDesignPlugin</string>
+					<string>/Applications/Adobe InDesign CC 2018/Plug-Ins/InspireDesignerIn.InDesignPlugin</string>
 				</array>
 			</dict>
 			<key>Comment</key>
