@@ -16,8 +16,12 @@
 		<dict>
 			<key>blocking_applications</key>
 			<array>
+				<string>Adobe After Effects CC 2017</string>
 				<string>Adobe After Effects CC 2018</string>
+				<string>Adobe After Effects CC 2019</string>
+				<string>Adobe Premiere Pro CC 2017</string>
 				<string>Adobe Premiere Pro CC 2018</string>
+				<string>Adobe Premiere Pro CC 2019</string>
 			</array>
 			<key>catalogs</key>
 			<array>
