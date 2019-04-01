@@ -3,29 +3,29 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Google AdWords Editor disk image, builds an installation package, and imports it into Munki.
+	<string>Downloads latest Google Ads Editor disk image, builds an installation package, and imports it into Munki.
 
 NOTE: This package carries the Google Keystone updater.  To get rid of the Keystone updater, set the following postuninstall_script in your override
 
 ###
 #!/bin/bash
 
-rm "/Applications/Google AdWords Editor.app/Contents/Frameworks/KeystoneRegistration.framework/Versions/A/Resources/Keystone.tbz" \
-"/Applications/Google AdWords Editor.app/Contents/Frameworks/KeystoneRegistration.framework/Versions/A/Resources/ksinstall"
+rm "/Applications/Google Ads Editor.app/Contents/Frameworks/KeystoneRegistration.framework/Versions/A/Resources/Keystone.tbz" \
+"/Applications/Google Ads Editor.app/Contents/Frameworks/KeystoneRegistration.framework/Versions/A/Resources/ksinstall"
 ###</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.munki.googleadwordseditor</string>
+	<string>com.github.foigus.munki.googleadseditor</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/google</string>
 		<key>NAME</key>
-		<string>GoogleAdWordsEditor</string>
+		<string>GoogleAdsEditor</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>
 			<array>
-				<string>Google AdWords Editor</string>
+				<string>Google Ads Editor</string>
 			</array>
 			<key>catalogs</key>
 			<array>
@@ -38,7 +38,7 @@ rm "/Applications/Google AdWords Editor.app/Contents/Frameworks/KeystoneRegistra
 			<key>developer</key>
 			<string>Google</string>
 			<key>display_name</key>
-			<string>Google AdWords Editor</string>
+			<string>Google Ads Editor</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -50,7 +50,7 @@ rm "/Applications/Google AdWords Editor.app/Contents/Frameworks/KeystoneRegistra
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.pkg.googleadwordseditor</string>
+	<string>com.github.foigus.pkg.googleadseditor</string>
 	<key>Process</key>
 	<array>
 		<dict>
