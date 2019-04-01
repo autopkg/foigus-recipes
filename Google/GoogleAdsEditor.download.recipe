@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Google AdWords Editor disk image.</string>
+	<string>Downloads latest Google Ads Editor disk image.</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.download.googleadwordseditor</string>
+	<string>com.github.foigus.download.googleadseditor</string>
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
 		<string>https://dl.google.com/adwords_editor/Google_AdWords_Editor.dmg</string>
 		<key>NAME</key>
-		<string>GoogleAdWordsEditor</string>
+		<string>GoogleAdsEditor</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -60,7 +60,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/Google AdWords Editor.app</string>
+				<string>%pathname%/Google Ads Editor.app</string>
 				<key>requirement</key>
 				<string>identifier "com.google.googleadwordseditorlauncher" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = EQHXZ8M8AV</string>
 			</dict>
