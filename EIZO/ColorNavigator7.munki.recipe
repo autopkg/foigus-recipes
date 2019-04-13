@@ -56,7 +56,7 @@ pkgutil --forget com.eizo.pkg.ColorNavigator7</string>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.download.ColorNavigator7</string>
+	<string>com.github.foigus.pkg.ColorNavigator7</string>
 	<key>Process</key>
 	<array>
 		<dict>
