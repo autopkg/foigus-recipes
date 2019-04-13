@@ -5,7 +5,11 @@
 	<key>Description</key>
 	<string>Downloads the latest ColorNavigator installer and imports it into Munki.
 
-Requiring a logout since the GUI installer reopens ColorNavigator, but not from the CLI.  Also, updating calibration software while a user is using the monitor wouldn't be good.</string>
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add this repo via:
+- Requiring a logout since the GUI installer reopens ColorNavigator, but not from the CLI.  Also, updating calibration software while a user is using the monitor wouldn't be good.
+
+autopkg repo-add hjuutilainen-recipes</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.ColorNavigator7</string>
 	<key>Input</key>
