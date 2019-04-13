@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest ColorNavigator 7 installer.</string>
+	<string>Downloads the latest ColorNavigator 7 package.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.ColorNavigator7</string>
 	<key>Input</key>
