@@ -3,15 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest CatDV Pro.
-
-Override MAJOR_VERSION for versions of CatDV Pro besides version 11.</string>
+	<string>Downloads the latest CatDV Pro.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.CatDVPro</string>
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
-		<string>12</string>
+		<string>13</string>
 		<key>NAME</key>
 		<string>CatDVPro</string>
 	</dict>
