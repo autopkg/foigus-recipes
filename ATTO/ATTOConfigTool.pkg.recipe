@@ -160,6 +160,19 @@ I'm skipping a few things I normally do for my AutoPkg recipes:
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>infofile</key>
+				<string>%RECIPE_CACHE_DIR%/PackageInfo</string>
+				<key>pkgtype</key>
+				<string>flat</string>
+				<key>template_path</key>
+				<string>%RECIPE_DIR%/PackageInfoTemplate</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgInfoCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>pkg_request</key>
 				<dict>
 					<key>chown</key>
@@ -199,6 +212,8 @@ I'm skipping a few things I normally do for my AutoPkg recipes:
 					</array>
 					<key>id</key>
 					<string>com.attotech.ATTOConfigTool.pkg</string>
+					<key>infofile</key>
+					<string>%RECIPE_CACHE_DIR%/PackageInfo</string>
 					<key>pkgname</key>
 					<string>ATTOConfigTool-%version%</string>
 					<key>pkgroot</key>
