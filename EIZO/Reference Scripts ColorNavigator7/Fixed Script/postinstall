@@ -1,73 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>Description</key>
-	<string>Downloads the latest ColorNavigator 7 installer and modifies a postinstall to no longer open the ColorNavigator 7 window following installation. 
-
-NOTES:
-- This recipe depends on hjuutilainen's ChecksumVerifier.  Add this repo via:
-
-autopkg repo-add hjuutilainen-recipes</string>
-	<key>Identifier</key>
-	<string>com.github.foigus.pkg.ColorNavigator7</string>
-	<key>Input</key>
-	<dict>
-		<key>NAME</key>
-		<string>ColorNavigator7</string>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>0.2.0</string>
-	<key>ParentRecipe</key>
-	<string>com.github.foigus.download.ColorNavigator7</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack</string>
-				<key>flat_pkg_path</key>
-				<string>%pathname%</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-			<key>Processor</key>
-			<string>FlatPkgUnpacker</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>algorithm</key>
-				<string>MD5</string>
-				<key>checksum</key>
-				<string>181f99c26c86ff62662ad665bf6fb602</string>
-				<key>pathname</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/ColorNavigator_7.pkg/Scripts/postinstall</string>
-			</dict>
-			<key>Comment</key>
-			<string>Verify MD5 matches ColorNavigator7.pkg postinstall script from ColorNavigator 7 7.0.4</string>
-			<key>Processor</key>
-			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>path_list</key>
-				<array>
-					<string>%RECIPE_CACHE_DIR%/unpack/ColorNavigator_7.pkg/Scripts/postinstall</string>
-				</array>
-			</dict>
-			<key>Comment</key>
-			<string>An edit of EIZO's postinstall, commenting out the line that opens the ColorNavigator 7 window following installation</string>
-			<key>Processor</key>
-			<string>PathDeleter</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>file_content</key>
-				<string>#!/bin/sh
+#!/bin/sh
 ##Edit to disable opening the ColorNavigator 7 window following installation
 
 #-------------------------------------------------------------------------------
@@ -181,7 +112,7 @@ fi
 
 # Create initSetting files
 if [ -e "${INST_FLAG_DIR}/checks_update" ]; then
-	cat /dev/null &gt; "${INIT_SETTING_DIR}/checks_update"
+	cat /dev/null > "${INIT_SETTING_DIR}/checks_update"
 fi
 
 #-------------------------------------------------------------------------------
@@ -226,70 +157,3 @@ chmod a+rx /usr/local/lib
 # Launch Application
 ##Don't open the ColorNavigator window, it causes the installation to fail
 ##su ${USER} -c "open /Applications/ColorNavigator\ 7.app"
-</string>
-				<key>file_mode</key>
-				<string>0755</string>
-				<key>file_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/ColorNavigator_7.pkg/Scripts/postinstall</string>
-			</dict>
-			<key>Processor</key>
-			<string>FileCreator</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pkgdirs</key>
-				<dict/>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/payload/root</string>
-			</dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload/root</string>
-				<key>pkg_payload_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/ColorNavigator_7.pkg/Payload</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/ColorNavigator 7.app/Contents/Info.plist</string>
-			</dict>
-			<key>Processor</key>
-			<string>Versioner</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pkgdirs</key>
-				<dict/>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/repack</string>
-			</dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>destination_pkg</key>
-				<string>%RECIPE_CACHE_DIR%/repack/ColorNavigator7-%version%.pkg</string>
-				<key>source_flatpkg_dir</key>
-				<string>%RECIPE_CACHE_DIR%/unpack</string>
-			</dict>
-			<key>Processor</key>
-			<string>FlatPkgPacker</string>
-		</dict>
-	</array>
-</dict>
-</plist>
