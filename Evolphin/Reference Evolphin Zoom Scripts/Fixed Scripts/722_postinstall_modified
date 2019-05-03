@@ -450,5 +450,26 @@ if [ -d Resources/plug-ins/pluginInstaller ]; then
 fi
 cd "$currentDir"
 
+##Per Evolphin support, the following two files need to have POSIX 777 permissions
+##in order to launch for non-administrators without an administrative password
+##prompt.  This is due to AIR rewriting these files at launch time and adding:
+##
+## 	<key>NSAppTransportSecurity</key>
+## 	<dict>
+## 		<key>NSAllowsArbitraryLoads</key>
+## 		<true/>
+## 	</dict>
+##
+##Doing this in the postinstall since rebuilding the package via PkgCreator is a
+##lot of overhead.
+filePaths=( "/Applications/Evolphin/zoom/Asset Browser.app/Contents/Info.plist" "/Applications/Evolphin/zoom/Check-In Dialog.app/Contents/Info.plist" )
+for filePath in "${filePaths[@]}"
+do
+	if [ -f "${filePath}" ]
+	then
+		chmod 777 "${filePath}"
+	fi
+done
+
 exit 0
 
