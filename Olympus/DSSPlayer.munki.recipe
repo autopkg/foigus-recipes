@@ -34,6 +34,12 @@ Note this software may need .wma-capable playback libraries such as Telestream F
 			<string>10.10</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/bash
+
+installer -pkg /Applications/DSS\ Player/DSSUnInstaller.pkg -target / &amp;&amp; pkgutil --forget com.olympus.DSSUnInstaller</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
