@@ -41,12 +41,12 @@ autopkg repo-add hjuutilainen-recipes</string>
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>181f99c26c86ff62662ad665bf6fb602</string>
+				<string>8f0eb5d71c8a2d1f8b9f297c56e49e32</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/ColorNavigator_7.pkg/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches ColorNavigator7.pkg postinstall script from ColorNavigator 7 7.0.4</string>
+			<string>Verify MD5 matches ColorNavigator7.pkg postinstall script from ColorNavigator 7 7.0.5</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>

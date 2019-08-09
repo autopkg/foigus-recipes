@@ -45,9 +45,9 @@ readonly PLUGINS=(
 	"com.eizo.cn7.ext.cmykValidation"
 	"com.eizo.cn7.ext.cnnetwork"
 	"com.eizo.cn7.ext.correlation"
-#	"com.eizo.cn7.ext.deviceEmulation"
-#	"com.eizo.cn7.ext.deviceMeasurement"
-#	"com.eizo.cn7.ext.iccProfileEmulation"
+	#"com.eizo.cn7.ext.deviceEmulation"
+	#"com.eizo.cn7.ext.deviceMeasurement"
+	#"com.eizo.cn7.ext.iccProfileEmulation"
 	"com.eizo.cn7.ext.lightbooth"
 	"com.eizo.cn7.ext.logViewLutEmulation"
 	"com.eizo.cn7.ext.monitorkeylocksetting"
@@ -138,6 +138,13 @@ ln -sf /usr/local/lib/libftd2xx.1.2.2.dylib /usr/local/lib/libftd2xx.dylib
 
 /sbin/kextload -b com.basICColor.driver.basICColorDISCUS
 
+# db name is changed from v7.0.5. So if db has old name, it need to update.
+if [ -d "${APP_DATA_DIR}/db" -a ! -d "${APP_DATA_DIR}/db.0" ]; then
+	mv "${APP_DATA_DIR}/db" "${APP_DATA_DIR}/db.0"
+elif [ ! -d "${APP_DATA_DIR}/db.0" ]; then
+	mkdir  "${APP_DATA_DIR}/db.0"
+fi
+
 #-------------------------------------------------------------------------------
 # Creanup
 #-------------------------------------------------------------------------------
@@ -149,6 +156,7 @@ fi
 
 # For Permission error by Mac updating
 chmod 777 /Library/Application\ Support/EIZO/ColorNavigator\ 7
+chmod 777 /Library/Application\ Support/EIZO/ColorNavigator\ 7/db.0
 chmod 777 /Library/Application\ Support/EIZO/db
 chmod u+w ~/
 chmod a+rx /usr/local/lib
