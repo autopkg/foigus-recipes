@@ -7,7 +7,6 @@
 
 Notes:
 - This recipe requires installing BOTH AutoPkg AND the Movie Magic Budgeting itself--the latter BY HAND.  IDEALLY this would occur in a clean virtual machine, and is not intended to occur on an AutoPkg "server".  Thank Flexera InstallAnywhere and a cross-platform Java-based application for this incredibly strange recipe.
-- This recipe depends on App Translocation to read the software version (I'd like to find another way to do this) due to it being part of the installation application's name.  This means the software installer MUST be downloaded, decompressed, and INSTALLED FROM THE LOCATION WHERE IT WAS DECOMPRESSED WITHOUT BEING MOVED
 - This recipe skips installing the template budgets in the user's home directory.  These are available in the "MMData" folder in the application's folder.
 - Currently the installation package can be downloaded here https://www.ep.com/home/managing-production/movie-magic-budgeting/
 
@@ -35,7 +34,7 @@ I'm skipping a few things I normally do for my AutoPkg recipes:
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>private\/var\/folders\/.*\/MMB_MAC_([\d\.]+)\.app</string>
+				<string>MMB_MAC_([\d\.]+)\.app</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
