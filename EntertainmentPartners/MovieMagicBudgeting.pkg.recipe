@@ -31,18 +31,18 @@ I'm skipping a few things I normally do for my AutoPkg recipes:
 			<key>Processor</key>
 			<string>FileFinder</string>
 		</dict>
-        <dict>
-            <key>Processor</key>
-            <string>URLTextSearcher</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>file:////%found_filename%</string>
-                <key>result_output_var_name</key>
-                <string>version</string>
-                <key>re_pattern</key>
-                <string>private\/var\/folders\/.*\/MMB_MAC_([\d\.]+)\.app</string>
-            </dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>private\/var\/folders\/.*\/MMB_MAC_([\d\.]+)\.app</string>
+				<key>result_output_var_name</key>
+				<string>version</string>
+				<key>url</key>
+				<string>file:////%found_filename%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
@@ -85,15 +85,15 @@ I'm skipping a few things I normally do for my AutoPkg recipes:
 			<string>Copier</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>PkgRootCreator</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/Scripts</string>
 				<key>pkgdirs</key>
 				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts</string>
 			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
