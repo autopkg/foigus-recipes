@@ -21,7 +21,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>"(http://.*CatDVPro%MAJOR_VERSION%.*dmg)"</string>
+				<string>http:\/\/www\.squarebox\.com\/download\/CatDVPro[\d\.]+\.dmg</string>
 				<key>result_output_var_name</key>
 				<string>download_url</string>
 				<key>url</key>
