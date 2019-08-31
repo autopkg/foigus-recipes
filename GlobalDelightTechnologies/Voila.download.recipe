@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://www.globaldelight.com/voila/downloads/voila.dmg</string>
+		<string>https://www.globaldelight.com/voila/downloads/voila.dmg</string>
 		<key>NAME</key>
 		<string>Voila</string>
 	</dict>
