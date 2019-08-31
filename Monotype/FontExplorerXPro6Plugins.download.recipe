@@ -15,7 +15,7 @@ CodeSignatureVerifier currently skipped since the processor does not support bun
 		<key>NAME</key>
 		<string>FontExplorerXPro6Plugins</string>
 		<key>UPDATE_URL</key>
-		<string>http://fex.linotype.com/update/client/mac/pro/plugins-6/appcast-small.plist</string>
+		<string>https://fex.linotype.com/update/client/mac/pro/plugins-6/appcast-small.plist</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
