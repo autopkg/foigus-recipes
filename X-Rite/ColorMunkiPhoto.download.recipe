@@ -22,7 +22,7 @@ https://www.xrite.com/x-rite-device-services-xrd/support
 		<key>NAME</key>
 		<string>ColorMunkiPhoto</string>
 		<key>DOWNLOAD_URL</key>
-		<string>http://downloads.xrite.com/downloads/software/ColorMunki/Photo/v1.2.4/mac/ColorMunkiPhoto.zip</string>
+		<string>https://downloads.xrite.com/downloads/software/ColorMunki/Photo/v1.2.4/mac/ColorMunkiPhoto.zip</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>

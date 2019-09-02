@@ -13,7 +13,7 @@ Dropped CodeSignatureVerifier October 17, 2016 because it doesn't seem the lack 
 		<key>NAME</key>
 		<string>XtraFinder</string>
 		<key>DOWNLOAD_URL</key>
-		<string>http://www.trankynam.com/xtrafinder/downloads/XtraFinder.dmg</string>
+		<string>https://www.trankynam.com/xtrafinder/downloads/XtraFinder.dmg</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.0</string>
