@@ -32,6 +32,8 @@ Requiring a logout since updating monitor calibration software while a user is u
 			<string>EIZO</string>
 			<key>display_name</key>
 			<string>ColorNavigatorNX</string>
+			<key>minimum_os_version</key>
+			<string>10.6</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
