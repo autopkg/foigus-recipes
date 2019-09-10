@@ -83,11 +83,15 @@ https://www.ecamm.com/cgi-bin/customercenter ? u=john%2Edoe%40example%2Ecom &amp
 					<string>0775</string>
 					<key>Library</key>
 					<string>0755</string>
-					<key>Library/Audio</key>
+					<key>Library/Application Support</key>
 					<string>0755</string>
-					<key>Library/Audio/Plug-Ins</key>
+					<key>Library/Application Support/EcammVideoPlugins</key>
 					<string>0755</string>
-					<key>Library/Audio/Plug-Ins/HAL</key>
+					<key>Library/CoreMediaIO</key>
+					<string>0755</string>
+					<key>Library/CoreMediaIO/Plug-Ins</key>
+					<string>0755</string>
+					<key>Library/CoreMediaIO/Plug-Ins/DAL</key>
 					<string>0755</string>
 				</dict>
 				<key>pkgroot</key>
@@ -111,9 +115,9 @@ https://www.ecamm.com/cgi-bin/customercenter ? u=john%2Edoe%40example%2Ecom &amp
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Audio/Plug-Ins/HAL/EcammAudioLoader.plugin</string>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/EcammVideoPlugins/CallRecorder.plugin</string>
 				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive_einstall/EcammAudioLoader.plugin</string>
+				<string>%RECIPE_CACHE_DIR%/unarchive_einstall/CallRecorder.plugin</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
@@ -122,9 +126,9 @@ https://www.ecamm.com/cgi-bin/customercenter ? u=john%2Edoe%40example%2Ecom &amp
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Audio/Plug-Ins/HAL/EcammAudioLoader.plugin/Contents/Plugins/CallRecorder.plugin</string>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/CoreMediaIO/Plug-Ins/DAL/EcammVideoLoader.plugin</string>
 				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive_einstall/CallRecorder.plugin</string>
+				<string>%RECIPE_CACHE_DIR%/unarchive_einstall/EcammVideoLoader.plugin</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
