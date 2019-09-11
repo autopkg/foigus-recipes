@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest RealVNC disk image.</string>
+	<string>Downloads latest RealVNC Server disk image.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.RealVNC</string>
 	<key>Input</key>

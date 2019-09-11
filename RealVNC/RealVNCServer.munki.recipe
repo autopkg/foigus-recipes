@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest RealVNC and imports it into Munki.</string>
+	<string>Downloads latest RealVNC Server and imports it into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.RealVNC</string>
 	<key>Input</key>
@@ -25,7 +25,7 @@
 			<key>developer</key>
 			<string>RealVNC</string>
 			<key>display_name</key>
-			<string>RealVNC</string>
+			<string>RealVNC Server</string>
 			<key>name</key>
 			<string>%NAME%</string>
 		</dict>
