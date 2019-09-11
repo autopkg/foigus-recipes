@@ -34,6 +34,8 @@ autopkg repo-add hjuutilainen-recipes</string>
 			<string>EIZO</string>
 			<key>display_name</key>
 			<string>ColorNavigator 7</string>
+			<key>minimum_os_version</key>
+			<string>10.10</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>uninstallable</key>
