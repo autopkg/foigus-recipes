@@ -21,31 +21,79 @@ B_MSG=true
 ##Not needed, this will run as root
 ### Ask the user for the administrator username and password.
 ### IF the user cancels then nothing will be done.
-##DO_SUDO=$(osascript \
-##			-e	'set the_password to ""' \
-##			-e	'try' \
-##			-e		'tell application "Finder"' \
-##			-e			'set the_username to do shell script "whoami"' \
-##			-e			'set the_password to ""' \
-##        	-e 			'do shell script "sudo chmod -R 777 $path_only/Plug-Ins/WoodWing" password the_password with administrator privileges' \
-##			-e 			'do shell script "sudo chmod -R 777 $path_only/Plug-Outs" password the_password with administrator privileges' \
-##			-e			'set the_password to "1"' \
-##			-e		'end tell' \
-##			-e	'on error number -128' \
-##			-e		'set the_password to "0"' \
-##			-e	'end try' \
-##			-e 'return {the_password}')
-##
-##echo "USER ACTION: ${DO_SUDO}"
+##UNINSTALL_SMARTCONNECTIONIDP_APP=$(osascript \
+##								-e	'set the_results to ""' \
+##								-e	'try' \
+##								-e		'tell application "Finder"' \
+##								-e		'activate' \
+##								-e		'set the_results to ((display dialog "You are about to remove all Smart Connection files, including the SmartConnectionIDP.app.\nWhen you have multiple installations of Smart Connection on your system, you might want to leave this file on your system.\n\nDo you want to remove the SmartConnectionIDP.app?" with title "Uninstall Smart Connection" buttons {"Yes", "No"} default button 2))' \
+##								-e		'end tell' \
+##								-e	'end try' \
+##								-e 'return {the_results}')
+
+##Going to uninstall SmartConnectionIDP
+##echo "USER ACTION: ${UNINSTALL_SMARTCONNECTIONIDP_APP}"
 ##echo ""
 ##
-### Check if the user has canceled (0) or not (1).
-##if [ "${DO_SUDO}" == "0" ]; then
-##	echo "${DO_SUDO}"
-##	exit 1;
+##if [[ "${UNINSTALL_SMARTCONNECTIONIDP_APP}" == *":Yes"* ]]; then
+##	# Ask the user for the administrator username and password.
+##	# IF the user cancels then nothing will be done.
+##	DO_SUDO=$(osascript \
+##				-e	'set the_password to ""' \
+##				-e	'try' \
+##				-e		'tell application "Finder"' \
+##				-e			'set the_username to do shell script "whoami"' \
+##				-e			'set the_password to ""' \
+##				-e 			"do shell script \"sudo chmod -R 777 '$path_only'/Plug-Ins/WoodWing\" password the_password with administrator privileges" \
+##				-e 			'do shell script "sudo chmod -R 777 /Applications/SmartConnectionIDP.app" password the_password with administrator privileges' \
+##				-e 			'do shell script "sudo chmod -R 777 /Applications/SmartConnectionIDP.app/Contents" password the_password with administrator privileges' \
+##	        	-e 			'do shell script "sudo rm -rf /Applications/SmartConnectionIDP.app" password the_password with administrator privileges' \
+##				-e			'set the_password to "1"' \
+##				-e		'end tell' \
+##				-e	'on error number -128' \
+##				-e		'set the_password to "0"' \
+##				-e	'end try' \
+##				-e 'return {the_password}')
+##
+##	echo "USER ACTION: ${UNINSTALL_SMARTCONNECTIONIDP_APP}"
+##	echo ""
+##
+##	# Check if the user has canceled (0) or not (1).
+##	if [ "${UNINSTALL_SMARTCONNECTIONIDP_APP}" == "0" ]; then
+##		echo "${UNINSTALL_SMARTCONNECTIONIDP_APP}"
+##		exit 1;
+##	else
+##		echo "NO CANCEL"
+##	fi
 ##else
-##	echo "NO CANCEL"
+##	# Ask the user for the administrator username and password.
+##	# IF the user cancels then nothing will be done.
+##	DO_SUDO=$(osascript \
+##				-e	'set the_password to ""' \
+##				-e	'try' \
+##				-e		'tell application "Finder"' \
+##				-e			'set the_username to do shell script "whoami"' \
+##				-e			'set the_password to ""' \
+##				-e 			'do shell script "sudo chmod -R 777 $path_only/Plug-Ins/WoodWing" password the_password with administrator privileges' \
+##				-e			'set the_password to "1"' \
+##				-e		'end tell' \
+##				-e	'on error number -128' \
+##				-e		'set the_password to "0"' \
+##				-e	'end try' \
+##				-e 'return {the_password}')
+##
+##	echo "USER ACTION: ${DO_SUDO}"
+##	echo ""
+##
+##	# Check if the user has canceled (0) or not (1).
+##	if [ "${DO_SUDO}" == "0" ]; then
+##		echo "${DO_SUDO}"
+##		exit 1;
+##	else
+##		echo "NO CANCEL"
+##	fi
 ##fi
+rm -rf "/Applications/SmartConnectionIDP.app"
 
 #---------------------------------------------------------------------
 # Check if a certain (sent) product currently is installed.
@@ -282,6 +330,7 @@ UninstallPluginConfig
 ##new_path_only=`dirname "$0"`
 ##new_path_only=`dirname "$new_path_only"`
 ##new_path_only=`dirname "$new_path_only"`
+#new_path_only="/Applications/Adobe InCopy CC 2018/Uninstall Smart Connection for Adobe CC 2018.app"
 new_path_only="/Applications/Adobe InDesign CC 2018/Uninstall Smart Connection for Adobe CC 2018.app"
 
 rm -Rf "$new_path_only"

@@ -112,12 +112,12 @@ autopkg run WoodwingSmartConnectionInCopyCC2018.munki -p /path/to/Smart_Connecti
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>590207aad5f0aee268c448b3ab70fb0f</string>
+				<string>74ac73fa29d6cd08c50efa28cecc29ea</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe CC 2018.app/Contents/MacOS/Uninstall Smart Connection for Adobe CC 2018</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 13.0.0, build 4 on the uninstall script</string>
+			<string>Verify MD5 matches 13.1.0, build 57 on the uninstall script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
@@ -127,12 +127,12 @@ autopkg run WoodwingSmartConnectionInCopyCC2018.munki -p /path/to/Smart_Connecti
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>590207aad5f0aee268c448b3ab70fb0f</string>
+				<string>74ac73fa29d6cd08c50efa28cecc29ea</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe CC 2018.app/Contents/Resources/Uninstall Smart Connection for Adobe CC 2018.sh</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 13.0.0, build 4 on the uninstall.sh script</string>
+			<string>Verify MD5 matches 13.1.0, build 57 on the uninstall.sh script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
