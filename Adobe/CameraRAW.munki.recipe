@@ -5,9 +5,13 @@
 	<key>Description</key>
 	<string>Downloads Adobe Camera RAW.
 
-NOTE: This recipe unfortunately uses an installs array of the md5 of the Camera RAW binary itself.  This is due to poor versioning choices in the plugin.
+NOTES:
 
-NOTE: The package has uninstallable set to false because it intersects with Creative Cloud application installations that are not recorded in the traditional receipts database, thus a "removepackages" uninstall would end up removing Camera RAW even though there might be Camera RAW-dependent applications still installed.</string>
+- This recipe unfortunately uses an installs array of the md5 of the Camera RAW binary itself.  This is due to poor versioning choices in the plugin.
+- The package has uninstallable set to false because it intersects with Creative Cloud application installations that are not recorded in the traditional receipts database, thus a "removepackages" uninstall would end up removing Camera RAW even though there might be Camera RAW-dependent applications still installed.
+- This recipe is dependent on Elliot Jordan's VersionSplitter processor.  To add his repo:
+
+autopkg repo-add homebysix-recipes</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.CameraRAW</string>
 	<key>Input</key>
