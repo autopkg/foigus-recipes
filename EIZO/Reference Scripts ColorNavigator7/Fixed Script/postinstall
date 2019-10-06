@@ -7,6 +7,7 @@
 
 readonly PLUGS="./bin/plugs"
 readonly SRC_PLUGINS_DIR="./plugins"
+readonly KEXT_DIR="./kext"
 
 readonly APP_DATA_DIR="/Library/Application Support/EIZO/ColorNavigator 7"
 readonly INIT_SETTING_DIR="${APP_DATA_DIR}/_initialsetting"
@@ -45,9 +46,8 @@ readonly PLUGINS=(
 	"com.eizo.cn7.ext.cmykValidation"
 	"com.eizo.cn7.ext.cnnetwork"
 	"com.eizo.cn7.ext.correlation"
-	#"com.eizo.cn7.ext.deviceEmulation"
-	#"com.eizo.cn7.ext.deviceMeasurement"
-	#"com.eizo.cn7.ext.iccProfileEmulation"
+	"com.eizo.cn7.ext.deviceMeasurement"
+	"com.eizo.cn7.ext.iccProfileEmulation"
 	"com.eizo.cn7.ext.lightbooth"
 	"com.eizo.cn7.ext.logViewLutEmulation"
 	"com.eizo.cn7.ext.monitorkeylocksetting"
@@ -129,6 +129,21 @@ done
 
 # Setup CNNetwork
 ./bin/set_net_mac.sh -src "${PKG_DIR}" -dst "${INIT_SETTING_DIR}"
+
+#-------------------------------------------------------------------------------
+# Copy basICColorDISCUS.kext
+#-------------------------------------------------------------------------------
+# check OS version is newer than 10.15
+CATALINA_OR_LATER=$(sw_vers -productVersion \
+    | awk -F. '{ print $1 "." $2 }' \
+    | (read v ; echo "$v >= 10.15"; ) \
+    | bc)
+
+if [ $(expr $CATALINA_OR_LATER) -eq 1 ]; then
+    cp -rf "${KEXT_DIR}/basICColorDISCUS.kext" "/Library/Extensions"
+else
+    cp -rf "${KEXT_DIR}/basICColorDISCUS.kext" "/System/Library/Extensions"
+fi
 
 #-------------------------------------------------------------------------------
 # Additional Setup
