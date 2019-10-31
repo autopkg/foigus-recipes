@@ -44,7 +44,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 				<key>filename</key>
 				<string>CaptureOne.dmg</string>
 				<key>url</key>
-				<string>https://downloads.phaseone.com/d972230a-e941-47ca-a751-35f57a3f2d94/%LANGUAGE%/CaptureOne.Mac.%truncated_version%.dmg</string>
+				<string>https://downloads.phaseone.com/d972230a-e941-47ca-a751-35f57a3f2d94/%LANGUAGE%/CaptureOne%MAJOR_VERSION%.Mac.%truncated_version%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
