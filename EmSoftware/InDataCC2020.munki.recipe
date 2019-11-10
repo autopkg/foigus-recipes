@@ -16,7 +16,7 @@
 		<dict>
 			<key>blocking_applications</key>
 			<array>
-				<string>Adobe InDesign CC 2020</string>
+				<string>Adobe InDesign 2020</string>
 			</array>
 			<key>catalogs</key>
 			<array>
@@ -52,16 +52,16 @@ pkgutil --forget com.emsoftware.inflow</string>
 			<string>#!/bin/bash
 
 #Delete the plugins
-rm -rf "/Applications/Adobe InDesign CC 2020/Plug-Ins/Em Software/InData UI.InDesignPlugin"
-rm -rf "/Applications/Adobe InDesign CC 2020/Plug-Ins/Em Software/InData.InDesignPlugin"
-rm -rf "/Applications/Adobe InDesign CC 2020/Plug-Ins/Em Software/InFlow UI.InDesignPlugin"
-rm -rf "/Applications/Adobe InDesign CC 2020/Plug-Ins/Em Software/InFlow.InDesignPlugin"
+rm -rf "/Applications/Adobe InDesign 2020/Plug-Ins/Em Software/InData UI.InDesignPlugin"
+rm -rf "/Applications/Adobe InDesign 2020/Plug-Ins/Em Software/InData.InDesignPlugin"
+rm -rf "/Applications/Adobe InDesign 2020/Plug-Ins/Em Software/InFlow UI.InDesignPlugin"
+rm -rf "/Applications/Adobe InDesign 2020/Plug-Ins/Em Software/InFlow.InDesignPlugin"
 
 #Delete the parent folder, if it's empty
-if [ -z "$(ls -A "/Applications/Adobe InDesign CC 2020/Plug-Ins/Em Software")" ]
+if [ -z "$(ls -A "/Applications/Adobe InDesign 2020/Plug-Ins/Em Software")" ]
 then
 	#Empty
-	rmdir "/Applications/Adobe InDesign CC 2020/Plug-Ins/Em Software"
+	rmdir "/Applications/Adobe InDesign 2020/Plug-Ins/Em Software"
 fi</string>
 		</dict>
 	</dict>
@@ -90,7 +90,7 @@ fi</string>
 				<key>pkgdirs</key>
 				<dict/>
 				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/Adobe InDesign CC 2020</string>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/Adobe InDesign 2020</string>
 			</dict>
 			<key>Processor</key>
 			<string>PkgRootCreator</string>
@@ -99,7 +99,7 @@ fi</string>
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/Adobe InDesign CC 2020</string>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/Adobe InDesign 2020</string>
 				<key>pkg_payload_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/InData.pkg/Payload</string>
 				<key>purge_destination</key>
@@ -112,7 +112,7 @@ fi</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/Adobe InDesign CC 2020/Plug-Ins/Em Software/InData.InDesignPlugin/Versions/A/Resources/Info.plist</string>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/Adobe InDesign 2020/Plug-Ins/Em Software/InData.InDesignPlugin/Versions/A/Resources/Info.plist</string>
 			</dict>
 			<key>Processor</key>
 			<string>Versioner</string>
@@ -136,7 +136,7 @@ fi</string>
 				<string>%RECIPE_CACHE_DIR%/payload/root</string>
 				<key>installs_item_paths</key>
 				<array>
-					<string>/Applications/Adobe InDesign CC 2020/Plug-Ins/Em Software/InData.InDesignPlugin</string>
+					<string>/Applications/Adobe InDesign 2020/Plug-Ins/Em Software/InData.InDesignPlugin</string>
 				</array>
 			</dict>
 			<key>Processor</key>
