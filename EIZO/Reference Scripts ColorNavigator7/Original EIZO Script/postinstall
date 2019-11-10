@@ -170,6 +170,7 @@ fi
 
 # For Permission error by Mac updating
 chmod 777 /Library/Application\ Support/EIZO/ColorNavigator\ 7
+chmod 777 /Library/Application\ Support/EIZO/ColorNavigator\ 7/backup
 chmod 777 /Library/Application\ Support/EIZO/ColorNavigator\ 7/db.0
 chmod 777 /Library/Application\ Support/EIZO/db
 chmod u+w ~/

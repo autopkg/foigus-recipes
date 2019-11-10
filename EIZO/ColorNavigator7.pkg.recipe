@@ -41,7 +41,7 @@ autopkg repo-add hjuutilainen-recipes</string>
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>ec053a23d9c77ba6d30f5383b416678e</string>
+				<string>9880125640fee4435cae4ba45317b4cb</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/ColorNavigator_7.pkg/Scripts/postinstall</string>
 			</dict>
