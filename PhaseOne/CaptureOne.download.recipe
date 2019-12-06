@@ -19,7 +19,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 		<key>LANGUAGE</key>
 		<string>International</string>
 		<key>CODESIGNATUREVERIFIERREQUIREMENT</key>
-		<string>identifier "com.phaseone.captureone12" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5WTDB5F65L"</string>
+		<string>identifier "com.phaseone.captureone13" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5WTDB5F65L"</string>
 		<key>DOWNLOADURLUUID</key>
 		<string>374dd05f-e8c7-499d-a703-9a7dca20d5b7</string>
 	</dict>
