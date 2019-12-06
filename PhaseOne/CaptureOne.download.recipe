@@ -20,6 +20,8 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 		<string>International</string>
 		<key>CODESIGNATUREVERIFIERREQUIREMENT</key>
 		<string>identifier "com.phaseone.captureone12" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5WTDB5F65L"</string>
+		<key>DOWNLOADURLUUID</key>
+		<string>374dd05f-e8c7-499d-a703-9a7dca20d5b7</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
@@ -44,7 +46,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 				<key>filename</key>
 				<string>CaptureOne.dmg</string>
 				<key>url</key>
-				<string>https://downloads.phaseone.com/d972230a-e941-47ca-a751-35f57a3f2d94/%LANGUAGE%/CaptureOne%MAJOR_VERSION%.Mac.%truncated_version%.dmg</string>
+				<string>https://downloads.phaseone.com/%DOWNLOADURLUUID%/%LANGUAGE%/CaptureOne%MAJOR_VERSION%.Mac.%truncated_version%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
