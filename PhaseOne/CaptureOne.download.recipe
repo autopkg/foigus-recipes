@@ -13,7 +13,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
-		<string>12</string>
+		<string>20</string>
 		<key>NAME</key>
 		<string>CaptureOne</string>
 		<key>LANGUAGE</key>
