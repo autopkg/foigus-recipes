@@ -1,5 +1,4 @@
 #!/bin/sh
-##Edit to disable opening the ColorNavigator 7 window following installation
 
 #-------------------------------------------------------------------------------
 # Defines
@@ -149,7 +148,11 @@ fi
 # Additional Setup
 #-------------------------------------------------------------------------------
 
+# Make symbolic link for lightbooth
 ln -sf /usr/local/lib/libftd2xx.1.2.2.dylib /usr/local/lib/libftd2xx.dylib
+
+# Make symbolic link for K-10
+ln -sf "${PLUGINS_DIR}/exports/mac/libftd2xx.1.4.16.dylib" "${PLUGINS_DIR}/exports/mac/libftd2xx.dylib"
 
 /sbin/kextload -b com.basICColor.driver.basICColorDISCUS
 
