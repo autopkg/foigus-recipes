@@ -36,10 +36,6 @@ autopkg repo-add novaksam-recipes</string>
 			<string>Android Studio</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>requires</key>
-			<array>
-				<string>OracleJava8JDK</string>
-			</array>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
