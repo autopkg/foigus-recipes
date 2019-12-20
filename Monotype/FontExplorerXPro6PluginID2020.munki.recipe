@@ -16,7 +16,7 @@
 		<dict>
 			<key>blocking_applications</key>
 			<array>
-				<string>Adobe InDesign CC 2020</string>
+				<string>Adobe InDesign 2020</string>
 			</array>
 			<key>catalogs</key>
 			<array>
