@@ -18,6 +18,15 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>warning_message</key>
+				<string>As noted here, Em Software is no longer releasing new versions of InData CC 2014.  This recipe will be removed at a future date. http://emsoftware.com/2019/11/08/release-indata-2-10-for-indesign-cs6-cc2018-2020/</string>
+			</dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>re_pattern</key>
 				<string>href="(http.*InData.*InDesign_CC2014_MacOS.pkg)"</string>
 				<key>url</key>

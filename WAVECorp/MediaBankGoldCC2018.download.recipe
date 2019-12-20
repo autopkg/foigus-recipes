@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>"Downloads" MediaBank Gold CC 2018 for installation.  This recipe does not download the MediaBank Gold tar archive--feed the tar archive into the recipe via the following format:
+
+autopkg run MediaBankGold.download -p /path/to/MediaBankGold_Installer_osx_CC_2018_20190127.tar</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.MediaBankGoldCC2018</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>MediaBankGoldCC2018</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.4.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Comment</key>
+			<string>Not going to tackle downloading the software right now</string>
+			<key>Processor</key>
+			<string>PackageRequired</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%PKG%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>requirement</key>
+				<string>identifier "com.wavecorp.MediaBank Gold Installer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Q57A75XBAX</string>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/MediaBank Gold Installer.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+	</array>
+</dict>
+</plist>

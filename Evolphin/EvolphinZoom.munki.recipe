@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Evolphin Zoom for installation and imports it into Munki.
+
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add hjuutilainen's repo via:
+
+autopkg repo-add hjuutilainen-recipes
+
+- This recipe does not download the Evolphin Zoom package--feed the package into the recipe via the following format:
+
+autopkg run EvolphinZoom.munki -p /path/to/EvolphinZoom.pkg
+
+- Evolphin recommends non-current versions of AIR.  See here:
+
+http://help.evolphin.com/docs/drag-and-drop-stopped-working-in-the-asset-browser/</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.EvolphinZoom</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/evolphin</string>
+		<key>NAME</key>
+		<string>EvolphinZoom</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>RestartAction</key>
+			<string>RequireLogout</string>
+			<key>catalogs</key>
+			<array>
+				<string>development-evolphin-EvolphinZoom</string>
+			</array>
+			<key>category</key>
+			<string>Video Production</string>
+			<key>description</key>
+			<string>Zoom video DAM plugins.</string>
+			<key>developer</key>
+			<string>Evolphin</string>
+			<key>display_name</key>
+			<string>Zoom</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>AdobeAIR</string>
+				<string>XQuartz</string>
+			</array>
+			<key>unattended_install</key>
+			<false/>
+			<key>unattended_uninstall</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.EvolphinZoom</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%PKG%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Unpack the package</string>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_zoom/</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/zoom.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Extract the package payload of zoom.pkg</string>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>5c9aa8340bf5186d4baa4344f852cf77</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/payload_zoom/zoom/Resources/bin/uninstall</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify "uninstall" MD5 matches 7.2.2 release 58</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>dcfaf53236397eab4ff0e9baf5e60d71</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/payload_zoom/zoom/Uninstall Zoom.app/Contents/Resources/Scripts/main.scpt</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify "main.scpt" MD5 matches 7.2.2 release 58</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_makepkginfo_options</key>
+				<array>
+					<string>--uninstall_script=%RECIPE_DIR%/Reference Evolphin Zoom Scripts/Fixed Scripts/722_uninstall_modified</string>
+					<string>--postuninstall_script=%RECIPE_DIR%/Reference Evolphin Zoom Scripts/My Scripts/postuninstall_script.sh</string>
+				</array>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/repack/EvolphinZoom.pkg</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Comment</key>
+			<string>Import the package into Munki</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

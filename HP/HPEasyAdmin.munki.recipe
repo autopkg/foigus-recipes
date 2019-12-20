@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Originally created with Recipe Robot v1.0.5 (https://github.com/homebysix/recipe-robot)</string>
+	<key>Description</key>
+	<string>Downloads the latest version of HP Easy Admin and imports it into Munki.
+
+NOTES:
+- This recipe depends on jessepeterson's ModeChanger.  Add jessepeterson's repo via:
+
+autopkg repo-add jessepeterson-recipes</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.HPEasyAdmin</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/hp</string>
+		<key>NAME</key>
+		<string>HPEasyAdmin</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-hp-HPEasyAdmin</string>
+			</array>
+			<key>description</key>
+			<string>HP Easy Admin is a macOS application tool that enables education and enterprise administrators to directly download HP printing and/or scanning solutions to use for remote distribution.</string>
+			<key>developer</key>
+			<string>HP</string>
+			<key>display_name</key>
+			<string>HP Easy Admin</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.HPEasyAdmin</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/HP Easy Admin.app/Contents/_CodeSignature</string>
+				<key>mode</key>
+				<string>u+w</string>
+			</dict>
+			<key>Comment</key>
+			<string>555 POSIX permissions here need to be fixed, or else we can't delete the application either from AutoPkg or at Munki copy_from_dmg installation time.</string>
+			<key>Processor</key>
+			<string>com.github.jessepeterson.munki.UniversalTypeClient6/ModeChanger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+			</dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%dmg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/%NAME%/HP Easy Admin.app</string>
+				</array>
+			</dict>
+			<key>Comments</key>
+			<string>Clean up the permissions-changed HP Easy Admin.app--want to stay idempotent.</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

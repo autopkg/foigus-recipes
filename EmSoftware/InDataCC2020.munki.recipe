@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest InData CC 2020 package and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.InDataCC2020</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/emsoftware</string>
+		<key>NAME</key>
+		<string>InDataCC2020</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe InDesign 2020</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-emsoftware-InDataCC2020</string>
+			</array>
+			<key>category</key>
+			<string>Utility</string>
+			<key>description</key>
+			<string>InData brings the full layout, design, typographic and picture publishing power of InDesign to bear on all your data-driven repetitive publishing tasks.</string>
+			<key>developer</key>
+			<string>Em Software</string>
+			<key>display_name</key>
+			<string>InData CC 2020</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>postinstall_script</key>
+			<string>#!/bin/bash
+
+#Since the receipts are common between InData revisions they 1) may be inaccurate
+#and 2) cause issues during uninstallation if multiple versions of InData are available.
+#Forget the receipts here.
+pkgutil --forget com.emsoftware.indata
+pkgutil --forget com.emsoftware.inflow</string>
+			<key>requires</key>
+			<array>
+				<string>InDesignCC2020</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/bash
+
+#Delete the plugins
+rm -rf "/Applications/Adobe InDesign 2020/Plug-Ins/Em Software/InData UI.InDesignPlugin"
+rm -rf "/Applications/Adobe InDesign 2020/Plug-Ins/Em Software/InData.InDesignPlugin"
+rm -rf "/Applications/Adobe InDesign 2020/Plug-Ins/Em Software/InFlow UI.InDesignPlugin"
+rm -rf "/Applications/Adobe InDesign 2020/Plug-Ins/Em Software/InFlow.InDesignPlugin"
+
+#Delete the parent folder, if it's empty
+if [ -z "$(ls -A "/Applications/Adobe InDesign 2020/Plug-Ins/Em Software")" ]
+then
+	#Empty
+	rmdir "/Applications/Adobe InDesign 2020/Plug-Ins/Em Software"
+fi</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.InDataCC2020</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%pathname%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/Adobe InDesign 2020</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/Adobe InDesign 2020</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/InData.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/Adobe InDesign 2020/Plug-Ins/Em Software/InData.InDesignPlugin/Versions/A/Resources/Info.plist</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Adobe InDesign 2020/Plug-Ins/Em Software/InData.InDesignPlugin</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

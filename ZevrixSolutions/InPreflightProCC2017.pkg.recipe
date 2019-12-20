@@ -54,17 +54,6 @@
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Deliver.app</string>
-				<key>source_path</key>
-				<string>%pathname%/InPreflight Pro Installer.app/Contents/Resources/Deliver.app</string>
-			</dict>
-			<key>Processor</key>
-			<string>Copier</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign CC 2017/Plug-Ins/Zevrix/InPreflight Pro.app</string>
 				<key>source_path</key>
 				<string>%pathname%/InPreflight Pro Installer.app/Contents/Resources/appPackage/InPreflight Pro.app</string>

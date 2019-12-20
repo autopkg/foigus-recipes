@@ -13,11 +13,15 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
-		<string>11</string>
+		<string>20</string>
 		<key>NAME</key>
 		<string>CaptureOne</string>
 		<key>LANGUAGE</key>
-		<string>English</string>
+		<string>International</string>
+		<key>CODESIGNATUREVERIFIERREQUIREMENT</key>
+		<string>identifier "com.phaseone.captureone13" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5WTDB5F65L"</string>
+		<key>DOWNLOADURLUUID</key>
+		<string>374dd05f-e8c7-499d-a703-9a7dca20d5b7</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.9</string>
@@ -27,11 +31,11 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>&lt;AvailableVersion&gt;(%MAJOR_VERSION%\.\d+\.\d+).*&lt;\/AvailableVersion&gt;</string>
+				<string>&lt;AvailableVersion&gt;(%MAJOR_VERSION%[\.\d]*)\.[\d]*&lt;\/AvailableVersion&gt;</string>
 				<key>result_output_var_name</key>
 				<string>truncated_version</string>
 				<key>url</key>
-				<string>http://cormws.phaseone.com/corm.asmx/GetNewSoftwareVersion?Platform=Mac&amp;Version=8.0</string>
+				<string>https://cormws.phaseone.com/corm.asmx/GetNewSoftwareVersion?Platform=Mac&amp;Version=8.0</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -42,7 +46,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 				<key>filename</key>
 				<string>CaptureOne.dmg</string>
 				<key>url</key>
-				<string>http://downloads.phaseone.com/73bc2bdb-c7e0-45ec-bffc-3b2ec2adeb03/%LANGUAGE%/CaptureOne.Mac.%truncated_version%.dmg</string>
+				<string>https://downloads.phaseone.com/%DOWNLOADURLUUID%/%LANGUAGE%/CaptureOne%MAJOR_VERSION%.Mac.%truncated_version%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -57,7 +61,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 				<key>input_path</key>
 				<string>%pathname%/Capture One %MAJOR_VERSION%.app</string>
 				<key>requirement</key>
-				<string>identifier "com.phaseone.captureone11" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5WTDB5F65L"</string>
+				<string>%CODESIGNATUREVERIFIERREQUIREMENT%</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>

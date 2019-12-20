@@ -1,0 +1,475 @@
+#!/bin/sh
+
+
+SCRIPT_PATH="`dirname "$0"`"
+PACKAGE_PATH=$1
+TARGET_LOCATION=$2
+TARGET_VOL=$3
+
+NO_AIR=$4
+
+
+msg(){
+  echo "Message: $1"
+}
+
+msg "Username: $USER"
+msg "Home: $HOME"
+
+error(){
+  osascript "$SCRIPT_PATH/msg.applescript" "$1"
+}
+
+msg "Script path: $SCRIPT_PATH";
+msg "Package location: $PACKAGE_PATH";
+msg "Target location:$TARGET_LOCATION";
+msg "Target volume: $TARGET_VOL";
+
+pwd
+
+if [ ! -d "$TARGET_LOCATION" ]; then
+  msg "mkdir -p $TARGET_LOCATION"
+  mkdir -p "$TARGET_LOCATION"
+  if [ ! -d "$TARGET_LOCATION" ]; then
+    msg "Even after mkdir -p, target location does not exist. Halting installer!"
+    exit 33;
+  fi
+fi
+
+cd "$TARGET_LOCATION"
+
+if [ ! -d zoom ]; then
+  msg "SEVERE: Target location does not contain zoom"
+  exit 1;
+fi
+
+cd zoom
+currentDir="`pwd`"
+msg "Dir changed to $currentDir"
+
+delete(){
+  if [ -d "$1" ]; then
+    if [ -L "$1" ]; then
+      msg "Removing link: $1."
+      rm "$1"
+    else
+      msg "Removing dir: $1"
+      rm -r "$1"
+    fi
+  else
+    msg "Not removing link: $1 does not exist"
+  fi
+}
+
+msg "Changing mod to 775..."
+msg "Pwd:`pwd`"
+
+chmod -R 775 .
+
+### Create link to ffmpeg 32/64-bit version depending on host machine
+##### Detect if 64 bit or 32 bit
+if sysctl hw | grep "cpu64bit_capable" | grep -q ": 1"
+then
+	ARCH="x86_64"
+else
+	ARCH="x86_32"
+fi
+##### Create ffmpeg link
+if [ -d Resources/lib/imagemagick ]; then
+  cd "Resources/lib/imagemagick"
+  msg "Dir changed to: `pwd`"
+  for exe in ffmpeg ffprobe avconv qt-faststart; do
+    if [ -e $exe-$ARCH ]; then
+      msg "Creating link:  $exe --> $exe-$ARCH"
+      ln -f -s $exe-$ARCH $exe
+    fi
+  done
+  cd -
+fi
+
+### Create zm client proxy link
+curDir="$currentDir"
+if [ -d zmclientproxy.app/Contents ]; then
+  cd "zmclientproxy.app/Contents"
+  msg "Dir changed to:`pwd`"
+  delete MacOS
+  msg "Creating link: MacOS --> ../../Resources/bin"
+  ln -f -s ../../Resources/bin MacOS
+  cd -
+fi
+
+#create link mac os link to bin
+
+if [ -d Resources/resources/Zoom\ UI.app ]; then
+  cd "Resources/resources/Zoom UI.app/Contents"
+  delete MacOS
+  ln -f -s ../../../bin MacOS
+  cd -
+fi
+
+#Link air executables
+
+curDir="$currentDir"
+if [ -d Resources/air/zmvisuallog ]; then
+  cd "Resources/air/zmvisuallog"
+  msg "Dir changed to: `pwd`"
+  delete zmvisuallog
+  msg "Creating link:  zmvisuallog --> ../../../Visual\ Log.app/Contents/MacOS/Visual\ Log"
+  ln -f  -s ../../../Visual\ Log.app/Contents/MacOS/Visual\ Log zmvisuallog
+  cd -
+fi
+
+
+if [ -d Resources/air/zmvisualsearch ]; then
+  cd "Resources/air/zmvisualsearch"
+  msg "Dir changed to: `pwd`"
+  delete zmvisualsearch
+  msg "Creating link:  zmvisualsearch --> ../../../Asset\ Browser.app/Contents/MacOS/Asset\ Browser"
+  ln -f -s ../../../Asset\ Browser.app/Contents/MacOS/Asset\ Browser zmvisualsearch
+  cd -
+fi
+
+if [ -d Resources/air/zmcheckindialog ]; then
+  cd "Resources/air/zmcheckindialog"
+  msg "Dir changed to: `pwd`"
+  delete zmcheckindialog
+  msg "Creating link:  ZmDialog --> ../../../Check-In\ Dialog.app/Contents/MacOS/ZmDialog"
+  ln -f -s ../../../Check-In\ Dialog.app/Contents/MacOS/Check-In\ Dialog zmcheckindialog
+  cd -
+fi
+
+
+if [ "$NO_AIR" = "true" ]; then
+  msg "Skipping server start and air installation."
+  exit 0;
+fi
+
+
+
+#Intall air runtime
+if [ $NO_AIR != "true" ]; then
+  . "$SCRIPT_PATH/air-check.sh" "Resources/dependencies/Adobe AIR Installer.app/Contents/MacOS/Adobe AIR Installer"
+fi
+
+rm -rf "Resources/dependencies/Adobe AIR Installer.app/Contents/MacOS/Adobe AIR Installer"
+
+##### Create link for X11 on Yosemite+
+if [ ! -e /usr/X11 ]; then
+  if [ -d /opt/X11 ]; then
+    ln -s /opt/X11 /usr/X11
+  fi
+fi
+
+#install plugin for cs6
+##Commenting this out, since we don't have CS-era applications with Zoom installed
+##ADOBE_EXTENSION_MNG_PATH="/Applications/Adobe Extension Manager CS6/Adobe Extension Manager CS6.app/Contents/MacOS/Adobe Extension Manager CS6"
+##
+##ZM_CS_PLUGIN="Resources/plug-ins/ZmAdobePlugin.zxp"
+##if [ -f "$ADOBE_EXTENSION_MNG_PATH" ]; then
+##  if [ ! -f "$ZM_CS_PLUGIN" ]; then
+##    msg "Plugin file not found to install: $ZM_CS_PLUGIN"
+##  else
+##    ##instaling plugin
+##    msg "Running cmd: $ADOBE_EXTENSION_MNG_PATH -suppress -install zxp=$ZM_CS_PLUGIN"
+##    /Applications/Adobe\ Extension\ Manager\ CS6/Adobe\ Extension\ Manager\ CS6.app/Contents/MacOS/Adobe\ Extension\ Manager\ CS6 -suppress -install zxp="$ZM_CS_PLUGIN"
+##  fi
+##fi
+##
+###install plugin for cs5
+##  ADOBE_EXTN_MNG_CS5_PATH="/Applications/Adobe Extension Manager CS5/Adobe Extension Manager CS5.app/Contents/MacOS/Adobe Extension Manager CS5"
+##  ZM_CS_PLUGIN="Resources/plug-ins/ZmAdobePlugin.zxp"
+##  if [ -f "$ADOBE_EXTN_MNG_CS5_PATH" ]; then
+##    if [ ! -f "$ZM_CS_PLUGIN" ]; then
+##      msg "Plugin file not found to install: $ZM_CS_PLUGIN"
+##    else
+##      ##instaling plugin
+##      msg "Running cmd: $ADOBE_EXTN_MNG_CS5_PATH -suppress -install zxp=$ZM_CS_PLUGIN"
+##      /Applications/Adobe\ Extension\ Manager\ CS5/Adobe\ Extension\ Manager\ CS5.app/Contents/MacOS/Adobe\ Extension\ Manager\ CS5 -suppress -install zxp="$ZM_CS_PLUGIN"
+##    fi
+##  fi
+
+
+
+# If previous conf dir backed-up, backup new conf,
+# and make previous conf dir present one
+if [ -d Resources/conf.old ]; then
+  msg "Backing up default conf -> conf.orig"
+  rm -rf Resources/conf.orig
+#copy only old server.xml and license file to new server.xml
+  msg "Restoring old server.xml";
+  if [ -f Resources/conf.old/server.xml ]; then
+    rm Resources/conf/server.xml;
+    cp Resources/conf.old/server.xml Resources/conf;
+  fi
+  msg "Restoring license file";
+  if [ -f Resources/conf.old/zoom.key ]; then
+    cp Resources/conf.old/zoom.key Resources/conf;
+  fi
+
+  mv Resources/conf.old Resources/conf
+fi
+
+
+# Make link of all the jars in tic folder to the Conents/Java Folder
+# And make a link to he re packed in PlugIns/jdk folder Both these are done only for Java apps. Not the commands
+CURRENT_DIR=`pwd`;
+for appDir in *.app ; do
+    if [ -d "$appDir/Contents/Java" ]; then
+        cd "$appDir/Contents/Java";
+        # Make a link to the conf/ dir from all the Contents/Java/ dirs.
+        ln -s ../../../Resources/conf/ conf
+        find ../../../Resources/lib -name "*.jar" -exec ln {} \;       #msking relative hard links
+	#ln -s `pwd`/Resources/jre "$appDir/Contents/PlugIns/jdk/Contents/Home/jre";
+	      cd - ;
+    fi
+done
+
+cd "$CURRENT_DIR";
+
+
+
+#Copy zoom server and client proxy plist file to /Library/LaunchAgents and /Library/LaunchDaemons respectively
+CL_PROXY_PLIST="com.evolphin.zoom.clientproxy.plist"
+CONF_CLIENTPRXY_FILE="Resources/conf/$CL_PROXY_PLIST"
+CL_PROXY_APP="`pwd`/zmclientproxy.app"
+LIB_CL_PROXY_PLIST="/Library/LaunchAgents/$CL_PROXY_PLIST"
+
+msg "Client proxy exec path: $CL_PROXY_APP"
+
+if [ -f "$LIB_CL_PROXY_PLIST" ]; then
+  msg "Calling cmd: launchctl unload -S Aqua -F $LIB_CL_PROXY_PLIST"
+  su -m $USER -c "launchctl unload -S Aqua -F \"$LIB_CL_PROXY_PLIST\""
+  msg "Removing... $LIB_CL_PROXY_PLIST"  
+  rm -f "$LIB_CL_PROXY_PLIST" 
+fi
+
+if [ -f "$CONF_CLIENTPRXY_FILE" ]; then
+  msg "Copying plist file to /Launch/LaunchAgents"
+  sed "s|@ZM_CLIENT_PROXY_APP@|$CL_PROXY_APP|g"  "$CONF_CLIENTPRXY_FILE" > "$LIB_CL_PROXY_PLIST"
+  msg "Running cmd: launchctl load -S Aqua -F $LIB_CL_PROXY_PLIST"
+  su -m $USER -c "launchctl load -S Aqua -F \"$LIB_CL_PROXY_PLIST\""
+else
+  msg "Plist file for client proxy not found."
+fi
+
+CL_FSCUE_NAME_PKG="com.evolphin.zoom.FSCue"
+CL_FSCUE_PLIST="$CL_FSCUE_NAME_PKG.plist"
+CONF_FSCUE_FILE="Resources/conf/$CL_FSCUE_PLIST"
+CL_FSCUE_APP="`pwd`/FSCue.app"
+LIB_CL_FSCUE_PLIST="/Library/LaunchAgents/$CL_FSCUE_PLIST"
+
+msg "FSCue exec path: $CL_FSCUE_APP"
+
+if [ -f "$LIB_CL_FSCUE_PLIST" ]; then
+  msg "Calling cmd: launchctl unload -S Aqua -F $LIB_CL_FSCUE_PLIST"
+  su -m $USER -c "launchctl unload -S Aqua -F \"$LIB_CL_FSCUE_PLIST\""
+  msg "Removing... $LIB_CL_FSCUE_PLIST"
+  rm -f "$LIB_CL_FSCUE_PLIST"
+fi
+
+if [ -f "$CONF_FSCUE_FILE" ]; then
+  msg "Copying plist file to /Launch/LaunchAgents"
+  sed "s|@ZM_FSCUE_APP@|$CL_FSCUE_APP|g" "$CONF_FSCUE_FILE" > /tmp/FSCue.plist.tmp
+  sed "s|\/true|true\/|g" /tmp/FSCue.plist.tmp > "$LIB_CL_FSCUE_PLIST"
+  msg "Running cmd: launchctl load -S Aqua -F $LIB_CL_FSCUE_PLIST"
+  su -m $USER -c "launchctl load -S Aqua -F \"$LIB_CL_FSCUE_PLIST\""
+  rm /tmp/FSCue.plist.tmp
+
+  if [ ! -f "/tmp/$CL_FSCUE_NAME_PKG.out" ]; then
+    touch "/tmp/$CL_FSCUE_NAME_PKG.out"
+  fi
+  chmod 775 "/tmp/$CL_FSCUE_NAME_PKG.out"
+
+  if [ ! -f "/tmp/$CL_FSCUE_NAME_PKG.err" ]; then
+    touch "/tmp/$CL_FSCUE_NAME_PKG.err"
+  fi
+  chmod 775 "/tmp/$CL_FSCUE_NAME_PKG.err"
+
+  if [ ! -f "/tmp/fscue.log" ]; then
+    touch "/tmp/fscue.log"
+  fi
+  chmod 775 "/tmp/fscue.log"
+
+else
+  msg "Plist file for FSCue not found."
+fi
+
+
+ZOOM_SERVER_INSTALLED=`[ -f Resources/bin/zoom ]; echo $?;`
+
+ZOOM_SERVER_PLIST="com.evolphin.zoom.server.plist"
+ZOOM_SERVER_PLIST_FILE="Resources/conf/$ZOOM_SERVER_PLIST"
+ZOOM_INSTALL_DIR=`pwd`
+LIB_ZOOM_SERVER_PLIST="/Library/LaunchDaemons/$ZOOM_SERVER_PLIST"
+
+if [ -f "$LIB_ZOOM_SERVER_PLIST" ]; then
+  msg "Calling cmd: launchctl unload $LIB_ZOOM_SERVER_PLIST"
+  launchctl unload -F "$LIB_ZOOM_SERVER_PLIST"
+  msg "Removing... $LIB_ZOOM_SERVER_PLIST"
+  rm -f "$LIB_ZOOM_SERVER_PLIST"
+fi
+
+if [ $ZOOM_SERVER_INSTALLED -eq 0 ]; then
+  if [ -f "$ZOOM_SERVER_PLIST_FILE" ]; then
+    msg "Copying plist file to /Launch/LaunchDaemons"
+    sed "s|@ZOOM_INSTALL_DIR@|$ZOOM_INSTALL_DIR|g"  "$ZOOM_SERVER_PLIST_FILE" > "$LIB_ZOOM_SERVER_PLIST"
+    msg "Running cmd: launchctl load -F $LIB_ZOOM_SERVER_PLIST"
+    launchctl load -F "$LIB_ZOOM_SERVER_PLIST"
+  else
+    msg "Plist file for zoom server not found."
+  fi
+fi
+
+
+PREVIEW_SERVER_INSTALLED=`[ -f Resources/bin/preview-server ]; echo $?;`
+
+PREVIEW_SERVER_PLIST="com.evolphin.zoom.preview-server.plist"
+PREVIEW_SERVER_PLIST_FILE="Resources/conf/$PREVIEW_SERVER_PLIST"
+LIB_PREVIEW_SERVER_PLIST="/Library/LaunchDaemons/$PREVIEW_SERVER_PLIST"
+
+if [ -f "$LIB_PREVIEW_SERVER_PLIST" ]; then
+  msg "Calling cmd: launchctl unload $LIB_PREVIEW_SERVER_PLIST"
+  launchctl unload -F "$LIB_PREVIEW_SERVER_PLIST"
+  msg "Removing... $LIB_PREVIEW_SERVER_PLIST"
+  rm -f "$LIB_PREVIEW_SERVER_PLIST"
+fi
+
+if [ $PREVIEW_SERVER_INSTALLED -eq 0 ]; then
+  if [ -f "$PREVIEW_SERVER_PLIST_FILE" ]; then
+    msg "Copying plist file to /Launch/LaunchDaemons"
+    sed "s|@ZOOM_INSTALL_DIR@|$ZOOM_INSTALL_DIR|g"  "$PREVIEW_SERVER_PLIST_FILE" > "$LIB_PREVIEW_SERVER_PLIST"
+    msg "Running cmd: launchctl load -F $LIB_PREVIEW_SERVER_PLIST"
+    launchctl load -F "$LIB_PREVIEW_SERVER_PLIST"
+  else
+    msg "Plist file for preview server not found."
+  fi
+fi
+
+
+
+# Hey we are still in zoom
+# Create zoom, zm and zm-dlg aliases in /usr/local/bin, adding /usr/local/bin to PATH if absent
+if [ ! -d /usr/local/bin ]; then
+  mkdir -p /usr/local/bin
+fi
+grep "/usr/local/bin" /etc/paths &> /dev/null
+if [ $? -ne 0 ]; then
+  msg "Adding /usr/local/bin to PATH"
+  echo "/usr/local/bin" >> /etc/paths
+fi
+
+cd /usr/local/bin
+USR_LOCAL_BIN=`pwd`
+if [ $ZOOM_SERVER_INSTALLED -eq 0 ]; then
+  if [ -L zoom ]; then
+    msg "Removing symbolic link $USR_LOCAL_BIN/zoom -> `readlink -n zoom`"
+    rm -f zoom
+  fi
+  if [ ! -e zoom ]; then
+    msg "Creating a symbolic link $USR_LOCAL_BIN/zoom -> $currentDir/Resources/bin/zoom"
+    ln -s "$currentDir/Resources/bin/zoom" zoom
+  else
+    msg "Not creating symbolic link /usr/local/bin/zoom as a file exists with the same name."
+  fi
+else
+  if [ ! -f "/Users/$USER/.zm/zoom.properties" ]; then
+    msg "Creating zoom.properties in the user's .zm folder since this is a server install."
+    cp "/Applications/Evolphin/zoom/Resources/conf/default-zoom.properties" "/Users/$USER/.zm/zoom.properties"
+  fi
+fi
+
+if [ -L zm ]; then
+  msg "Removing symbolic link $USR_LOCAL_BIN/zm -> `readlink -n zm`"
+  rm -f zm
+fi
+if [ ! -e zm ]; then
+  msg "Creating a symbolic link $USR_LOCAL_BIN/zm -> $currentDir/Resources/bin/zm"
+  ln -s "$currentDir/Resources/bin/zm" zm
+else
+  msg "Not creating symbolic link /usr/local/bin/zm as a file exists with the same name."
+fi
+
+if [ -L zm-dlg ]; then
+  msg "Removing symbolic link $USR_LOCAL_BIN/zm-dlg -> `readlink -n zm-dlg`"
+  rm -f zm-dlg
+fi
+if [ ! -e zm-dlg ]; then
+  msg "Creating a symbolic link $USR_LOCAL_BIN/zm-dlg -> $currentDir/Resources/resources/Zoom UI.app/Contents/MacOS/dlglauncher"
+  ln -s "$currentDir/Resources/resources/Zoom UI.app/Contents/MacOS/dlglauncher" zm-dlg
+else
+  msg "Not creating symbolic link /usr/local/bin/zm-dlg as a file exists with the same name."
+fi
+cd "$currentDir"
+
+# Wait for zoom server or clientproxy to initialize, on server and client, respectively. 
+sleep 15
+
+#1. Start zoom server....
+#2. Open browser with zoom webmin if server
+
+if [ $ZOOM_SERVER_INSTALLED -eq 0 ]; then
+  status=$(Resources/bin/zoom status)
+  isRunning=$(echo "$status" |grep -c "not")
+  msg "Zoom server is running: $isRunning"
+  if [ $isRunning -eq 0 ]; then
+    msg "Zoom server is running. Now opening browser"
+    sleep 10
+    open webmin.app
+  fi
+##Don't need to open a webpage here
+##else
+##  open http://help.evolphin.com/guides/getting-started
+fi
+
+# Enable Evolphin Zoom service in Services Preferences
+#osascript "$SCRIPT_PATH/prefs.applescript" # FIXME: [OBSOLETE] This line is not needed any more.
+if [ -f "$HOME/Library/Preferences/pbs.plist" ];then
+  plutil -convert xml1 $HOME/Library/Preferences/pbs.plist -o /tmp/pbs-orig.plist.xml
+  sed '/com.evolphin.zoom.zmclientproxy/,/enabled_services_menu/s/false/true/g' /tmp/pbs-orig.plist.xml > /tmp/pbs.plist.xml
+  plutil -convert binary1 /tmp/pbs.plist.xml -o $HOME/Library/Preferences/pbs.plist
+  rm /tmp/pbs-orig.plist.xml /tmp/pbs.plist.xml
+  # for some reason, the Evolphin Zoom context menu shows up the first time you right click, and then all context items disappear
+  su -l $USER -c "sleep 5; /System/Library/CoreServices/pbs -update &> /dev/null" &
+  #su -l $USER -c "sleep 10; /System/Library/CoreServices/pbs -existing_languages &> /dev/null" &
+  su -l $USER -c "sleep 10; /System/Library/CoreServices/pbs -update &>/dev/null" &
+  #su -l $USER -c "sleep 10; /System/Library/CoreServices/pbs -existing_languages &> /dev/null" &
+  #while [ -z "`su -l $USER -c '/System/Library/CoreServices/pbs -dump_pboard' | grep 'Evolphin Zoom'`" ]; do
+  #  su -l $USER -c "/System/Library/CoreServices/pbs -existing_languages"
+  #done
+fi
+
+if [ -d Resources/plug-ins/pluginInstaller ]; then
+  cd "Resources/plug-ins/pluginInstaller"
+  sh ./AdobePluginInstaller_mac.sh
+fi
+cd "$currentDir"
+
+if [ -d Resources/plug-ins/pluginInstaller ]; then
+  cd "Resources/plug-ins/pluginInstaller"
+  sh ./Cinema4DPluginInstaller_mac.sh
+fi
+cd "$currentDir"
+
+##Per Evolphin support, the following two files need to have POSIX 777 permissions
+##in order to launch for non-administrators without an administrative password
+##prompt.  This is due to AIR rewriting these files at launch time and adding:
+##
+## 	<key>NSAppTransportSecurity</key>
+## 	<dict>
+## 		<key>NSAllowsArbitraryLoads</key>
+## 		<true/>
+## 	</dict>
+##
+##Doing this in the postinstall since rebuilding the package via PkgCreator is a
+##lot of overhead.
+filePaths=( "/Applications/Evolphin/zoom/Asset Browser.app/Contents/Info.plist" "/Applications/Evolphin/zoom/Check-In Dialog.app/Contents/Info.plist" )
+for filePath in "${filePaths[@]}"
+do
+	if [ -f "${filePath}" ]
+	then
+		chmod 777 "${filePath}"
+	fi
+done
+
+exit 0
+

@@ -1,0 +1,185 @@
+#!/bin/sh
+
+#-------------------------------------------------------------------------------
+# Defines
+#-------------------------------------------------------------------------------
+
+readonly PLUGS="./bin/plugs"
+readonly SRC_PLUGINS_DIR="./plugins"
+readonly KEXT_DIR="./kext"
+
+readonly APP_DATA_DIR="/Library/Application Support/EIZO/ColorNavigator 7"
+readonly INIT_SETTING_DIR="${APP_DATA_DIR}/_initialsetting"
+readonly PLUGINS_DIR="${APP_DATA_DIR}/plugins"
+
+readonly PKG_DIR=`dirname "${PACKAGE_PATH}"`
+readonly INST_FLAG_DIR="${HOME}/.com.eizo.cn7.inst"
+
+# Install plugins
+readonly PLUGINS=(
+	"com.eizo.cn7.libs"
+	"com.eizo.cn7.sensorsdk"
+	"com.eizo.framework.databasecontrol"
+	"com.eizo.framework.monitorcontrol"
+	"com.eizo.framework.sensorcontrol"
+	"com.eizo.framework.flour"
+	"com.eizo.framework.milk"
+	"com.eizo.framework.oil"
+	"com.eizo.framework.qualitycontrol"
+	"com.eizo.cn7.data.value"
+	"com.eizo.cn7.capability"
+	"com.eizo.cn7.core"
+	"com.eizo.cn7.help"
+	"com.eizo.cn7.i18n.de"
+	"com.eizo.cn7.i18n.en"
+	"com.eizo.cn7.i18n.ja"
+	"com.eizo.cn7.i18n.zh"
+	"com.eizo.cn7.base"
+	"com.eizo.cn7.data.model"
+	"com.eizo.cn7.common"
+	"com.eizo.cn7.calibration"
+	"com.eizo.cn7.manualAdjustment"
+	"com.eizo.cn7.rgbValidation"
+	"com.eizo.cn7.ui"
+	"com.eizo.cn7.ext.assetinformationmanagement"
+	"com.eizo.cn7.ext.cmykValidation"
+	"com.eizo.cn7.ext.cnnetwork"
+	"com.eizo.cn7.ext.correlation"
+	"com.eizo.cn7.ext.deviceMeasurement"
+	"com.eizo.cn7.ext.iccProfileEmulation"
+	"com.eizo.cn7.ext.lightbooth"
+	"com.eizo.cn7.ext.logViewLutEmulation"
+	"com.eizo.cn7.ext.monitorkeylocksetting"
+	"com.eizo.cn7.ext.monitoroptionsetting"
+	"com.eizo.cn7.ext.profadvsetting"
+	"com.eizo.cn7.ext.syncAdjustmentInformation"
+	"com.eizo.cn7.ext.targetCreationAssist"
+	"com.eizo.cn7.ext.monitorConfigExportImport"
+)
+
+#-------------------------------------------------------------------------------
+# Install plugins
+#-------------------------------------------------------------------------------
+
+umask 000
+for pluginName in ${PLUGINS[@]}; do
+	"${PLUGS}" "${PLUGINS_DIR}" install "${SRC_PLUGINS_DIR}/${pluginName}.zip"
+	wait
+done
+umask 022
+
+#-------------------------------------------------------------------------------
+# Handle installer setting/selection
+#-------------------------------------------------------------------------------
+
+rm -rf "${INIT_SETTING_DIR}"
+mkdir "${INIT_SETTING_DIR}"
+chmod 777 "${INIT_SETTING_DIR}"
+
+# Remove CN6
+if [ -e "${INST_FLAG_DIR}/remove_cn6" ]; then
+	killall "ColorNavigator 6"
+	# terminate eacore and dummy
+	for i in `ps aux -w | grep 'ColorNavigator 6.app' | grep -v grep | awk '{print $2}'`
+	do
+		kill $i
+	done
+
+	rm -rf "/Applications/ColorNavigator 6.app"
+	wait
+fi
+
+# Remove CNNX
+if [ -e "/Applications/ColorNavigator NX.app" ]; then
+	killall "ColorNavigator NX"
+	# terminate eacore and dummy
+	for i in `ps aux -w | grep 'ColorNavigator NX.app' | grep -v grep | awk '{print $2}'`
+	do
+		kill $i
+	done
+
+	rm -rf "/Applications/ColorNavigator NX.app"
+	wait
+fi
+
+# Remove CNNetAgent
+if [ -e "/Applications/CNNetAgent.app" ]; then
+	killall "CNNetAgent"
+	rm -rf "/Applications/CNNetAgent.app"
+	wait
+fi
+
+# Create initSetting files
+if [ -e "${INST_FLAG_DIR}/checks_update" ]; then
+	cat /dev/null > "${INIT_SETTING_DIR}/checks_update"
+fi
+
+#-------------------------------------------------------------------------------
+# Handle installer setting files
+#-------------------------------------------------------------------------------
+
+# Preferences
+cp "${PKG_DIR}/preferences.json" "${INIT_SETTING_DIR}/"
+
+# Language packs
+for f in `find "${PKG_DIR}" -name "com.eizo.cn7.i18n.*.zip"`; do
+	cp "$f" "${INIT_SETTING_DIR}/"
+done
+
+# Setup CNNetwork
+./bin/set_net_mac.sh -src "${PKG_DIR}" -dst "${INIT_SETTING_DIR}"
+
+#-------------------------------------------------------------------------------
+# Copy basICColorDISCUS.kext
+#-------------------------------------------------------------------------------
+# check OS version is newer than 10.15
+CATALINA_OR_LATER=$(sw_vers -productVersion \
+    | awk -F. '{ print $1 "." $2 }' \
+    | (read v ; echo "$v >= 10.15"; ) \
+    | bc)
+
+if [ $(expr $CATALINA_OR_LATER) -eq 1 ]; then
+    cp -rf "${KEXT_DIR}/basICColorDISCUS.kext" "/Library/Extensions"
+else
+    cp -rf "${KEXT_DIR}/basICColorDISCUS.kext" "/System/Library/Extensions"
+fi
+
+#-------------------------------------------------------------------------------
+# Additional Setup
+#-------------------------------------------------------------------------------
+
+# Make symbolic link for lightbooth
+ln -sf /usr/local/lib/libftd2xx.1.2.2.dylib /usr/local/lib/libftd2xx.dylib
+
+# Make symbolic link for K-10
+ln -sf "${PLUGINS_DIR}/exports/mac/libftd2xx.1.4.16.dylib" "${PLUGINS_DIR}/exports/mac/libftd2xx.dylib"
+
+/sbin/kextload -b com.basICColor.driver.basICColorDISCUS
+
+# db name is changed from v7.0.5. So if db has old name, it need to update.
+if [ -d "${APP_DATA_DIR}/db" -a ! -d "${APP_DATA_DIR}/db.0" ]; then
+	mv "${APP_DATA_DIR}/db" "${APP_DATA_DIR}/db.0"
+elif [ ! -d "${APP_DATA_DIR}/db.0" ]; then
+	mkdir  "${APP_DATA_DIR}/db.0"
+fi
+
+#-------------------------------------------------------------------------------
+# Creanup
+#-------------------------------------------------------------------------------
+
+# Remove installer setting file
+if [ -e "${INST_FLAG_DIR}" ]; then
+	rm -rf "${INST_FLAG_DIR}"
+fi
+
+# For Permission error by Mac updating
+chmod 777 /Library/Application\ Support/EIZO/ColorNavigator\ 7
+chmod 777 /Library/Application\ Support/EIZO/ColorNavigator\ 7/backup
+chmod 777 /Library/Application\ Support/EIZO/ColorNavigator\ 7/db.0
+chmod 777 /Library/Application\ Support/EIZO/db
+chmod u+w ~/
+chmod a+rx /usr/local/lib
+
+
+# Launch Application
+su ${USER} -c "open /Applications/ColorNavigator\ 7.app"

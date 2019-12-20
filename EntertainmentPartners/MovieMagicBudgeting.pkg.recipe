@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Movie Magic Budgeting.
+
+Notes:
+- This recipe requires installing BOTH AutoPkg AND the Movie Magic Budgeting itself--the latter BY HAND.  IDEALLY this would occur in a clean virtual machine, and is not intended to occur on an AutoPkg "server".  Thank Flexera InstallAnywhere and a cross-platform Java-based application for this incredibly strange recipe.
+- This recipe skips installing the template budgets in the user's home directory.  These are available in the "MMData" folder in the application's folder.
+- Currently the installation package can be downloaded here https://www.ep.com/home/managing-production/movie-magic-budgeting/
+
+I'm skipping a few things I normally do for my AutoPkg recipes:
+- CodeSignatureVerifier: Presumably this software has been manually sourced from a trusted location and then manually installed
+- A .munki Recipe: Since the retrieval of the Movie Magic Budgeting installer is manual, the installation is manual, and running this recipe on a clean VM is manual, there doesn't seem to make much sense to automate the import of the resulting package into Munki.  Due to the lack of a .munki recipe, please ensure your pkginfo has "MM Budgeting" as a blocking_application</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.MovieMagicBudgeting</string>
+	<key>Input</key>
+	<dict/>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+				<string>/Applications/Movie Magic/MM Budgeting/Uninstall_MMBudgeting/Logs/MMBudgeting_Install_*</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>MMB_MAC_([\d\.]+)\.app</string>
+				<key>result_output_var_name</key>
+				<string>version</string>
+				<key>url</key>
+				<string>file:////%found_filename%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict>
+					<key>Applications</key>
+					<string>0775</string>
+					<key>Library</key>
+					<string>0755</string>
+					<key>Library/Application Support</key>
+					<string>0755</string>
+				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Movie Magic</string>
+				<key>source_path</key>
+				<string>/Applications/Movie Magic</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/EP</string>
+				<key>source_path</key>
+				<string>/Library/Application Support/EP</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>#!/bin/bash
+
+# Location of the Flexnet licensing install script
+flexnetLicensingInstallScript="/Applications/Movie Magic/MM Budgeting/lib/install_fnp.sh"
+# Location of the FNPLicensingService binary to install
+fnpLicensingServiceBinary="/Applications/Movie Magic/MM Budgeting/lib/FNPLicensingService/FNPLicensingService"
+
+# Run the Flexnet licensing install script
+#
+# Note for some odd reason this is installed without execute permissions, so record the
+# permissions, add execute, run the script, and return the permissions to the original
+# value
+originalPermissions=`stat -f "%p" "${flexnetLicensingInstallScript}"`
+chmod +x "${flexnetLicensingInstallScript}"
+"${flexnetLicensingInstallScript}" "${fnpLicensingServiceBinary}"
+chmod "${originalPermissions}" "${flexnetLicensingInstallScript}"</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+					<key>chown</key>
+					<array>
+						<dict>
+							<key>group</key>
+							<string>admin</string>
+							<key>path</key>
+							<string>Applications</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+						<dict>
+							<key>group</key>
+							<string>wheel</string>
+							<key>path</key>
+							<string>Library</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+					</array>
+					<key>id</key>
+					<string>com.ep.MovieMagicBudgeting.pkg</string>
+					<key>pkgname</key>
+					<string>MovieMagicBudgeting-%version%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>scripts</key>
+					<string>%RECIPE_CACHE_DIR%/Scripts</string>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+		</dict>
+	</array>
+</dict>
+</plist>

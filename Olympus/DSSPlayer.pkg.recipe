@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest DSS Player package and modifies a postinstall to handle creating a LaunchD job file, changing permissions on a folder to allow non-admin serialization, and moving a PrivilegedHelperTool into position.
+
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add this repo via:
+
+autopkg repo-add hjuutilainen-recipes
+
+- This software may need .wma-capable playback libraries such as Telestream Flip4Mac or Telestream Switch.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.DSSPlayer</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>DSSPlayer</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.DSSPlayer</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+				<string>%pathname%/DSS Player/*.pkg</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%pathname%/%dmg_found_filename%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>10a9bd1a5d7c14f71c666c1bc9bf2989</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/dssplayerv7.pkg/Scripts/postinstall</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches dssplayerv7.pkg postinstall script from DSS Player 7.7.1</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/unpack/dssplayerv7.pkg/Scripts/postinstall</string>
+				</array>
+			</dict>
+			<key>Comment</key>
+			<string>Remove the stock postinstall</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>#!/bin/sh
+
+PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+"/Applications/DSS Player/DSS Player.app/Contents/Resources/resourceCheck"
+rm -rf "/Applications/DSS Player/DSS Player.app/Contents/Resources/resourceCheck"
+
+DSSPLAYERDIR="$3/Library/Application Support/Olympus/DSSPlayer"
+if [ -d "${DSSPLAYERDIR}" ]
+then
+	chmod -R 775 "${DSSPLAYERDIR}"
+	chown -R root:admin "${DSSPLAYERDIR}"
+fi
+
+V6InstallInfo="/Library/Application Support/Olympus/DSSPlayer/DSSPlayer.conf"
+if [ -e "$V6InstallInfo" ]
+then
+        rm -rf "$V6InstallInfo"
+fi
+
+PATCHINFODIR="$3/Library/Application Support/Olympus/DSSPlayer/Patch"
+if [ -d "${PATCHINFODIR}" ]
+then
+        rm -rf "${PATCHINFODIR}"
+fi
+
+chmod -R 775 "/Applications/DSS Player"
+chown -R root "/Applications/DSS Player"
+chgrp -R admin "/Applications/DSS Player"
+
+#Put the PrivilegedHelperTool in position
+destinationDirectory="/Library/PrivilegedHelperTools"
+if [ ! -d "${destinationDirectory}" ]
+then
+	mkdir -p "${destinationDirectory}"
+	chown root:wheel "${destinationDirectory}"
+	chmod 1755 "${destinationDirectory}"
+fi
+cp "/Applications/DSS Player/DSS Player.app/Contents/Library/LaunchServices/com.olympus.DSSPlayerHelper" "${destinationDirectory}"
+chown root:wheel "${destinationDirectory}/com.olympus.DSSPlayerHelper"
+chmod 644 "${destinationDirectory}/com.olympus.DSSPlayerHelper"
+
+#Create the LaunchDaemon, this is terrible form
+launchDJobPath="/Library/LaunchDaemons/com.olympus.DSSPlayerHelper.plist"
+if [ -f "${launchDJobPath}" ]
+then
+	rm "${launchDJobPath}"
+fi
+echo \&lt;?xml version="1.0" encoding="UTF-8"?\&gt; >> "${launchDJobPath}"
+echo \&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"\&gt; >> "${launchDJobPath}"
+echo \&lt;plist version="1.0"\&gt; >> "${launchDJobPath}"
+echo \&lt;dict\&gt; >> "${launchDJobPath}"
+echo 	\&lt;key\&gt;Label\&lt;/key\&gt; >> "${launchDJobPath}"
+echo 	\&lt;string\&gt;com.olympus.DSSPlayerHelper\&lt;/string\&gt; >> "${launchDJobPath}"
+echo 	\&lt;key\&gt;MachServices\&lt;/key\&gt; >> "${launchDJobPath}"
+echo 	\&lt;dict\&gt; >> "${launchDJobPath}"
+echo 		\&lt;key\&gt;com.olympus.DSSPlayerHelper\&lt;/key\&gt; >> "${launchDJobPath}"
+echo 		\&lt;true/\&gt; >> "${launchDJobPath}"
+echo 	\&lt;/dict\&gt; >> "${launchDJobPath}"
+echo 	\&lt;key\&gt;Program\&lt;/key\&gt; >> "${launchDJobPath}"
+echo 	\&lt;string\&gt;/Library/PrivilegedHelperTools/com.olympus.DSSPlayerHelper\&lt;/string\&gt; >> "${launchDJobPath}"
+echo 	\&lt;key\&gt;ProgramArguments\&lt;/key\&gt; >> "${launchDJobPath}"
+echo 	\&lt;array\&gt; >> "${launchDJobPath}"
+echo 		\&lt;string\&gt;/Library/PrivilegedHelperTools/com.olympus.DSSPlayerHelper\&lt;/string\&gt; >> "${launchDJobPath}"
+echo 	\&lt;/array\&gt; >> "${launchDJobPath}"
+echo \&lt;/dict\&gt; >> "${launchDJobPath}"
+echo \&lt;/plist\&gt; >> "${launchDJobPath}"
+chown root:wheel "${launchDJobPath}"
+chmod 644 "${launchDJobPath}"
+
+exit 0</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/dssplayerv7.pkg/Scripts/postinstall</string>
+			</dict>
+			<key>Comment</key>
+			<string>A mix of their postinstall plus my creation of a LaunchD job file and moving a PrivilegedHelperTool into position to allow the software to not require admin rights</string>
+			<key>Processor</key>
+			<string>FileCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>c7e136d24d46f7ac207b610bc422e5e7</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/dsslanguagepacksv.pkg/Scripts/postinstall</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches dsslanguagepacksv.pkg postinstall script from DSS Player 7.7.1</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/unpack/dsslanguagepacksv.pkg/Scripts/postinstall</string>
+				</array>
+			</dict>
+			<key>Comment</key>
+			<string>Remove the stock postinstall</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>#!/bin/sh
+
+PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+OLYMPUSDIR="$3/Library/Application Support/Olympus"
+TARGETDIR="$3/Library/Application Support/Olympus/DSSPlayer/OL_GUIDE/200/SV"
+TOOL="CreateVoiceGuidanceInfo"
+
+if [ -d "${OLYMPUSDIR}" ]
+then
+	chmod -R 775 "${OLYMPUSDIR}"
+fi
+
+if [ -f "${TARGETDIR}/${TOOL}" ]
+then
+	"${TARGETDIR}/${TOOL}" 200 11
+fi
+
+if [ -d "${TARGETDIR}" ]
+then
+	chmod -R 775 "${TARGETDIR}"
+	chown -R root:admin "${TARGETDIR}"
+fi
+
+#Change permissions on "DSSPlayer" directory
+chmod 777 "$3/Library/Application Support/Olympus/DSSPlayer"
+exit 0</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/dsslanguagepacksv.pkg/Scripts/postinstall</string>
+			</dict>
+			<key>Comment</key>
+			<string>A mix of their postinstall plus change of rights on a folder to allow for serialization of the software without administrative rights.  Doing this once in this package since it's the last postinstall script to run.</string>
+			<key>Processor</key>
+			<string>FileCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/repack</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_pkg</key>
+				<string>%RECIPE_CACHE_DIR%/repack/DSSPlayer.pkg</string>
+				<key>source_flatpkg_dir</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgPacker</string>
+		</dict>
+	</array>
+</dict>
+</plist>

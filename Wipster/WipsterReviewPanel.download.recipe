@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest Wipster Review Panel installer.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.WipsterReviewPanel</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>WipsterReviewPanel</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.3.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>href="(\/hc\/en-us\/article_attachments\/[\d]+\/Wipster_Review_Panel_[\d\.]+zxp)</string>
+				<key>url</key>
+				<string>https://support.wipster.io/hc/en-us/articles/208411563-Where-do-I-get-the-Wipster-Review-Panel-</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>https://support.wipster.io%match%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>

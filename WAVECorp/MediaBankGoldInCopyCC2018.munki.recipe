@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Repackage the MediaBank Gold plugin for InCopy CC 2018 and import it into Munki.  This recipe does not download the MediaBank Gold tar archive--feed the tar archive into the recipe via the following format:
+
+autopkg run MediaBankGoldInCopyCC2018.pkg -p /path/to/MediaBankGold_Installer_osx_CC_2018_20190127.tar</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.MediaBankGoldInCopyCC2018</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/wavecorp</string>
+		<key>NAME</key>
+		<string>MediaBankGoldInCopyCC2018</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe InCopy CC 2018</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-wavecorp-MediaBankGoldInCopyCC2018</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>Plugin for InCopy CC 2018 for the MediaBank digital asset management system.</string>
+			<key>developer</key>
+			<string>WAVECorp</string>
+			<key>display_name</key>
+			<string>MediaBank Gold InCopy CC 2018 plugin</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>InCopyCC2018</string>
+				<string>MediaBankGoldClient</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.MediaBankGoldInCopyCC2018</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
