@@ -25,18 +25,18 @@
 			<key>category</key>
 			<string>Productivity</string>
 			<key>description</key>
-			<string>Plugin to allow InDesign CC 2020 to activate document fonts from FontExplorer X Pro.</string>
+			<string>Plugin to allow InDesign 2020 to activate document fonts from FontExplorer X Pro.</string>
 			<key>developer</key>
 			<string>Monotype</string>
 			<key>display_name</key>
-			<string>FontExplorer X Pro plugin for InDesign CC 2020</string>
+			<string>FontExplorer X Pro plugin for InDesign 2020</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
 			<key>update_for</key>
 			<array>
-				<string>InDesignCC2020</string>
+				<string>InDesign2020</string>
 			</array>
 		</dict>
 	</dict>
