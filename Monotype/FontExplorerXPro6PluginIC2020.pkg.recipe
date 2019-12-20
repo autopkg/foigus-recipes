@@ -11,7 +11,7 @@ Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>FontExplorerXPro6PluginI2020</string>
+		<string>FontExplorerXPro6PluginIC2020</string>
 		<key>PKGID</key>
 		<string>com.fontexplorerx.fontexplorerxplugins.ic2020</string>
 		<key>PLUGIN_ARCHIVE_NAME</key>
