@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the most current FontExplorer X Pro 6 Plugin for InDesign CC 2020 and imports it into Munki.</string>
+	<string>Downloads the most current FontExplorer X Pro 6 Plugin for InDesign 2020 and imports it into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.FontExplorerXPro6PluginID2020</string>
 	<key>Input</key>

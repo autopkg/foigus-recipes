@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the most current FontExplorer X Pro 6 Plugin for InDesign CC 2020 and packages it.
+	<string>Downloads the most current FontExplorer X Pro 6 Plugin for InDesign 2020 and packages it.
 
 Heavily borrowed from mosen's earlier FontExplorer X Pro plugin recipes.</string>
 	<key>Identifier</key>
