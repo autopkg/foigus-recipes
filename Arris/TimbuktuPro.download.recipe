@@ -16,7 +16,7 @@ Not running CodeSignatureVerifier due to V1 code signature.</string>
 		<string>TimbuktuPro</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.0</string>
+	<string>1.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
