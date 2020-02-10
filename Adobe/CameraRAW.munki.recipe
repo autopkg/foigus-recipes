@@ -7,6 +7,7 @@
 
 NOTES:
 
+- THIS RECIPE HAS force_munkiimport TURNED ON SINCE ALL CAMERA RAW PACKAGES ARE VERSION ZERO.  IT IS NOT RECOMMENDED TO RUN THIS RECIPE IN AN AUTOMATED FASHION SINCE THIS WILL RESULT IN MANY IMPORTS INTO THE MUNKI REPO.
 - This recipe unfortunately uses an installs array of the md5 of the Camera RAW binary itself.  This is due to poor versioning choices in the plugin.
 - The package has uninstallable set to false because it intersects with Creative Cloud application installations that are not recorded in the traditional receipts database, thus a "removepackages" uninstall would end up removing Camera RAW even though there might be Camera RAW-dependent applications still installed.
 - This recipe is dependent on Elliot Jordan's VersionSplitter processor.  To add his repo:
@@ -187,6 +188,8 @@ autopkg repo-add homebysix-recipes</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>force_munkiimport</key>
+				<true/>
 				<key>pkg_path</key>
 				<string>%RECIPE_CACHE_DIR%/CameraRAW.pkg</string>
 				<key>repo_subdirectory</key>
