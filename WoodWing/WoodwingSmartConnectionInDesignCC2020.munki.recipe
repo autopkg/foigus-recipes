@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages InDesign Smart Connection for installation for InDesign 2020 and imports it into Munki
+
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add this repos via:
+
+autopkg repo-add hjuutilainen-recipes
+
+- Specific pkgs are disabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true
+- This recipe does not download the Smart Connection disk image--feed the disk image into the recipe via the following format:
+
+autopkg run WoodwingSmartConnectionInDesignCC2020.munki -p /path/to/Smart_Connection_for_Adobe_CC_2020_v13.0.0_Build4.dmg</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.WoodwingSmartConnectionInDesignCC2020</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/woodwing</string>
+		<key>NAME</key>
+		<string>WoodwingSmartConnectionInDesignCC2020</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>Comment</key>
+			<string>Choices installer_choice_1 (Smart Connection InDesign 2020), installer_choice_2 (Smart Connection InCopy 2020)</string>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe InDesign 2020</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-woodwing-WoodwingSmartConnectionInDesignCC2020</string>
+			</array>
+			<key>category</key>
+			<string>Plugins</string>
+			<key>description</key>
+			<string>Smart Connection plugins for InDesign 2020.</string>
+			<key>developer</key>
+			<string>Woodwing</string>
+			<key>display_name</key>
+			<string>Smart Connection InDesign 2020</string>
+			<key>installer_choices_xml</key>
+			<array>
+				<dict>
+					<key>attributeSetting</key>
+					<integer>1</integer>
+					<key>choiceAttribute</key>
+					<string>selected</string>
+					<key>choiceIdentifier</key>
+					<string>installer_choice_1</string>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>InDesignCC2020</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Comment</key>
+			<string>Not going to tackle downloading the software right now</string>
+			<key>Processor</key>
+			<string>PackageRequired</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%PKG%/Smart_Connection_for_Adobe_2020_*.pkg</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Unpack the original package</string>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>4d2b92b757c1c398710bbe768b198fff</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe 2020.app/Contents/MacOS/Uninstall Smart Connection for Adobe 2020</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 14.0.1, build 12 on the uninstall script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>4d2b92b757c1c398710bbe768b198fff</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe 2020.app/Contents/Resources/Uninstall Smart Connection for Adobe 2020.sh</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 14.0.1, build 12 on the uninstall script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2020/Plug-Ins/Woodwing</string>
+			</dict>
+			<key>Comment</key>
+			<string>Create a root for the expanded scenterprise.pkg payload</string>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2020/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Plug-ins/SCEnterprise.InDesignPlugin</string>
+				<key>overwrite</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Copy SCEnterprise.InDesignPlugin into the destination</string>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Adobe InDesign 2020/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin</string>
+				</array>
+			</dict>
+			<key>Comment</key>
+			<string>Create an installs array item for SCEnterprise.InDesignPlugin</string>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>Merge the installs array into the pkginfo</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>"CFBundleShortVersionString" = "v([\d\.]+)</string>
+				<key>result_output_var_name</key>
+				<string>discovered_version</string>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2020/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+			</dict>
+			<key>Comment</key>
+			<string>Extract the version number</string>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>"CFBundleShortVersionString" = .* build (\d+)</string>
+				<key>result_output_var_name</key>
+				<string>build</string>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2020/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+			</dict>
+			<key>Comment</key>
+			<string>Extract the build number</string>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%discovered_version%.%build%</string>
+				</dict>
+			</dict>
+			<key>Comment</key>
+			<string>Add Munki pkginfo, set "version" to version plus build as the Munki</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_makepkginfo_options</key>
+				<array>
+					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts 2020/Fixed Scripts/wwuninstall_indesign2020_fixed.sh</string>
+					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts 2020/My Scripts/Forget InDesign Receipts 2020.sh</string>
+				</array>
+				<key>force_munkiimport</key>
+				<true/>
+				<key>pkg_path</key>
+				<string>%PKG%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Comment</key>
+			<string>Import the package into Munki</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
