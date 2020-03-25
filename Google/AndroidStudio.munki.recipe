@@ -17,7 +17,7 @@ autopkg repo-add novaksam-recipes</string>
 		<key>NAME</key>
 		<string>AndroidStudio</string>
 		<key>VERSION_SEARCH_PATTERN</key>
-		<string>https\://dl\.google\.com/dl/android/studio/install/([0-9.]+)/android-studio-ide.+\.dmg</string>
+		<string>https\://redirector\.gvt1\.com/edgedl/android/studio/install/([0-9.]+)/android-studio-ide.+\.dmg</string>
 		<key>VERSION_SEARCH_URL</key>
 		<string>https://developer.android.com/sdk/index.html</string>
 		<key>pkginfo</key>
