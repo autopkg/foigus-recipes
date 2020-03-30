@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Bebop Client disk image.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.bebopclient</string>
+	<key>Input</key>
+	<dict>
+		<key>FEED_URL</key>
+		<string>https://bebop-clients-v3.s3.amazonaws.com/prod/latest-mac.yml</string>
+		<key>NAME</key>
+		<string>BebopClient</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>BebopClient-[\d\.]+\.dmg</string>
+				<key>request_headers</key>
+				<dict>
+					<key>User-Agent</key>
+					<string>electron-builder</string>
+				</dict>
+				<key>result_output_var_name</key>
+				<string>dmg_name</string>
+				<key>url</key>
+				<string>https://bebop-clients-v3.s3.amazonaws.com/prod/latest-mac.yml?noCache=1e4mmku54</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>https://bebop-clients-v3.s3.amazonaws.com/prod/%dmg_name%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/BebopClient.app</string>
+				<key>requirements</key>
+				<string>identifier "bebop.id" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "97K63EKLMY"</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
