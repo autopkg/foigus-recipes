@@ -8,8 +8,6 @@
 	<string>com.github.foigus.download.bebopclient</string>
 	<key>Input</key>
 	<dict>
-		<key>FEED_URL</key>
-		<string>https://bebop-clients-v3.s3.amazonaws.com/prod/latest-mac.yml</string>
 		<key>NAME</key>
 		<string>BebopClient</string>
 	</dict>
