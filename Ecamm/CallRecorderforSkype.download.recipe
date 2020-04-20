@@ -63,7 +63,7 @@ https://www.ecamm.com/cgi-bin/customercenter ? u=john%2Edoe%40example%2Ecom &amp
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>https://cdn.ecamm.com/cgi-bin/downloadreg?c=%REG_CODE%&amp;email=%CUSTOMER_EMAIL%&amp;p=callrecorder&amp;format=zip&amp;a=/CallRecorder%version%.zip</string>
+				<string>https://www.ecamm.com/cgi-bin/downloadreg?c=%REG_CODE%&amp;email=%CUSTOMER_EMAIL%&amp;p=callrecorder&amp;format=zip&amp;downloadanyway=1&amp;a=/CallRecorder%version%.zip</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
