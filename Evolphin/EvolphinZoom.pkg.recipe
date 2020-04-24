@@ -151,17 +151,17 @@ echo "User: $USER";
 zoomInstallPath="/Applications/Evolphin"
 zoomUninstallScriptRelativePath="zoom/Resources/bin/uninstall"
 
-#If the uninstaller exists
+##If the uninstaller exists
 if [ -x "${zoomInstallPath}/${zoomUninstallScriptRelativePath}" ]
 then
-	#Save the current working directory
+	##Save the current working directory
 	cwd=$(pwd)
 
-	#Uninstall
+	##Uninstall
 	cd "${zoomInstallPath}"
 	sh "${zoomUninstallScriptRelativePath}" `pwd`/zoom true true /var/log/install.log
 
-	#Return to the previous working directory
+	##Return to the previous working directory
 	cd "${cwd}"
 fi
 
