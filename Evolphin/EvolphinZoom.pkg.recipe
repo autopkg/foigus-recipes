@@ -142,6 +142,28 @@ echo "Target location:$TARGET_LOCATION";
 echo "Target volume: $TARGET_VOL";
 echo "User: $USER";
 
+##Per Evolphin, upgrading the Zoom client requires uninstalling the previous version:
+##https://help.evolphin.com/guides/client-installation/zoom-client-install/upgrading-zoom-client/
+##However the package does not do this--so I'll co-opt the preinstall to uninstall the software
+##
+##This is essentially the technique used in "Uninstall Zoom.app", minus tolerance for
+##installations outside of the default location
+zoomInstallPath="/Applications/Evolphin"
+zoomUninstallScriptRelativePath="zoom/Resources/bin/uninstall"
+
+#If the uninstaller exists
+if [ -x "${zoomInstallPath}/${zoomUninstallScriptRelativePath}" ]
+then
+	#Save the current working directory
+	cwd=$(pwd)
+
+	#Uninstall
+	cd "${zoomInstallPath}"
+	sh "${zoomUninstallScriptRelativePath}" `pwd`/zoom true true /var/log/install.log
+
+	#Return to the previous working directory
+	cd "${cwd}"
+fi
 
 msg(){
   echo "Message: $1"
