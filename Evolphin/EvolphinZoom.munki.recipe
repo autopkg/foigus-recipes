@@ -125,7 +125,7 @@ http://help.evolphin.com/docs/drag-and-drop-stopped-working-in-the-asset-browser
 			<dict>
 				<key>additional_makepkginfo_options</key>
 				<array>
-					<string>--uninstall_script=%RECIPE_DIR%/Reference Evolphin Zoom Scripts/Fixed Scripts/722_uninstall_modified</string>
+					<string>--uninstall_script=%RECIPE_DIR%/Reference Evolphin Zoom Scripts/My Scripts/uninstall.sh</string>
 					<string>--postuninstall_script=%RECIPE_DIR%/Reference Evolphin Zoom Scripts/My Scripts/postuninstall_script.sh</string>
 				</array>
 				<key>pkg_path</key>
