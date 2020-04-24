@@ -1,0 +1,256 @@
+#!/bin/sh
+
+#Evolphin path should be up Evolphin only like /Applications/Evolphin/zoom, not like /Application/Evolphin.
+#If called from Evolphin/zoom it self then path .
+ZOOM_INSTALL_DIR=$1
+KEEP_DB=$2
+KEEP_CONF=$3
+UNINSTALL_LOG_FILE=$4
+
+
+
+if [ "$ZOOM_INSTALL_DIR" = "" ]; then
+  ZOOM_INSTALL_DIR=`pwd`
+fi
+
+if [ "$UNINSTALL_LOG_FILE" = "" ]; then
+  UNINSTALL_LOG_FILE=/var/log/install.log
+fi
+if [ ! -e "$UNINSTALL_LOG_FILE" ]; then
+  touch "$UNINSTALL_LOG_FILE"
+fi
+
+msg(){
+  echo "`date` Uninstall Zoom: Message: $1" >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+}
+
+if [ ! -d "$ZOOM_INSTALL_DIR" ]; then
+  msg "$ZOOM_INSTALL_DIR does not exist"
+  exit 33;
+fi
+
+cd "$ZOOM_INSTALL_DIR"
+ZOOM_INSTALL_DIR="`pwd`"
+cd ..
+
+if [ ! -d "$ZOOM_INSTALL_DIR/Resources" ]; then
+  msg "No resource dir present in $ZOOM_INSTALL_DIR"
+  exit 33;
+fi
+
+if [ ! -f "$ZOOM_INSTALL_DIR/Resources/bin/zm" ]; then
+  msg "Invalid zoom installation directory"
+  exit 33;
+fi
+
+ALERT_SCP_PATH="$ZOOM_INSTALL_DIR/Uninstall Zoom.app/Contents/Resources"
+
+
+error(){
+  echo "`date` Uninstall Zoom: Error: $1" >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+  osascript "$ALERT_SCP_PATH/error.applescript" "Error: $1"
+  exit "$?"
+}
+
+
+msg "Pwd: `pwd`"
+msg "Evolphin path: $ZOOM_INSTALL_DIR"
+msg "Keep db: $KEEP_DB"
+msg "Keep conf: $KEEP_CONF"
+msg "User: $USER"
+
+
+msg "Uninstalling Zoom, please wait...."
+
+#uninstall plugin for cs6
+
+ADOBE_EXTENSION_MNG6_PATH="/Applications/Adobe Extension Manager CS6/Adobe Extension Manager CS6.app/Contents/MacOS/Adobe Extension Manager CS6"
+if [ -f "$ADOBE_EXTENSION_MNG6_PATH" ]; then
+    msg "Uninstalling cs6 extension... It may take time..."
+    /Applications/Adobe\ Extension\ Manager\ CS6/Adobe\ Extension\ Manager\ CS6.app/Contents/MacOS/Adobe\ Extension\ Manager\ CS6 -suppress -remove product="Illustrator CS6" extension="com.zoom.plugin" >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+  su -l $USER -c '"/Applications/Adobe Extension Manager CS6/Adobe Extension Manager CS6.app/Contents/MacOS/Adobe Extension Manager CS6" -suppress -remove product="Photoshop CS6" extension="com.zoom.plugin"' >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+else
+  msg "Adobe extension manager CS6 path not found"
+fi
+
+if [ -d "$ZOOM_INSTALL_DIR/Resources/plug-ins/pluginInstaller" ]; then
+  sh "$ZOOM_INSTALL_DIR/Resources/plug-ins/pluginInstaller/AdobePluginUnInstaller_mac.sh"
+fi
+
+if [ -d $ZOOM_INSTALL_DIR/Resources/plug-ins/pluginInstaller ]; then
+  sh "$ZOOM_INSTALL_DIR/Resources/plug-ins/pluginInstaller/Cinema4DPluginUnInstaller_mac.sh"
+fi
+
+#uninstall plugin for cs5
+
+ADOBE_EXTENSION_MNG_PATH="/Applications/Adobe Extension Manager CS5/Adobe Extension Manager CS5.app/Contents/MacOS/Adobe Extension Manager CS5"
+
+ZM_CS5_PLUGIN="$ZOOM_INSTALL_DIR/Resources/plug-ins/ZmAdobePlugin.zxp"
+if [ -f "$ADOBE_EXTENSION_MNG_PATH" ]; then
+    msg "Uninstalling cs5 extension... It may take time..."
+    /Applications/Adobe\ Extension\ Manager\ CS5/Adobe\ Extension\ Manager\ CS5.app/Contents/MacOS/Adobe\ Extension\ Manager\ CS5 -suppress -remove product="Illustrator CS5" extension="com.zoom.plugin"  >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+   su -l $USER -c '"/Applications/Adobe Extension Manager CS5/Adobe Extension Manager CS5.app/Contents/MacOS/Adobe Extension Manager CS5" -suppress -remove product="Photoshop CS5" extension="com.zoom.plugin"'>> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+else
+  msg "Adobe extension manager path not found"
+fi
+
+if [ -f "$ZOOM_INSTALL_DIR/Resources/bin/zoom" ]; then
+  msg "Stopping zoom server..."
+  "$ZOOM_INSTALL_DIR/Resources/bin/zoom" stop >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+  sleep 3
+  status=$("$ZOOM_INSTALL_DIR/Resources/bin/zoom" status) 2>> "$UNINSTALL_LOG_FILE"
+  msg "$status"
+  isRunning=$(echo "$status" |grep -c "not")
+  if [ $isRunning -eq 0 ]; then
+    msg "Failed to stop zoom server. Please stop zoom server first then try again."
+  else
+    msg "Zoom server stopped."
+  fi
+else
+  if [ "$KEEP_CONF" = "true" ]; then
+    KEEP_CONF="false"
+    msg "Client Uninstall: KEEP_CONF = $KEEP_CONF"
+  fi
+fi
+if [ -f "$ZOOM_INSTALL_DIR/Resources/bin/preview-server" ]; then
+  msg "Stopping Preview Server..."
+  "$ZOOM_INSTALL_DIR/Resources/bin/preview-server" stop >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+  sleep 3
+  status=$("$ZOOM_INSTALL_DIR/Resources/bin/preview-server" status) 2>> "$UNINSTALL_LOG_FILE"
+  msg "$status"
+  isRunning=$(echo "$status" |grep -c "not")
+  if [ $isRunning -eq 0 ]; then
+    msg "Failed to stop Preview Server. Please stop Preview Server first then try again."
+  else
+    msg "Preview Server stopped."
+  fi
+fi
+if [ "$KEEP_DB" = "true" ]; then
+  NUM_DB=0
+  for DB_DIR in "$ZOOM_INSTALL_DIR"/Resources/db* ; do
+    if [ "$DB_DIR" = "$ZOOM_INSTALL_DIR/Resources/db*" ]; then
+      msg "Not found any db dir: $DB_DIR"
+    else
+      msg "Found db dir: $DB_DIR"
+      (( NUM_DB = NUM_DB + 1 ))
+    fi
+  done
+  if [ $NUM_DB -eq 0 ]; then
+    KEEP_DB="false"
+  fi
+  msg "DB dirs found: $KEEP_DB; KEEP_DB = $KEEP_DB"
+fi
+
+
+CL_PROXY_PLIST="com.evolphin.zoom.clientproxy.plist"
+FSCUE_PLIST="com.evolphin.zoom.FSCue.plist"
+ZOOM_SERVER_PLIST="com.evolphin.zoom.server.plist"
+PREVIEW_SERVER_PLIST="com.evolphin.zoom.preview-server.plist"
+LIB_CL_PROXY_PLIST="/Library/LaunchAgents/$CL_PROXY_PLIST"
+LIB_FSCUE_PLIST="/Library/LaunchAgents/$FSCUE_PLIST"
+LIB_ZOOM_SERVER_PLIST="/Library/LaunchDaemons/$ZOOM_SERVER_PLIST"
+LIB_PREVIEW_SERVER_PLIST="/Library/LaunchDaemons/$PREVIEW_SERVER_PLIST"
+
+
+if [ -f "$LIB_FSCUE_PLIST" ]; then
+  msg "Calling cmd as $USER: launchctl unload -S Aqua -F $LIB_FSCUE_PLIST"
+  su -m $USER -c "launchctl unload -S Aqua -F \"$LIB_FSCUE_PLIST\""
+  msg "Removing... $LIB_FSCUE_PLIST"
+  rm -f "$LIB_FSCUE_PLIST" >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+fi
+
+if [ -f "$LIB_CL_PROXY_PLIST" ]; then
+  msg "Calling cmd as $USER: launchctl unload -S Aqua -F $LIB_CL_PROXY_PLIST"
+  su -m $USER -c "launchctl unload -S Aqua -F \"$LIB_CL_PROXY_PLIST\""
+  msg "Removing... $LIB_CL_PROXY_PLIST"
+  rm -f "$LIB_CL_PROXY_PLIST" >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+fi
+
+if [ -f "$LIB_ZOOM_SERVER_PLIST" ]; then
+  msg "Calling cmd: launchctl unload -F $LIB_ZOOM_SERVER_PLIST"
+  launchctl unload -F "$LIB_ZOOM_SERVER_PLIST"
+  msg "Removing... $LIB_ZOOM_SERVER_PLIST"
+  rm -f "$LIB_ZOOM_SERVER_PLIST" >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+fi
+
+if [ -f "$LIB_PREVIEW_SERVER_PLIST" ]; then
+  msg "Calling cmd: launchctl unload -F $LIB_PREVIEW_SERVER_PLIST"
+  launchctl unload -F "$LIB_PREVIEW_SERVER_PLIST"
+  msg "Removing... $LIB_PREVIEW_SERVER_PLIST"
+  rm -f "$LIB_PREVIEW_SERVER_PLIST" >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+fi
+
+if [ "$KEEP_DB" = "true" ]; then
+  msg "Moving db to a temporary location ..."
+  mv "$ZOOM_INSTALL_DIR"/Resources/db* "$ZOOM_INSTALL_DIR/../" >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+fi
+
+if [[ "$KEEP_CONF" = "true" && -d "$ZOOM_INSTALL_DIR/Resources/conf" ]]; then
+  msg "Moving conf to a temporary location ..."
+  mv "$ZOOM_INSTALL_DIR/Resources/conf" "$ZOOM_INSTALL_DIR/../" >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+fi
+
+
+if [ -f "$ZOOM_INSTALL_DIR/Resources/bin/deregisterService" ]; then
+  msg "Moving deregisterService to /tmp";
+  mv "$ZOOM_INSTALL_DIR/Resources/bin/deregisterService" /tmp >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+else
+  msg "Deregister service file not found"
+fi
+
+# Remove zoom, zm and zm-dlg symlinks from /usr/local/bin
+if [[ -L /usr/local/bin/zoom && "`readlink /usr/local/bin/zoom`" == "$ZOOM_INSTALL_DIR/Resources/bin/zoom" ]]; then
+  msg "Removing symbolic link /usr/local/bin/zoom -> `readlink /usr/local/bin/zoom`"
+  rm -f /usr/local/bin/zoom >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+fi
+if [[ -L /usr/local/bin/zm && "`readlink /usr/local/bin/zm`" == "$ZOOM_INSTALL_DIR/Resources/bin/zm" ]]; then
+  msg "Removing symbolic link /usr/local/bin/zm -> `readlink /usr/local/bin/zm`"
+  rm -f /usr/local/bin/zm >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+fi
+if [[ -L /usr/local/bin/zm-dlg && "`readlink /usr/local/bin/zm-dlg`" == "$ZOOM_INSTALL_DIR/Resources/resources/Zoom UI.app/Contents/MacOS/dlglauncher" ]]; then
+  msg "Removing symbolic link /usr/local/bin/zm-dlg -> `readlink /usr/local/bin/zm-dlg`"
+  rm -f /usr/local/bin/zm-dlg >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+fi
+
+# Delete installation from $ZOOM_INSTALL_DIR
+msg "Removing installation from $ZOOM_INSTALL_DIR ..."
+rm -rf "$ZOOM_INSTALL_DIR"
+rm -rf "/Library/Application Support/Evolphin"
+rm -rf "/Users/$USER/Library/Application Support/Evolphin"
+
+if [[ "$KEEP_DB" = "true" || "$KEEP_CONF" = "true" ]]; then
+  mkdir -p "$ZOOM_INSTALL_DIR/Resources" >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+  chmod -R 775 "$ZOOM_INSTALL_DIR" >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+
+  if [ "$KEEP_DB" = "true" ]; then
+    msg "Moving db back to its original location ..."
+    mv "$ZOOM_INSTALL_DIR"/../db* "$ZOOM_INSTALL_DIR/Resources/" >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+  fi
+
+  if [[ "$KEEP_CONF" = "true" && -d "$ZOOM_INSTALL_DIR/../conf" ]]; then
+    msg "Moving conf back to its original location ..."
+    mv "$ZOOM_INSTALL_DIR/../conf" "$ZOOM_INSTALL_DIR/Resources/conf" >> "$UNINSTALL_LOG_FILE" 2>> "$UNINSTALL_LOG_FILE"
+  fi
+fi
+
+
+if [ -f "/tmp/deregisterService" ]; then
+  msg "Running deregisterService to ";
+  /tmp/deregisterService  
+fi
+
+if [ -f "$HOME/Library/Preferences/pbs.plist" ];then
+  plutil -convert xml1 $HOME/Library/Preferences/pbs.plist -o /tmp/pbs-orig.plist.xml
+  sed '/com.evolphin.zoom.zmclientproxy/,/enabled_services_menu/s/true/false/g' /tmp/pbs-orig.plist.xml > /tmp/pbs.plist.xml
+  plutil -convert binary1 /tmp/pbs.plist.xml -o $HOME/Library/Preferences/pbs.plist
+  rm /tmp/pbs-orig.plist.xml /tmp/pbs.plist.xml
+  # for some reason, the Evolphin Zoom context menu shows up the first time you right click, and then all context items disappear
+  su -l $USER -c "sleep 5; /System/Library/CoreServices/pbs -update &> /dev/null" &
+  #su -l $USER -c "sleep 10; /System/Library/CoreServices/pbs -existing_languages &> /dev/null" &
+  su -l $USER -c "sleep 10; /System/Library/CoreServices/pbs -update &>/dev/null" &
+fi
+
+
+exit 0
+
+
