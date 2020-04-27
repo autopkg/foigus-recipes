@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Blurb InDesign plugin package and builds a package to install the "Blurb Data" in the user's home.
+
+NOTES:
+- This recipe depends on Joe Chilcote's outset, located here:
+https://github.com/chilcote/outset
+
+- This recipe depends on jessepeterson's ModeChanger.  Add jessepeterson's repo via:
+autopkg repo-add jessepeterson-recipes</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.BlurbData</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>BlurbData</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.Blurb</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%pathname%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/BBC_MultiVers_Installer.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>.*</string>
+				<key>result_output_var_name</key>
+				<string>version</string>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/payload/Blurb Data/version.txt</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict>
+					<key>Users</key>
+					<string>0755</string>
+					<key>Users/Shared</key>
+					<string>1777</string>
+					<key>usr</key>
+					<string>0755</string>
+					<key>usr/local/outset</key>
+					<string>0755</string>
+					<key>usr/local/outset/login-once</key>
+					<string>0755</string>
+				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Users/Shared/Blurb Data</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload/Blurb Data</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Users/Shared/Blurb Data</string>
+				<key>mode</key>
+				<string>755</string>
+			</dict>
+			<key>Comment</key>
+			<string>777 POSIX permissions in a directory of files that's copied into each user's home seems like a bad idea</string>
+			<key>Processor</key>
+			<string>com.github.jessepeterson.munki.UniversalTypeClient6/ModeChanger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>#!/bin/bash
+if [ ! -d ~/Library/Application\ Support/Blurb\ Book\ Creator ]
+then
+	mkdir -p ~/Library/Application\ Support/Blurb\ Book\ Creator
+fi
+
+cp -R /Users/Shared/Blurb\ Data ~/Library/Application\ Support/Blurb\ Book\ Creator/Blurb\ Data</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/usr/local/outset/login-once/copy_blurb_data_folder.sh</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+					<key>chown</key>
+					<array>
+						<dict>
+							<key>group</key>
+							<string>wheel</string>
+							<key>path</key>
+							<string>usr</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+						<dict>
+							<key>group</key>
+							<string>admin</string>
+							<key>path</key>
+							<string>Users</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+						<dict>
+							<key>group</key>
+							<string>wheel</string>
+							<key>path</key>
+							<string>Users/Shared</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+					</array>
+					<key>id</key>
+					<string>com.blurb.BlurbData.pkg</string>
+					<key>pkgname</key>
+					<string>BlurbData-%version%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+		</dict>
+	</array>
+</dict>
+</plist>
