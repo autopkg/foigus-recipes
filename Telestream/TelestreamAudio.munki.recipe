@@ -51,6 +51,15 @@ NOTE THIS RECIPE DOESN'T DO A WHOLE LOT WITHOUT WIRECAST. This recipe is an upda
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>This recipe appears to no longer be necessary and will be removed soon.</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
