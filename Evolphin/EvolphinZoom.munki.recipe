@@ -25,6 +25,10 @@ http://help.evolphin.com/docs/drag-and-drop-stopped-working-in-the-asset-browser
 		<string>apps/evolphin</string>
 		<key>NAME</key>
 		<string>EvolphinZoom</string>
+		<key>POSTUNINSTALL_SCRIPT_PATH</key>
+		<string>%RECIPE_DIR%/Reference Evolphin Zoom Scripts/My Scripts/postuninstall_script.sh</string>
+		<key>UNINSTALL_SCRIPT_PATH</key>
+		<string>%RECIPE_DIR%/Reference Evolphin Zoom Scripts/Fixed Scripts/722_uninstall_modified</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>RestartAction</key>
@@ -125,8 +129,8 @@ http://help.evolphin.com/docs/drag-and-drop-stopped-working-in-the-asset-browser
 			<dict>
 				<key>additional_makepkginfo_options</key>
 				<array>
-					<string>--uninstall_script=%RECIPE_DIR%/Reference Evolphin Zoom Scripts/Fixed Scripts/722_uninstall_modified</string>
-					<string>--postuninstall_script=%RECIPE_DIR%/Reference Evolphin Zoom Scripts/My Scripts/postuninstall_script.sh</string>
+					<string>--uninstall_script=%UNINSTALL_SCRIPT_PATH%</string>
+					<string>--postuninstall_script=%POSTUNINSTALL_SCRIPT_PATH%</string>
 				</array>
 				<key>pkg_path</key>
 				<string>%RECIPE_CACHE_DIR%/repack/EvolphinZoom.pkg</string>
