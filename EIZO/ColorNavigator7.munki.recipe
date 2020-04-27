@@ -48,9 +48,7 @@ autopkg repo-add hjuutilainen-recipes</string>
 			<string>#!/bin/sh
 #Per the "Installation Guide"
 #https://www.eizoglobal.com/support/db/files/manuals/03V27670C1/UM-03V27670C1-EN.pdf
-
 rm -rf "/Applications/ColorNavigator 7.app"
-# Run the uninstaller script provided with the app.
 			
 pkgutil --forget com.eizo.pkg.ColorNavigator7</string>
 		</dict>
