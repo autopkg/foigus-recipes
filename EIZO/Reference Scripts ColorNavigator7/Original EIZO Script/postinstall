@@ -133,16 +133,16 @@ done
 # Copy basICColorDISCUS.kext
 #-------------------------------------------------------------------------------
 # check OS version is newer than 10.15
-CATALINA_OR_LATER=$(sw_vers -productVersion \
-    | awk -F. '{ print $1 "." $2 }' \
-    | (read v ; echo "$v >= 10.15"; ) \
-    | bc)
+# CATALINA_OR_LATER=$(sw_vers -productVersion \
+#     | awk -F. '{ print $1 "." $2 }' \
+#     | (read v ; echo "$v >= 10.15"; ) \
+#     | bc)
 
-if [ $(expr $CATALINA_OR_LATER) -eq 1 ]; then
-    cp -rf "${KEXT_DIR}/basICColorDISCUS.kext" "/Library/Extensions"
-else
-    cp -rf "${KEXT_DIR}/basICColorDISCUS.kext" "/System/Library/Extensions"
-fi
+# if [ $(expr $CATALINA_OR_LATER) -eq 1 ]; then
+#     cp -rf "${KEXT_DIR}/basICColorDISCUS.kext" "/Library/Extensions"
+# else
+#     cp -rf "${KEXT_DIR}/basICColorDISCUS.kext" "/System/Library/Extensions"
+# fi
 
 #-------------------------------------------------------------------------------
 # Additional Setup

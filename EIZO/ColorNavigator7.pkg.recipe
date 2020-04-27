@@ -41,7 +41,7 @@ autopkg repo-add hjuutilainen-recipes</string>
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>d5af1500ee9fc8f4a46fd85dafbd7250</string>
+				<string>61be7b7f04c900e08168e00c52d64f05</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/ColorNavigator_7.pkg/Scripts/postinstall</string>
 			</dict>
@@ -68,7 +68,6 @@ autopkg repo-add hjuutilainen-recipes</string>
 			<dict>
 				<key>file_content</key>
 				<string>#!/bin/sh
-##Edit to disable opening the ColorNavigator 7 window following installation
 
 #-------------------------------------------------------------------------------
 # Defines
@@ -203,22 +202,26 @@ done
 # Copy basICColorDISCUS.kext
 #-------------------------------------------------------------------------------
 # check OS version is newer than 10.15
-CATALINA_OR_LATER=$(sw_vers -productVersion \
-    | awk -F. '{ print $1 "." $2 }' \
-    | (read v ; echo "$v &gt;= 10.15"; ) \
-    | bc)
+# CATALINA_OR_LATER=$(sw_vers -productVersion \
+#     | awk -F. '{ print $1 "." $2 }' \
+#     | (read v ; echo "$v &gt;= 10.15"; ) \
+#     | bc)
 
-if [ $(expr $CATALINA_OR_LATER) -eq 1 ]; then
-    cp -rf "${KEXT_DIR}/basICColorDISCUS.kext" "/Library/Extensions"
-else
-    cp -rf "${KEXT_DIR}/basICColorDISCUS.kext" "/System/Library/Extensions"
-fi
+# if [ $(expr $CATALINA_OR_LATER) -eq 1 ]; then
+#     cp -rf "${KEXT_DIR}/basICColorDISCUS.kext" "/Library/Extensions"
+# else
+#     cp -rf "${KEXT_DIR}/basICColorDISCUS.kext" "/System/Library/Extensions"
+# fi
 
 #-------------------------------------------------------------------------------
 # Additional Setup
 #-------------------------------------------------------------------------------
 
+# Make symbolic link for lightbooth
 ln -sf /usr/local/lib/libftd2xx.1.2.2.dylib /usr/local/lib/libftd2xx.dylib
+
+# Make symbolic link for K-10
+ln -sf "${PLUGINS_DIR}/exports/mac/libftd2xx.1.4.16.dylib" "${PLUGINS_DIR}/exports/mac/libftd2xx.dylib"
 
 /sbin/kextload -b com.basICColor.driver.basICColorDISCUS
 
@@ -240,6 +243,7 @@ fi
 
 # For Permission error by Mac updating
 chmod 777 /Library/Application\ Support/EIZO/ColorNavigator\ 7
+chmod 777 /Library/Application\ Support/EIZO/ColorNavigator\ 7/backup
 chmod 777 /Library/Application\ Support/EIZO/ColorNavigator\ 7/db.0
 chmod 777 /Library/Application\ Support/EIZO/db
 chmod u+w ~/
