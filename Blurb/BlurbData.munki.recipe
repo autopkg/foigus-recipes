@@ -9,9 +9,6 @@ NOTES:
 - This recipe depends on Joe Chilcote's outset, located here:
 https://github.com/chilcote/outset
 
-- This recipe depends on jessepeterson's ModeChanger.  Add jessepeterson's repo via:
-autopkg repo-add jessepeterson-recipes
-
 - The update_for variable should reflect all the different versions of Blurb in use</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.BlurbData</string>
