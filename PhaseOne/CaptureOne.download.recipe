@@ -7,12 +7,16 @@
 
 Note major version upgrades of Capture One are generally paid upgrades, however Phase One's update URL doesn't stop at major version boundaries (e.g. the update URL for Capture One 7 offers a download of Capture One 9) and new major versions of Capture One are paid updates.
 
-In an attempt to avoid accidentally downloading (and subsequently importing) Capture One updates that require a paid update, we restrict to a MAJOR_VERSION.  When Phase One releases a new major version, this recipe will break until MAJOR_VERSION is updated (either via override or by updating this recipe).</string>
+In an attempt to avoid accidentally downloading (and subsequently importing) Capture One updates that require a paid update, we restrict to an ACTUAL_VERSION.  When Phase One releases a new major version, this recipe will break until ACTUAL_VERSION are updated (either via override or by updating this recipe).
+
+Due to Phase One's decision to go with different versions for the software itself and marketing (e.g. Capture One version 13 is marketed as version 20), this recipe also has a MARKETING_VERSION variable to account for the discrepancy.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.CaptureOne</string>
 	<key>Input</key>
 	<dict>
-		<key>MAJOR_VERSION</key>
+		<key>ACTUAL_VERSION</key>
+		<string>13</string>
+		<key>MARKETING_VERSION</key>
 		<string>20</string>
 		<key>NAME</key>
 		<string>CaptureOne</string>
@@ -31,7 +35,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>&lt;AvailableVersion&gt;(%MAJOR_VERSION%[\.\d]*)\.[\d]*&lt;\/AvailableVersion&gt;</string>
+				<string>&lt;AvailableVersion&gt;(%ACTUAL_VERSION%[\.\d]*)\.[\d]*&lt;\/AvailableVersion&gt;</string>
 				<key>result_output_var_name</key>
 				<string>truncated_version</string>
 				<key>url</key>
@@ -46,7 +50,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 				<key>filename</key>
 				<string>CaptureOne.dmg</string>
 				<key>url</key>
-				<string>https://downloads.phaseone.com/%DOWNLOADURLUUID%/%LANGUAGE%/CaptureOne%MAJOR_VERSION%.Mac.%truncated_version%.dmg</string>
+				<string>https://downloads.phaseone.com/%DOWNLOADURLUUID%/%LANGUAGE%/CaptureOne%MARKETING_VERSION%.Mac.%truncated_version%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -59,7 +63,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/Capture One %MAJOR_VERSION%.app</string>
+				<string>%pathname%/Capture One %MARKETING_VERSION%.app</string>
 				<key>requirement</key>
 				<string>%CODESIGNATUREVERIFIERREQUIREMENT%</string>
 			</dict>

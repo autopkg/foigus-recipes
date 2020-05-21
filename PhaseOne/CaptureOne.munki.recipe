@@ -7,7 +7,9 @@
 
 Note major version upgrades of Capture One are generally paid upgrades, however Phase One's update URL doesn't stop at major version boundaries (e.g. the update URL for Capture One 7 offers a download of Capture One 9) and new major versions of Capture One are paid updates.
 
-In an attempt to avoid accidentally downloading (and subsequently importing) Capture One updates that require a paid update, we restrict to a MAJOR_VERSION.  When Phase One releases a new major version, this recipe will break until MAJOR_VERSION is updated (either via override or by updating this recipe).</string>
+In an attempt to avoid accidentally downloading (and subsequently importing) Capture One updates that require a paid update, we restrict to an ACTUAL_VERSION.  When Phase One releases a new major version, this recipe will break until ACTUAL_VERSION are updated (either via override or by updating this recipe).
+
+Due to Phase One's decision to go with different versions for the software itself and marketing (e.g. Capture One version 13 is marketed as version 20), this recipe also has a MARKETING_VERSION variable to account for the discrepancy.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.CaptureOne</string>
 	<key>Input</key>
@@ -20,7 +22,7 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 		<dict>
 			<key>catalogs</key>
 			<array>
-				<string>development-phaseone-%NAME%%MAJOR_VERSION%</string>
+				<string>development-phaseone-%NAME%%MARKETING_VERSION%</string>
 			</array>
 			<key>category</key>
 			<string>Productivity</string>
@@ -29,9 +31,9 @@ In an attempt to avoid accidentally downloading (and subsequently importing) Cap
 			<key>developer</key>
 			<string>Phase One</string>
 			<key>display_name</key>
-			<string>Capture One %MAJOR_VERSION%</string>
+			<string>Capture One %MARKETING_VERSION%</string>
 			<key>name</key>
-			<string>%NAME%%MAJOR_VERSION%</string>
+			<string>%NAME%%MARKETING_VERSION%</string>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
