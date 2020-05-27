@@ -101,7 +101,7 @@ autopkg run WoodwingSmartConnectionInCopyCC2020.munki -p /path/to/Smart_Connecti
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe 2020.app/Contents/MacOS/Uninstall Smart Connection for Adobe 2020</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 14.0.1, build 12 on the uninstall script</string>
+			<string>Verify MD5 matches 15.0.0, build 10 on the uninstall script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
@@ -116,7 +116,7 @@ autopkg run WoodwingSmartConnectionInCopyCC2020.munki -p /path/to/Smart_Connecti
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe 2020.app/Contents/Resources/Uninstall Smart Connection for Adobe 2020.sh</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 14.0.1, build 12 on the uninstall script</string>
+			<string>Verify MD5 matches 15.0.0, build 10 on the uninstall script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
