@@ -96,7 +96,7 @@ autopkg run WoodwingStudioInCopyCC2020.munki.recipe -p /path/to/WoodWing_Studio_
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>4d2b92b757c1c398710bbe768b198fff</string>
+				<string>dc1711abadbf89696b49ea5b940ba549</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe 2020.app/Contents/MacOS/Uninstall Smart Connection for Adobe 2020</string>
 			</dict>
@@ -111,7 +111,7 @@ autopkg run WoodwingStudioInCopyCC2020.munki.recipe -p /path/to/WoodWing_Studio_
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>4d2b92b757c1c398710bbe768b198fff</string>
+				<string>dc1711abadbf89696b49ea5b940ba549</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe 2020.app/Contents/Resources/Uninstall Smart Connection for Adobe 2020.sh</string>
 			</dict>
