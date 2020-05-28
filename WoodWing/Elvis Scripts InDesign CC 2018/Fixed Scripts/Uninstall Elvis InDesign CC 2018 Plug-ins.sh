@@ -28,11 +28,14 @@ B_MSG=true
 ##								-e		'end tell' \
 ##								-e	'end try' \
 ##								-e 'return {the_results}')
-##
-##echo "USER ACTION: ${UNINSTALL_ELVISINDESIGN_APP}"
-##echo ""
-##
-##if [[ "${UNINSTALL_ELVISINDESIGN_APP}" == *":Yes"* ]]; then
+
+##Set ElvisInDesign to be uninstalled
+UNINSTALL_ELVISINDESIGN_APP=":Yes"
+
+echo "USER ACTION: ${UNINSTALL_ELVISINDESIGN_APP}"
+echo ""
+
+if [[ "${UNINSTALL_ELVISINDESIGN_APP}" == *":Yes"* ]]; then
 ##	# Ask the user for the administrator username and password.
 ##	# IF the user cancels then nothing will be done.
 ##	# The script will set some access rights and
@@ -54,49 +57,52 @@ B_MSG=true
 ##				-e		'set the_password to "0"' \
 ##				-e	'end try' \
 ##				-e 'return {the_password}')
-##
-##	echo "USER ACTION: ${UNINSTALL_ELVISINDESIGN_APP}"
-##	echo ""
-##
-##	# Check if the user has canceled (0) or not (1).
-##	if [ "${UNINSTALL_ELVISINDESIGN_APP}" == "0" ]; then
-##		echo "${UNINSTALL_ELVISINDESIGN_APP}"
-##		exit 1;
-##	else
-##		echo "NO CANCEL"
-##	fi
-##else
-##	# Ask the user for the administrator username and password.
-##	# IF the user cancels then nothing will be done.
-##	# The script will set some access rights.
-##	DO_SUDO=$(osascript \
-##				-e	'set the_password to ""' \
-##				-e	'try' \
-##				-e		'tell application "Finder"' \
-##				-e			'set the_username to do shell script "whoami"' \
-##				-e			'set the_password to ""' \
-##				-e 			"do shell script \"sudo chmod -R 777 '$path_only'/Plug-Ins/Elvis\" password the_password with administrator privileges" \
-##				-e 			"do shell script \"sudo chmod -R 777 '$path_only'/Plug-Ins/WoodWing\" password the_password with administrator privileges" \
-##				-e 			'do shell script "sudo chmod -R 777 /Applications/ElvisInDesign.app" password the_password with administrator privileges' \
-##				-e 			'do shell script "sudo chmod -R 777 /Applications/ElvisInDesign.app/Contents" password the_password with administrator privileges' \
-##				-e			'set the_password to "1"' \
-##				-e		'end tell' \
-##				-e	'on error number -128' \
-##				-e		'set the_password to "0"' \
-##				-e	'end try' \
-##				-e 'return {the_password}')
-##
-##	echo "USER ACTION: ${DO_SUDO}"
-##	echo ""
-##
-##	# Check if the user has canceled (0) or not (1).
-##	if [ "${DO_SUDO}" == "0" ]; then
-##		echo "${DO_SUDO}"
-##		exit 1;
-##	else
-##		echo "NO CANCEL"
-##	fi
-##fi
+
+##Removing ElvisInDesign App via a shell script
+	rm -rf "/Applications/ElvisInDesign.app"
+
+	echo "USER ACTION: ${UNINSTALL_ELVISINDESIGN_APP}"
+	echo ""
+
+	# Check if the user has canceled (0) or not (1).
+	if [ "${UNINSTALL_ELVISINDESIGN_APP}" == "0" ]; then
+		echo "${UNINSTALL_ELVISINDESIGN_APP}"
+		exit 1;
+	else
+		echo "NO CANCEL"
+	fi
+else
+	# Ask the user for the administrator username and password.
+	# IF the user cancels then nothing will be done.
+	# The script will set some access rights.
+	DO_SUDO=$(osascript \
+				-e	'set the_password to ""' \
+				-e	'try' \
+				-e		'tell application "Finder"' \
+				-e			'set the_username to do shell script "whoami"' \
+				-e			'set the_password to ""' \
+				-e 			"do shell script \"sudo chmod -R 777 '$path_only'/Plug-Ins/Elvis\" password the_password with administrator privileges" \
+				-e 			"do shell script \"sudo chmod -R 777 '$path_only'/Plug-Ins/WoodWing\" password the_password with administrator privileges" \
+				-e 			'do shell script "sudo chmod -R 777 /Applications/ElvisInDesign.app" password the_password with administrator privileges' \
+				-e 			'do shell script "sudo chmod -R 777 /Applications/ElvisInDesign.app/Contents" password the_password with administrator privileges' \
+				-e			'set the_password to "1"' \
+				-e		'end tell' \
+				-e	'on error number -128' \
+				-e		'set the_password to "0"' \
+				-e	'end try' \
+				-e 'return {the_password}')
+
+	echo "USER ACTION: ${DO_SUDO}"
+	echo ""
+
+	# Check if the user has canceled (0) or not (1).
+	if [ "${DO_SUDO}" == "0" ]; then
+		echo "${DO_SUDO}"
+		exit 1;
+	else
+		echo "NO CANCEL"
+	fi
+fi
 
 
 #---------------------------------------------------------------------
