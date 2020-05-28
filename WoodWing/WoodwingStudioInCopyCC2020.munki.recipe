@@ -158,6 +158,8 @@ autopkg run WoodwingStudioInCopyCC2020.munki.recipe -p /path/to/WoodWing_Studio_
 				<array>
 					<string>/Applications/Adobe InCopy 2020/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin</string>
 				</array>
+				<key>version_comparison_key</key>
+				<string>CFBundleShortVersionString</string>
 			</dict>
 			<key>Comment</key>
 			<string>Create an installs array item for SCEnterprise.InDesignPlugin</string>
