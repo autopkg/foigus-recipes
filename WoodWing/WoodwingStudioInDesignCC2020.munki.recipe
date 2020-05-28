@@ -127,7 +127,7 @@ autopkg run WoodwingStudioInDesignCC2020.munki.recipe -p /path/to/WoodWing_Studi
 				<key>pkgdirs</key>
 				<dict/>
 				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2020/Plug-Ins/Woodwing</string>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2020/Plug-Ins/WoodWing</string>
 			</dict>
 			<key>Comment</key>
 			<string>Create a root for the expanded scenterprise.pkg payload</string>
@@ -138,7 +138,7 @@ autopkg run WoodwingStudioInDesignCC2020.munki.recipe -p /path/to/WoodWing_Studi
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2020/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin</string>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2020/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin</string>
 				<key>source_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Plug-ins/SCEnterprise.InDesignPlugin</string>
 				<key>overwrite</key>
@@ -156,7 +156,7 @@ autopkg run WoodwingStudioInDesignCC2020.munki.recipe -p /path/to/WoodWing_Studi
 				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root</string>
 				<key>installs_item_paths</key>
 				<array>
-					<string>/Applications/Adobe InDesign 2020/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin</string>
+					<string>/Applications/Adobe InDesign 2020/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin</string>
 				</array>
 			</dict>
 			<key>Comment</key>
@@ -178,7 +178,7 @@ autopkg run WoodwingStudioInDesignCC2020.munki.recipe -p /path/to/WoodWing_Studi
 				<key>result_output_var_name</key>
 				<string>discovered_version</string>
 				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2020/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2020/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
 			</dict>
 			<key>Comment</key>
 			<string>Extract the version number</string>
@@ -193,7 +193,7 @@ autopkg run WoodwingStudioInDesignCC2020.munki.recipe -p /path/to/WoodWing_Studi
 				<key>result_output_var_name</key>
 				<string>build</string>
 				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2020/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2020/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
 			</dict>
 			<key>Comment</key>
 			<string>Extract the build number</string>
