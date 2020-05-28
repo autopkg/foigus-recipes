@@ -25,7 +25,7 @@ autopkg run AssetsInDesignCC2020Plugin.munki -p /path/WoodWing\ Assets\ for\ InD
 		<key>pkginfo</key>
 		<dict>
 			<key>Comment</key>
-			<string>Choice is installer_choice_1 (Assets for InDesign CC 2020)</string>
+			<string>Choice is installer_choice_1 (Assets for InDesign 2020)</string>
 			<key>blocking_applications</key>
 			<array>
 				<string>Adobe InDesign 2020</string>
