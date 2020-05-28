@@ -11,7 +11,8 @@ NOTES:
 autopkg repo-add hjuutilainen-recipes
 
 - Specific pkgs are disabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true
-- This recipe does not download the Smart Connection disk image--feed the disk image into the recipe via the following format:
+- This recipe does not download the Woodwing Studio disk image--feed the disk image into the recipe via the following format:
+- This recipe does not attempt to clean up or uninstall the previous name of the product (Smart Connection for 2020)
 
 autopkg run WoodwingStudioInDesignCC2020.munki.recipe -p /path/to/WoodWing_Studio_for_InDesign_and_InCopy_2020_v15.1.0_Build15.dmg</string>
 	<key>Identifier</key>
@@ -21,27 +22,27 @@ autopkg run WoodwingStudioInDesignCC2020.munki.recipe -p /path/to/WoodWing_Studi
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>plugins/woodwing</string>
 		<key>NAME</key>
-		<string>WoodwingSmartConnectionInDesignCC2020</string>
+		<string>WoodwingStudioInDesignCC2020</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>Comment</key>
-			<string>Choices installer_choice_1 (Smart Connection InDesign 2020), installer_choice_2 (Smart Connection InCopy 2020)</string>
+			<string>Choices installer_choice_1 (Woodwing Studio InDesign 2020), installer_choice_2 (Woodwing Studio InCopy 2020)</string>
 			<key>blocking_applications</key>
 			<array>
 				<string>Adobe InDesign 2020</string>
 			</array>
 			<key>catalogs</key>
 			<array>
-				<string>development-woodwing-WoodwingSmartConnectionInDesignCC2020</string>
+				<string>development-woodwing-WoodwingStudioInDesignCC2020</string>
 			</array>
 			<key>category</key>
 			<string>Plugins</string>
 			<key>description</key>
-			<string>Smart Connection plugins for InDesign 2020.</string>
+			<string>Woodwing Studio plugins for InDesign 2020.</string>
 			<key>developer</key>
 			<string>Woodwing</string>
 			<key>display_name</key>
-			<string>Smart Connection InDesign 2020</string>
+			<string>Woodwing Studio InDesign 2020</string>
 			<key>installer_choices_xml</key>
 			<array>
 				<dict>
@@ -81,7 +82,7 @@ autopkg run WoodwingStudioInDesignCC2020.munki.recipe -p /path/to/WoodWing_Studi
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
 				<key>flat_pkg_path</key>
-				<string>%PKG%/Smart_Connection_for_Adobe_2020_*.pkg</string>
+				<string>%PKG%/WoodWing_Studio_for_InDesign_and_InCopy_2020_v*.pkg</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
@@ -98,7 +99,7 @@ autopkg run WoodwingStudioInDesignCC2020.munki.recipe -p /path/to/WoodWing_Studi
 				<key>checksum</key>
 				<string>dc1711abadbf89696b49ea5b940ba549</string>
 				<key>pathname</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe 2020.app/Contents/MacOS/Uninstall Smart Connection for Adobe 2020</string>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Studio for InDesign and InCopy 2020.app/Contents/MacOS/Uninstall WoodWing Studio for InDesign and InCopy 2020</string>
 			</dict>
 			<key>Comment</key>
 			<string>Verify MD5 matches 15.0.0, build 10 on the uninstall script</string>
@@ -113,7 +114,7 @@ autopkg run WoodwingStudioInDesignCC2020.munki.recipe -p /path/to/WoodWing_Studi
 				<key>checksum</key>
 				<string>dc1711abadbf89696b49ea5b940ba549</string>
 				<key>pathname</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe 2020.app/Contents/Resources/Uninstall Smart Connection for Adobe 2020.sh</string>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Studio for InDesign and InCopy 2020.app/Contents/Resources/Uninstall WoodWing Studio for InDesign and InCopy 2020.sh</string>
 			</dict>
 			<key>Comment</key>
 			<string>Verify MD5 matches 15.0.0, build 10 on the uninstall script</string>
