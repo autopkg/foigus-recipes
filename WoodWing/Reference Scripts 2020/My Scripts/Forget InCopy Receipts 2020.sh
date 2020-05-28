@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #List of receipt names to forget
-receiptsToForget=( com.woodwing.smartconnectionCC2020.payload.pkg com.woodwing.smartconnectionCC2020.sciccc2020.pkg )
+receiptsToForget=( com.woodwing.woodwingstudio2020.payload.pkg com.woodwing.woodwingstudio.incopy2020.pkg )
 
 #Forget the receipts in the receiptsToForget array
 for receiptName in "${receiptsToForget[@]}"

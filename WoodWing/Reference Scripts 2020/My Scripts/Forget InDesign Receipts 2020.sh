@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Wipe out the Smart Connection Book Support folder, if it exists
-smartConnectionBookSupportDirectory="/Applications/Adobe InDesign 2020/Scripts/Scripts Panel/Smart Connection Book Support"                                        
+smartConnectionBookSupportDirectory="/Applications/Adobe InDesign 2020/Scripts/Scripts Panel/WoodWing Studio Book Support"                                        
 
 if [ -d "${smartConnectionBookSupportDirectory}" ]
 then
@@ -9,7 +9,7 @@ then
 fi
 
 #List of receipt names to forget
-receiptsToForget=( com.woodwing.smartconnectionCC2020.payload.pkg com.woodwing.smartconnectionCC2020.scidcc2020.pkg )
+receiptsToForget=( com.woodwing.woodwingstudio2020.payload.pkg com.woodwing.woodwingstudio.indesign2020.pkg )
 
 #Forget the receipts in the receiptsToForget array
 for receiptName in "${receiptsToForget[@]}"
