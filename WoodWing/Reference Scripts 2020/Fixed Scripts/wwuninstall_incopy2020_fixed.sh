@@ -21,24 +21,24 @@ B_MSG=true
 ##Not needed, this will run as root
 ### Ask the user for the administrator username and password.
 ### IF the user cancels then nothing will be done.
-##UNINSTALL_SMARTCONNECTIONIDP_APP=$(osascript \
+##UNINSTALL_WOODWINGSTUDIOIDP_APP=$(osascript \
 ##								-e	'set the_results to ""' \
 ##								-e	'try' \
 ##								-e		'tell application "Finder"' \
 ##								-e		'activate' \
-##								-e		'set the_results to ((display dialog "You are about to remove all Smart Connection files, including the SmartConnectionIDP.app.\nWhen you have multiple installations of Smart Connection on your system, you might want to leave this file on your system.\n\nDo you want to remove the SmartConnectionIDP.app?" with title "Uninstall Smart Connection" buttons {"Yes", "No"} default button 2))' \
+##								-e		'set the_results to ((display dialog "You are about to remove all WoodWing Studio files, including the WoodWing Studio IDP.app.\nWhen you have multiple installations of WoodWing Studio on your system, you might want to leave this file on your system.\n\nDo you want to remove the WoodWing Studio IDP.app?" with title "Uninstall WoodWing Studio" buttons {"Yes", "No"} default button 2))' \
 ##								-e		'end tell' \
 ##								-e	'end try' \
 ##								-e 'return {the_results}')
 
-##Set SmartConnection IDP App to be uninstalled
-UNINSTALL_SMARTCONNECTIONIDP_APP=":Yes"
+##Set Woodwing Studio IDP App to be uninstalled
+UNINSTALL_WOODWINGSTUDIOIDP_APP=":Yes"
 
-echo "USER ACTION: ${UNINSTALL_SMARTCONNECTIONIDP_APP}"
+echo "USER ACTION: ${UNINSTALL_WOODWINGSTUDIOIDP_APP}"
 echo ""
 
-if [[ "${UNINSTALL_SMARTCONNECTIONIDP_APP}" == *":Yes"* ]]; then
-##Don't remove SmartConnection IDP App via AppleScript
+if [[ "${UNINSTALL_WOODWINGSTUDIOIDP_APP}" == *":Yes"* ]]; then
+##Don't remove Woodwing Studio IDP App via AppleScript
 ##	# Ask the user for the administrator username and password.
 ##	# IF the user cancels then nothing will be done.
 ##	DO_SUDO=$(osascript \
@@ -48,9 +48,9 @@ if [[ "${UNINSTALL_SMARTCONNECTIONIDP_APP}" == *":Yes"* ]]; then
 ##				-e			'set the_username to do shell script "whoami"' \
 ##				-e			'set the_password to ""' \
 ##				-e 			"do shell script \"sudo chmod -R 777 '$path_only'/Plug-Ins/WoodWing\" password the_password with administrator privileges" \
-##				-e 			'do shell script "sudo chmod -R 777 /Applications/SmartConnectionIDP.app" password the_password with administrator privileges' \
-##				-e 			'do shell script "sudo chmod -R 777 /Applications/SmartConnectionIDP.app/Contents" password the_password with administrator privileges' \
-##	        	-e 			'do shell script "sudo rm -rf /Applications/SmartConnectionIDP.app" password the_password with administrator privileges' \
+##				-e 			'do shell script "sudo chmod -R 777 \"/Applications/WoodWing Studio IDP.app\"" password the_password with administrator privileges' \
+##				-e 			'do shell script "sudo chmod -R 777 \"/Applications/WoodWing Studio IDP.app/Contents\"" password the_password with administrator privileges' \
+##    	    	-e 			'do shell script "sudo rm -rf \"/Applications/WoodWing Studio IDP.app\"" password the_password with administrator privileges' \
 ##				-e			'set the_password to "1"' \
 ##				-e		'end tell' \
 ##				-e	'on error number -128' \
@@ -58,15 +58,15 @@ if [[ "${UNINSTALL_SMARTCONNECTIONIDP_APP}" == *":Yes"* ]]; then
 ##				-e	'end try' \
 ##				-e 'return {the_password}')
 
-##Removing SmartConnection IDP App via a shell script
-	rm -rf /Applications/SmartConnectionIDP.app
+##Removing Woodwing Studio IDP App via a shell script
+	rm -rf "/Applications/WoodWing Studio IDP.app"
 
-	echo "USER ACTION: ${UNINSTALL_SMARTCONNECTIONIDP_APP}"
+	echo "USER ACTION: ${UNINSTALL_WOODWINGSTUDIOIDP_APP}"
 	echo ""
 
 	# Check if the user has canceled (0) or not (1).
-	if [ "${UNINSTALL_SMARTCONNECTIONIDP_APP}" == "0" ]; then
-		echo "${UNINSTALL_SMARTCONNECTIONIDP_APP}"
+	if [ "${UNINSTALL_WOODWINGSTUDIOIDP_APP}" == "0" ]; then
+		echo "${UNINSTALL_WOODWINGSTUDIOIDP_APP}"
 		exit 1;
 	else
 		echo "NO CANCEL"
@@ -163,7 +163,7 @@ function UninstallPlugins()
 	# Delete only the conventional plugins.
 	if [ "$MODE" == "conventional" ]; then
 
-		# Find all the conventional Smart Connection plugins.
+		# Find all the conventional WoodWing Studio plugins.
 		# Includes strange SmartJump naming.
 		# Remove the found plugins.
 		find "$path_only/Plug-Ins/WoodWing" \
@@ -182,8 +182,8 @@ function UninstallPlugins()
 
 	fi
 
-	if [ "$MODE" == "smartconnection" ]; then
-		# Find all the conventional Smart Connection plugins.
+	if [ "$MODE" == "woodwingstudio" ]; then
+		# Find all the conventional WoodWing Studio plugins.
 		# Includes strange SmartJump naming.
 		# Remove the found plugins.
 		find "$path_only/Plug-Ins/WoodWing" \
@@ -310,13 +310,13 @@ UninstallPluginConfig()
 #---------------------------------------------------------------------
 # Main script.
 
-# Check if we can uninstall the Smart Connection product.
+# Check if we can uninstall the WoodWing Studio product.
 CanWeUninstallAll
 # No, just delete the conventional SCEnt plugins.
 if [ $? == 1 ]; then
 
 	# We cannot uninstall totally due to other installed products.
-	# Only install the conventional Smart Connection plugins.
+	# Only install the conventional WoodWing Studio plugins.
 	UninstallPlugins "conventional"
 
 	B_MSG=false
@@ -325,7 +325,7 @@ if [ $? == 1 ]; then
 else
 	IsProductInstalled "Elvis" "Elvis"
 	if [ $? == 0 ]; then
-		UninstallPlugins "smartconnection"
+		UninstallPlugins "woodwingstudio"
 		B_MSG=false
 	else
 		UninstallPlugins "totally"
@@ -340,7 +340,7 @@ fi
 
 # What ever the outcome of the 'CanWeUninstallAll' function
 # we set back all original InCopyWorkflow and UI plugins during
-# the de-installation of the Smart Connection product.
+# the de-installation of the WoodWing Studio product.
 ReInstallPlugOuts
 
 # Uninstall the installed WoodWingUI panel from Adobe Extension Manager.
@@ -355,7 +355,7 @@ UninstallPluginConfig
 ##	osascript \
 ##	-e 'with timeout of 1800 seconds' \
 ##	-e 	'tell application "Finder"' \
-##	-e		'display dialog "Smart Connection is successfully uninstalled." buttons {"OK"}' \
+##	-e		'display dialog "WoodWing Studio is successfully uninstalled." buttons {"OK"}' \
 ##	-e 	'end tell' \
 ##	-e 'end timeout'
 ##fi
@@ -365,8 +365,8 @@ UninstallPluginConfig
 ##new_path_only=`dirname "$0"`
 ##new_path_only=`dirname "$new_path_only"`
 ##new_path_only=`dirname "$new_path_only"`
-new_path_only="/Applications/Adobe InCopy 2020/Uninstall Smart Connection for Adobe 2020.app"
-##new_path_only="/Applications/Adobe InDesign 2020/Uninstall Smart Connection for Adobe 2020.app"
+new_path_only="/Applications/Adobe InCopy 2020/Uninstall WoodWing Studio for InDesign and InCopy 2020.app"
+##new_path_only="/Applications/Adobe InDesign 2020/Uninstall WoodWing Studio for InDesign and InCopy 2020.app"
 
 rm -Rf "$new_path_only"
 
