@@ -174,7 +174,7 @@ autopkg run WoodwingStudioInCopyCC2020.munki.recipe -p /path/to/WoodWing_Studio_
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>"CFBundleShortVersionString" = "v([\d\.]+)</string>
+				<string>"CFBundleShortVersionString" = "Studio v([\d\.]+)</string>
 				<key>result_output_var_name</key>
 				<string>discovered_version</string>
 				<key>url</key>
