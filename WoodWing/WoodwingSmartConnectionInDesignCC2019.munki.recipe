@@ -13,7 +13,7 @@ autopkg repo-add hjuutilainen-recipes
 - Specific pkgs are disabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true
 - This recipe does not download the Smart Connection disk image--feed the disk image into the recipe via the following format:
 
-autopkg run WoodwingSmartConnectionInDesignCC2019.munki -p /path/to/Smart_Connection_for_Adobe_CC_2019_v13.0.0_Build4.dmg</string>
+autopkg run WoodwingSmartConnectionInDesignCC2019.munki -p /path/to/Smart_Connection_for_Adobe_CC_2019_v14.2.2_Build49.dmg</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.WoodwingSmartConnectionInDesignCC2019</string>
 	<key>Input</key>
@@ -81,7 +81,7 @@ autopkg run WoodwingSmartConnectionInDesignCC2019.munki -p /path/to/Smart_Connec
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unpack</string>
 				<key>flat_pkg_path</key>
-				<string>%PKG%/Smart_Connection_for_Adobe_CC_2019_*.pkg</string>
+				<string>%PKG%/Smart_Connection_for_Adobe_CC2019_*.pkg</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>
@@ -96,12 +96,12 @@ autopkg run WoodwingSmartConnectionInDesignCC2019.munki -p /path/to/Smart_Connec
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>5308a7fb29f5aac227960a90d2cf370d</string>
+				<string>884691ad0f748ecc999d38bd338c4dbe</string>
 				<key>pathname</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe CC 2019.app/Contents/MacOS/Uninstall Smart Connection for Adobe CC 2019</string>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe CC2019.app/Contents/MacOS/Uninstall Smart Connection for Adobe CC2019</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 14.0.1, build 12 on the uninstall script</string>
+			<string>Verify MD5 matches 14.2.2, build 49 on the uninstall script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
@@ -111,12 +111,12 @@ autopkg run WoodwingSmartConnectionInDesignCC2019.munki -p /path/to/Smart_Connec
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>5308a7fb29f5aac227960a90d2cf370d</string>
+				<string>884691ad0f748ecc999d38bd338c4dbe</string>
 				<key>pathname</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe CC 2019.app/Contents/Resources/Uninstall Smart Connection for Adobe CC 2019.sh</string>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe CC2019.app/Contents/Resources/Uninstall Smart Connection for Adobe CC2019.sh</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 14.0.1, build 12 on the uninstall script</string>
+			<string>Verify MD5 matches 14.2.2, build 49 on the uninstall script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
