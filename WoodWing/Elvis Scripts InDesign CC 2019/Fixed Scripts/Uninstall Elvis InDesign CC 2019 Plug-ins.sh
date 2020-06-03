@@ -11,7 +11,7 @@
 ##path_only=`dirname "${path_only}"`
 ##path_only=`dirname "${path_only}"`
 ##path_only=`dirname "${path_only}"`
-path_only="/Applications/Adobe InDesign CC 2018"
+path_only="/Applications/Adobe InDesign CC 2019"
 
 # Boolean to show message on success.
 B_MSG=true
@@ -179,7 +179,7 @@ UninstallInstallerLogs
 ##new_path_only=`dirname "${0}"`
 ##new_path_only=`dirname "${new_path_only}"`
 ##new_path_only=`dirname "${new_path_only}"`
-new_path_only="/Applications/Adobe InDesign CC 2018/Uninstall Elvis InDesign plug-ins.app"
+new_path_only="/Applications/Adobe InDesign CC 2019/Uninstall Elvis InDesign plug-ins.app"
 #echo "New path only: ${new_path_only}"
 
 # Delete the uninstaller app if it exists in the found path name.
