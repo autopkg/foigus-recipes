@@ -192,6 +192,7 @@ function UninstallPlugins()
 				-o -iname "SCEnt*.swf" \
 				-o -iname "SCPro*.InDesignPlugin" \
 				-o -iname "SmartImage*.InDesignPlugin" \
+				-o -iname "SmartJump*.InDesignPlugin" \
 				-o -iname "SmartDPSTools*.InDesignPlugin" \
 				-o -iname "ElementLabel*.InDesignPlugin" \
 				-o -iname "WoodWingWidgets.InDesignPlugin" \
