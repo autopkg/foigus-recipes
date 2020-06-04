@@ -160,6 +160,7 @@ function UninstallPlugins()
 		# Find all the conventional Smart Connection plugins.
 		# Includes strange SmartJump naming.
 		# Remove the found plugins.
+## Removed the "strange SmartJump naming" line, since it causes the script to not work properly when run by Munki
 		find "$path_only/Plug-Ins/WoodWing" \
 				-maxdepth "1" \
 				\( -iname "SCCore*.InDesignPlugin" \
@@ -167,8 +168,6 @@ function UninstallPlugins()
 				-o -iname "SCEnt*.swf" \
 				-o -iname "SCPro*.InDesignPlugin" \
 				-o -iname "SmartImage*.InDesignPlugin" \
-## Removed above line in find command due to problematic characters, SmartXXtJump*.InDesignPlugin.  XX are bad characters \
-##				-o -iname "SmarXXtJump*.InDesignPlugin" \
 				-o -iname "SmartJump*.InDesignPlugin" \
 				-o -iname "SmartDPSTools*.InDesignPlugin" \) \
 				-exec echo "  Deleting {}" \; \
