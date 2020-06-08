@@ -19,9 +19,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>href="(\/hc\/en-us\/article_attachments\/[\d]+\/Wipster_Review_Panel_[\d\.]+zxp)</string>
+				<string>https:\/\/support\.wipster\.io\/hc\/en-us\/article_attachments\/[\d]+\/Wipster-Panel-[\d\.]+\.zxp</string>
 				<key>url</key>
-				<string>https://support.wipster.io/hc/en-us/articles/208411563-Where-do-I-get-the-Wipster-Review-Panel-</string>
+				<string>https://intercom.help/wipster-support/en/articles/3350755-where-do-i-get-the-wipster-review-panel</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -30,7 +30,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>https://support.wipster.io%match%</string>
+				<string>%match%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
