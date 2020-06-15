@@ -13,6 +13,15 @@
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>Appears this recipe will need some significant surgery soon, and since we're no longer using this I'm going to deprecate it.  This recipe will soon be removed.</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
