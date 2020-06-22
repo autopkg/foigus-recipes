@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>"Downloads" MediaBank Gold CC 2018 for installation.  This recipe does not download the MediaBank Gold tar archive--feed the tar archive into the recipe via the following format:
 
-autopkg run MediaBankGold.download -p /path/to/MediaBankGold_Installer_osx_CC_2018_20190127.tar</string>
+autopkg run MediaBankGoldCC2018.download -p /path/to/MediaBankGold_Installer_osx_CC_2018_20190127.tar</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.MediaBankGoldCC2018</string>
 	<key>Input</key>
