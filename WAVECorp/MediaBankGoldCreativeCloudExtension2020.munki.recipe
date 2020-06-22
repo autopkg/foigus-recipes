@@ -7,7 +7,7 @@
 
 autopkg run MediaBankGoldCreativeCloudExtension2020.munki -p /path/to/mediabankgold_installer_osx_2020_20200111.tar.gz</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.munki.MediaBankGoldCreativeCloudExtension</string>
+	<string>com.github.foigus.munki.MediaBankGoldCreativeCloudExtension2020</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
@@ -53,7 +53,7 @@ autopkg run MediaBankGoldCreativeCloudExtension2020.munki -p /path/to/mediabankg
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.pkg.MediaBankGoldCreativeCloudExtension</string>
+	<string>com.github.foigus.pkg.MediaBankGoldCreativeCloudExtension2020</string>
 	<key>Process</key>
 	<array>
 		<dict>
