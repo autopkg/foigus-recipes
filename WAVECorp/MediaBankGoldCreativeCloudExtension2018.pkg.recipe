@@ -7,7 +7,7 @@
 
 autopkg run MediaBankGoldCreativeCloudExtension2018.pkg -p /path/to/MediaBankGold_Installer_osx_CC_2018_20190127.tar</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.pkg.MediaBankGoldCreativeCloudExtension</string>
+	<string>com.github.foigus.pkg.MediaBankGoldCreativeCloudExtension2018</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
