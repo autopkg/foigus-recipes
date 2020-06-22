@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Repackage the MediaBank Gold Creative Cloud Extension.  This recipe does not download the MediaBank Gold tar archive--feed the tar archive into the recipe via the following format:
 
-autopkg run MediaBankGoldCreativeCloudExtension.pkg -p /path/to/MediaBankGold_Installer_osx_CC_2018_20190127.tar</string>
+autopkg run MediaBankGoldCreativeCloudExtension2020.pkg -p /path/to/mediabankgold_installer_osx_2020_20200111.tar.gz</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.pkg.MediaBankGoldCreativeCloudExtension</string>
 	<key>Input</key>
@@ -18,7 +18,7 @@ autopkg run MediaBankGoldCreativeCloudExtension.pkg -p /path/to/MediaBankGold_In
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.download.MediaBankGoldCC2018</string>
+	<string>com.github.foigus.download.MediaBankGoldCC2020</string>
 	<key>Process</key>
 	<array>
 		<dict>

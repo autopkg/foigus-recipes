@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Repackage the MediaBank Gold Creative Cloud Extension and import it into Munki.  This recipe does not download the MediaBank Gold tar archive--feed the tar archive into the recipe via the following format:
 
-autopkg run MediaBankGoldCreativeCloudExtension.munki -p /path/to/MediaBankGold_Installer_osx_CC_2018_20190127.tar</string>
+autopkg run MediaBankGoldCreativeCloudExtension2020.munki -p /path/to/mediabankgold_installer_osx_2020_20200111.tar.gz</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.MediaBankGoldCreativeCloudExtension</string>
 	<key>Input</key>
@@ -18,10 +18,10 @@ autopkg run MediaBankGoldCreativeCloudExtension.munki -p /path/to/MediaBankGold_
 		<dict>
 			<key>blocking_applications</key>
 			<array>
-				<string>Adobe InDesign CC 2018</string>
-				<string>Adobe InCopy CC 2018</string>
-				<string>Adobe Photoshop CC 2018</string>
-				<string>Adobe Illustrator CC 2018</string>
+				<string>Adobe InDesign 2020</string>
+				<string>Adobe InCopy 2020</string>
+				<string>Adobe Photoshop 2020</string>
+				<string>Adobe Illustrator 2020</string>
 			</array>
 			<key>catalogs</key>
 			<array>
@@ -39,10 +39,10 @@ autopkg run MediaBankGoldCreativeCloudExtension.munki -p /path/to/MediaBankGold_
 			<string>%NAME%</string>
 			<key>update_for</key>
 			<array>
-				<string>MediaBankGoldIllustratorCC2018</string>
-				<string>MediaBankGoldInCopyCC2018</string>
-				<string>MediaBankGoldInDesignCC2018</string>
-				<string>MediaBankGoldPhotoshopCC2018</string>
+				<string>MediaBankGoldIllustratorCC2020</string>
+				<string>MediaBankGoldInCopyCC2020</string>
+				<string>MediaBankGoldInDesignCC2020</string>
+				<string>MediaBankGoldPhotoshopCC2020</string>
 			</array>
 			<key>unattended_install</key>
 			<true/>
