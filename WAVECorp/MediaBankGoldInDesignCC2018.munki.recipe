@@ -5,7 +5,7 @@
 	<key>Description</key>
 	<string>Repackage the MediaBank Gold plugin for InDesign CC 2018 and import it into Munki.  This recipe does not download the MediaBank Gold tar archive--feed the tar archive into the recipe via the following format:
 
-autopkg run MediaBankGoldInDesignCC2018.pkg -p /path/to/MediaBankGold_Installer_osx_CC_2018_20190127.tar</string>
+autopkg run MediaBankGoldInDesignCC2018.munki -p /path/to/MediaBankGold_Installer_osx_CC_2018_20190127.tar</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.MediaBankGoldInDesignCC2018</string>
 	<key>Input</key>
