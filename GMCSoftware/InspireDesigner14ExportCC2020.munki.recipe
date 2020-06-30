@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Inspire Designer 14 Export plugin for InDesign CC 2020 and imports it into Munki
+
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add hjuutilainen's repo via:
+
+autopkg repo-add hjuutilainen-recipes
+
+- This recipe points to the default installation location of InDesign CC 2020.  Adjust the path as needed.
+- This recipe does not download the Inspire Designer 14 Export plugin disk image--feed the disk image into the recipe via the following format:
+
+autopkg run InspireDesigner14ExportCC2020.munki -p /path/to/Adobe-InDesign-2020-Plugin-12.0.6-Hotfix.dmg</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.InspireDesigner14ExportCC2020</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/gmcsoftware</string>
+		<key>NAME</key>
+		<string>InspireDesigner14ExportCC2020</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe InDesign 2020</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-gmcsoftware-InspireDesigner14ExportCC2020</string>
+			</array>
+			<key>category</key>
+			<string>Plugins</string>
+			<key>description</key>
+			<string>This plugin for Adobe InDesign CC exports InDesign documents into XML and/or WFD files that can be imported into Inspire Designer.</string>
+			<key>developer</key>
+			<string>GMC Software</string>
+			<key>display_name</key>
+			<string>Inspire Designer 14 Export Plugin CC 2020</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>InDesignCC2020</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/bash
+
+rm -rf /Applications/Adobe InDesign 2020/Plug-Ins/InspireDesignerIn.InDesignPlugin
+rm -rf /Applications/Adobe InDesign 2020/Plug-Ins/InspireDesignerIn.ini
+
+#The remaining items might be used with other GMC Software products.  Listing them
+#here but commenting them out.
+#
+#rm -rf /Library/Application\ Support/GMC/Fonts
+#rm -rf /Library/Application\ Support/GMC/Inspire Designer
+#rm -rf /private/etc/Chimenix/</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.InspireDesigner14ExportCC2020</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>flat_pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/flatten/InspireDesigner14ExportCC2020-%version%.pkg</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/expand_munki_recipe</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Expand the package</string>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+				<string>%RECIPE_CACHE_DIR%/expand_munki_recipe/Adobe_InDesign_2020_Plugin_*.pkg</string>
+			</dict>
+			<key>Comment</key>
+			<string>Find the name of the plugin package.</string>
+			<key>Processor</key>
+			<string>FileFinder</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack_munki_recipe</string>
+				<key>pkg_payload_path</key>
+				<string>%found_filename%/Payload</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string></string>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign 2020/Plug-Ins</string>
+			</dict>
+			<key>Comment</key>
+			<string>Create a root for the plugin payload</string>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign 2020/Plug-Ins</string>
+				<key>overwrite</key>
+				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack_munki_recipe/tmp</string>
+			</dict>
+			<key>Comment</key>
+			<string>Copy over the plug for an installs item</string>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign 2020/Plug-Ins/InspireDesignerIn.InDesignPlugin/Versions/A/Resources/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleShortVersionString</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Adobe InDesign 2020/Plug-Ins/InspireDesignerIn.InDesignPlugin</string>
+				</array>
+			</dict>
+			<key>Comment</key>
+			<string>Create an installs array item for InspireDesignerIn.InDesignPlugin</string>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>Merge the installs array into the pkginfo</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/flatten/InspireDesigner14ExportCC2020-%version%.pkg</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Comment</key>
+			<string>Import the package into Munki</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

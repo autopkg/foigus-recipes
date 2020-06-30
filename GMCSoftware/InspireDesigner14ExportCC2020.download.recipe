@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Verifies the Inspire Designer 14 Export Plugins package.
+
+NOTE:
+- This recipe does not download the Inspire Designer 14 Export plugin disk image--feed the disk image into the recipe via the following format:
+
+autopkg run InspireDesigner14ExportCC2020.download -p /path/to/Adobe-InDesign-2020-Plugin-12.0.6-Hotfix.dmg</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.InspireDesigner14ExportCC2020</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>InspireDesigner14ExportCC2020</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Comment</key>
+			<string>Not going to tackle downloading the software right now</string>
+			<key>Processor</key>
+			<string>PackageRequired</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: Quadient s.r.o. (6HZ2KQUK5P)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+				<key>input_path</key>
+				<string>%PKG%/*.pkg</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+	</array>
+</dict>
+</plist>
