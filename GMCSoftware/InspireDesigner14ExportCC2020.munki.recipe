@@ -55,8 +55,8 @@ autopkg run InspireDesigner14ExportCC2020.munki -p /path/to/Adobe-InDesign-2020-
 			<key>uninstall_script</key>
 			<string>#!/bin/bash
 
-rm -rf /Applications/Adobe InDesign 2020/Plug-Ins/InspireDesignerIn.InDesignPlugin
-rm -rf /Applications/Adobe InDesign 2020/Plug-Ins/InspireDesignerIn.ini
+rm -rf "/Applications/Adobe InDesign 2020/Plug-Ins/InspireDesignerIn.InDesignPlugin"
+rm -rf "/Applications/Adobe InDesign 2020/Plug-Ins/InspireDesignerIn.ini"
 
 #The remaining items might be used with other GMC Software products.  Listing them
 #here but commenting them out.
