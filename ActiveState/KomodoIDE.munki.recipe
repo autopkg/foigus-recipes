@@ -35,6 +35,17 @@
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>Appears this recipe will need some significant surgery soon, and since we're no longer using this I'm going to deprecate it.  This recipe will soon be removed.
+
+Please see https://github.com/autopkg/dataJAR-recipes/tree/master/Komodo%20IDE for an alternative set of recipes.</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
