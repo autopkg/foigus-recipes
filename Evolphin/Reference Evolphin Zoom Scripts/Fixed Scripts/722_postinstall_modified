@@ -467,7 +467,7 @@ for filePath in "${filePaths[@]}"
 do
 	if [ -f "${filePath}" ]
 	then
-		chmod 777 "${filePath}"
+		chmod a+w "${filePath}"
 	fi
 done
 
