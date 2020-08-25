@@ -23,6 +23,15 @@ autopkg repo-add hjuutilainen-recipes</string>
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>Appears this application is 32 bit and has been replaced with i1Studio.  This recipe will soon be removed.</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>archive_path</key>
