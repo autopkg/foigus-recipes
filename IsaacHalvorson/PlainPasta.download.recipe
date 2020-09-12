@@ -60,7 +60,7 @@
 				<key>input_path</key>
 				<string>%RECIPE_CACHE_DIR%/%NAME%/Plain Pasta.app</string>
 				<key>requirement</key>
-				<string>identifier "software.level.PlainPasta" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: Isaac Halvorson (T798M5YY64)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+				<string>anchor apple generic and identifier "software.level.PlainPasta" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = F2J52QJQ9Y)</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
