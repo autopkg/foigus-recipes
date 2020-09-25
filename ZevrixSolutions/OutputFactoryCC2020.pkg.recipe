@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Output Factory disk image and packages it for CC 2020.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.OutputFactoryCC2020</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>OutputFactoryCC2020</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.OutputFactory</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%pathname%/Output Factory Installer.app/Contents/Resources/appPackage/Output Factory.app/Contents/Info.plist</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict>
+					<key>Applications</key>
+					<string>0775</string>
+					<key>Applications/Adobe InDesign 2020</key>
+					<string>0775</string>
+					<key>Applications/Adobe InDesign 2020/Plug-Ins</key>
+					<string>0775</string>
+					<key>Applications/Adobe InDesign 2020/Plug-Ins/Zevrix</key>
+					<string>0755</string>
+					<key>Applications/Adobe InDesign 2020/Scripts</key>
+					<string>0775</string>
+					<key>Applications/Adobe InDesign 2020/Scripts/startup scripts</key>
+					<string>0775</string>
+				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign 2020/Plug-Ins/Zevrix/Output Factory.app</string>
+				<key>source_path</key>
+				<string>%pathname%/Output Factory Installer.app/Contents/Resources/appPackage/Output Factory.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe InDesign 2020/Scripts/startup scripts/.Output Factory.startup.scpt</string>
+				<key>source_path</key>
+				<string>/Applications/Adobe InDesign 2020/Plug-Ins/Zevrix/Output Factory.app/Contents/Resources/Output Factory.startup.scpt</string>
+			</dict>
+			<key>Processor</key>
+			<string>Symlinker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+					<key>chown</key>
+					<array>
+						<dict>
+							<key>group</key>
+							<string>admin</string>
+							<key>path</key>
+							<string>Applications</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+					</array>
+					<key>id</key>
+					<string>com.zevrix.OutputFactoryCC2020.pkg</string>
+					<key>pkgname</key>
+					<string>%NAME%-%version%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+		</dict>
+	</array>
+</dict>
+</plist>
