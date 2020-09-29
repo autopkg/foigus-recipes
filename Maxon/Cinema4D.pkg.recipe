@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Cinema 4D and packages it for installation.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.Cinema4D</string>
+	<key>Input</key>
+	<dict>
+		<key>INSTALL_SCRIPT</key>
+		<string>#!/bin/bash
+
+# Determine working directory
+install_dir=`dirname $0`
+
+# Install Maxon Cinema 4D using the pkg from the resources directory using the flags
+# for R23 installation from https://www.maxon.net/en-us/support/downloads/
+"${install_dir}/Maxon Cinema 4D Full Installer.app/Contents/MacOS/installbuilder.sh" --mode unattended --unattendedmodeui none</string>
+		<key>MAJOR_VERSION</key>
+		<string>23</string>
+		<key>NAME</key>
+		<string>Cinema4D</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.Cinema4D</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>curl_opts</key>
+				<array>
+					<string>--cookie-jar</string>
+					<string>maxon-cookies</string>
+				</array>
+				<key>re_pattern</key>
+				<string>https:\/\/installer\.maxon\.net\/installer\/%MAJOR_VERSION%\.[\d]+_RB[\d]+\/Cinema4D-([\d\.]+)_Mac_Fullinstaller\.dmg</string>
+				<key>result_output_var_name</key>
+				<string>version</string>
+				<key>url</key>
+				<string>https://www.maxon.net/en-us/support/downloads/</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts/Maxon Cinema 4D Full Installer.app</string>
+				<key>overwrite</key>
+				<true/>
+				<key>source_path</key>
+				<string>%pathname%/Maxon Cinema 4D Full Installer.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>%INSTALL_SCRIPT%</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+					<key>chown</key>
+					<array/>
+					<key>id</key>
+					<string>com.maxon.Cinema4D-R%MAJOR_VERSION%.pkg</string>
+					<key>pkgname</key>
+					<string>%NAME%-R%MAJOR_VERSION%-%version%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>scripts</key>
+					<string>Scripts</string>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+		</dict>
+	</array>
+</dict>
+</plist>
