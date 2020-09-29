@@ -38,6 +38,8 @@ pkgutil --forget com.maxon.Cinema4D-R%MAJOR_VERSION%.pkg</string>
 			<string>Cinema 4D</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
 			<key>uninstall_method</key>
 			<string>uninstall_script</string>
 			<key>uninstall_script</key>
