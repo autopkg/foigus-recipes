@@ -14,6 +14,14 @@
 		<string>apps/maxon</string>
 		<key>NAME</key>
 		<string>Cinema4D</string>
+		<key>UNINSTALL_SCRIPT</key>
+		<string>#!/bin/bash
+
+#Delete the application
+rm -rf /Applications/Maxon\ Cinema\ 4D\ R%MAJOR_VERSION%
+
+#Forget the package receipt
+pkgutil --forget com.maxon.Cinema4D-R%MAJOR_VERSION%.pkg</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -33,13 +41,7 @@
 			<key>uninstall_method</key>
 			<string>uninstall_script</string>
 			<key>uninstall_script</key>
-			<string>#!/bin/bash
-
-#Delete the application
-rm -rf /Applications/Maxon\ Cinema\ 4D\ R%MAJOR_VERSION%
-
-#Forget the package receipt
-pkgutil --forget com.maxon.Cinema4D-R%MAJOR_VERSION%.pkg</string>
+			<string>%UNINSTALL_SCRIPT%</string>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
