@@ -1,1 +1,0 @@
-The SlingPlayerSafariPlugin recipes have been removed since the Safari plugins are no longer supported.
