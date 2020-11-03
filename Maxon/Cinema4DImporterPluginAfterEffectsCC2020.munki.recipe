@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Cinema 4D Importer plugin for After Effects CC 2020 and imports it into Munki.
+
+NOTES:
+
+- This recipe requires installing BOTH AutoPkg AND Cinema 4D itself.  IDEALLY this would occur in a clean virtual machine, and is not intended to occur on an AutoPkg "server".  Thank Maxon's cross-platform Java-based installer for this incredibly strange recipe
+- I'm skipping CodeSignatureVerifier since presumably Cinema 4D has been sourced from a trusted location and then manually installed
+- This recipe is dependent on Elliot Jordan's VersionSplitter processor.  To add his repo:
+
+autopkg repo-add homebysix-recipes</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.Cinema4DImporterPluginAfterEffectsCC2020</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/maxon</string>
+		<key>NAME</key>
+		<string>Cinema4DImporterPluginAfterEffectsCC2020</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe After Effects 2020</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-maxon-Cinema4DImporterPluginAfterEffectsCC2020</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>Plugin to import Cinema 4D files into After Effects.</string>
+			<key>developer</key>
+			<string>Maxon</string>
+			<key>display_name</key>
+			<string>Cinema 4D Importer Plugin for After Effects CC 2020</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>AfterEffectsCC2020</string>
+				<string>Cinema4D</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.Cinema4DImporterPluginAfterEffectsCC2020</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
