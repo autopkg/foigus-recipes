@@ -19,9 +19,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>http:\/\/update\.necdisplay\.com\/spectraview\/NEC_SpectraView_MacOS_v[\d\.]+_multilanguage\.dmg</string>
+				<string>https:\/\/update\.sharpnecdisplays\.us\/spectraview\/NEC_SpectraView_MacOS_v[\d\.]+_multilanguage\.dmg</string>
 				<key>url</key>
-				<string>https://www.necdisplay.com/support-and-services/spectraviewii/4#softwaredownloads</string>
+				<string>https://www.sharpnecdisplays.us/support-and-services/spectraviewii/4</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
