@@ -3,9 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Google Chrome Canary disk image.
-
-CodeSignatureVerifier disabled as of 3/22/2016 (verified 7/11/2016) due to "resource envelope is obsolete (custom omit rules)"</string>
+	<string>Downloads latest Google Chrome Canary disk image.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.googlechromecanary</string>
 	<key>Input</key>
