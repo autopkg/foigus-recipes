@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest Cisco Webex Audio Driver, builds an installation package, and imports it into Munki.
+
+NOTE: This recipe depends on hjuutilainen's ChecksumVerifier.  Add this repo via:
+
+autopkg repo-add hjuutilainen-recipes</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.ciscowebexaudiodriver</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/cisco</string>
+		<key>NAME</key>
+		<string>CiscoWebexAudioDriver</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-cisco-CiscoWebexAudioDriver</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>This is a special audio driver package used to allow admins to pre-install the drivers on the end-user computers.</string>
+			<key>developer</key>
+			<string>Cisco</string>
+			<key>display_name</key>
+			<string>Cisco Webex Audio Driver</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.ciscowebexaudiodriver</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

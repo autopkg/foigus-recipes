@@ -1,0 +1,5 @@
+#!/bin/bash
+sudo cp -r /Applications/CiscoAudioDeviceInstall.app/Contents/PlugIns/CiscoAudioDevice.driver /Library/Audio/Plug-Ins/HAL/
+sudo launchctl kickstart -k system/com.apple.audio.coreaudiod
+sudo rm -rf /Applications/CiscoAudioDeviceInstall.app
+exit 0
