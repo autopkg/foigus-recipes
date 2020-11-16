@@ -16,6 +16,15 @@
 	<key>Process</key>
 	<array>
 		<dict>
+ 			<key>Processor</key>
+ 			<string>DeprecationWarning</string>
+ 			<key>Arguments</key>
+ 			<dict>
+ 				<key>warning_message</key>
+ 				<string>We no longer use this application.  This recipe will soon be removed.</string>
+ 			</dict>
+ 		</dict>
+ 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
