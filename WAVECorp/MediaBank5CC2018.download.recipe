@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>"Downloads" MediaBank 5 CC 2018 for installation.  This recipe does not download the MediaBank Gold tar.gz archive--feed the tar.gz archive into the recipe via the following format:
+
+autopkg run MediaBankGoldCC2018.download -p /path/to/MediaBank_Installer_osx_CC_2018_20201009.tar.gz</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.MediaBank5CC2018</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>MediaBank5CC2018</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.4.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Comment</key>
+			<string>Not going to tackle downloading the software right now</string>
+			<key>Processor</key>
+			<string>PackageRequired</string>
+		</dict>
+	</array>
+</dict>
+</plist>
