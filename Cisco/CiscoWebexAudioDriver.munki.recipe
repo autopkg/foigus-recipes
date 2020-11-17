@@ -32,6 +32,12 @@ autopkg repo-add hjuutilainen-recipes</string>
 			<string>Cisco Webex Audio Driver</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>postuninstall_script</key>
+			<string>#!/bin/bash
+
+#Trigger macOS to reload the audio drivers, including detecting the Cisco Webex Audio
+#Driver has been removed.
+launchctl kickstart -k system/com.apple.audio.coreaudiod</string>
 			<key>unattended_install</key>
 			<true/>
 			<key>unattended_uninstall</key>
