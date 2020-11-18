@@ -43,7 +43,7 @@ Set MAJOR_VERSION to the desired major version of Cinema 4D.</string>
 					<string>%CONTENT_TYPE_HEADER%</string>
 				</dict>
 				<key>url</key>
-				<string>https://maxon.net/api</string>
+				<string>https://www.maxon.net/api</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
