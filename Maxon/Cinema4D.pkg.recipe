@@ -65,7 +65,7 @@ install_dir=`dirname $0`
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
-				<string>https://maxon.net/api</string>
+				<string>https://www.maxon.net/api</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
