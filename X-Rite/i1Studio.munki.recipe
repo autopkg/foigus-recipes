@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Originally created with Recipe Robot v1.2.1 (https://github.com/homebysix/recipe-robot)</string>
+	<key>Description</key>
+	<string>Downloads the latest version of i1Studio and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.i1Studio</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/xrite</string>
+		<key>NAME</key>
+		<string>i1Studio</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>RestartAction</key>
+			<string>RequireLogout</string>
+			<key>catalogs</key>
+			<array>
+				<string>development-xrite-i1Studio</string>
+			</array>
+			<key>description</key>
+			<string>i1Studio from X-Rite is the start-to-finish color management solution for Color Perfectionists looking for expert results.</string>
+			<key>developer</key>
+			<string>X-Rite</string>
+			<key>display_name</key>
+			<string>i1Studio</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.i1Studio</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/i1Studio.pkg</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
