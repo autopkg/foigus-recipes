@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Effects Suite (part of Red Giant Complete).
+
+CodeSignatureVerifier skipped 11/23/2020 due to the lack of anything with a usable code signature.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.EffectsSuite</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>EffectsSuite</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://downloads.redgiant.com/redgiant/products/singlesuites/effects/ESuite_Mac_Scripted.zip</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
