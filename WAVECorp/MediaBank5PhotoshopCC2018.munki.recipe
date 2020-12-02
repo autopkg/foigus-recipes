@@ -37,7 +37,7 @@ autopkg run MediaBank5PhotoshopCC2018.munki -p /path/to/MediaBank_Installer_osx_
 			<key>requires</key>
 			<array>
 				<string>PhotoshopCC2018</string>
-				<string>MediaBank5Client</string>
+				<string>MediaBank5</string>
 			</array>
 			<key>unattended_install</key>
 			<true/>

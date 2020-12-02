@@ -37,7 +37,7 @@ autopkg run MediaBank5InDesignCC2018.munki -p /path/to/MediaBank_Installer_osx_C
 			<key>requires</key>
 			<array>
 				<string>InDesignCC2018</string>
-				<string>MediaBank5Client</string>
+				<string>MediaBank5</string>
 			</array>
 			<key>unattended_install</key>
 			<true/>
