@@ -27,9 +27,9 @@
 			<key>description</key>
 			<string>Data in. Brilliance out. Visualize and Share Your Data in Minutes.</string>
 			<key>developer</key>
+			<string>Tableau</string>
 			<key>minimum_os_version</key>
 			<string>10.13</string>
-			<string>Tableau</string>
 			<key>display_name</key>
 			<string>Tableau Public</string>
 			<key>name</key>
