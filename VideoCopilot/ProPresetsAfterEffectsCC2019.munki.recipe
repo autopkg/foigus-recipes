@@ -4,6 +4,8 @@
 <dict>
 	<key>Description</key>
 	<string>"Downloads" Pro Presets, packages it for After Effects CC 2019, and imports it into Munki.
+
+WARNING: The POSIX permissions in this recipe on the "VideoCopilot" folder are 0777 since this is the location where Video Copilot wants to place the license.  This can be changed by overriding the permissions in the "Input".
 	
 NOTE:
 - This recipe cannot determine the version of Pro Presets and must have it fed in as Input, whether via override or via CLI with -k
@@ -20,6 +22,8 @@ autopkg run ProPresetsAfterEffectsCC2019.munki -p /path/to/Pro_Presets.zip -k VE
 		<string>plugins/videocopilot</string>
 		<key>NAME</key>
 		<string>ProPresetsAfterEffectsCC2019</string>
+		<key>VIDEOCOPILOT_FOLDER_PERMISSIONS</key>
+		<string>0777</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>

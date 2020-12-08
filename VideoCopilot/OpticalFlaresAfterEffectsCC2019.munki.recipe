@@ -3,7 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>"Downloads" Optical Flares, packages it for installation under After Effects CC 2019, and imports the package into Munki.  This recipe does not download the Optical Flares zip archive--feed the zip archive into the recipe via the following format:
+	<string>"Downloads" Optical Flares, packages it for installation under After Effects CC 2019, and imports the package into Munki.
+
+WARNING: The POSIX permissions in this recipe on the "VideoCopilot" folder are 0777 since this is the location where Video Copilot wants to place the license.  This can be changed by overriding the permissions in the "Input".
+
+NOTE: This recipe does not download the Optical Flares zip archive--feed the zip archive into the recipe via the following format:
 
 autopkg run OpticalFlaresAfterEffectsCC2019.munki -p /path/to/OpticalFlaresInstaller_1.3.5_Mac_2020.zip</string>
 	<key>Identifier</key>
@@ -14,6 +18,8 @@ autopkg run OpticalFlaresAfterEffectsCC2019.munki -p /path/to/OpticalFlaresInsta
 		<string>plugins/videocopilot</string>
 		<key>NAME</key>
 		<string>OpticalFlaresAfterEffectsCC2019</string>
+		<key>VIDEOCOPILOT_FOLDER_PERMISSIONS</key>
+		<string>0777</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>

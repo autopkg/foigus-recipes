@@ -3,15 +3,27 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>"Downloads" Optical Flares and packages it for installation under After Effects CC 2019.  This recipe does not download the Optical Flares zip archive--feed the zip archive into the recipe via the following format:
+	<string>"Downloads" Optical Flares and packages it for installation under After Effects CC 2019.
 
-autopkg run OpticalFlaresAfterEffectsCC2019.pkg -p /path/to/OpticalFlaresInstaller_1.3.5_Mac_2020.zip</string>
+WARNING: The POSIX permissions in this recipe on the "VideoCopilot" folder are 0777 since this is the location where Video Copilot wants to place the license--0777 rights allows a non-admin to license Video Copilot without admin assistance.  This can be changed by overriding the VIDEOCOPILOT_FOLDER_PERMISSIONS permissions in the "Input".
+
+NOTE:
+
+- This recipe does not download the Optical Flares zip archive--feed the zip archive into the recipe via the following format:
+
+autopkg run OpticalFlaresAfterEffectsCC2019.pkg -p /path/to/OpticalFlaresInstaller_1.3.5_Mac_2020.zip
+
+- This recipe depends on jessepeterson's ModeChanger.  Add jessepeterson's repo via:
+
+autopkg repo-add jessepeterson-recipes</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.pkg.OpticalFlaresAfterEffectsCC2019</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>OpticalFlaresAfterEffectsCC2019</string>
+		<key>VIDEOCOPILOT_FOLDER_PERMISSIONS</key>
+		<string>0777</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -108,6 +120,19 @@ autopkg run OpticalFlaresAfterEffectsCC2019.pkg -p /path/to/OpticalFlaresInstall
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe After Effects CC 2019/Plug-ins/VideoCopilot</string>
+				<key>mode</key>
+				<string>%VIDEOCOPILOT_FOLDER_PERMISSIONS%</string>
+			</dict>
+			<key>Comment</key>
+			<string>POSIX permissions change here so non-admins could license Optical Flares if desired.</string>
+			<key>Processor</key>
+			<string>com.github.jessepeterson.munki.UniversalTypeClient6/ModeChanger</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>

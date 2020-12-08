@@ -4,6 +4,8 @@
 <dict>
 	<key>Description</key>
 	<string>"Downloads" Pro Presets and packages it for installation under After Effects CC 2019.
+
+WARNING: The POSIX permissions in this recipe on the "VideoCopilot" folder are 0777 since this is the location where Video Copilot wants to place the license--0777 rights allows a non-admin to license Video Copilot without admin assistance.  This can be changed by overriding the VIDEOCOPILOT_FOLDER_PERMISSIONS permissions in the "Input".
 	
 NOTE:
 - This recipe cannot determine the version of Pro Presets and must have it fed in as Input, whether via override or via CLI with -k
@@ -20,6 +22,8 @@ autopkg run ProPresetsAfterEffectsCC2019.pkg -p /path/to/Pro_Presets.zip -k VERS
 		<string>ProPresetsAfterEffectsCC2019</string>
 		<key>VERSION</key>
 		<string>please.set.me</string>
+		<key>VIDEOCOPILOT_FOLDER_PERMISSIONS</key>
+		<string>0777</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -50,7 +54,7 @@ autopkg run ProPresetsAfterEffectsCC2019.pkg -p /path/to/Pro_Presets.zip -k VERS
 					<key>Applications/Adobe After Effects CC 2019/Plug-ins</key>
 					<string>0755</string>
 					<key>Applications/Adobe After Effects CC 2019/Plug-ins/VideoCopilot</key>
-					<string>0755</string>
+					<string>%VIDEOCOPILOT_FOLDER_PERMISSIONS%</string>
 					<key>Applications/Adobe After Effects CC 2019/Plug-ins/VideoCopilot/Optical Flares Presets</key>
 					<string>0755</string>
 					<key>Applications/Adobe After Effects CC 2019/Plug-ins/VideoCopilot/Optical Flares Presets/Lens Flares</key>
