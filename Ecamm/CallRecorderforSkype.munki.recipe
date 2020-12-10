@@ -12,7 +12,11 @@ Log in to your Ecamm customer center and inspect the URL for these values:
 - The REG_CODE is the "c" parameter, a six-character string.
 
 Example (spaces added for clarity):
-https://www.ecamm.com/cgi-bin/customercenter ? u=john%2Edoe%40example%2Ecom &amp; c=XYZ123</string>
+https://www.ecamm.com/cgi-bin/customercenter ? u=john%2Edoe%40example%2Ecom &amp; c=XYZ123
+
+- Call Recorder for Skype removes the code signature from a Skype component.  This is set in the
+postinstall script, but defaults to _not_ performing the code signature removal.  Please change
+this in the override to indicate understanding of the change to Skype.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.CallRecorderforSkype</string>
 	<key>Input</key>
@@ -21,6 +25,14 @@ https://www.ecamm.com/cgi-bin/customercenter ? u=john%2Edoe%40example%2Ecom &amp
 		<string>plugins/ecamm</string>
 		<key>NAME</key>
 		<string>CallRecorderforSkype</string>
+		<key>POSTINSTALL_SCRIPT</key>
+		<string>#!/bin/bash
+
+pathToChange="/Applications/Skype.app/Contents/Frameworks/Skype Helper (Renderer).app"
+
+#Uncomment the next line if removing the code signature to allow Call Recorder for Skype to load
+#is understood and the risks are accepted
+#codesign --remove-signature "${pathToChange}"</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>
