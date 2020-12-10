@@ -35,7 +35,7 @@ Due to Phase One's decision to go with different versions for the software itsel
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>&lt;AvailableVersion&gt;(%ACTUAL_VERSION%[\.\d]*)\.[\d]*&lt;\/AvailableVersion&gt;</string>
+				<string>&lt;AvailableVersion&gt;(%ACTUAL_VERSION%[\.\d]*)&lt;\/AvailableVersion&gt;</string>
 				<key>result_output_var_name</key>
 				<string>truncated_version</string>
 				<key>url</key>
