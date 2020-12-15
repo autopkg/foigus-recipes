@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the current release version of Capture One and imports it into Munki for use with subscription-licensed Capture One.
+
+Notes:
+
+- Due to Phase One's decision to go with different versions for the software itself and marketing (e.g. Capture One version 13 is marketed as version 20), this recipe also has a MARKETING_VERSION variable to account for the discrepancy
+
+This recipe is made for Capture One when licensed with a subscription and has the following unique features/options when compared to the recipe for the perpetual version of Capture One:
+
+- Has a static Munki "name" as opposed to the "CaptureOneXX" "name"-"marketing version" format used in the perpetual recipe (defaults to "CaptureOneSubscription")
+- STOP_ON_NO_NEW_DOWNLOAD Option: Skips import if no new file was retrieved in the "download" recipe (defaults to true).  Assuming a stable ETag, this allows the recipe to run (typically in an automated fashion) with force_munkiimport set to true but avoiding duplicate imports.  This allows this recipe for subscription-licensed Capture One to run in tandem with the perpetually-licensed Capture One recipe
+- FORCE_MUNKIIMPORT Option: Controls whether force_munkiimport is enabled (defaults to true (the string value is set), switch to an empty set of string tags for false).  This allows the AutoPkg admin to control the force_munkiimport behavior in case it is required
+
+Expected uses of this recipe:
+
+- Capture One perpetual and Capture One subscription are in use: Recipe left in default state (STOP_ON_NO_NEW_DOWNLOAD is true, FORCE_MUNKIIMPORT is set)
+- Only Capture One subscription licensing is in use: STOP_ON_NO_NEW_DOWNLOAD is overridden to false, FORCE_MUNKIIMPORT is overridden to a null/empty string (although the behavior _should_ be acceptable even if these variables are not overridden)</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.CaptureOneSubscription</string>
+	<key>Input</key>
+	<dict>
+		<key>FORCE_MUNKIIMPORT</key>
+		<string>totally</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/phaseone</string>
+		<key>NAME</key>
+		<string>CaptureOneSubscription</string>
+		<key>STOP_ON_NO_NEW_DOWNLOAD</key>
+		<true/>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-phaseone-%NAME%</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>The professional choice in imaging software.</string>
+			<key>developer</key>
+			<string>Phase One</string>
+			<key>display_name</key>
+			<string>Capture One</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.CaptureOne</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>download_changed == FALSE AND STOP_ON_NO_NEW_DOWNLOAD == TRUE</string>
+			</dict>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>force_munkiimport</key>
+				<string>%FORCE_MUNKIIMPORT%</string>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
