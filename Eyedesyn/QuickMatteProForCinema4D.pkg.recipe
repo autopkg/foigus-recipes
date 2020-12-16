@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Quick Matte Pro plugin for Cinema 4D.
+
+NOTES:
+- This recipe needs the version of Cinema 4D to be defined in the Input, since the installation is path-specific and hopefully _should_ work for many versions of Cinema 4D
+- This recipe needs the version of Quick Matte Pro to be defined in the Input
+- This recipe does not download the Quick Matte Pro installation media--feed the compressed file into the recipe via the following format:
+
+autopkg run QuickMattePro.pkg -p /path/to/the/appropriate/QuickMattePro_RXX.zip</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.QuickMatteProForCinema4D</string>
+	<key>Input</key>
+	<dict>
+		<key>CINEMA4D_VERSION</key>
+		<string>##</string>
+		<key>NAME</key>
+		<string>QuickMatteProForCinema4DR%CINEMA4D_VERSION%</string>
+		<key>QUICK_MATTE_PRO_VERSION</key>
+		<string>ChangeMePlease</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Comment</key>
+			<string>Not going to tackle downloading the software right now</string>
+			<key>Processor</key>
+			<string>PackageRequired</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>CINEMA4D_VERSION == "##"</string>
+			</dict>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>QUICK_MATTE_PRO_VERSION == "ChangeMePlease"</string>
+			</dict>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%PKG%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict>
+					<key>Applications</key>
+					<string>0775</string>
+					<key>Applications/Maxon Cinema 4D RXX</key>
+					<string>0755</string>
+					<key>Applications/Maxon Cinema 4D RXX/plugins</key>
+					<string>0755</string>
+				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>source</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Maxon Cinema 4D RXX</string>
+				<key>target</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Maxon Cinema 4D R%CINEMA4D_VERSION%</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileMover</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%PKG%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Maxon Cinema 4D R%CINEMA4D_VERSION%/plugins</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+					<key>chown</key>
+					<array>
+						<dict>
+							<key>group</key>
+							<string>admin</string>
+							<key>path</key>
+							<string>Applications</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+						<dict>
+							<key>group</key>
+							<string>wheel</string>
+							<key>path</key>
+							<string>Applications/Maxon Cinema 4D R%CINEMA4D_VERSION%/plugins</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+					</array>
+					<key>id</key>
+					<string>com.eyedesyn.QuickMatteProCinema4DR%CINEMA4D_VERSION%.pkg</string>
+					<key>pkgname</key>
+					<string>%NAME%-%QUICK_MATTE_PRO_VERSION%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>version</key>
+					<string>%QUICK_MATTE_PRO_VERSION%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+		</dict>
+	</array>
+</dict>
+</plist>

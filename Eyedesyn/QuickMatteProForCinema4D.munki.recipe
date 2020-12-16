@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Quick Matte Pro plugin for Cinema 4D and imports it into Munki.
+
+NOTES:
+- This recipe needs the version of Cinema 4D to be defined in the Input, since the installation is path-specific and hopefully _should_ work for many versions of Cinema 4D
+- This recipe needs the version of Quick Matte Pro to be defined in the Input
+- This recipe does not download the Quick Matte Pro installation media--feed the compressed file into the recipe via the following format:
+
+autopkg run QuickMattePro.pkg -p /path/to/the/appropriate/QuickMattePro_RXX.zip</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.QuickMatteProForCinema4D</string>
+	<key>Input</key>
+	<dict>
+		<key>CINEMA4D_VERSION</key>
+		<string>##</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/eyedesyn</string>
+		<key>NAME</key>
+		<string>QuickMatteProForCinema4DR%CINEMA4D_VERSION%</string>
+		<key>QUICK_MATTE_PRO_VERSION</key>
+		<string>ChangeMePlease</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Cinema 4D</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-eyedesyn-QuickMatteProForCinema4DR%CINEMA4D_VERSION%</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>Quick Matte Pro has been designed to take care of matting and object buffer needs quickly and efficiently without having to worry about all the setup.</string>
+			<key>developer</key>
+			<string>Eyedesyn</string>
+			<key>display_name</key>
+			<string>Quick Matte Pro for Cinema 4D R%CINEMA4D_VERSION%</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>Cinema4D</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.QuickMatteProForCinema4D</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
