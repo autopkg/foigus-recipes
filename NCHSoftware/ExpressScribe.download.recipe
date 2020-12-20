@@ -20,6 +20,10 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>curl_opts</key>
+				<array>
+					<string>--http1.1</string>
+				</array>
 				<key>filename</key>
 				<string>%NAME%.zip</string>
 				<key>url</key>
