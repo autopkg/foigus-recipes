@@ -25,7 +25,7 @@ As of this writing, the valid LANGUAGE_CODEs are "en" (English) and "ja" (Japane
 				<key>re_pattern</key>
 				<string>hreflang="%LANGUAGE_CODE%" href="(.*.dmg)</string>
 				<key>url</key>
-				<string>http://www.eizo.co.jp/update/ColorNavigatorNX.xml</string>
+				<string>https://www.eizo.co.jp/update/ColorNavigatorNX.xml</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>

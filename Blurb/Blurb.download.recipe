@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://software.blurb.com/indesign/Blurb_ID_PlugIn_Installer.pkg</string>
+		<string>https://software.blurb.com/indesign/Blurb_ID_PlugIn_Installer.pkg</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>

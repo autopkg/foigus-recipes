@@ -23,7 +23,7 @@
 				<key>result_output_var_name</key>
 				<string>url_suffix</string>
 				<key>url</key>
-				<string>http://www.telestream.net/update-check/wirecast/upgrade.htm?premium=no</string>
+				<string>https://www.telestream.net/update-check/wirecast/upgrade.htm?premium=no</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
