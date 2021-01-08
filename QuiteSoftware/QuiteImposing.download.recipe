@@ -31,7 +31,7 @@ Code signature verification isn't possible because the installer isn't signed.</
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>http://downloads.quite.com/imposing/download/qi%PLUS%%MAJOR_VERSION%_%LANGUAGE%.dmg</string>
+				<string>https://downloads.quite.com/imposing/download/qi%PLUS%%MAJOR_VERSION%_%LANGUAGE%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
