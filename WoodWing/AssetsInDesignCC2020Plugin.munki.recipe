@@ -13,7 +13,7 @@ autopkg repo-add hjuutilainen-recipes
 - Specific pkgs are enabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true
 - This recipe does not download the Assets package--feed the package into the recipe via the following format:
 
-autopkg run AssetsInDesignCC2020Plugin.munki -p /path/WoodWing\ Assets\ for\ InDesign2020.pkg</string>
+autopkg run AssetsInDesignCC2020Plugin.munki -p /path/WoodWing\ Assets\ for\ InDesign.pkg</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.AssetsInDesignCC2020Plugin</string>
 	<key>Input</key>
@@ -25,7 +25,7 @@ autopkg run AssetsInDesignCC2020Plugin.munki -p /path/WoodWing\ Assets\ for\ InD
 		<key>pkginfo</key>
 		<dict>
 			<key>Comment</key>
-			<string>Choice is installer_choice_1 (Assets for InDesign 2020)</string>
+			<string>Choice is installer_choice_3 (as of Assets 4.3.2, this is "Assets for InDesign 2020")</string>
 			<key>blocking_applications</key>
 			<array>
 				<string>Adobe InDesign 2020</string>
@@ -50,7 +50,7 @@ autopkg run AssetsInDesignCC2020Plugin.munki -p /path/WoodWing\ Assets\ for\ InD
 					<key>choiceAttribute</key>
 					<string>selected</string>
 					<key>choiceIdentifier</key>
-					<string>installer_choice_1</string>
+					<string>installer_choice_3</string>
 				</dict>
 			</array>
 			<key>name</key>
