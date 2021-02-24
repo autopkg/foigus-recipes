@@ -23,7 +23,7 @@
 				<key>result_output_var_name</key>
 				<string>shortversion</string>
 				<key>url</key>
-				<string>https://www.eizo.co.jp/update/cn7-update.json</string>
+				<string>https://www.eizo.co.jp/update/cn7-update-v2-global.json</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
