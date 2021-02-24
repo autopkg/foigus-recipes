@@ -46,12 +46,12 @@ autopkg repo-add jessepeterson-recipes</string>
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>61be7b7f04c900e08168e00c52d64f05</string>
+				<string>b97d612a18713fa65e5b4a925d4690ad</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/ColorNavigator_7.pkg/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches ColorNavigator7.pkg postinstall script from ColorNavigator 7 7.0.9</string>
+			<string>Verify MD5 matches ColorNavigator7.pkg postinstall script from ColorNavigator 7 7.1.3</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>

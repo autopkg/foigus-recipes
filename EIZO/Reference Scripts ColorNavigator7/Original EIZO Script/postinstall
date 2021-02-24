@@ -15,6 +15,12 @@ readonly PLUGINS_DIR="${APP_DATA_DIR}/plugins"
 readonly PKG_DIR=`dirname "${PACKAGE_PATH}"`
 readonly INST_FLAG_DIR="${HOME}/.com.eizo.cn7.inst"
 
+# since v7.1.1
+readonly LOCK_FILE_DIR="/Users/Shared/EIZO"
+
+# since v7.1.2
+readonly LANG_PACK_DIR="${APP_DATA_DIR}/langPacks"
+
 # Install plugins
 readonly PLUGINS=(
 	"com.eizo.cn7.libs"
@@ -29,7 +35,6 @@ readonly PLUGINS=(
 	"com.eizo.cn7.data.value"
 	"com.eizo.cn7.capability"
 	"com.eizo.cn7.core"
-	"com.eizo.cn7.help"
 	"com.eizo.cn7.i18n.de"
 	"com.eizo.cn7.i18n.en"
 	"com.eizo.cn7.i18n.ja"
@@ -122,8 +127,36 @@ fi
 cp "${PKG_DIR}/preferences.json" "${INIT_SETTING_DIR}/"
 
 # Language packs
-for f in `find "${PKG_DIR}" -name "com.eizo.cn7.i18n.*.zip"`; do
-	cp "$f" "${INIT_SETTING_DIR}/"
+mkdir "${LANG_PACK_DIR}" >& /dev/null
+chmod 777 "${LANG_PACK_DIR}"
+
+delete_backup_if_need() {
+	# find previous version backup file in langPacks folder
+	for backup in "${LANG_PACK_DIR}/"*".zip"; do
+		fileName=`echo ${backup} | awk -F/ '{print $NF}'`
+		if [ "${fileName}" != "*.zip" ]; then
+			if "${PLUGS}" "${PLUGINS_DIR}" validate "${backup}"; [ $? -eq 0 ]; then
+				langName=`"${PLUGS}" "${PLUGINS_DIR}" name "${file}"`
+				backupLangName=`"${PLUGS}" "${PLUGINS_DIR}" name "${backup}"`
+				# delete old language pack if exist
+				if [ "${langName}" = "${backupLangName}" ]; then
+					rm -rf "${backup}"
+				fi
+			fi
+		fi
+	done
+}
+
+for file in "${PKG_DIR}/"*".zip"; do
+	fileName=`echo ${file} | awk -F/ '{print $NF}'`
+	if [ "${fileName}" != "*.zip" ]; then
+		# validate whether zip file is plugin file or not
+		if "${PLUGS}" "${PLUGINS_DIR}" validate "${file}"; [ $? -eq 0 ]; then
+			delete_backup_if_need
+			# copy new language pack to backup folder
+			cp -a "${file}" "${LANG_PACK_DIR}/"
+		fi
+	fi
 done
 
 # Setup CNNetwork
@@ -163,6 +196,17 @@ elif [ ! -d "${APP_DATA_DIR}/db.0" ]; then
 	mkdir  "${APP_DATA_DIR}/db.0"
 fi
 
+# Install lang pack
+umask 000
+for langPack in "${LANG_PACK_DIR}/"*".zip"; do
+	fileName=`echo ${langPack} | awk -F/ '{print $NF}'`
+	if [ "${fileName}" != "*.zip" ]; then
+		"${PLUGS}" "${PLUGINS_DIR}" install "${langPack}"
+		wait
+	fi
+done
+umask 022
+
 #-------------------------------------------------------------------------------
 # Creanup
 #-------------------------------------------------------------------------------
@@ -180,6 +224,13 @@ chmod 777 /Library/Application\ Support/EIZO/db
 chmod u+w ~/
 chmod a+rx /usr/local/lib
 
+# since v7.1.1
+# Update access right of lock file folder
+# In some environments, /User/Shared/EIZO folder permission is changed to 755
+if [ ! -e "${LOCK_FILE_DIR}" ]; then
+	mkdir "${LOCK_FILE_DIR}"
+fi
+chmod -R 777 "${LOCK_FILE_DIR}"
 
 # Launch Application
 su ${USER} -c "open /Applications/ColorNavigator\ 7.app"
