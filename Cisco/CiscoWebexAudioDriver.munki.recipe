@@ -47,7 +47,7 @@ launchctl kickstart -k system/com.apple.audio.coreaudiod</string>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.pkg.ciscowebexaudiodriver</string>
+	<string>com.github.foigus.download.ciscowebexaudiodriver</string>
 	<key>Process</key>
 	<array>
 		<dict>
