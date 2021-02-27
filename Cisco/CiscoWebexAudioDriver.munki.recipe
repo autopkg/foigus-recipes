@@ -28,6 +28,15 @@
 			<string>Cisco Webex Audio Driver</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>postinstall_script</key>
+			<string>#!/bin/bash
+#Forget the receipt from the earlier AutoPkg-built package
+receiptName=com.cisco.CiscoWebexAudioDriver.pkg
+
+if `pkgutil --pkgs="${receiptName}" 2&gt;&amp;1 &gt; /dev/null`
+then
+	pkgutil --forget "${receiptName}"
+fi</string>
 			<key>postuninstall_script</key>
 			<string>#!/bin/bash
 
