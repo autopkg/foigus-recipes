@@ -3,11 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Cisco Webex Audio Driver, builds an installation package, and imports it into Munki.
-
-NOTE: This recipe depends on hjuutilainen's ChecksumVerifier.  Add this repo via:
-
-autopkg repo-add hjuutilainen-recipes</string>
+	<string>Downloads latest Cisco Webex Audio Driver, builds an installation package, and imports it into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.ciscowebexaudiodriver</string>
 	<key>Input</key>
