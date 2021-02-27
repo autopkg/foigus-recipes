@@ -58,6 +58,8 @@ launchctl kickstart -k system/com.apple.audio.coreaudiod</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/CiscoAudioDeviceInstall.pkg</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
