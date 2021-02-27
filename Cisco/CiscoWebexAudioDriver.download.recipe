@@ -3,7 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Cisco Webex Audio Driver.</string>
+	<string>Downloads latest Cisco Webex Audio Driver.
+
+NOTES:
+- This recipe depends on jessepeterson's ModeChanger.  Add jessepeterson's repo via:
+
+autopkg repo-add jessepeterson-recipes</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.ciscowebexaudiodriver</string>
 	<key>Input</key>
@@ -44,6 +49,19 @@
 			</dict>
 			<key>Processor</key>
 			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/CiscoAudioDeviceInstall.pkg</string>
+				<key>mode</key>
+				<string>go+r</string>
+			</dict>
+			<key>Comment</key>
+			<string>Adding group and other read permissions here since the package decompresses with 600 permissions</string>
+			<key>Processor</key>
+			<string>com.github.jessepeterson.munki.UniversalTypeClient6/ModeChanger</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
