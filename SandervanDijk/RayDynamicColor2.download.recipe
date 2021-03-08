@@ -11,7 +11,7 @@ CodeSignatureVerifier skipped 11/24/2020 due to the lack of anything with a usab
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
-		<string>RayDynamicTexture</string>
+		<string>RayDynamicColor2</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://aescripts.com/downloadable/download/sample/sample_id/450/</string>
 	</dict>
