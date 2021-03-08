@@ -11,7 +11,7 @@ NOTE:
 
 The sum of the two notes above would lead to an example run of this recipe as follows:
 
-autopkg run Ouroboros2AfterEffectsCC2019.pkg -p /path/to/ouroboros_2.0.3.zip -k VERSION=2.0.3</string>
+autopkg run Ouroboros2AfterEffectsCC2019.munki -p /path/to/ouroboros_2.0.3.zip -k VERSION=2.0.3</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.Ouroboros2AfterEffectsCC2019</string>
 	<key>Input</key>
