@@ -68,7 +68,7 @@ Set MAJOR_VERSION to the desired major version of Cinema 4D.</string>
 			<dict>
 				<key>input_path</key>
 				<string>%pathname%/Maxon Cinema 4D Full Installer.app</string>
-				<key>requirements</key>
+				<key>requirement</key>
 				<string>identifier "net.maxon.cinema4d.installer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4ZY22YGXQG"</string>
 			</dict>
 			<key>Processor</key>
