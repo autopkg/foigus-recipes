@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>"Downloads" Pro Presets, packages it for After Effects CC 2020, and imports it into Munki.
+
+WARNING: The POSIX permissions in this recipe on the "VideoCopilot" folder are 0777 since this is the location where Video Copilot wants to place the license.  This can be changed by overriding the permissions in the "Input".
+	
+NOTE:
+- This recipe cannot determine the version of Pro Presets and must have it fed in as Input, whether via override or via CLI with -k
+- This recipe does not download the Pro Presets zip archive--feed the zip archive into the recipe via -p
+
+The sum of the two notes above would lead to an example run of this recipe as follows:
+
+autopkg run ProPresetsAfterEffectsCC2020.munki -p /path/to/Pro_Presets.zip -k VERSION=2020.11.25</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.ProPresetsAfterEffectsCC2020</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/videocopilot</string>
+		<key>NAME</key>
+		<string>ProPresetsAfterEffectsCC2020</string>
+		<key>VIDEOCOPILOT_FOLDER_PERMISSIONS</key>
+		<string>0777</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-videocopilot-ProPresetsAfterEffectsCC2020</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>The Pro Presets is a collection of 50 detailed high-end flares set up with shimmer animation, edge flare-ups and more.</string>
+			<key>developer</key>
+			<string>Video Copilot</string>
+			<key>display_name</key>
+			<string>Pro Presets After Effects CC 2020</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>OpticalFlaresAfterEffectsCC2020</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.ProPresetsAfterEffectsCC2020</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>"Downloads" Rift, packages it for installation under After Effects CC 2020, and imports it into Munki.
+
+NOTE:
+- This recipe cannot determine the version of Rift and must have it fed in as Input, whether via override or via CLI with -k
+- This recipe does not download the Rift zip archive--feed the zip archive into the recipe via -p
+
+The sum of the two notes above would lead to an example run of this recipe as follows:
+
+autopkg run RiftAfterEffectsCC2020.munki -p /path/to/rift_v1.4.2.zip -k VERSION=1.4.2</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.RiftAfterEffectsCC2020</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/michaeldelaney</string>
+		<key>NAME</key>
+		<string>RiftAfterEffectsCC2020</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-michaeldelaney-RiftAfterEffectsCC2020</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>Provides methods to shift, sequence, stagger, or randomize layers properties like in and out points, keyframes, markers and more, presented in a compact UI.</string>
+			<key>developer</key>
+			<string>Michael Delaney</string>
+			<key>display_name</key>
+			<string>Rift After Effects CC 2020</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>AfterEffectsCC2020</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.RiftAfterEffectsCC2020</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

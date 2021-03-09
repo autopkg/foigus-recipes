@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>"Downloads" Ouroboros 2 and packages it for installation under After Effects CC 2020.
+	
+NOTE:
+- This recipe cannot determine the version of Ouroboros 2 and must have it fed in as Input, whether via override or via CLI with -k
+- This recipe does not download the Ouroboros 2 zip archive--feed the zip archive into the recipe via -p
+
+The sum of the two notes above would lead to an example run of this recipe as follows:
+
+autopkg run Ouroboros2AfterEffectsCC2020.pkg -p /path/to/ouroboros_2.0.3.zip -k VERSION=2.0.3</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.Ouroboros2AfterEffectsCC2020</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Ouroboros2AfterEffectsCC2020</string>
+		<key>VERSION</key>
+		<string>please.set.me</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>PackageRequired</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>VERSION == "please.set.me"</string>
+			</dict>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict>
+					<key>Applications</key>
+					<string>0775</string>
+					<key>Applications/Adobe After Effects 2020</key>
+					<string>0775</string>
+					<key>Applications/Adobe After Effects 2020/Scripts</key>
+					<string>0755</string>
+					<key>Applications/Adobe After Effects 2020/Scripts/ScriptUI Panels</key>
+					<string>0755</string>
+				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%PKG%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Adobe After Effects 2020/Scripts/ScriptUI Panels/Ouroboros.jsxbin</string>
+				<key>overwrite</key>
+				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Ouroboros.jsxbin</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+					<key>chown</key>
+					<array>
+						<dict>
+							<key>group</key>
+							<string>admin</string>
+							<key>path</key>
+							<string>Applications</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+						<dict>
+							<key>group</key>
+							<string>wheel</string>
+							<key>path</key>
+							<string>Applications/Adobe After Effects 2020/Scripts</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+						<dict>
+							<key>group</key>
+							<string>wheel</string>
+							<key>mode</key>
+							<string>0444</string>
+							<key>path</key>
+							<string>Applications/Adobe After Effects 2020/Scripts/ScriptUI Panels/Ouroboros.jsxbin</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+					</array>
+					<key>id</key>
+					<string>com.georegulus.Ouroboros2AfterEffectsCC2020.pkg</string>
+					<key>pkgname</key>
+					<string>%NAME%-%VERSION%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>version</key>
+					<string>%VERSION%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+		</dict>
+	</array>
+</dict>
+</plist>
