@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Repackage the MediaBank 5 plugin for InDesign CC 2020 and import it into Munki.  This recipe does not download the MediaBank 5 tar.gz archive--feed the tar.gz archive into the recipe via the following format:
+
+autopkg run MediaBank5InDesignCC2020.munki -p /path/to/MediaBank_Installer_osx_2020_20201009.tar.gz</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.MediaBank5InDesignCC2020</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/wavecorp</string>
+		<key>NAME</key>
+		<string>MediaBank5InDesignCC2020</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe InDesign 2020</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-wavecorp-MediaBank5InDesignCC2020</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>Plugin for InDesign CC 2020 for the MediaBank digital asset management system.</string>
+			<key>developer</key>
+			<string>WAVECorp</string>
+			<key>display_name</key>
+			<string>MediaBank 5 InDesign CC 2020 plugin</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>InDesignCC2020</string>
+				<string>MediaBank5</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.MediaBank5InDesignCC2020</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
