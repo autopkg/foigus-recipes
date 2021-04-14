@@ -10,12 +10,6 @@ Set MAJOR_VERSION to the desired major version of Cinema 4D.</string>
 	<string>com.github.foigus.download.Cinema4D</string>
 	<key>Input</key>
 	<dict>
-		<key>AUTHORIZATION_HEADER</key>
-		<string>Bearer vnc8dIg4GY5ALb-ZL9vM4T1HyNDyDpxC</string>
-		<key>CONTENT_TYPE_HEADER</key>
-		<string>application/json;charset=UTF-8</string>
-		<key>DATA_BINARY_CONTENT</key>
-		<string>[{"query":"query contentBlocks($site:[String],$section:[String],$uri:[String]){entries(site:$site,section:$section,uri:$uri){title,slug,id...on pages_general_Entry{contentBlocks{__typename,...on contentBlocks_author_BlockType{author{...on author_author_Entry{fullName,jobTitle,authorBio,authorImage{...on images_Asset{altText,url,height,width,optimizedImages{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio5x3{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio8x5{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio16x5{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio16x9{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}}}}}}...on contentBlocks_banner_BlockType{bannerWidth,bannerButtons{...on bannerButtons_BlockType{id,text,custom,style,buttonSize,target,entry{url,slug,uri},}}bannerImageDesktop{...on images_Asset{altText,url,height,width,optimizedImages{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio5x3{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio8x5{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio16x5{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio16x9{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}}}bannerImageMobile{...on images_Asset{altText,url,height,width,optimizedImages{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio5x3{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio8x5{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio16x5{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio16x9{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}}}}...on contentBlocks_buttons_BlockType{align,buttonsWidth,buttons{...on buttons_BlockType{id,text,entry{url,slug,uri},custom,style,buttonSize,target}}}...on contentBlocks_carousel_BlockType{caption,slides{...on slides_BlockType{id,image{...on images_Asset{altText,url,height,width,ratio16x9{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}}},entry{url,slug,uri},custom,target,overlayText1,overlayText2,}}width}...on contentBlocks_heading_BlockType{size,headingText}...on contentBlocks_htmlSnippet_BlockType{code,}...on contentBlocks_image_BlockType{overlayText1,overlayText2,caption,width,imageUrl,file{...on images_Asset{altText,url,height,width,optimizedImages{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio5x3{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio8x5{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio16x5{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio16x9{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}}}}...on contentBlocks_images_BlockType{gridWidth,imagesGridCaption,imagesGrid{...on imagesGrid_BlockType{overlayText1,overlayText2,image{...on images_Asset{altText,url,height,width,optimizedImages{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio5x3{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio8x5{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio16x5{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio16x9{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}}}}}}...on contentBlocks_imageWithCopy_BlockType{alignment,imageText,imageWidth,image{...on images_Asset{altText,url,height,width,optimizedImages{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio5x3{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio8x5{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio16x5{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}ratio16x9{src,srcset,srcsetWebp,placeholderImage,originalImageWidth,originalImageHeight}}}}...on contentBlocks_quotes_BlockType{quoteText,attribution}...on contentBlocks_richText_BlockType{contentText,alignment}...on contentBlocks_rule_BlockType{ruleWidth}...on contentBlocks_table_BlockType{tableRowStyle,columns{...on columns_BlockType{id,alignment,heading,rows{cell}}}}...on contentBlocks_video_BlockType{videoUrl,caption,width,displayStyle}...on contentBlocks_well_BlockType{heading,copy}}}}}","variables":{"site":"default","section":"pages","uri":"downloads"}}]</string>
 		<key>MAJOR_VERSION</key>
 		<string>23</string>
 		<key>NAME</key>
@@ -28,22 +22,10 @@ Set MAJOR_VERSION to the desired major version of Cinema 4D.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>curl_opts</key>
-				<array>
-					<string>--data-binary</string>
-					<string>%DATA_BINARY_CONTENT%</string>
-				</array>
 				<key>re_pattern</key>
 				<string>https:\/\/installer\.maxon\.net\/installer\/%MAJOR_VERSION%\.[\d]+_RB[\d]+\/Cinema4D-[\d\.]+_Mac_Fullinstaller\.dmg</string>
-				<key>request_headers</key>
-				<dict>
-					<key>authorization</key>
-					<string>%AUTHORIZATION_HEADER%</string>
-					<key>content-type</key>
-					<string>%CONTENT_TYPE_HEADER%</string>
-				</dict>
 				<key>url</key>
-				<string>https://www.maxon.net/api</string>
+				<string>https://www.maxon.net/en/downloads/cinema-4d-r%MAJOR_VERSION%-downloads/</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -51,8 +33,6 @@ Set MAJOR_VERSION to the desired major version of Cinema 4D.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>curl_opts</key>
-				<array/>
 				<key>url</key>
 				<string>%match%</string>
 			</dict>
