@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Repackage Pantone Connect and import it into Munki.
+
+NOTE:
+
+- This recipe does not download the Pantone Connect package--feed the package into the recipe via the following format:
+autopkg run PantoneConnect.munki -p /path/to/PantoneConnect.zxp</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.PantoneConnect</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/pantone</string>
+		<key>NAME</key>
+		<string>PantoneConnect</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe Photoshop CC 2019</string>
+				<string>Adobe Photoshop 2020</string>
+				<string>Adobe Photoshop 2021</string>
+				<string>Adobe InDesign CC 2019</string>
+				<string>Adobe InDesign 2020</string>
+				<string>Adobe InDesign 2021</string>
+				<string>Adobe Illustrator CC 2019</string>
+				<string>Adobe Illustrator 2020</string>
+				<string>Adobe Illustrator 2021</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-pantone-PantoneConnect</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>Pair with our mobile and web apps to measure color, build palettes, and add Pantone to swatches from anywhere</string>
+			<key>developer</key>
+			<string>Pantone</string>
+			<key>display_name</key>
+			<string>PantoneConnect</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.PantoneConnect</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
