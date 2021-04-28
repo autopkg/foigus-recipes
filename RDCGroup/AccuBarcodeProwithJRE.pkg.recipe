@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Accubarcode Pro with JRE.
+
+NOTES
+
+- This recipe requires installing BOTH AutoPkg AND Accubarcode Pro with JRE itself--the latter BY HAND.  IDEALLY this would occur in a clean virtual machine, and is not intended to occur on an AutoPkg "server"--thank Install4j for this incredibly strange recipe
+- This recipe uses relative paths (to obtain the fonts installed in the user's home directory) and assumes the AutoPkg Cache is at the default location of "~/Library/AutoPkg/Cache"--ensure the same user installs Accubarcode Pro with JRE and runs this recipe
+- This recipe depends on jessepeterson's ModeChanger.  Add jessepeterson's repo via:
+
+autopkg repo-add jessepeterson-recipes
+
+- I'm skipping a few things I normally do for my AutoPkg recipes:
+  - CodeSignatureVerifier: Presumably this software has been manually sourced from a trusted location and then manually installed
+  - A .munki Recipe: Since the retrieval of the Accubarcode Pro with JRE installer is manual, the installation is manual, and running this recipe on a clean VM is manual, there doesn't seem to make much sense to automate the import of the resulting package into Munki</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.AccuBarcodeProwithJRE</string>
+	<key>Input</key>
+	<dict/>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>/Applications/AccuBarcode Pro/BarCodePro.app/Contents/Info.plist</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict>
+					<key>Applications</key>
+					<string>0775</string>
+					<key>Library</key>
+					<string>0755</string>
+				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/AccuBarcode Pro</string>
+				<key>source_path</key>
+				<string>/Applications/AccuBarcode Pro</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Fonts</string>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/../../../Fonts</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Fonts</string>
+				<key>mode</key>
+				<string>1775</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.jessepeterson.munki.UniversalTypeClient6/ModeChanger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+					<key>chown</key>
+					<array>
+						<dict>
+							<key>group</key>
+							<string>admin</string>
+							<key>path</key>
+							<string>Applications</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+						<dict>
+							<key>group</key>
+							<string>wheel</string>
+							<key>path</key>
+							<string>Library</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+					</array>
+					<key>id</key>
+					<string>com.accubarcode.AccuBarcodePro.pkg</string>
+					<key>pkgname</key>
+					<string>AccuBarcodeProWithJRE-%version%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+		</dict>
+	</array>
+</dict>
+</plist>
