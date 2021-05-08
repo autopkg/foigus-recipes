@@ -35,7 +35,7 @@
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.sheagcraig.download.OpenEmu</string>
+	<string>com.github.homebysix.download.OpenEmu</string>
 	<key>Process</key>
 	<array>
 		<dict>
