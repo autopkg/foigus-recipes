@@ -57,7 +57,7 @@ Note this software may need .wma-capable playback libraries such as Telestream F
 			<dict>
 				<key>expected_authority_names</key>
 				<array>
-					<string>Developer ID Installer: Olympus Corporation (4H9BLQ3JFD)</string>
+					<string>Developer ID Installer: OM Digital Solutions Corporation (G7555NN639)</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
