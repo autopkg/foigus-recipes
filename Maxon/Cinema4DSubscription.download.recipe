@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Cinema 4D Subscription.
+
+Set MAJOR_VERSION to the desired major version of Cinema 4D Subscription.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.Cinema4DSubscription</string>
+	<key>Input</key>
+	<dict>
+		<key>MAJOR_VERSION</key>
+		<string>24</string>
+		<key>NAME</key>
+		<string>Cinema4DSubscription</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>https:\/\/installer\.maxon\.net\/installer\/%MAJOR_VERSION%\.[\d]+_CL[\d]+\/Cinema4D_S%MAJOR_VERSION%_%MAJOR_VERSION%\.[\d\.]+_Mac\.dmg</string>
+				<key>url</key>
+				<string>https://www.maxon.net/en/downloads/cinema-4d-s%MAJOR_VERSION%-downloads/</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%match%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Maxon Cinema 4D Full Installer.app</string>
+				<key>requirement</key>
+				<string>identifier "net.maxon.cinema4d.installer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4ZY22YGXQG"</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+	</array>
+</dict>
+</plist>

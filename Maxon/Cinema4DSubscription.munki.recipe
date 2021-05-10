@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Cinema 4D Subscription and imports it into Munki.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.Cinema4DSubscription</string>
+	<key>Input</key>
+	<dict>
+		<key>MAJOR_VERSION</key>
+		<string>24</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/maxon</string>
+		<key>NAME</key>
+		<string>Cinema4DSubscription</string>
+		<key>UNINSTALL_SCRIPT</key>
+		<string>#!/bin/bash
+
+#Delete the application
+rm -rf /Applications/Maxon\ Cinema\ 4D\ R%MAJOR_VERSION%
+
+#Forget the package receipt
+pkgutil --forget com.maxon.Cinema4D-S%MAJOR_VERSION%.pkg</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>development-maxon-Cinema4DSubscription</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>Easy to learn and extremely powerful: Cinema 4D is the perfect package for all 3D artists who want to achieve breathtaking results fast and hassle-free.</string>
+			<key>developer</key>
+			<string>Maxon</string>
+			<key>display_name</key>
+			<string>Cinema 4D Subscription</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>%UNINSTALL_SCRIPT%</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.Cinema4DSubscription</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
