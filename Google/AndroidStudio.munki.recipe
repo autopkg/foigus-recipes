@@ -2,80 +2,61 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Description</key>
-	<string>Downloads latest Android Studio disk image and imports into Munki.
+    <key>Description</key>
+    <string>Downloads latest Android Studio disk image and imports into Munki.
 
 This recipe is dependent on Sam Novak's Android Studio recipe.  To add his repo:
 
 autopkg repo-add novaksam-recipes</string>
-	<key>Identifier</key>
-	<string>com.github.foigus.munki.AndroidStudio</string>
-	<key>Input</key>
-	<dict>
-		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps/android</string>
-		<key>NAME</key>
-		<string>AndroidStudio</string>
-		<key>VERSION_SEARCH_PATTERN</key>
-		<string>https\://redirector\.gvt1\.com/edgedl/android/studio/install/([0-9.]+)/android-studio-ide.+\.dmg</string>
-		<key>VERSION_SEARCH_URL</key>
-		<string>https://developer.android.com/sdk/index.html</string>
-		<key>pkginfo</key>
-		<dict>
-			<key>catalogs</key>
-			<array>
-				<string>development-android-AndroidStudio</string>
-			</array>
-			<key>category</key>
-			<string>Development</string>
-			<key>description</key>
-			<string>Android Studio is the official IDE for Android application development, based on IntelliJ IDEA.</string>
-			<key>developer</key>
-			<string>Google</string>
-			<key>display_name</key>
-			<string>Android Studio</string>
-			<key>name</key>
-			<string>%NAME%</string>
-			<key>unattended_install</key>
-			<true/>
-		</dict>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>0.2.0</string>
-	<key>ParentRecipe</key>
-	<string>com.github.novaksam.download.AndroidStudio</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>re_pattern</key>
-				<string>%VERSION_SEARCH_PATTERN%</string>
-				<key>url</key>
-				<string>%VERSION_SEARCH_URL%</string>
-				<key>result_output_var_name</key>
-				<string>found_version_number</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pkg_path</key>
-				<string>%pathname%</string>
-				<key>repo_subdirectory</key>
-				<string>%MUNKI_REPO_SUBDIR%</string>
-				<key>additional_makepkginfo_options</key>
-				<array>
-					<string>--pkgvers=%found_version_number%</string>
-				</array>
-				<key>version_comparison_key</key>
-				<string>CFBundleVersion</string>
-			</dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
-		</dict>
-	</array>
+    <key>Identifier</key>
+    <string>com.github.foigus.munki.AndroidStudio</string>
+    <key>Input</key>
+    <dict>
+        <key>MUNKI_REPO_SUBDIR</key>
+        <string>apps/android</string>
+        <key>NAME</key>
+        <string>AndroidStudio</string>
+        <key>VERSION_SEARCH_PATTERN</key>
+        <string>https\://redirector\.gvt1\.com/edgedl/android/studio/install/([0-9.]+)/android-studio-ide.+\.dmg</string>
+        <key>VERSION_SEARCH_URL</key>
+        <string>https://developer.android.com/sdk/index.html</string>
+        <key>pkginfo</key>
+        <dict>
+            <key>catalogs</key>
+            <array>
+                <string>development-android-AndroidStudio</string>
+            </array>
+            <key>category</key>
+            <string>Development</string>
+            <key>description</key>
+            <string>Android Studio is the official IDE for Android application development, based on IntelliJ IDEA.</string>
+            <key>developer</key>
+            <string>Google</string>
+            <key>display_name</key>
+            <string>Android Studio</string>
+            <key>name</key>
+            <string>%NAME%</string>
+            <key>unattended_install</key>
+            <true/>
+        </dict>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.2.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.novaksam.download.AndroidStudio</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>MunkiImporter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>pkg_path</key>
+                <string>%pathname%</string>
+                <key>repo_subdirectory</key>
+                <string>%MUNKI_REPO_SUBDIR%</string>
+            </dict>
+        </dict>
+    </array>
 </dict>
 </plist>
