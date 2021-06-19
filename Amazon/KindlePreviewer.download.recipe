@@ -22,7 +22,7 @@ Depending on your management system, you may need to address this issue.</string
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>https://kindlepreviewer.s3.amazonaws.com/KindlePreviewer.pkg</string>
+		<string>https://s3.amazonaws.com/kindlepreviewer3/KindlePreviewerInstaller.pkg</string>
 		<key>NAME</key>
 		<string>KindlePreviewer</string>
 	</dict>
