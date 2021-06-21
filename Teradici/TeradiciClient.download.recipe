@@ -20,9 +20,18 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>curl_opts</key>
 				<array>
-					<string>--include</string>
+					<string>--head</string>
 				</array>
 				<key>re_pattern</key>
 				<string>filename="pcoip-client_([\d\.]+).dmg"</string>
@@ -33,17 +42,6 @@
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>curl_opts</key>
-				<array/>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
