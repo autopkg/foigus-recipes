@@ -76,7 +76,7 @@ autopkg repo-add homebysix-recipes</string>
 				<key>input_string</key>
 				<string>%found_version%</string>
 				<key>replace</key>
-				<string>.</string>
+				<string></string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
