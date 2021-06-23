@@ -23,9 +23,9 @@ Set MAJOR_VERSION to the desired major version of Cinema 4D.</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\/\/installer\.maxon\.net\/installer\/%MAJOR_VERSION%\.[\d]+_RB[\d]+\/Cinema4D-[\d\.]+_Mac_Fullinstaller\.dmg</string>
+				<string>https:\\u002F\\u002Finstaller.maxon.net\\u002Finstaller\\u002F%MAJOR_VERSION%.[\d]+_RB[\d]+\\u002FCinema4D-[\d\.]+_Mac_Fullinstaller.dmg</string>
 				<key>url</key>
-				<string>https://www.maxon.net/en/downloads/cinema-4d-r%MAJOR_VERSION%-downloads/</string>
+				<string>https://www.maxon.net/_nuxt/static/1624442241/en/downloads/cinema-4d-r%MAJOR_VERSION%-downloads/payload.js</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -33,8 +33,21 @@ Set MAJOR_VERSION to the desired major version of Cinema 4D.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
+				<key>find</key>
+				<string>\u002F</string>
+				<key>input_string</key>
 				<string>%match%</string>
+				<key>replace</key>
+				<string>/</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%output_string%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
