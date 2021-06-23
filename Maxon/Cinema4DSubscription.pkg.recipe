@@ -43,11 +43,11 @@ install_dir=`dirname $0`
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\/\/installer\.maxon\.net\/installer\/%MAJOR_VERSION%\.[\d]+_CL[\d]+\/Cinema4D_S%MAJOR_VERSION%_([\d\.]+)_Mac\.dmg</string>
+				<string>https:\\u002F\\u002Finstaller.maxon.net\\u002Finstaller\\u002F%MAJOR_VERSION%.[\d]+_CL[\d]+\\u002FCinema4D_S%MAJOR_VERSION%_(%MAJOR_VERSION%\.[\d\.]+)_Mac\.dmg</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
-				<string>https://www.maxon.net/en/downloads/cinema-4d-s%MAJOR_VERSION%-downloads/</string>
+				<string>https://www.maxon.net/_nuxt/static/1624442241/en/downloads/cinema-4d-s%MAJOR_VERSION%-downloads/payload.js</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
