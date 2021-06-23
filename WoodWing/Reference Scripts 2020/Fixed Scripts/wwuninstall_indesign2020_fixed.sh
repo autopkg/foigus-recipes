@@ -288,17 +288,7 @@ function ReInstallPlugOuts()
 	rm -Rf "$WW_PLOUT"
 }
 
-#---------------------------------------------------------------------
-# Uninstalls the WoodWingUI panel
-
-function UninstallWoodWingUIPanel()
-{
-	"${path_only}/WoodWingUI ZXP/ExManCmd/MacOS/ExManCmd" --remove "WoodWingUICC2020"
-
-	rm -Rf "${path_only}/WoodWingUI ZXP"
-}
-
-# Uninstall the installed Sticky Notes panel from Adobe Extension Manager.
+# Uninstall the installed PluginConfig.txt file.
 #
 UninstallPluginConfig()
 {
@@ -340,9 +330,6 @@ fi
 # we set back all original InCopyWorkflow and UI plugins during
 # the de-installation of the WoodWing Studio product.
 ReInstallPlugOuts
-
-# Uninstall the installed WoodWingUI panel from Adobe Extension Manager.
-UninstallWoodWingUIPanel
 
 #Uninsatll the PluginConfig.txt file.
 UninstallPluginConfig
