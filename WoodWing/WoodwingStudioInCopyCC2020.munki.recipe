@@ -14,7 +14,7 @@ autopkg repo-add hjuutilainen-recipes
 - This recipe does not download the Woodwing Studio disk image--feed the disk image into the recipe via the following format:
 - This recipe does not attempt to clean up or uninstall the previous name of the product (Smart Connection for 2020)
 
-autopkg run WoodwingStudioInCopyCC2020.munki.recipe -p /path/to/WoodWing_Studio_for_InDesign_and_InCopy_2020_v15.1.0_Build15.dmg</string>
+autopkg run WoodwingStudioInCopyCC2020.munki.recipe -p /path/to/WoodWing_Studio_for_InDesign_and_InCopy_2020_v15.2.0_Build49.dmg</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.WoodwingSmartConnectionInCopyCC2020</string>
 	<key>Input</key>
@@ -97,12 +97,12 @@ autopkg run WoodwingStudioInCopyCC2020.munki.recipe -p /path/to/WoodWing_Studio_
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>dc1711abadbf89696b49ea5b940ba549</string>
+				<string>94044cb774d8f59525267e9be6d7c7ad</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Studio for InDesign and InCopy 2020.app/Contents/MacOS/Uninstall WoodWing Studio for InDesign and InCopy 2020</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 15.0.0, build 10 on the uninstall script</string>
+			<string>Verify MD5 matches 15.2.0, build 49 on the uninstall script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
@@ -112,12 +112,12 @@ autopkg run WoodwingStudioInCopyCC2020.munki.recipe -p /path/to/WoodWing_Studio_
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>dc1711abadbf89696b49ea5b940ba549</string>
+				<string>94044cb774d8f59525267e9be6d7c7ad</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Studio for InDesign and InCopy 2020.app/Contents/Resources/Uninstall WoodWing Studio for InDesign and InCopy 2020.sh</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 15.0.0, build 10 on the uninstall script</string>
+			<string>Verify MD5 matches 15.2.0, build 49 on the uninstall script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
