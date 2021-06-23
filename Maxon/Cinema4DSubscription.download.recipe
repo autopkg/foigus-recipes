@@ -5,7 +5,11 @@
 	<key>Description</key>
 	<string>Downloads the latest version of Cinema 4D Subscription.
 
-Set MAJOR_VERSION to the desired major version of Cinema 4D Subscription.</string>
+NOTES:
+- Set MAJOR_VERSION to the desired major version of Cinema 4D Subscription
+- This recipe depends on homebysix's FindAndReplace.  Add homebysix's repo via:
+
+autopkg repo-add homebysix-recipes</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.Cinema4DSubscription</string>
 	<key>Input</key>
