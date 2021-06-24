@@ -53,7 +53,7 @@ install_dir=`dirname $0`
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
-				<string>https://www.maxon.net/_nuxt/static/1624442241/en/downloads/cinema-4d-r%MAJOR_VERSION%-downloads/payload.js</string>
+				<string>https://www.maxon.net/%url_suffix%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>

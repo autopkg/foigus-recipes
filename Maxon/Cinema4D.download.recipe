@@ -27,9 +27,24 @@ autopkg repo-add homebysix-recipes</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\\u002F\\u002Finstaller.maxon.net\\u002Finstaller\\u002F%MAJOR_VERSION%.[\d]+_RB[\d]+\\u002FCinema4D-[\d\.]+_Mac_Fullinstaller.dmg</string>
+				<string>_nuxt\/static\/[\d]+\/en\/downloads\/cinema-4d-r%MAJOR_VERSION%-downloads\/payload\.js</string>
+				<key>result_output_var_name</key>
+				<string>url_suffix</string>
 				<key>url</key>
-				<string>https://www.maxon.net/_nuxt/static/1624442241/en/downloads/cinema-4d-r%MAJOR_VERSION%-downloads/payload.js</string>
+				<string>https://www.maxon.net/en/downloads/cinema-4d-r%MAJOR_VERSION%-downloads/</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>https:\\u002F\\u002Finstaller.maxon.net\\u002Finstaller\\u002F%MAJOR_VERSION%.[\d]+_RB[\d]+\\u002FCinema4D-[\d\.]+_Mac_Fullinstaller.dmg</string>
+				<key>result_output_var_name</key>
+				<string>encoded_download_url</string>
+				<key>url</key>
+				<string>https://www.maxon.net/%url_suffix%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -40,7 +55,7 @@ autopkg repo-add homebysix-recipes</string>
 				<key>find</key>
 				<string>\u002F</string>
 				<key>input_string</key>
-				<string>%match%</string>
+				<string>%encoded_download_url%</string>
 				<key>replace</key>
 				<string>/</string>
 			</dict>
