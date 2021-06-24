@@ -19,7 +19,7 @@ autopkg repo-add homebysix-recipes</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/maxon</string>
 		<key>NAME</key>
-		<string>Cinema4D</string>
+		<string>Cinema4DPerpetual_R%MAJOR_VERSION%</string>
 		<key>UNINSTALL_SCRIPT</key>
 		<string>#!/bin/bash
 

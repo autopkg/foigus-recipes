@@ -17,7 +17,7 @@ autopkg repo-add homebysix-recipes</string>
 		<key>MAJOR_VERSION</key>
 		<string>23</string>
 		<key>NAME</key>
-		<string>Cinema4D</string>
+		<string>Cinema4DPerpetual_R%MAJOR_VERSION%</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>
