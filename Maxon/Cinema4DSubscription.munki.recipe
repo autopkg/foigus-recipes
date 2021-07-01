@@ -24,7 +24,7 @@ autopkg repo-add homebysix-recipes</string>
 		<string>#!/bin/bash
 
 #Delete the application
-rm -rf /Applications/Maxon\ Cinema\ 4D\ R%MAJOR_VERSION%
+rm -rf /Applications/Maxon\ Cinema\ 4D\ S%MAJOR_VERSION%
 
 #Forget the package receipt
 pkgutil --forget com.maxon.Cinema4D-S%MAJOR_VERSION%.pkg</string>
