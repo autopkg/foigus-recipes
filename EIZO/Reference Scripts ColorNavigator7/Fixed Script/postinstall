@@ -234,4 +234,9 @@ chmod -R 777 "${LOCK_FILE_DIR}"
 
 # Launch Application
 ##Don't open the ColorNavigator window, it causes the installation to fail
-##su ${USER} -c "open /Applications/ColorNavigator\ 7.app"
+##su "${USER}" -c "open /Applications/ColorNavigator\ 7.app"
+##
+### Ignore error at app launch
+##if [ $? -ne 0 ]; then
+##	exit 0
+##fi
