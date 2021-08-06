@@ -127,6 +127,7 @@
                 <key>path_list</key>
                 <array>
                     <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+                    <string>%RECIPE_CACHE_DIR%/unarchive</string>
                     <string>%RECIPE_CACHE_DIR%/unpack</string>
                 </array>
             </dict>
