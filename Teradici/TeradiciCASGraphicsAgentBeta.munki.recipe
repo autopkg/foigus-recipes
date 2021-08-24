@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Originally created with Recipe Robot v2.2.0 (https://github.com/homebysix/recipe-robot)</string>
+	<key>Description</key>
+	<string>Downloads the latest version of Teradici CAS PCoIP Graphics Agent Beta and imports it into Munki.
+
+NOTES:
+"PCoIP Agent.app" agent needs the following PPPC rights:
+- Accessibility
+- Screen Recording
+Remember Screen Recording must be allowed by hand.
+
+The installation instructions: 
+https://www.teradici.com/web-help/pcoip_agent/graphics_agent/macos/21.07/admin-guide/installing/installing-macos/
+say the initial installation requires a restart (presumably following the allowance of PPPC rights).
+
+The upgrade instructions:
+https://www.teradici.com/web-help/pcoip_agent/graphics_agent/macos/21.07/admin-guide/installing/updating-macos/
+indicate a restart is not necessary.
+
+To account for this difference, this recipe does NOT require a restart but can be overridden with RestartAction values noted in the Munki Wiki:
+https://github.com/munki/munki/wiki/Supported-Pkginfo-Keys
+It is assumed the common case is the admin restarting the computer following the hand-approval of Screen Recording PPPC rights.
+
+The default state of this recipe (FORCE_MUNKIIMPORT is set (thus true) and STOP_ON_NO_NEW_DOWNLOAD is true) should behave properly for most use cases (e.g. automated runs).  The force_munkiimport is needed because (currently) every Graphics Agent Beta package has a receipt of "com.teradici.pcoip-agent.Unspecified" with version 1.10.0.  This has been reported to Teradici under case 00049483.</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.TeradiciCASGraphicsAgentBeta</string>
+	<key>Input</key>
+	<dict>
+		<key>FORCE_MUNKIIMPORT</key>
+		<string>totally</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/teradici</string>
+		<key>NAME</key>
+		<string>TeradiciCASGraphicsAgentBeta</string>
+		<key>POSTINSTALL_SCRIPT</key>
+		<string>#!/bin/bash
+
+#Teradici Cloud Licensing, per https://www.teradici.com/web-help/pcoip_agent/graphics_agent/macos/21.07/admin-guide/installing/installing-macos/
+########
+#Teradici Cloud Licensing WITHOUT a proxy server
+pcoip-register-host --registration-code={REGISTRATION_CODE}
+#
+#Teradici Cloud Licensing WITH a proxy server
+#pcoip-register-host --registration-code={REGISTRATION_CODE} --proxy-server={PROXY_SERVER_ADDRESS} --proxy-port={PROXY_PORT_NUMBER}
+
+#Unbrokered Environment Licensing, per https://www.teradici.com/web-help/pcoip_agent/graphics_agent/macos/21.07/admin-guide/installing/licensing/#licensing-pcoip-agents-with-a-local-license-server
+########
+#Unbrokered Environment Licensing WITHOUT a proxy server
+#defaults write "/Library/Preferences/com.teradici.pcoip-agent.plist" pcoip.license_server_path "https://{LICENSE_SERVER_PATH}:{LICENSE_SERVER_PORT}/request"
+#
+#Unbrokered Environment Licensing WITH a proxy server
+#defaults write "/Library/Preferences/com.teradici.pcoip-agent.plist" pcoip.license_proxy_server {PROXY_SERVER_PATH} 
+#defaults write "/Library/Preferences/com.teradici.pcoip-agent.plist" pcoip.license_proxy port {PROXY_PORT}</string>
+		<key>RESTARTACTION</key>
+		<string>None</string>
+		<key>STOP_ON_NO_NEW_DOWNLOAD</key>
+		<true/>
+		<key>UNINSTALL_SCRIPT</key>
+		<string>#!/bin/bash
+
+#Per https://www.teradici.com/web-help/pcoip_agent/graphics_agent/macos/21.07/admin-guide/installing/uninstalling/
+/Library/Application\ Support/Teradici/pcoip/uninstaller</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>RestartAction</key>
+			<string>%RESTARTACTION%</string>
+			<key>blocking_applications</key>
+			<array>
+				<string>PCoIP Agent.app</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-teradici-TeradiciCASGraphicsAgentBeta</string>
+			</array>
+			<key>description</key>
+			<string>High-performance remote Mac access software</string>
+			<key>developer</key>
+			<string>Teradici Corporation</string>
+			<key>display_name</key>
+			<string>Teradici CAS Graphics Agent Beta</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>postinstall_script</key>
+			<string>%POSTINSTALL_SCRIPT%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>%UNINSTALL_SCRIPT%</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.TeradiciCASGraphicsAgentBeta</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>download_changed == FALSE AND STOP_ON_NO_NEW_DOWNLOAD == TRUE</string>
+			</dict>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%pathname%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/pcoip-agent-graphics*.pkg</string>
+			</dict>
+			<key>Comment</key>
+			<string>Find the name of the plugin package.</string>
+			<key>Processor</key>
+			<string>FileFinder</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root</string>
+				<key>pkg_payload_path</key>
+				<string>%found_filename%/Payload</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>info_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root/Applications/PCoIP Agent.app</string>
+				<key>plist_keys</key>
+				<dict>
+					<key>CFBundleVersion</key>
+					<string>version</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PlistReader</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/PCoIP Agent.app</string>
+				</array>
+				<key>version_comparison_key</key>
+				<string>CFBundleVersion</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>force_munkiimport</key>
+				<string>%FORCE_MUNKIIMPORT%</string>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
