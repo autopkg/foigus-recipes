@@ -34,16 +34,16 @@
 			<string>Media Management Connector for Adobe Creative Cloud Extension</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<false/>
 			<key>update_for</key>
 			<array>
 				<string>MediaManagementConnectorforInDesignCC2015</string>
 				<string>MediaManagementConnectorforInDesignCC2017</string>
 				<string>MediaManagementConnectorforInDesignCC2018</string>
 			</array>
-			<key>unattended_install</key>
-			<true/>
-			<key>unattended_uninstall</key>
-			<false/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

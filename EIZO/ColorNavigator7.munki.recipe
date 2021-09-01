@@ -38,8 +38,6 @@ autopkg repo-add hjuutilainen-recipes</string>
 			<string>10.10</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>uninstallable</key>
-			<true/>
 			<key>unattended_install</key>
 			<false/>
 			<key>uninstall_method</key>
@@ -51,6 +49,8 @@ autopkg repo-add hjuutilainen-recipes</string>
 rm -rf "/Applications/ColorNavigator 7.app"
 			
 pkgutil --forget com.eizo.pkg.ColorNavigator7</string>
+			<key>uninstallable</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

@@ -39,10 +39,10 @@ autopkg run MediaBankGoldCC2018.download -p /path/to/MediaBankGold_Installer_osx
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>requirement</key>
-				<string>identifier "com.wavecorp.MediaBank Gold Installer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Q57A75XBAX</string>
 				<key>input_path</key>
 				<string>%RECIPE_CACHE_DIR%/unarchive/MediaBank Gold Installer.app</string>
+				<key>requirement</key>
+				<string>identifier "com.wavecorp.MediaBank Gold Installer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Q57A75XBAX</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>

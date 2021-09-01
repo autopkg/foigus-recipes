@@ -24,10 +24,10 @@ autopkg run MediaBankGoldCreativeCloudExtension2020.pkg -p /path/to/mediabankgol
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/MediaBank Gold Installer.app/Contents/Resources/MediaBankGold.zxp</string>
 				<key>archive_format</key>
 				<string>zip</string>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/MediaBank Gold Installer.app/Contents/Resources/MediaBankGold.zxp</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/MediaBankGoldzxp_unarchive</string>
 				<key>purge_destination</key>
@@ -71,8 +71,6 @@ autopkg run MediaBankGoldCreativeCloudExtension2020.pkg -p /path/to/mediabankgol
 					<string>0755</string>
 					<key>Library/Application Support</key>
 					<string>0755</string>
-					<key>Library/Application Support</key>
-					<string>0755</string>
 					<key>Library/Application Support/Adobe</key>
 					<string>0775</string>
 					<key>Library/Application Support/Adobe/CEP</key>
@@ -91,10 +89,10 @@ autopkg run MediaBankGoldCreativeCloudExtension2020.pkg -p /path/to/mediabankgol
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%RECIPE_CACHE_DIR%/MediaBankGoldzxp_unarchive/MediaBankGold.zxp</string>
 				<key>archive_format</key>
 				<string>zip</string>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/MediaBankGoldzxp_unarchive/MediaBankGold.zxp</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/CEP/extensions/com.wavecorp.cm.plugin.MediaBankGold</string>
 				<key>purge_destination</key>

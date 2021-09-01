@@ -139,10 +139,10 @@ autopkg run WoodwingStudioInCopyCC2020.munki.recipe -p /path/to/WoodWing_Studio_
 			<dict>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy 2020/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin</string>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Plug-ins/SCEnterprise.InDesignPlugin</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Plug-ins/SCEnterprise.InDesignPlugin</string>
 			</dict>
 			<key>Comment</key>
 			<string>Copy SCEnterprise.InDesignPlugin into the destination</string>

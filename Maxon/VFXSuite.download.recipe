@@ -8,10 +8,10 @@
 	<string>com.github.foigus.download.VFXSuite</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>VFXSuite</string>
 		<key>DOWNLOAD_URL</key>
 		<string>http://downloads.redgiant.com/redgiant/products/singlesuites/vfx/VFXSuite_Mac_Scripted.zip</string>
+		<key>NAME</key>
+		<string>VFXSuite</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>

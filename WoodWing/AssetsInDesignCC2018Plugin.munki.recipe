@@ -119,10 +119,10 @@ autopkg run AssetsInDesignCC2018Plugin.munki -p /path/WoodWing\ Assets\ for\ InD
 			<dict>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/root/Applications/Adobe InDesign CC 2018/Plug-Ins/Elvis/Elvis.InDesignPlugin</string>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/cc2018/Elvis.InDesignPlugin</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/cc2018/Elvis.InDesignPlugin</string>
 			</dict>
 			<key>Comment</key>
 			<string>Copy the InDesign plugin to the fake destination to allow creation of an installs array</string>

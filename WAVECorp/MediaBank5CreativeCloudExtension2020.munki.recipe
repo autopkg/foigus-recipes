@@ -35,14 +35,14 @@ autopkg run MediaBank5CreativeCloudExtension2020.munki -p /path/to/MediaBank_Ins
 			<string>MediaBank 5 Creative Cloud Extension</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>update_for</key>
-			<array>
-				<string>MediaBank5InDesignCC2020</string>
-			</array>
 			<key>unattended_install</key>
 			<true/>
 			<key>unattended_uninstall</key>
 			<false/>
+			<key>update_for</key>
+			<array>
+				<string>MediaBank5InDesignCC2020</string>
+			</array>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

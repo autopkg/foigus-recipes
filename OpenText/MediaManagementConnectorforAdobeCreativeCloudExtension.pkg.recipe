@@ -63,8 +63,6 @@
 					<string>0755</string>
 					<key>Library/Application Support</key>
 					<string>0755</string>
-					<key>Library/Application Support</key>
-					<string>0755</string>
 					<key>Library/Application Support/Adobe</key>
 					<string>0775</string>
 					<key>Library/Application Support/Adobe/CEP</key>
@@ -81,12 +79,12 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload/Library/Application Support/Adobe/CEP/extensions/com.opentext.extension</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/CEP/extensions/com.opentext.extension</string>
 				<key>purge_destination</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload/Library/Application Support/Adobe/CEP/extensions/com.opentext.extension</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>

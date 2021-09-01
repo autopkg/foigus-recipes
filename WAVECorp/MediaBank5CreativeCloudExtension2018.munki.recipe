@@ -35,15 +35,15 @@ autopkg run MediaBank5CreativeCloudExtension2018.munki -p /path/to/MediaBank_Ins
 			<string>MediaBank 5 Creative Cloud Extension</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<false/>
 			<key>update_for</key>
 			<array>
 				<string>MediaBank5InDesignCC2018</string>
 				<string>MediaBank5PhotoshopCC2018</string>
 			</array>
-			<key>unattended_install</key>
-			<true/>
-			<key>unattended_uninstall</key>
-			<false/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

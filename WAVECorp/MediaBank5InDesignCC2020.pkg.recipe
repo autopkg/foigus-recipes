@@ -39,10 +39,10 @@ autopkg run MediaBank5InDesignCC2020.pkg -p /path/to/MediaBank_Installer_osx_202
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/PluginInstaller.app/Contents/app/Contents/Resources/MediaBank.zxp</string>
 				<key>archive_format</key>
 				<string>zip</string>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/PluginInstaller.app/Contents/app/Contents/Resources/MediaBank.zxp</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/MediaBank5zxp_unarchive</string>
 				<key>purge_destination</key>
@@ -94,12 +94,12 @@ autopkg run MediaBank5InDesignCC2020.pkg -p /path/to/MediaBank_Installer_osx_202
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/MediaBank5zxp_unarchive/mac/2020/ContentManager.sdk.InDesignPlugin</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/%PLUGIN_INSTALL_DIR%/ContentManager.sdk.InDesignPlugin</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/MediaBank5zxp_unarchive/mac/2020/ContentManager.sdk.InDesignPlugin</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
@@ -107,12 +107,12 @@ autopkg run MediaBank5InDesignCC2020.pkg -p /path/to/MediaBank_Installer_osx_202
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/MediaBank5zxp_unarchive/mac/2020/ContentManagerUI.sdk.InDesignPlugin</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/%PLUGIN_INSTALL_DIR%/ContentManagerUI.sdk.InDesignPlugin</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/MediaBank5zxp_unarchive/mac/2020/ContentManagerUI.sdk.InDesignPlugin</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>

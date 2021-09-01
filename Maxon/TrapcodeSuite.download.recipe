@@ -8,10 +8,10 @@
 	<string>com.github.foigus.download.TrapcodeSuite</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>TrapcodeSuite</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://downloads.redgiant.com/redgiant/products/singlesuites/trapcode/TCSuite_Mac_Scripted.zip</string>
+		<key>NAME</key>
+		<string>TrapcodeSuite</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>

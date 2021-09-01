@@ -8,10 +8,10 @@
 	<string>com.github.foigus.download.PIX3</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>PIX3</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://project.pixsystem.com/products/getpix.php?filename=newmac</string>
+		<key>NAME</key>
+		<string>PIX3</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -33,8 +33,6 @@
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
@@ -42,6 +40,8 @@
 				<key>requirement</key>
 				<string>identifier "com.electron.pix" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "7D45HCDK89"</string>
 			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 	</array>
 </dict>

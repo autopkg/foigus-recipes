@@ -30,10 +30,10 @@ autopkg run InspireDesigner14ExportCC2020.pkg -p /path/to/Adobe-InDesign-2020-Pl
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>flat_pkg_path</key>
-				<string>%PKG%/*.pkg</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/expand_pkg_recipe</string>
+				<key>flat_pkg_path</key>
+				<string>%PKG%/*.pkg</string>
 				<key>purge_destination</key>
 				<true/>
 			</dict>

@@ -10,10 +10,10 @@ CodeSignatureVerifier skipped 11/23/2020 due to the lack of anything with a usab
 	<string>com.github.foigus.download.EffectsSuite</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>EffectsSuite</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://downloads.redgiant.com/redgiant/products/singlesuites/effects/ESuite_Mac_Scripted.zip</string>
+		<key>NAME</key>
+		<string>EffectsSuite</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>

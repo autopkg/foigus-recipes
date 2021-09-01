@@ -154,10 +154,10 @@ autopkg run WoodwingSmartConnectionInCopyCC2018.munki -p /path/to/Smart_Connecti
 			<dict>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy CC 2018/Plug-Ins/Woodwing/SCEnterprise.InDesignPlugin</string>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Plug-ins/SCEnterprise.InDesignPlugin</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Plug-ins/SCEnterprise.InDesignPlugin</string>
 			</dict>
 			<key>Comment</key>
 			<string>Copy SCEnterprise.InDesignPlugin into the destination</string>

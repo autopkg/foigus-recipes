@@ -22,19 +22,19 @@
 			<string>PackageRequired</string>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: Open Text  Corporation (4B9GHJ9X43)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+				<key>input_path</key>
+				<string>%PKG%</string>
+			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
-		<key>Arguments</key>   
-		<dict>   
-			<key>input_path</key>   
-			<string>%PKG%</string>
-			<key>expected_authority_names</key>
-			<array>
-				<string>Developer ID Installer: Open Text  Corporation (4B9GHJ9X43)</string>
-				<string>Developer ID Certification Authority</string>
-				<string>Apple Root CA</string>
-			</array>
-		</dict>
 		</dict>
 		<dict>
 			<key>Arguments</key>

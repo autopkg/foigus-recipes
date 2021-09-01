@@ -26,10 +26,10 @@ autopkg run MediaBankGoldInDesignCC2018.pkg -p /path/to/MediaBankGold_Installer_
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/MediaBank Gold Installer.app/Contents/Resources/MediaBankGold.zxp</string>
 				<key>archive_format</key>
 				<string>zip</string>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/MediaBank Gold Installer.app/Contents/Resources/MediaBankGold.zxp</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/MediaBankGoldzxp_unarchive</string>
 				<key>purge_destination</key>
@@ -81,12 +81,12 @@ autopkg run MediaBankGoldInDesignCC2018.pkg -p /path/to/MediaBankGold_Installer_
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/MediaBankGoldzxp_unarchive/mac/CC_2018/ContentManager.sdk.InDesignPlugin</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/%PLUGIN_INSTALL_DIR%/ContentManager.sdk.InDesignPlugin</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/MediaBankGoldzxp_unarchive/mac/CC_2018/ContentManager.sdk.InDesignPlugin</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
@@ -94,12 +94,12 @@ autopkg run MediaBankGoldInDesignCC2018.pkg -p /path/to/MediaBankGold_Installer_
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/MediaBankGoldzxp_unarchive/mac/CC_2018/ContentManagerUI.sdk.InDesignPlugin</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/%PLUGIN_INSTALL_DIR%/ContentManagerUI.sdk.InDesignPlugin</string>
 				<key>overwrite</key>
 				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/MediaBankGoldzxp_unarchive/mac/CC_2018/ContentManagerUI.sdk.InDesignPlugin</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>

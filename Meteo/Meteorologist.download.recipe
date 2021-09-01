@@ -22,13 +22,13 @@
 			<dict>
 				<key>re_pattern</key>
 				<string>.*</string>
-				<key>result_output_var_name</key>
-				<string>version</string>
 				<key>request_headers</key>
 				<dict>
 					<key>User-Agent</key>
 					<string>Meteorologist/1 CFNetwork/901.1 Darwin/17.6.0 (x86_64)</string>
 				</dict>
+				<key>result_output_var_name</key>
+				<string>version</string>
 				<key>url</key>
 				<string>%VERSION_URL%</string>
 			</dict>
@@ -36,13 +36,13 @@
 			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>com.github.n8felton.shared/SourceForgeBestReleaseURLProvider</string>
 			<key>Arguments</key>
 			<dict>
 				<key>SOURCEFORGE_PROJECT_NAME</key>
 				<string>heat-meteo</string>
 			</dict>
+			<key>Processor</key>
+			<string>com.github.n8felton.shared/SourceForgeBestReleaseURLProvider</string>
 		</dict>
 		<dict>
 			<key>Processor</key>

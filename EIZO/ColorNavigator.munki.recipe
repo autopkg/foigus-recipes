@@ -40,8 +40,6 @@ Requiring a logout since the GUI installer reopens ColorNavigator, but not from 
 			<string>10.6</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>uninstallable</key>
-			<true/>
 			<key>unattended_install</key>
 			<false/>
 			<key>uninstall_method</key>
@@ -56,6 +54,8 @@ Requiring a logout since the GUI installer reopens ColorNavigator, but not from 
 			"${UNINSTALL_SCRIPT}"
 			
 			pkgutil --forget com.EIZO.pkg.ColorNavigator6</string>
+			<key>uninstallable</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

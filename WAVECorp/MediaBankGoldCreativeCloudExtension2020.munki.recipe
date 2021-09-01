@@ -37,6 +37,10 @@ autopkg run MediaBankGoldCreativeCloudExtension2020.munki -p /path/to/mediabankg
 			<string>MediaBank Gold Creative Cloud Extension</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<false/>
 			<key>update_for</key>
 			<array>
 				<string>MediaBankGoldIllustratorCC2020</string>
@@ -44,10 +48,6 @@ autopkg run MediaBankGoldCreativeCloudExtension2020.munki -p /path/to/mediabankg
 				<string>MediaBankGoldInDesignCC2020</string>
 				<string>MediaBankGoldPhotoshopCC2020</string>
 			</array>
-			<key>unattended_install</key>
-			<true/>
-			<key>unattended_uninstall</key>
-			<false/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

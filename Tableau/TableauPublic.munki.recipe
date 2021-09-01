@@ -28,10 +28,10 @@
 			<string>Data in. Brilliance out. Visualize and Share Your Data in Minutes.</string>
 			<key>developer</key>
 			<string>Tableau</string>
-			<key>minimum_os_version</key>
-			<string>10.13</string>
 			<key>display_name</key>
 			<string>Tableau Public</string>
+			<key>minimum_os_version</key>
+			<string>10.13</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -55,7 +55,7 @@
 				<true/>
 			</dict>
 			<key>Processor</key>
-			<string>FlatPkgUnpacker</string>			
+			<string>FlatPkgUnpacker</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>

@@ -55,7 +55,7 @@
 				<true/>
 			</dict>
 			<key>Processor</key>
-			<string>FlatPkgUnpacker</string>			
+			<string>FlatPkgUnpacker</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>

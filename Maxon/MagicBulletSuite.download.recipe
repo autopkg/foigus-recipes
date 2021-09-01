@@ -8,10 +8,10 @@
 	<string>com.github.foigus.download.MagicBulletSuite</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>MagicBulletSuite</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://downloads.redgiant.com/redgiant/products/singlesuites/magicbullet/MBSuite_Mac_Scripted.zip</string>
+		<key>NAME</key>
+		<string>MagicBulletSuite</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>

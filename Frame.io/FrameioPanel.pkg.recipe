@@ -36,10 +36,10 @@ If there's interest in attempting to write a download recipe.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%PKG%</string>
 				<key>archive_format</key>
 				<string>zip</string>
+				<key>archive_path</key>
+				<string>%PKG%</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/unarchive</string>
 				<key>purge_destination</key>
@@ -70,8 +70,6 @@ If there's interest in attempting to write a download recipe.</string>
 					<string>0755</string>
 					<key>Library/Application Support</key>
 					<string>0755</string>
-					<key>Library/Application Support</key>
-					<string>0755</string>
 					<key>Library/Application Support/Adobe</key>
 					<string>0775</string>
 					<key>Library/Application Support/Adobe/CEP</key>
@@ -90,10 +88,10 @@ If there's interest in attempting to write a download recipe.</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%PKG%</string>
 				<key>archive_format</key>
 				<string>zip</string>
+				<key>archive_path</key>
+				<string>%PKG%</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/CEP/extensions/com.frameio.panel</string>
 				<key>purge_destination</key>

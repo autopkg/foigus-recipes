@@ -37,6 +37,10 @@ autopkg run MediaBankGoldCreativeCloudExtension2018.munki -p /path/to/MediaBankG
 			<string>MediaBank Gold Creative Cloud Extension</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<false/>
 			<key>update_for</key>
 			<array>
 				<string>MediaBankGoldIllustratorCC2018</string>
@@ -44,10 +48,6 @@ autopkg run MediaBankGoldCreativeCloudExtension2018.munki -p /path/to/MediaBankG
 				<string>MediaBankGoldInDesignCC2018</string>
 				<string>MediaBankGoldPhotoshopCC2018</string>
 			</array>
-			<key>unattended_install</key>
-			<true/>
-			<key>unattended_uninstall</key>
-			<false/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>

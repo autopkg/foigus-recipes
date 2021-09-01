@@ -10,10 +10,10 @@
 	<string>com.github.foigus.download.SketchToolbox</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>Sketch Toolbox</string>
 		<key>DOWNLOAD_URL</key>
 		<string>http://sketchtoolbox.com/Sketch%20Toolbox.zip</string>
+		<key>NAME</key>
+		<string>Sketch Toolbox</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>

@@ -44,24 +44,24 @@ NOTE:
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
 			<key>Arguments</key>
 			<dict>
 				<key>additional_pkginfo</key>
 				<dict>
-				<key>version</key>
-				<string>%version%</string>
-				<key>uninstall_script</key>
-				<string>#!/bin/bash
+					<key>uninstall_script</key>
+					<string>#!/bin/bash
 
 version="%version%"
 bundle_id="com.maxon.VFXSuite.pkg"
 
 /Users/Shared/Red\ Giant/uninstall/uninstall-com.redgiant.vfx_v"${version}".sh
 pkgutil --forget "${bundle_id}"</string>
+					<key>version</key>
+					<string>%version%</string>
 				</dict>
 			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>

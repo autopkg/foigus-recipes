@@ -37,10 +37,10 @@ autopkg run MediaBank5CreativeCloudExtension2018.pkg -p /path/to/MediaBank_Insta
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/PluginInstaller.app/Contents/app/Contents/Resources/MediaBank.zxp</string>
 				<key>archive_format</key>
 				<string>zip</string>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive/PluginInstaller.app/Contents/app/Contents/Resources/MediaBank.zxp</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/MediaBank5zxp_unarchive</string>
 				<key>purge_destination</key>
@@ -84,8 +84,6 @@ autopkg run MediaBank5CreativeCloudExtension2018.pkg -p /path/to/MediaBank_Insta
 					<string>0755</string>
 					<key>Library/Application Support</key>
 					<string>0755</string>
-					<key>Library/Application Support</key>
-					<string>0755</string>
 					<key>Library/Application Support/Adobe</key>
 					<string>0775</string>
 					<key>Library/Application Support/Adobe/CEP</key>
@@ -104,10 +102,10 @@ autopkg run MediaBank5CreativeCloudExtension2018.pkg -p /path/to/MediaBank_Insta
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%RECIPE_CACHE_DIR%/MediaBank5zxp_unarchive/MediaBank.zxp</string>
 				<key>archive_format</key>
 				<string>zip</string>
+				<key>archive_path</key>
+				<string>%RECIPE_CACHE_DIR%/MediaBank5zxp_unarchive/MediaBank.zxp</string>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Application Support/Adobe/CEP/extensions/com.wavecorp.cm.plugin.MediaBank</string>
 				<key>purge_destination</key>

@@ -19,10 +19,10 @@ https://www.ecamm.com/cgi-bin/customercenter ? u=john%2Edoe%40example%2Ecom &amp
 	<dict>
 		<key>CUSTOMER_EMAIL</key>
 		<string>john%2Edoe%40example%2Ecom</string>
-		<key>REG_CODE</key>
-		<string>XYZ123</string>
 		<key>NAME</key>
 		<string>CallRecorderforSkype</string>
+		<key>REG_CODE</key>
+		<string>XYZ123</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
