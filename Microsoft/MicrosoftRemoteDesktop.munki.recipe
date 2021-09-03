@@ -32,8 +32,6 @@
 			<string>Microsoft</string>
 			<key>display_name</key>
 			<string>Microsoft Remote Desktop</string>
-			<key>minimum_os_version</key>
-			<string>10.14</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
@@ -93,6 +91,32 @@
 			<key>Processor</key>
 			<string>MunkiPkginfoMerger</string>
 		</dict>
+		<dict>
+            <key>Arguments</key>
+            <dict>
+                <key>info_path</key>
+                <string>%RECIPE_CACHE_DIR%/Applications/Microsoft Remote Desktop.app/Contents/Info.plist</string>
+                <key>plist_keys</key>
+                <dict>
+                    <key>LSMinimumSystemVersion</key>
+                    <string>min_os_version</string>
+                </dict>
+            </dict>
+            <key>Processor</key>
+            <string>PlistReader</string>
+        </dict>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>minimum_os_version</key>
+                    <string>%min_os_version%</string>
+                </dict>
+            </dict>
+            <key>Processor</key>
+            <string>MunkiPkginfoMerger</string>
+        </dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
