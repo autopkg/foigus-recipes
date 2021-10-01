@@ -92,7 +92,7 @@ install_dir=`dirname $0`
 					<key>id</key>
 					<string>com.maxon.Cinema4D-R%MAJOR_VERSION%.pkg</string>
 					<key>pkgname</key>
-					<string>%NAME%-%version%</string>
+					<string>%NAME%-R%MAJOR_VERSION%-%version%</string>
 					<key>pkgroot</key>
 					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 					<key>pkgtype</key>
