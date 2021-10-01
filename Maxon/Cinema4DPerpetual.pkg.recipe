@@ -51,7 +51,7 @@ install_dir=`dirname $0`
 				<key>re_pattern</key>
 				<string>(https:\\u002F\\u002Finstaller\.maxon\.net\\u002Finstaller\\u002F(?P&lt;version&gt;%MAJOR_VERSION%\.[\d]+)_[A-Z][A-Z][\d]+\\u002FCinema4D[-_RS\d\.]*_Mac(_Fullinstaller)?\.dmg)</string>
 				<key>url</key>
-				<string>https://www.maxon.net/%url_suffix%</string>    
+				<string>https://www.maxon.net/%url_suffix%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
