@@ -32,7 +32,7 @@ pkgutil --forget com.maxon.Cinema4D-R%MAJOR_VERSION%.pkg</string>
 		<dict>
 			<key>catalogs</key>
 			<array>
-				<string>development-maxon-Cinema4D</string>
+				<string>development-maxon-Cinema4DR%MAJOR_VERSION%</string>
 			</array>
 			<key>category</key>
 			<string>Productivity</string>
