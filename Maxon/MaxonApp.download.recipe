@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of the Maxon App.
+
+NOTE:
+- This recipe depends on homebysix's FindAndReplace.  Add homebysix's repo via:
+
+autopkg repo-add homebysix-recipes</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.MaxonApp</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>MaxonApp</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>https:\\u002F\\u002Finstaller\.maxon\.net\\u002Finstaller\\u002FRG_installers\\u002FMaxon_App_[\d\.]+_Mac\.dmg</string>
+				<key>result_output_var_name</key>
+				<string>encoded_download_url</string>
+				<key>url</key>
+				<string>https://www.maxon.net/_nuxt/static/1633111401/en/downloads/payload.js</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>find</key>
+				<string>\u002F</string>
+				<key>input_string</key>
+				<string>%encoded_download_url%</string>
+				<key>replace</key>
+				<string>/</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%output_string%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>https:\\u002F\\u002Finstaller\.maxon\.net\\u002Finstaller\\u002FRG_installers\\u002FMaxon_App_([\d\.]+)_Mac\.dmg</string>
+				<key>result_output_var_name</key>
+				<string>version</string>
+				<key>url</key>
+				<string>https://www.maxon.net/_nuxt/static/1633111401/en/downloads/payload.js</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Maxon App Installer.app</string>
+				<key>requirement</key>
+				<string>identifier "com.redgiant.Red-Giant-Service-Installer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4ZY22YGXQG"</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -31,6 +31,10 @@ NOTE:
 			<string>Magic Bullet Suite</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>MaxonApp</string>
+			</array>
 			<key>unattended_install</key>
 			<true/>
 			<key>uninstall_method</key>

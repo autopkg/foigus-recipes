@@ -8,8 +8,6 @@
 	<string>com.github.foigus.download.MagicBulletSuite</string>
 	<key>Input</key>
 	<dict>
-		<key>DOWNLOAD_URL</key>
-		<string>https://downloads.redgiant.com/redgiant/products/singlesuites/magicbullet/MBSuite_Mac_Scripted.zip</string>
 		<key>NAME</key>
 		<string>MagicBulletSuite</string>
 	</dict>
@@ -20,8 +18,21 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>re_pattern</key>
+				<string>https:\/\/installer\.maxon\.net\/installer\/RG_installers\/MBSuite-[\d\.]+_Mac_Full\.zip</string>
+				<key>result_output_var_name</key>
+				<string>download_link</string>
 				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
+				<string>https://www.maxon.net/en/downloads</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%download_link%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -45,7 +56,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/Magic Bullet * Installer.app</string>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Magic Bullet*Installer.app</string>
 			</dict>
 			<key>Processor</key>
 			<string>FileFinder</string>
