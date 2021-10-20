@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Greyscalegorilla HUB plugin for Cinema 4D.
+
+NOTES:
+- This recipe needs the version of Cinema 4D to be defined in the Input, since the installation is path-specific and hopefully _should_ work for many versions of Cinema 4D
+- This recipe needs the version of Greyscalegorilla HUB to be defined in the Input.  Right _now_ the "version.txt" file inside the download says version "1206", while the plugin itself says both "1.206" and "OSX_23_Build_117" so I leave this choice to the AutoPkg admin
+- This recipe does not download the Greyscalegorilla HUB installation media--feed the compressed file into the recipe via the following format:
+
+autopkg run GreyscalegorillaHUB.pkg -p /path/to/the/appropriate/osx_rVERSION_greyscalegorillahub.zip</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.GreyscalegorillaHUB</string>
+	<key>Input</key>
+	<dict>
+		<key>CINEMA4D_VERSION</key>
+		<string>##</string>
+		<key>NAME</key>
+		<string>GreyscalegorillaHUBR%CINEMA4D_VERSION%</string>
+		<key>GREYSCALEGORILLAHUB_VERSION</key>
+		<string>ChangeMePlease</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Comment</key>
+			<string>Not going to tackle downloading the software right now</string>
+			<key>Processor</key>
+			<string>PackageRequired</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>CINEMA4D_VERSION == "##"</string>
+			</dict>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>predicate</key>
+				<string>GREYSCALEGORILLAHUB_VERSION == "ChangeMePlease"</string>
+			</dict>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict>
+					<key>Applications</key>
+					<string>0775</string>
+					<key>Applications/Maxon Cinema 4D RXX</key>
+					<string>0755</string>
+					<key>Applications/Maxon Cinema 4D RXX/plugins</key>
+					<string>0755</string>
+				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>source</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Maxon Cinema 4D RXX</string>
+				<key>target</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Maxon Cinema 4D R%CINEMA4D_VERSION%</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileMover</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>%PKG%</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/findthefilename</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>([^\/]+)\.zip$</string>
+				<key>result_output_var_name</key>
+				<string>decompression_destination_path</string>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/findthefilename</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%PKG%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot/Applications/Maxon Cinema 4D R%CINEMA4D_VERSION%/plugins/%decompression_destination_path%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_request</key>
+				<dict>
+					<key>chown</key>
+					<array>
+						<dict>
+							<key>group</key>
+							<string>admin</string>
+							<key>path</key>
+							<string>Applications</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+						<dict>
+							<key>group</key>
+							<string>wheel</string>
+							<key>path</key>
+							<string>Applications/Maxon Cinema 4D R%CINEMA4D_VERSION%/plugins</string>
+							<key>user</key>
+							<string>root</string>
+						</dict>
+					</array>
+					<key>id</key>
+					<string>com.greyscalegorilla.GreyscalegorillaHUBR%CINEMA4D_VERSION%.pkg</string>
+					<key>pkgname</key>
+					<string>%NAME%-%GREYSCALEGORILLAHUB_VERSION%</string>
+					<key>pkgroot</key>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+					<key>pkgtype</key>
+					<string>flat</string>
+					<key>version</key>
+					<string>%GREYSCALEGORILLAHUB_VERSION%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>PkgCreator</string>
+		</dict>
+	</array>
+</dict>
+</plist>

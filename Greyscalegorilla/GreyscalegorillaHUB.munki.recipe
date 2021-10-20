@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Greyscalegorilla HUB plugin for Cinema 4D and imports it into Munki.
+
+NOTES:
+- This recipe needs the version of Cinema 4D to be defined in the Input, since the installation is path-specific and hopefully _should_ work for many versions of Cinema 4D
+- This recipe needs the version of Greyscalegorilla HUB to be defined in the Input.  Right _now_ the "version.txt" file inside the download says version "1206", while the plugin itself says both "1.206" and "OSX_23_Build_117" so I leave this choice to the AutoPkg admin
+- This recipe does not download the Greyscalegorilla HUB installation media--feed the compressed file into the recipe via the following format:
+
+autopkg run GreyscalegorillaHUB.munki -p /path/to/the/appropriate/osx_rVERSION_greyscalegorillahub.zip</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.GreyscalegorillaHUB</string>
+	<key>Input</key>
+	<dict>
+		<key>CINEMA4D_VERSION</key>
+		<string>##</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/greyscalegorilla</string>
+		<key>NAME</key>
+		<string>GreyscalegorillaHUBR%CINEMA4D_VERSION%</string>
+		<key>GREYSCALEGORILLAHUB_VERSION</key>
+		<string>ChangeMePlease</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Cinema 4D</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-greyscalegorilla-GreyscalegorillaHUBR%CINEMA4D_VERSION%</string>
+			</array>
+			<key>category</key>
+			<string>Productivity</string>
+			<key>description</key>
+			<string>The Greyscalegorilla HUB is where you can manage all of your plugins and assets from one central location in Cinema 4D.</string>
+			<key>developer</key>
+			<string>Greyscalegorilla</string>
+			<key>display_name</key>
+			<string>Greyscalegorilla HUB for Cinema 4D R%CINEMA4D_VERSION%</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>Cinema4D</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.pkg.GreyscalegorillaHUB</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
