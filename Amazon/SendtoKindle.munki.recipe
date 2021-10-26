@@ -3,9 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest Send to Kindle disk image and imports it into Munki.
+	<string>Downloads latest Send to Kindle, modifies a postinstall to exit 0 in case of scripting failure, and imports it into Munki.
 
-Requiring a restart rather than troubleshooting the Send to Kindle LaunchAgent trying to find a keychain to store "DeviceSerialNumber".</string>
+NOTE:
+- This recipe depends on facebook's FileAppender.  Add facebook's repo via:
+autopkg repo-add https://github.com/facebook/Recipes-for-AutoPkg
+- Requiring a restart rather than troubleshooting the Send to Kindle LaunchAgent trying to find a keychain to store "DeviceSerialNumber"
+- STOP_ON_NO_NEW_DOWNLOAD is set to "true" by default.  Amazon's packages seem to be perpetually version 1.0, so this will allow new package version 1.0's to be imported</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.SendToKindle</string>
 	<key>Input</key>
@@ -14,14 +18,12 @@ Requiring a restart rather than troubleshooting the Send to Kindle LaunchAgent t
 		<string>apps/amazon</string>
 		<key>NAME</key>
 		<string>SendToKindle</string>
+		<key>STOP_ON_NO_NEW_DOWNLOAD</key>
+		<true/>
 		<key>pkginfo</key>
 		<dict>
 			<key>RestartAction</key>
 			<string>RequireRestart</string>
-			<key>blocking_applications</key>
-			<array>
-				<string>Send to Kindle</string>
-			</array>
 			<key>catalogs</key>
 			<array>
 				<string>development-amazon-SendToKindle</string>
@@ -36,19 +38,79 @@ Requiring a restart rather than troubleshooting the Send to Kindle LaunchAgent t
 			<string>Send to Kindle</string>
 			<key>name</key>
 			<string>%NAME%</string>
-			<key>unattended_install</key>
-			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.foigus.download.SendToKindle</string>
+	<string>com.github.foigus.pkg.SendToKindle</string>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>predicate</key>
+				<string>download_changed == FALSE AND STOP_ON_NO_NEW_DOWNLOAD == TRUE</string>
+			</dict>
+			<key>Processor</key>
+			<string>StopProcessingIf</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%pathname%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root</string>
+				<key>pkg_payload_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/buildroot.pkg/Payload</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/payload/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Send to Kindle/Send to Kindle.app</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>force_munkiimport</key>
+				<string>yes</string>
 				<key>pkg_path</key>
 				<string>%pathname%</string>
 				<key>repo_subdirectory</key>
