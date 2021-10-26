@@ -23,7 +23,7 @@ autopkg repo-add https://github.com/facebook/Recipes-for-AutoPkg
 		<key>pkginfo</key>
 		<dict>
 			<key>RestartAction</key>
-			<string>RequireRestart</string>
+			<string>RequireLogout</string>
 			<key>catalogs</key>
 			<array>
 				<string>development-amazon-SendToKindle</string>
