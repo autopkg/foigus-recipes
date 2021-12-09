@@ -24,11 +24,24 @@ autopkg repo-add homebysix-recipes</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
+				<string>\/_nuxt\/static\/[\d]+\/en\/downloads\/payload\.js</string>
+				<key>result_output_var_name</key>
+				<string>url_stub</string>
+				<key>url</key>
+				<string>https://www.maxon.net/en/downloads</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
 				<string>https:\\u002F\\u002Finstaller\.maxon\.net\\u002Finstaller\\u002FRG_installers\\u002FMaxon_App_[\d\.]+_Mac\.dmg</string>
 				<key>result_output_var_name</key>
 				<string>encoded_download_url</string>
 				<key>url</key>
-				<string>https://www.maxon.net/_nuxt/static/1633111401/en/downloads/payload.js</string>
+				<string>https://www.maxon.net/%url_stub%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -67,7 +80,7 @@ autopkg repo-add homebysix-recipes</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
-				<string>https://www.maxon.net/_nuxt/static/1633111401/en/downloads/payload.js</string>
+				<string>https://www.maxon.net/%url_stub%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
