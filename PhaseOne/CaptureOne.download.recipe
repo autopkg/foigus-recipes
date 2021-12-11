@@ -14,15 +14,15 @@ NOTES:
 	<key>Input</key>
 	<dict>
 		<key>ACTUAL_VERSION</key>
-		<string>14</string>
+		<string>15</string>
 		<key>CODESIGNATUREVERIFIERREQUIREMENT</key>
-		<string>anchor apple generic and identifier "com.captureone.captureone14" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5WTDB5F65L")</string>
+		<string>anchor apple generic and identifier "com.captureone.captureone15" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5WTDB5F65L")</string>
 		<key>DOWNLOADURLUUID</key>
-		<string>5059f2ea-b489-4f19-8e68-3b359e11d00a</string>
+		<string>5612c62d-a4a1-463b-b31a-2c9965501099</string>
 		<key>LANGUAGE</key>
 		<string>International</string>
 		<key>MARKETING_VERSION</key>
-		<string>21</string>
+		<string>22</string>
 		<key>NAME</key>
 		<string>CaptureOne</string>
 	</dict>
@@ -34,7 +34,7 @@ NOTES:
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>&lt;AvailableVersion&gt;(%ACTUAL_VERSION%[\.\d]*)&lt;\/AvailableVersion&gt;</string>
+				<string>&lt;AvailableVersion&gt;(%ACTUAL_VERSION%[\.\d]*)\.\d+&lt;\/AvailableVersion&gt;</string>
 				<key>result_output_var_name</key>
 				<string>truncated_version</string>
 				<key>url</key>
