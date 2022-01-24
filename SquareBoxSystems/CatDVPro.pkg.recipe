@@ -8,8 +8,10 @@
 	<string>com.github.foigus.pkg.CatDVPro</string>
 	<key>Input</key>
 	<dict>
+		<key>MAJOR_VERSION</key>
+		<string>14</string>
 		<key>NAME</key>
-		<string>CatDVPro</string>
+		<string>CatDVPro%MAJOR_VERSION%</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -37,7 +39,7 @@
 				<key>destination_path</key>
 				<string>%pkgroot%/Applications/CatDV Pro %MAJOR_VERSION%</string>
 				<key>source_path</key>
-				<string>%pathname%/CatDV Pro*</string>
+				<string>%pathname%/CatDV Pro %MAJOR_VERSION%*</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>

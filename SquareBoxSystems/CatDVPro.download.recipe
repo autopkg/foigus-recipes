@@ -11,7 +11,7 @@
 		<key>MAJOR_VERSION</key>
 		<string>14</string>
 		<key>NAME</key>
-		<string>CatDVPro</string>
+		<string>CatDVPro%MAJOR_VERSION%</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>
@@ -34,7 +34,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%-%MAJOR_VERSION%.dmg</string>
+				<string>CatDVPro.dmg</string>
 				<key>url</key>
 				<string>%download_url%</string>
 			</dict>
