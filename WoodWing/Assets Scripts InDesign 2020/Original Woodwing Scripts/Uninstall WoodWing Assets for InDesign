@@ -116,6 +116,13 @@ function UninstallPlugins()
 				-exec echo "  Deleting {}" \; \
 				-exec rm -rf {} \;
 
+		# Find and remopve all the WoodwingCommon plugins.
+		find "${path_only}/Plug-Ins/WoodWing" \
+				-maxdepth "1" \
+				\( -iname "Assets*.InDesignPlugin" \) \
+				-exec echo "  Deleting {}" \; \
+				-exec rm -rf {} \;
+
 		# Delete the whole 'Plug-Ins/WoodWing' folder if it is empty.
 		rmdir "${path_only}/Plug-Ins/WoodWing"
 	fi
