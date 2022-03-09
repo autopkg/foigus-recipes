@@ -185,7 +185,7 @@ done
 ln -sf /usr/local/lib/libftd2xx.1.2.2.dylib /usr/local/lib/libftd2xx.dylib
 
 # Make symbolic link for K-10
-ln -sf "${PLUGINS_DIR}/exports/mac/libftd2xx.1.4.16.dylib" "${PLUGINS_DIR}/exports/mac/libftd2xx.dylib"
+ln -sf "${PLUGINS_DIR}/exports/mac/libftd2xx.1.4.24.dylib" "${PLUGINS_DIR}/exports/mac/libftd2xx.dylib"
 
 /sbin/kextload -b com.basICColor.driver.basICColorDISCUS
 
