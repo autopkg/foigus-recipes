@@ -21,7 +21,7 @@
 				<key>re_pattern</key>
 				<string>https://.*\.dmg</string>
 				<key>url</key>
-				<string>https://www.wrike.com/api/v3/internal/integration_info?type=WrikeDesktopMac</string>
+				<string>https://www.wrike.com/api/v4/internal/integration_info?type=WrikeDesktopMac</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
