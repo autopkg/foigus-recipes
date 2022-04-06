@@ -20,6 +20,17 @@ CodeSignatureVerifier skipped 11/23/2020 due to the lack of anything with a usab
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>This recipe is deprecated and will soon be removed.  Per Maxon, Effects Suite was discontinued in 2019:
+
+https://support.maxon.net/hc/en-us/sections/360004536613-Legacy-Effects-VFX-Suite</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>

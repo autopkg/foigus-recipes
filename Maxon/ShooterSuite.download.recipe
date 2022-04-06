@@ -18,6 +18,17 @@
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>This recipe is deprecated and will soon be removed.  Per Maxon, Shooter Suite was discontinued in 2019:
+
+https://support.maxon.net/hc/en-us/sections/360009775733-Legacy-Shooter-Suites</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
