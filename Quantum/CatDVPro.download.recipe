@@ -21,11 +21,11 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>http:\/\/www\.squarebox\.com\/download\/CatDVPro[\d\.]+\.dmg</string>
+				<string>https:\/\/www\.squarebox\.com\/download\/CatDVPro[\d\.]+\.dmg</string>
 				<key>result_output_var_name</key>
 				<string>download_url</string>
 				<key>url</key>
-				<string>http://www.squarebox.com/support/download/</string>
+				<string>https://www.quantum.com/en/service-support/downloads-and-firmware/catdv/</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
