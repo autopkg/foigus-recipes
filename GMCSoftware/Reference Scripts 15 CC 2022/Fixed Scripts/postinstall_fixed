@@ -1,0 +1,36 @@
+#!/bin/zsh
+
+scriptDir="$(dirname "$0")"
+
+. "$scriptDir/common.sh"
+. "$scriptDir/installer.data"
+
+src="/tmp/InspireDesignerIn.InDesignPlugin"
+dest="/tmp/com.quadient.InDesignPlugin.destination"
+licenseCFG="/tmp/com.quadient.InDesignPlugin.config"
+licenseLIC="/tmp/com.quadient.PNetT.lic"
+echo -n "/Applications/Adobe InDesign 2022" > /tmp/com.quadient.InDesignPlugin.destination
+
+if [ -f "$dest" ]; then
+	pluginDest="$(cat "$dest")/Plug-Ins"
+	iniFileDest="$pluginDest/InspireDesignerIn.ini"
+	if [ -d "$pluginDest" ]; then
+		ditto --rsrc "$src" "$pluginDest/InspireDesignerIn.InDesignPlugin" && rm -f "$dest" && rm -rf "$src"
+		echo "LINESPACE=EXACT,GADIALOG=YES,OUTPUT=FLOWAREA">"$iniFileDest" && chmod 777 "$iniFileDest"
+		if [ -f "$licenseCFG" ]; then
+			cp -f "$licenseCFG" "$pluginDest/PrintNetTExporter.config" && rm -f "$licenseCFG"
+		fi
+		if [ -f "$licenseLIC" ]; then
+			licFilePath="$(cat "$licenseLIC")"
+			licFileTarget="$pluginDest/$(basename "$licFilePath")"
+			cp -f "$licFilePath" "$licFileTarget" && chmod 644 "$licFileTarget" && rm -f "$licenseLIC"
+		fi
+	fi
+fi
+
+# Cleanup temporary folder dirty from previous versions
+rm -rf "$HOME/Library/Application Support/Quadient/InspireExportInd"
+
+ForgetPackageWithDelay 10 "$INDD_PLUGIN_IDENTIFIER" &
+
+exit 0

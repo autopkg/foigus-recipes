@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Inspire Designer 15 Export plugin for InDesign CC 2022.
+
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add hjuutilainen's repo via:
+
+autopkg repo-add hjuutilainen-recipes
+
+- This recipe points to the default installation location of InDesign CC 2022.  Adjust the path as needed.
+- This recipe does not download the Inspire Designer 15 Export plugin disk image--feed the disk image into the recipe via the following format:
+
+autopkg run InspireDesigner15ExportCC2022.pkg -p /path/to/InstallerPackage-AdobeInDesign2022Plugin-15.3.0.0-FMAP-Mac64.dmg</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.pkg.InspireDesigner15ExportCC2022</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>InspireDesigner15ExportCC2022</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.5.1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.InspireDesigner15ExportCC2022</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/expand_pkg_recipe</string>
+				<key>flat_pkg_path</key>
+				<string>%PKG%/*.pkg</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Expand the package</string>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+				<string>%RECIPE_CACHE_DIR%/expand_pkg_recipe/Adobe_InDesign_2022_Plugin_*.pkg</string>
+			</dict>
+			<key>Comment</key>
+			<string>Find the name of the plugin package.</string>
+			<key>Processor</key>
+			<string>FileFinder</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>c154c8a915963f28649c1c39870750e0</string>
+				<key>pathname</key>
+				<string>%found_filename%/Scripts/postinstall</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 15.3.0 "postinstall" script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%found_filename%/Scripts/postinstall</string>
+				</array>
+			</dict>
+			<key>Comments</key>
+			<string>Remove this copy of "postinstall" script</string>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>file_content</key>
+				<string>#!/bin/zsh
+
+scriptDir="$(dirname "$0")"
+
+. "$scriptDir/common.sh"
+. "$scriptDir/installer.data"
+
+src="/tmp/InspireDesignerIn.InDesignPlugin"
+dest="/tmp/com.quadient.InDesignPlugin.destination"
+licenseCFG="/tmp/com.quadient.InDesignPlugin.config"
+licenseLIC="/tmp/com.quadient.PNetT.lic"
+echo -n "/Applications/Adobe InDesign 2022" &gt; /tmp/com.quadient.InDesignPlugin.destination
+
+if [ -f "$dest" ]; then
+	pluginDest="$(cat "$dest")/Plug-Ins"
+	iniFileDest="$pluginDest/InspireDesignerIn.ini"
+	if [ -d "$pluginDest" ]; then
+		ditto --rsrc "$src" "$pluginDest/InspireDesignerIn.InDesignPlugin" &amp;&amp; rm -f "$dest" &amp;&amp; rm -rf "$src"
+		echo "LINESPACE=EXACT,GADIALOG=YES,OUTPUT=FLOWAREA"&gt;"$iniFileDest" &amp;&amp; chmod 777 "$iniFileDest"
+		if [ -f "$licenseCFG" ]; then
+			cp -f "$licenseCFG" "$pluginDest/PrintNetTExporter.config" &amp;&amp; rm -f "$licenseCFG"
+		fi
+		if [ -f "$licenseLIC" ]; then
+			licFilePath="$(cat "$licenseLIC")"
+			licFileTarget="$pluginDest/$(basename "$licFilePath")"
+			cp -f "$licFilePath" "$licFileTarget" &amp;&amp; chmod 644 "$licFileTarget" &amp;&amp; rm -f "$licenseLIC"
+		fi
+	fi
+fi
+
+# Cleanup temporary folder dirty from previous versions
+rm -rf "$HOME/Library/Application Support/Quadient/InspireExportInd"
+
+ForgetPackageWithDelay 10 "$INDD_PLUGIN_IDENTIFIER" &amp;
+
+exit 0</string>
+				<key>file_mode</key>
+				<string>0755</string>
+				<key>file_path</key>
+				<string>%found_filename%/Scripts/postinstall</string>
+			</dict>
+			<key>Comment</key>
+			<string>Write a fixed "postinstall" with an InDesign CC 2022-specific version, note this is the same script as postinstall_fixed in this repo</string>
+			<key>Processor</key>
+			<string>FileCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack_pkg_recipe</string>
+				<key>pkg_payload_path</key>
+				<string>%found_filename%/Payload</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string></string>
+			<key>Processor</key>
+			<string>PkgPayloadUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack_pkg_recipe/tmp/InspireDesignerIn.InDesignPlugin/Versions/A/Frameworks/PrintNetTExporter.framework/Versions/A/Resources/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleShortVersionString</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/flatten</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_pkg</key>
+				<string>%RECIPE_CACHE_DIR%/flatten/InspireDesigner15ExportCC2022-%version%.pkg</string>
+				<key>source_flatpkg_dir</key>
+				<string>%RECIPE_CACHE_DIR%/expand_pkg_recipe</string>
+			</dict>
+			<key>Processor</key>
+			<string>FlatPkgPacker</string>
+		</dict>
+	</array>
+</dict>
+</plist>
