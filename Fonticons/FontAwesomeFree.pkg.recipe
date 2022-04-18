@@ -48,7 +48,7 @@
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Fonts</string>
 				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/fontawesome-free-*/otfs/Font Awesome 5 Brands-Regular-400.otf</string>
+				<string>%RECIPE_CACHE_DIR%/unarchive/fontawesome-free-*/otfs/Font Awesome * Brands-Regular-400.otf</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
@@ -59,7 +59,7 @@
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Fonts</string>
 				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/fontawesome-free-*/otfs/Font Awesome 5 Free-Regular-400.otf</string>
+				<string>%RECIPE_CACHE_DIR%/unarchive/fontawesome-free-*/otfs/Font Awesome * Free-Regular-400.otf</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
@@ -70,7 +70,7 @@
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/pkgroot/Library/Fonts</string>
 				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/fontawesome-free-*/otfs/Font Awesome 5 Free-Solid-900.otf</string>
+				<string>%RECIPE_CACHE_DIR%/unarchive/fontawesome-free-*/otfs/Font Awesome * Free-Solid-900.otf</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
