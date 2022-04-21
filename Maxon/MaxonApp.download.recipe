@@ -41,7 +41,7 @@ autopkg repo-add homebysix-recipes</string>
 				<key>result_output_var_name</key>
 				<string>encoded_download_url</string>
 				<key>url</key>
-				<string>https://www.maxon.net/%url_stub%</string>
+				<string>https://www.maxon.net%url_stub%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
