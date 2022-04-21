@@ -40,7 +40,7 @@ autopkg repo-add homebysix-recipes</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>(https:\\u002F\\u002Finstaller\.maxon\.net\\u002Finstaller\\u002F%MAJOR_VERSION%\.[\d]+_[A-Z][A-Z][\d]+\\u002FCinema4D[-_RS\d\.]*_Mac(_Fullinstaller)?\.dmg)</string>
+				<string>https:\\u002F\\u002Fmx-app-blob-prod\.maxon\.net\\u002Fmx-package-production\\u002Finstaller\\u002Fmacos\\u002Fmaxon\\u002Fcinema4d\\u002Freleases\\u002F%MAJOR_VERSION%[\d\.]+\\u002FCinema4D_R%MAJOR_VERSION%_%MAJOR_VERSION%[\d\.]+_Mac\.dmg</string>
 				<key>result_output_var_name</key>
 				<string>encoded_download_url</string>
 				<key>url</key>
