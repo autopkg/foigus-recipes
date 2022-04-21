@@ -40,7 +40,7 @@ autopkg repo-add homebysix-recipes</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\\u002F\\u002Finstaller.maxon.net\\u002Finstaller\\u002F%MAJOR_VERSION%.[\d]+_CL[\d]+\\u002FCinema4D_S%MAJOR_VERSION%_%MAJOR_VERSION%\.[\d\.]+_Mac\.dmg</string>
+				<string>https:\\u002F\\u002Fmx-app-blob-prod\.maxon\.net\\u002Fmx-package-production\\u002Finstaller\\u002Fmacos\\u002Fmaxon\\u002Fcinema4d\\u002Freleases\\u002F%MAJOR_VERSION%[\d\.]+\\u002FCinema4D_S%MAJOR_VERSION%_%MAJOR_VERSION%[\d\.]+_Mac\.dmg</string>
 				<key>result_output_var_name</key>
 				<string>encoded_download_url</string>
 				<key>url</key>
@@ -79,7 +79,7 @@ autopkg repo-add homebysix-recipes</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/Maxon Cinema 4D Full Installer.app</string>
+				<string>%pathname%/Maxon Cinema 4D Installer.app</string>
 				<key>requirement</key>
 				<string>identifier "net.maxon.cinema4d.installer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4ZY22YGXQG"</string>
 			</dict>

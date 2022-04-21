@@ -49,7 +49,7 @@ install_dir=`dirname $0`
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\\u002F\\u002Finstaller.maxon.net\\u002Finstaller\\u002F%MAJOR_VERSION%.[\d]+_CL[\d]+\\u002FCinema4D_S%MAJOR_VERSION%_(%MAJOR_VERSION%\.[\d\.]+)_Mac\.dmg</string>
+				<string>https:\\u002F\\u002Fmx-app-blob-prod\.maxon\.net\\u002Fmx-package-production\\u002Finstaller\\u002Fmacos\\u002Fmaxon\\u002Fcinema4d\\u002Freleases\\u002F(%MAJOR_VERSION%[\d\.]+)\\u002FCinema4D_S%MAJOR_VERSION%_%MAJOR_VERSION%[\d\.]+_Mac\.dmg</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
@@ -62,11 +62,11 @@ install_dir=`dirname $0`
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/Scripts/Maxon Cinema 4D Full Installer.app</string>
+				<string>%RECIPE_CACHE_DIR%/Scripts/Maxon Cinema 4D Installer.app</string>
 				<key>overwrite</key>
 				<true/>
 				<key>source_path</key>
-				<string>%pathname%/Maxon Cinema 4D Full Installer.app</string>
+				<string>%pathname%/Maxon Cinema 4D Installer.app</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
