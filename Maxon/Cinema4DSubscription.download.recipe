@@ -15,7 +15,7 @@ autopkg repo-add homebysix-recipes</string>
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
-		<string>24</string>
+		<string>26</string>
 		<key>NAME</key>
 		<string>Cinema4DSubscription</string>
 	</dict>
