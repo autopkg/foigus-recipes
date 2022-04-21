@@ -15,7 +15,7 @@ autopkg repo-add homebysix-recipes</string>
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
-		<string>23</string>
+		<string>25</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/maxon</string>
 		<key>NAME</key>

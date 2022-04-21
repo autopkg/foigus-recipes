@@ -24,7 +24,7 @@ install_dir=`dirname $0`
 # for R23 installation from https://www.maxon.net/en-us/support/downloads/
 "${install_dir}/Maxon Cinema 4D Full Installer.app/Contents/MacOS/installbuilder.sh" --mode unattended --unattendedmodeui none</string>
 		<key>MAJOR_VERSION</key>
-		<string>23</string>
+		<string>25</string>
 		<key>NAME</key>
 		<string>Cinema4DPerpetual_R%MAJOR_VERSION%</string>
 	</dict>
