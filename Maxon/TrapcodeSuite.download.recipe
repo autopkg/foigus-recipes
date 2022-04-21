@@ -19,7 +19,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\/\/installer\.maxon\.net\/installer\/RG_installers\/TCSuite-[\d\.]+_Mac_Full\.zip</string>
+				<string>https:\/\/mx-app-blob-prod\.maxon\.net\/mx-package-production\/installer\/macos\/redgiant\/trapcode\/releases\/[\d\.]+\/TrapcodeSuite-[\d\.]+-mac\.zip</string>
 				<key>result_output_var_name</key>
 				<string>download_link</string>
 				<key>url</key>
