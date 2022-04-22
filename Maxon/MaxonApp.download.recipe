@@ -37,7 +37,7 @@ autopkg repo-add homebysix-recipes</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\\u002F\\u002Fmx-app-blob-prod\.maxon\.net\\u002Fmx-package-production\\u002Finstaller\\u002Fmacos\\u002Fmaxon\\u002Fmaxonapp\\u002Freleases\\u002F[\d\.]+\\u002FMaxon_App_[\d\.]+_Mac\.dmg</string>
+				<string>https:\\u002F\\u002Finstaller.maxon.net\\u002Finstaller\\u002FRG_installers\\u002FMaxon_App_[\d\.]+_Mac.dmg</string>
 				<key>result_output_var_name</key>
 				<string>encoded_download_url</string>
 				<key>url</key>
@@ -76,7 +76,7 @@ autopkg repo-add homebysix-recipes</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\\u002F\\u002Fmx-app-blob-prod\.maxon\.net\\u002Fmx-package-production\\u002Finstaller\\u002Fmacos\\u002Fmaxon\\u002Fmaxonapp\\u002Freleases\\u002F[\d\.]+\\u002FMaxon_App_([\d\.]+)_Mac\.dmg</string>
+				<string>https:\\u002F\\u002Finstaller.maxon.net\\u002Finstaller\\u002FRG_installers\\u002FMaxon_App_([\d\.]+)_Mac.dmg</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
