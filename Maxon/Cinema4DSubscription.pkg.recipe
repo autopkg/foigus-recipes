@@ -22,7 +22,7 @@ install_dir=`dirname $0`
 
 # Install Maxon Cinema 4D Subscription using the pkg from the resources directory using the flags
 # for R23 installation from https://www.maxon.net/en/downloads/cinema-4d-s24-downloads/
-"${install_dir}/Maxon Cinema 4D Full Installer.app/Contents/MacOS/installbuilder.sh" --mode unattended --unattendedmodeui none</string>
+"${install_dir}/Maxon Cinema 4D Installer.app/Contents/MacOS/installbuilder.sh" --mode unattended --unattendedmodeui none</string>
 		<key>MAJOR_VERSION</key>
 		<string>26</string>
 		<key>NAME</key>
