@@ -27,7 +27,7 @@ autopkg repo-add homebysix-recipes</string>
 rm -rf /Applications/Maxon\ Cinema\ 4D\ S%MAJOR_VERSION%
 
 #Forget the package receipt
-pkgutil --forget com.maxon.Cinema4D-S%MAJOR_VERSION%.pkg</string>
+pkgutil --forget com.maxon.Cinema4DSubscription-S%MAJOR_VERSION%.pkg</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
