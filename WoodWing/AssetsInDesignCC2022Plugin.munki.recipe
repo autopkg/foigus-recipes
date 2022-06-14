@@ -122,7 +122,7 @@ autopkg run AssetsInDesignCC2022Plugin.munki -p /path/WoodWing\ Assets\ for\ InD
 				<key>pkgdirs</key>
 				<dict/>
 				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/root/Applications/Adobe InDesign 2022/Plug-Ins/Assets</string>
+				<string>%RECIPE_CACHE_DIR%/root/Applications/Adobe InDesign 2022/Plug-Ins/WoodWing</string>
 			</dict>
 			<key>Comment</key>
 			<string>Create a root for creating the installs array</string>
@@ -133,7 +133,7 @@ autopkg run AssetsInDesignCC2022Plugin.munki -p /path/WoodWing\ Assets\ for\ InD
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/root/Applications/Adobe InDesign 2022/Plug-Ins/Assets/Assets.InDesignPlugin</string>
+				<string>%RECIPE_CACHE_DIR%/root/Applications/Adobe InDesign 2022/Plug-Ins/WoodWing/Assets.InDesignPlugin</string>
 				<key>overwrite</key>
 				<true/>
 				<key>source_path</key>
@@ -151,7 +151,7 @@ autopkg run AssetsInDesignCC2022Plugin.munki -p /path/WoodWing\ Assets\ for\ InD
 				<string>%RECIPE_CACHE_DIR%/root</string>
 				<key>installs_item_paths</key>
 				<array>
-					<string>/Applications/Adobe InDesign 2022/Plug-Ins/Assets/Assets.InDesignPlugin</string>
+					<string>/Applications/Adobe InDesign 2022/Plug-Ins/WoodWing/Assets.InDesignPlugin</string>
 				</array>
 				<key>version_comparison_key</key>
 				<string>CFBundleShortVersionString</string>
@@ -171,7 +171,7 @@ autopkg run AssetsInDesignCC2022Plugin.munki -p /path/WoodWing\ Assets\ for\ InD
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/root/Applications/Adobe InDesign 2022/Plug-Ins/Assets/Assets.InDesignPlugin/Resources/Info.plist</string>
+				<string>%RECIPE_CACHE_DIR%/root/Applications/Adobe InDesign 2022/Plug-Ins/WoodWing/Assets.InDesignPlugin/Resources/Info.plist</string>
 			</dict>
 			<key>Processor</key>
 			<string>Versioner</string>
