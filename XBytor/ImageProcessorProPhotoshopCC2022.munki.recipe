@@ -3,7 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Image Processor Pro and imports a Photoshop 2022-aimed package into Munki.</string>
+	<string>Downloads the latest version of Image Processor Pro and imports a Photoshop 2022-aimed package into Munki.
+
+NOTE: This recipe depends on homebysix's FindAndReplace.  Add homebysix's repo via:
+
+autopkg repo-add homebysix-recipes</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.ImageProcessorProPhotoshopCC2022</string>
 	<key>Input</key>

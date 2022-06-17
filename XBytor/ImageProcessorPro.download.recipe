@@ -19,9 +19,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>/(Image Processor Pro/.*/ImageProcessorPro-.*.zip)</string>
+				<string>&lt;link&gt;(https:\/\/sourceforge\.net\/projects\/ps-scripts\/files\/Image%20Processor%20Pro\/.*\/ImageProcessorPro-.*\.zip\/download)&lt;\/link&gt;</string>
 				<key>result_output_var_name</key>
-				<string>path</string>
+				<string>found_url</string>
 				<key>url</key>
 				<string>https://sourceforge.net/projects/ps-scripts/rss?path=/Image%20Processor%20Pro</string>
 			</dict>
@@ -34,7 +34,7 @@
 				<key>filename</key>
 				<string>ImageProcessorPro.zip</string>
 				<key>url</key>
-				<string>https://sourceforge.net/projects/ps-scripts/files/%path%</string>
+				<string>%found_url%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
