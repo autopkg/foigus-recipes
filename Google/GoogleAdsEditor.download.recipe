@@ -5,7 +5,11 @@
 	<key>Description</key>
 	<string>Downloads latest Google Ads Editor disk image.
 
-NOTE: When "Google Ads Editor" version 1.0 was released, the versioning for Ads Editor was reset to 1.0 even though the actual software went to version 13.  Subtract 12 from the major version to get the marketing version of Google Ads Editor (e.g. 13-12=1)</string>
+NOTES:
+- When "Google Ads Editor" version 1.0 was released, the versioning for Ads Editor was reset to 1.0 even though the actual software went to version 13.  Subtract 12 from the major version to get the marketing version of Google Ads Editor (e.g. 13-12=1)
+- This recipe depends on homebysix's FindAndReplace.  Add homebysix's repo via:
+
+autopkg repo-add homebysix-recipes</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.googleadseditor</string>
 	<key>Input</key>
@@ -48,12 +52,25 @@ NOTE: When "Google Ads Editor" version 1.0 was released, the versioning for Ads 
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>find</key>
+				<string> </string>
+				<key>input_string</key>
+				<string>%RECIPE_CACHE_DIR%</string>
+				<key>replace</key>
+				<string>%20</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>re_pattern</key>
 				<string>\nversion="([\d\.]+)"</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/keystone_install</string>
+				<string>file:////%output_string%/keystone_install</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
