@@ -19,7 +19,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>BebopClient-[\d\.]+\.dmg</string>
+				<string>BebopClientV4-[\d\.]+\.dmg</string>
 				<key>request_headers</key>
 				<dict>
 					<key>User-Agent</key>
@@ -28,7 +28,7 @@
 				<key>result_output_var_name</key>
 				<string>dmg_name</string>
 				<key>url</key>
-				<string>https://bebop-clients-v3.s3.amazonaws.com/prod/latest-mac.yml?noCache=1e4mmku54</string>
+				<string>https://bbp-clt-v4.s3.amazonaws.com/prod/latest-mac.yml?noCache=1g63efifd</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -39,7 +39,7 @@
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 				<key>url</key>
-				<string>https://bebop-clients-v3.s3.amazonaws.com/prod/%dmg_name%</string>
+				<string>https://bbp-clt-v4.s3.amazonaws.com/prod/%dmg_name%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -54,7 +54,7 @@
 				<key>input_path</key>
 				<string>%pathname%/BebopClient.app</string>
 				<key>requirement</key>
-				<string>identifier "bebop.id" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "97K63EKLMY"</string>
+				<string>identifier "com.beboptechnology.bebopclient" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "97K63EKLMY"</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
