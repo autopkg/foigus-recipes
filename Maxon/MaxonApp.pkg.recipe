@@ -36,25 +36,12 @@ autopkg repo-add homebysix-recipes</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%pathname%</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
 				<key>destination_path</key>
 				<string>%RECIPE_CACHE_DIR%/Scripts/Maxon App Installer.app</string>
 				<key>overwrite</key>
 				<true/>
 				<key>source_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/Maxon App Installer.app</string>
+				<string>%pathname%/Maxon App Installer.app</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
