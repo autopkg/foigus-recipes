@@ -19,7 +19,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\/\/mx-app-blob-prod\.maxon\.net\/mx-package-production\/installer\/macos\/redgiant\/magicbullet\/releases\/[\d\.]+\/MagicBulletSuite-[\d\.]+_mac\.zip</string>
+				<string>https:\/\/mx-app-blob-prod\.maxon\.net\/mx-package-production\/installer\/macos\/redgiant\/magicbullet\/releases\/[\d\.]+\/MagicBulletSuite-[\d\.]+_Mac\.zip</string>
 				<key>result_output_var_name</key>
 				<string>download_link</string>
 				<key>url</key>
