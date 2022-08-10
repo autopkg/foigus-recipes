@@ -87,7 +87,7 @@ autopkg repo-add homebysix-recipes</string>
 				<key>input_path</key>
 				<string>%pathname%/PCoIPClient.app</string>
 				<key>requirement</key>
-				<string>identifier "com.teradici.swiftclient" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = RU4LW7W32C</string>
+				<string>identifier "com.teradici.pcoipclient" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = RU4LW7W32C</string>
 				<key>version</key>
 				<string>%output_string%</string>
 			</dict>

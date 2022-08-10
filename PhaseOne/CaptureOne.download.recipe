@@ -49,7 +49,7 @@ NOTES:
 				<key>filename</key>
 				<string>CaptureOne.dmg</string>
 				<key>url</key>
-				<string>https://downloads.phaseone.com/%DOWNLOADURLUUID%/%LANGUAGE%/Capture_One_%MARKETING_VERSION%.Mac.%truncated_version%.dmg</string>
+				<string>https://downloads.phaseone.com/%DOWNLOADURLUUID%/%LANGUAGE%/CaptureOne%MARKETING_VERSION%.Mac.%truncated_version%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
