@@ -31,8 +31,8 @@ B_MSG=true
 ##								-e	'end try' \
 ##								-e 'return {the_results}')
 
-##Set Woodwing Studio IDP App to be uninstalled
-UNINSTALL_WOODWINGSTUDIOIDP_APP=":Yes"
+##Set Woodwing Studio IDP App to NOT be uninstalled
+UNINSTALL_WOODWINGSTUDIOIDP_APP=":No"
 
 echo "USER ACTION: ${UNINSTALL_WOODWINGSTUDIOIDP_APP}"
 echo ""
@@ -72,32 +72,34 @@ if [[ "${UNINSTALL_WOODWINGSTUDIOIDP_APP}" == *":Yes"* ]]; then
 		echo "NO CANCEL"
 	fi
 else
-	# Ask the user for the administrator username and password.
-	# IF the user cancels then nothing will be done.
-	DO_SUDO=$(osascript \
-				-e	'set the_password to ""' \
-				-e	'try' \
-				-e		'tell application "Finder"' \
-				-e			'set the_username to do shell script "whoami"' \
-				-e			'set the_password to ""' \
-				-e 			"do shell script \"sudo chmod -R 777 '$path_only'/Plug-Ins/WoodWing\" password the_password with administrator privileges" \
-				-e			'set the_password to "1"' \
-				-e		'end tell' \
-				-e	'on error number -128' \
-				-e		'set the_password to "0"' \
-				-e	'end try' \
-				-e 'return {the_password}')
-
-	echo "USER ACTION: ${DO_SUDO}"
+##No need to do this--the script is already running with elevated privileges
+##	# Ask the user for the administrator username and password.
+##	# IF the user cancels then nothing will be done.
+##	DO_SUDO=$(osascript \
+##				-e	'set the_password to ""' \
+##				-e	'try' \
+##				-e		'tell application "Finder"' \
+##				-e			'set the_username to do shell script "whoami"' \
+##				-e			'set the_password to ""' \
+##				-e 			"do shell script \"sudo chmod -R 777 '$path_only'/Plug-Ins/WoodWing\" password the_password with administrator privileges" \
+##				-e			'set the_password to "1"' \
+##				-e		'end tell' \
+##				-e	'on error number -128' \
+##				-e		'set the_password to "0"' \
+##				-e	'end try' \
+##				-e 'return {the_password}')
+##
+##	echo "USER ACTION: ${DO_SUDO}"
 	echo ""
 
-	# Check if the user has canceled (0) or not (1).
-	if [ "${DO_SUDO}" == "0" ]; then
-		echo "${DO_SUDO}"
-		exit 1;
-	else
-		echo "NO CANCEL"
-	fi
+##No need to check whether the user cancelled--we never entered the code where it matters
+##	# Check if the user has canceled (0) or not (1).
+##	if [ "${DO_SUDO}" == "0" ]; then
+##		echo "${DO_SUDO}"
+##		exit 1;
+##	else
+##		echo "NO CANCEL"
+##	fi
 fi
 
 #---------------------------------------------------------------------
