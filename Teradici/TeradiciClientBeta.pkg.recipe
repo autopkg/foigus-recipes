@@ -73,16 +73,6 @@ autopkg repo-add homebysix-recipes</string>
 							<key>user</key>
 							<string>root</string>
 						</dict>
-						<dict>
-							<key>group</key>
-							<string>wheel</string>
-							<key>mode</key>
-							<string>4755</string>
-							<key>path</key>
-							<string>Applications/PCoIPClient.app/Contents/MacOS/TeradiciUsbRedirection</string>
-							<key>user</key>
-							<string>root</string>
-						</dict>
 					</array>
 					<key>id</key>
 					<string>%PKGID%</string>
