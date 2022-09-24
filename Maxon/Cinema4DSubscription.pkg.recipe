@@ -24,7 +24,7 @@ install_dir=`dirname $0`
 # for R23 installation from https://www.maxon.net/en/downloads/cinema-4d-s24-downloads/
 "${install_dir}/Maxon Cinema 4D Installer.app/Contents/MacOS/installbuilder.sh" --mode unattended --unattendedmodeui none</string>
 		<key>MAJOR_VERSION</key>
-		<string>26</string>
+		<string>2023</string>
 		<key>NAME</key>
 		<string>Cinema4DSubscription</string>
 	</dict>
@@ -49,7 +49,7 @@ install_dir=`dirname $0`
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\\u002F\\u002Fmx-app-blob-prod\.maxon\.net\\u002Fmx-package-production\\u002Finstaller\\u002Fmacos\\u002Fmaxon\\u002Fcinema4d\\u002Freleases\\u002F(%MAJOR_VERSION%[\d\.]+)\\u002FCinema4D_S%MAJOR_VERSION%_%MAJOR_VERSION%[\d\.]+_Mac\.dmg</string>
+				<string>https:\\u002F\\u002Fmx-app-blob-prod\.maxon\.net\\u002Fmx-package-production\\u002Finstaller\\u002Fmacos\\u002Fmaxon\\u002Fcinema4d\\u002Freleases\\u002F(%MAJOR_VERSION%[\d\.]+)\\u002FCinema4D_%MAJOR_VERSION%_%MAJOR_VERSION%[\d\.]+_Mac\.dmg</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
@@ -92,9 +92,9 @@ install_dir=`dirname $0`
 					<key>chown</key>
 					<array/>
 					<key>id</key>
-					<string>com.maxon.Cinema4DSubscription-S%MAJOR_VERSION%.pkg</string>
+					<string>com.maxon.Cinema4DSubscription-%MAJOR_VERSION%.pkg</string>
 					<key>pkgname</key>
-					<string>%NAME%-S%MAJOR_VERSION%-%version%</string>
+					<string>%NAME%-%MAJOR_VERSION%-%version%</string>
 					<key>pkgroot</key>
 					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
 					<key>pkgtype</key>

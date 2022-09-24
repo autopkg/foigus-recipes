@@ -15,7 +15,7 @@ autopkg repo-add homebysix-recipes</string>
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
-		<string>26</string>
+		<string>2023</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/maxon</string>
 		<key>NAME</key>
@@ -24,15 +24,15 @@ autopkg repo-add homebysix-recipes</string>
 		<string>#!/bin/bash
 
 #Delete the application
-rm -rf /Applications/Maxon\ Cinema\ 4D\ S%MAJOR_VERSION%
+rm -rf /Applications/Maxon\ Cinema\ 4D\ %MAJOR_VERSION%
 
 #Forget the package receipt
-pkgutil --forget com.maxon.Cinema4DSubscription-S%MAJOR_VERSION%.pkg</string>
+pkgutil --forget com.maxon.Cinema4DSubscription-%MAJOR_VERSION%.pkg</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
 			<array>
-				<string>development-maxon-Cinema4DSubscriptionS%MAJOR_VERSION%</string>
+				<string>development-maxon-Cinema4DSubscription%MAJOR_VERSION%</string>
 			</array>
 			<key>category</key>
 			<string>Productivity</string>

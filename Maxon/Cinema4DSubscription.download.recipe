@@ -15,7 +15,7 @@ autopkg repo-add homebysix-recipes</string>
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
-		<string>26</string>
+		<string>2023</string>
 		<key>NAME</key>
 		<string>Cinema4DSubscription</string>
 	</dict>
@@ -27,11 +27,11 @@ autopkg repo-add homebysix-recipes</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>_nuxt\/static\/[\d]+\/en\/downloads\/cinema-4d-s%MAJOR_VERSION%-downloads\/payload\.js</string>
+				<string>_nuxt\/static\/[\d]+\/en\/downloads\/cinema-4d-%MAJOR_VERSION%-downloads\/payload\.js</string>
 				<key>result_output_var_name</key>
 				<string>url_suffix</string>
 				<key>url</key>
-				<string>https://www.maxon.net/en/downloads/cinema-4d-s%MAJOR_VERSION%-downloads/</string>
+				<string>https://www.maxon.net/en/downloads/cinema-4d-%MAJOR_VERSION%-downloads/</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -40,7 +40,7 @@ autopkg repo-add homebysix-recipes</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\\u002F\\u002Fmx-app-blob-prod\.maxon\.net\\u002Fmx-package-production\\u002Finstaller\\u002Fmacos\\u002Fmaxon\\u002Fcinema4d\\u002Freleases\\u002F%MAJOR_VERSION%[\d\.]+\\u002FCinema4D_S%MAJOR_VERSION%_%MAJOR_VERSION%[\d\.]+_Mac\.dmg</string>
+				<string>https:\\u002F\\u002Fmx-app-blob-prod\.maxon\.net\\u002Fmx-package-production\\u002Finstaller\\u002Fmacos\\u002Fmaxon\\u002Fcinema4d\\u002Freleases\\u002F%MAJOR_VERSION%[\d\.]+\\u002FCinema4D_%MAJOR_VERSION%_%MAJOR_VERSION%[\d\.]+_Mac\.dmg</string>
 				<key>result_output_var_name</key>
 				<string>encoded_download_url</string>
 				<key>url</key>
