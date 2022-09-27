@@ -16,7 +16,8 @@
 		<dict>
 			<key>blocking_applications</key>
 			<array>
-				<string>PremiereProCC2021</string>
+				<string>Adobe Premiere Pro 2021</string>
+				<string>Adobe Premiere Pro 2022</string>
 			</array>
 			<key>catalogs</key>
 			<array>
