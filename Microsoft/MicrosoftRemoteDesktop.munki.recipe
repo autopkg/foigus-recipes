@@ -130,7 +130,7 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
+			<string>MunkiOptionalReceiptEditor</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
