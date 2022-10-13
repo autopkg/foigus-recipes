@@ -32,6 +32,10 @@ autopkg repo-add novaksam-recipes</string>
 			<string>Android Studio</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>supported_architectures</key>
+			<array>
+				<string>%SUPPORTED_ARCH%</string>
+			</array>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
