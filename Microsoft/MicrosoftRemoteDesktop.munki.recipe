@@ -12,8 +12,6 @@
 		<string>apps/microsoft</string>
 		<key>NAME</key>
 		<string>MicrosoftRemoteDesktop</string>
-		<key>pkg_ids_set_optional_true</key>
-		<array/>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>
@@ -127,10 +125,6 @@
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
