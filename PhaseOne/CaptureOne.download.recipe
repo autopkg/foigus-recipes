@@ -18,7 +18,7 @@ NOTES:
 		<key>CODESIGNATUREVERIFIERREQUIREMENT</key>
 		<string>anchor apple generic and identifier "com.captureone.captureone15" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5WTDB5F65L")</string>
 		<key>DOWNLOADURLUUID</key>
-		<string>5612c62d-a4a1-463b-b31a-2c9965501099</string>
+		<string>fe066656-a98c-45bf-999b-b8e4a7da1b2c</string>
 		<key>LANGUAGE</key>
 		<string>International</string>
 		<key>MARKETING_VERSION</key>
