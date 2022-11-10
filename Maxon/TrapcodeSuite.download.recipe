@@ -32,7 +32,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\\u002F\\u002Fmx-app-blob-prod.maxon.net\\u002Fmx-package-production\\u002Finstaller\\u002Fmacos\\u002Fredgiant\\u002Ftrapcode\\u002Freleases\\u002F[\d\.]+\\u002FTrapcodeSuite-[\d\.]+_Mac.zip</string>
+				<string>https:\\u002F\\u002Fmx-app-blob-prod.maxon.net\\u002Fmx-package-production\\u002Finstaller\\u002Fmacos\\u002Fredgiant\\u002Ftrapcode\\u002Freleases\\u002F[\d\.]+\\u002FTrapcodeSuite-[\d\.]+_[Mm]ac.zip</string>
 				<key>result_output_var_name</key>
 				<string>encoded_download_url</string>
 				<key>url</key>
