@@ -107,12 +107,12 @@ autopkg run AssetsInDesignCC2022Plugin.munki -p /path/WoodWing\ Assets\ for\ InD
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>448dec7f300b869ed134a33f7a4f6f34</string>
+				<string>c3c810b0a6dd92a271aa01f02812ca74</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/ASSETSID2022.pkg/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 4.5.0.944 on the postinstall script</string>
+			<string>Verify MD5 matches 4.6.2.1019 on the postinstall script</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
