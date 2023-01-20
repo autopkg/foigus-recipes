@@ -34,7 +34,7 @@ NOTES:
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>&lt;AvailableVersion&gt;(%ACTUAL_VERSION%[\.\d]*)&lt;\/AvailableVersion&gt;</string>
+				<string>&lt;AvailableVersion&gt;(%ACTUAL_VERSION%\.\d\.\d)\.[0-9]+&lt;/AvailableVersion&gt;</string>
 				<key>result_output_var_name</key>
 				<string>truncated_version</string>
 				<key>url</key>
@@ -49,7 +49,7 @@ NOTES:
 				<key>filename</key>
 				<string>CaptureOne.dmg</string>
 				<key>url</key>
-				<string>https://downloads.phaseone.com/%DOWNLOADURLUUID%/%LANGUAGE%/CaptureOne%MARKETING_VERSION%.Mac.%truncated_version%.dmg</string>
+				<string>https://downloads.phaseone.com/%DOWNLOADURLUUID%/%LANGUAGE%/CaptureOne%MARKETING_VERSION%Mac%truncated_version%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
