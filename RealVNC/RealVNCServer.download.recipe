@@ -21,7 +21,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>VNC-Server-[0-9\.]+-MacOSX-x86_64\.pkg</string>
+				<string>VNC-Server-[0-9\.]+-MacOSX-universal\.pkg</string>
 				<key>request_headers</key>
 				<dict>
 					<key>user-agent</key>
