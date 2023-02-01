@@ -21,7 +21,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>VNC-Viewer-[0-9\.]+-MacOSX-x86_64\.dmg</string>
+				<string>VNC-Viewer-[0-9\.]+-MacOSX-universal\.dmg</string>
 				<key>request_headers</key>
 				<dict>
 					<key>user-agent</key>
