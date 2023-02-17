@@ -41,56 +41,8 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/expand</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>info_path</key>
-				<string>%RECIPE_CACHE_DIR%/expand/Colour Contrast Analyser.app</string>
-				<key>plist_keys</key>
-				<dict>
-					<key>LSMinimumSystemVersion</key>
-					<string>declared_os_version</string>
-				</dict>
-			</dict>
-			<key>Processor</key>
-			<string>PlistReader</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>additional_pkginfo</key>
-				<dict>
-					<key>minimum_os_version</key>
-					<string>%declared_os_version%</string>
-				</dict>
-			</dict>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>dmg_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
-				<key>dmg_root</key>
-				<string>%RECIPE_CACHE_DIR%/expand</string>
-			</dict>
-			<key>Processor</key>
-			<string>DmgCreator</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
 				<key>pkg_path</key>
-				<string>%dmg_path%</string>
+				<string>%pathname%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
