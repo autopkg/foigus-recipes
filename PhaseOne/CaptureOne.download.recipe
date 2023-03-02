@@ -34,7 +34,7 @@ NOTES:
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>&lt;AvailableVersion&gt;(%ACTUAL_VERSION%\.\d\.\d)\.[0-9]+&lt;/AvailableVersion&gt;</string>
+				<string>&lt;AvailableVersion&gt;(%ACTUAL_VERSION%(.[0-9]+(\.[0-9]+)+))&lt;/AvailableVersion</string>
 				<key>result_output_var_name</key>
 				<string>truncated_version</string>
 				<key>url</key>
