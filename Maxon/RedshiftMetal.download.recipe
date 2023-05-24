@@ -35,7 +35,7 @@ NOTE:
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\\u002F\\u002Finstaller.maxon.net\\u002Finstaller\\u002Frs\\u002Fredshift_v[\d\.]+_macos_metal.pkg</string>
+				<string>https:\\u002F\\u002Finstaller\.maxon\.net\\u002Finstaller\\u002Frs\\u002Fredshift_v[^\s,]+_macos_metal\.pkg</string>
 				<key>result_output_var_name</key>
 				<string>encoded_download_url</string>
 				<key>url</key>
