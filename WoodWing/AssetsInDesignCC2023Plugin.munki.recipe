@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads Assets Plugin and imports it into Munki for installation for InDesign 2023.
+
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add this repo via:
+
+autopkg repo-add hjuutilainen-recipes
+
+- Specific pkgs are enabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true
+- This recipe does not download the Assets package--feed the package into the recipe via the following format:
+
+autopkg run AssetsInDesignCC2023Plugin.munki -p /path/WoodWing\ Assets\ for\ InDesign.pkg</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.AssetsInDesignCC2023Plugin</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/woodwing</string>
+		<key>NAME</key>
+		<string>AssetsInDesignCC2023Plugin</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>Comment</key>
+			<string>Choice is installer_choice_1 (as of Assets 4.6.2, this is "Assets for InDesign 2023")</string>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe InDesign 2023</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-woodwing-AssetsInDesignCC2023Plugin</string>
+			</array>
+			<key>category</key>
+			<string>Plugins</string>
+			<key>description</key>
+			<string>WoodWing Assets helps you create incredible assets and enables creatives to collaborate more effectively. All files are stored in a single location, giving you maximum control over when and where assets are used.</string>
+			<key>developer</key>
+			<string>Woodwing</string>
+			<key>display_name</key>
+			<string>Assets InDesign 2023</string>
+			<key>installer_choices_xml</key>
+			<array>
+				<dict>
+					<key>attributeSetting</key>
+					<integer>1</integer>
+					<key>choiceAttribute</key>
+					<string>selected</string>
+					<key>choiceIdentifier</key>
+					<string>installer_choice_1</string>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>InDesignCC2023</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.foigus.download.AssetsInDesignPlugin</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%PKG%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Unpack the original package</string>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>5b090ab28bc7316d447625b19b1d4293</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Assets for InDesign.app/Contents/MacOS/Uninstall WoodWing Assets for InDesign</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 4.5.0.944 on the uninstall script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>c3c810b0a6dd92a271aa01f02812ca74</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/ASSETSID2023.pkg/Scripts/postinstall</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 4.6.2.1019 on the postinstall script</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/root/Applications/Adobe InDesign 2023/Plug-Ins/WoodWing</string>
+			</dict>
+			<key>Comment</key>
+			<string>Create a root for creating the installs array</string>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/root/Applications/Adobe InDesign 2023/Plug-Ins/WoodWing/Assets.InDesignPlugin</string>
+				<key>overwrite</key>
+				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/cc2023/Assets.InDesignPlugin</string>
+			</dict>
+			<key>Comment</key>
+			<string>Copy the InDesign plugin to the fake destination to allow creation of an installs array</string>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Adobe InDesign 2023/Plug-Ins/WoodWing/Assets.InDesignPlugin</string>
+				</array>
+				<key>version_comparison_key</key>
+				<string>CFBundleShortVersionString</string>
+			</dict>
+			<key>Comment</key>
+			<string>Create an installs array item for Assets.InDesignPlugin</string>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>Merge the installs array into the pkginfo</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/root/Applications/Adobe InDesign 2023/Plug-Ins/WoodWing/Assets.InDesignPlugin/Resources/Info.plist</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_makepkginfo_options</key>
+				<array>
+					<string>--uninstall_script=%RECIPE_DIR%/Assets Scripts InDesign 2023/Fixed Scripts/Uninstall WoodWing Assets for InDesign</string>
+					<string>--postuninstall_script=%RECIPE_DIR%/Assets Scripts InDesign 2023/My Scripts/Forget InDesign Receipts 2023.sh</string>
+				</array>
+				<key>force_munkiimport</key>
+				<true/>
+				<key>pkg_path</key>
+				<string>%PKG%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Comment</key>
+			<string>Import the package into Munki</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
