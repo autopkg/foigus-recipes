@@ -45,6 +45,7 @@ readonly PLUGINS=(
 	"com.eizo.cn7.manualAdjustment"
 	"com.eizo.cn7.rgbValidation"
 	"com.eizo.cn7.ui"
+	"com.eizo.cn7.apiServer"
 	"com.eizo.cn7.ext.assetinformationmanagement"
 	"com.eizo.cn7.ext.cmykValidation"
 	"com.eizo.cn7.ext.cnnetwork"
@@ -160,6 +161,9 @@ done
 
 # Setup CNNetwork
 ./bin/set_net_mac.sh -src "${PKG_DIR}" -dst "${INIT_SETTING_DIR}"
+
+# installer-config.json
+cp "${PKG_DIR}/installer-config.json" "${INIT_SETTING_DIR}/"
 
 #-------------------------------------------------------------------------------
 # Additional Setup
