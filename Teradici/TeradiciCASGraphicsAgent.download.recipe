@@ -28,6 +28,15 @@ https://dl.teradici.com/XXXXXXXXXXXXXXXX/pcoip-agent/raw/names/pcoip-agent-graph
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>This recipe is deprecated and will soon be removed.  I have no way to test whether this recipe truly works.</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>predicate</key>
