@@ -18,7 +18,7 @@ NOTES:
 		<key>CODESIGNATUREVERIFIERREQUIREMENT</key>
 		<string>anchor apple generic and identifier "com.captureone.captureone16" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5WTDB5F65L")</string>
 		<key>DOWNLOADURLUUID</key>
-		<string>e569c884-1ffe-4e8a-9514-437beec374e7</string>
+		<string>4d402047e08d5f50352135d7ce4184c39c26ea84</string>
 		<key>LANGUAGE</key>
 		<string>International</string>
 		<key>MARKETING_VERSION</key>
@@ -49,7 +49,7 @@ NOTES:
 				<key>filename</key>
 				<string>CaptureOne.dmg</string>
 				<key>url</key>
-				<string>https://downloads.phaseone.com/%DOWNLOADURLUUID%/%LANGUAGE%/CaptureOne%MARKETING_VERSION%.Mac.%truncated_version%.dmg</string>
+				<string>https://downloads.phaseone.com/%DOWNLOADURLUUID%/CaptureOne%MARKETING_VERSION%.Mac.%truncated_version%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
