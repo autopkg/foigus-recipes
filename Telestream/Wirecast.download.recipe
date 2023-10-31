@@ -19,11 +19,24 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>href="(/download-files/wirecast/[0-9-]+/Wirecast-[\.0-9]+\.dmg)"</string>
+				<string>window\.location = '(.*)'</string>
 				<key>result_output_var_name</key>
-				<string>url_suffix</string>
+				<string>intermediate_url</string>
 				<key>url</key>
 				<string>https://www.telestream.net/update-check/wirecast/update.htm</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>window\.location\.replace\("(.*\.dmg)"\)</string>
+				<key>result_output_var_name</key>
+				<string>download_url</string>
+				<key>url</key>
+				<string>%intermediate_url%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -34,7 +47,7 @@
 				<key>filename</key>
 				<string>Wirecast.dmg</string>
 				<key>url</key>
-				<string>http://www.telestream.net%url_suffix%</string>
+				<string>%download_url%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
