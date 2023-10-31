@@ -8,7 +8,9 @@
 NOTES:
 
 - Due to Phase One's decision to go with different versions for the software itself and marketing (e.g. Capture One version 13 is marketed as version 20), this recipe also has a MARKETING_VERSION variable to account for the discrepancy.
-- Major version upgrades of Capture One perpetual licenses are generally paid upgrades, however Phase One's update URL doesn't stop at major version boundaries (e.g. the update URL for Capture One 7 offers a download of Capture One 9) and new major versions of Capture One are paid updates.  In an attempt to avoid accidentally downloading (and subsequently importing) Capture One updates that require a paid update, we restrict to an ACTUAL_VERSION and a corresponding MARKETING_VERSION.  When Phase One releases a new major version, this recipe will break until ACTUAL_VERSION and MARKETING_VERSION are updated (either via override or by updating this recipe).</string>
+- Major version upgrades of Capture One perpetual licenses are generally paid upgrades, however Phase One's update URL doesn't stop at major version boundaries (e.g. the update URL for Capture One 7 offers a download of Capture One 9) and new major versions of Capture One are paid updates.	In an attempt to avoid accidentally downloading (and subsequently importing) Capture One updates that require a paid update, we restrict to an ACTUAL_VERSION and a corresponding MARKETING_VERSION.  When Phase One releases a new major version, this recipe will break until ACTUAL_VERSION and MARKETING_VERSION are updated (either via override or by updating this recipe).
+
+- As of October 2023 the MARKETING_VERSION seems to have been dropped. Please remove from overrides to grab the latest version.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.CaptureOne</string>
 	<key>Input</key>
@@ -18,11 +20,11 @@ NOTES:
 		<key>CODESIGNATUREVERIFIERREQUIREMENT</key>
 		<string>anchor apple generic and identifier "com.captureone.captureone16" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "5WTDB5F65L")</string>
 		<key>DOWNLOADURLUUID</key>
-		<string>4d402047e08d5f50352135d7ce4184c39c26ea84</string>
+		<string>ff446fcfadc80ea99d12a24269e47483a179e322</string>
 		<key>LANGUAGE</key>
 		<string>International</string>
 		<key>MARKETING_VERSION</key>
-		<string>23</string>
+		<string></string>
 		<key>NAME</key>
 		<string>CaptureOne</string>
 	</dict>
@@ -49,7 +51,7 @@ NOTES:
 				<key>filename</key>
 				<string>CaptureOne.dmg</string>
 				<key>url</key>
-				<string>https://downloads.phaseone.com/%DOWNLOADURLUUID%/CaptureOne%MARKETING_VERSION%.Mac.%truncated_version%.dmg</string>
+				<string>https://downloads.captureone.pro/%DOWNLOADURLUUID%/CaptureOne%MARKETING_VERSION%.Mac.%truncated_version%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -61,8 +63,17 @@ NOTES:
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>pattern</key>
+				<string>%pathname%/*.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>input_path</key>
-				<string>%pathname%/Capture One %MARKETING_VERSION%.app</string>
+				<string>%pathname%/%found_basename%</string>
 				<key>requirement</key>
 				<string>%CODESIGNATUREVERIFIERREQUIREMENT%</string>
 			</dict>
