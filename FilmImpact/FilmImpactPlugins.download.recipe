@@ -21,7 +21,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>FilmImpactPlugins.zip</string>
+				<string>FilmImpactPlugins.dmg</string>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 			</dict>
@@ -35,28 +35,6 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%pathname%</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/*.pkg</string>
-			</dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
 				<key>expected_authority_names</key>
 				<array>
 					<string>Developer ID Installer: J Boerhof (L7VH2EQTNR)</string>
@@ -64,7 +42,7 @@
 					<string>Apple Root CA</string>
 				</array>
 				<key>input_path</key>
-				<string>%found_filename%</string>
+				<string>%pathname%/Film Impact Premium Video Effects.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>

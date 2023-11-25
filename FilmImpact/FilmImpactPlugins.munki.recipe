@@ -46,30 +46,19 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>archive_path</key>
-				<string>%pathname%</string>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive</string>
-				<key>purge_destination</key>
-				<true/>
+				<string>%RECIPE_CACHE_DIR%/Film Impact Premium Video Effects.pkg</string>
+				<key>source_path</key>
+				<string>%pathname%/Film Impact Premium Video Effects.pkg</string>
 			</dict>
 			<key>Processor</key>
-			<string>Unarchiver</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/*.pkg</string>
-			</dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
+			<string>Copier</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
-				<string>%found_filename%</string>
+				<string>%RECIPE_CACHE_DIR%/Film Impact Premium Video Effects.pkg</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
