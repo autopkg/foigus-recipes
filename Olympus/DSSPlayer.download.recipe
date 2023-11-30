@@ -23,7 +23,7 @@ Note this software may need .wma-capable playback libraries such as Telestream F
 				<key>re_pattern</key>
 				<string>href="\/(.*DSSPlayer_Mac_V((?!Update).)*\.dmg)"</string>
 				<key>url</key>
-				<string>https://dl-support.olympus-imaging.com/odms_download/dss_player_v7/en/</string>
+				<string>https://download.omsystem.com/pages/odms_download/dss_player_v7/en/</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
