@@ -91,7 +91,7 @@ autopkg repo-add homebysix-recipes</string>
 				<key>input_path</key>
 				<string>%pathname%/Maxon App Installer.app</string>
 				<key>requirement</key>
-				<string>identifier "com.redgiant.Red-Giant-Service-Installer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4ZY22YGXQG"</string>
+				<string>identifier "net.maxon.maxonapp.installer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4ZY22YGXQG"</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
