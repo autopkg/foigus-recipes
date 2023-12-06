@@ -22,9 +22,9 @@ install_dir=`dirname $0`
 
 # Install Maxon Cinema 4D using the pkg from the resources directory using the flags
 # for R23 installation from https://www.maxon.net/en-us/support/downloads/
-"${install_dir}/Maxon Cinema 4D Full Installer.app/Contents/MacOS/installbuilder.sh" --mode unattended --unattendedmodeui none</string>
+"${install_dir}/Maxon Cinema 4D Installer.app/Contents/MacOS/installbuilder.sh" --mode unattended --unattendedmodeui none</string>
 		<key>MAJOR_VERSION</key>
-		<string>25</string>
+		<string>26</string>
 		<key>NAME</key>
 		<string>Cinema4DPerpetual_R%MAJOR_VERSION%</string>
 	</dict>
@@ -49,11 +49,11 @@ install_dir=`dirname $0`
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\\u002F\\u002Fstmaxonappprod\.blob\.core\.windows\.net\\u002Fmx-package-production\\u002Fwebsite\\u002Fupdates\\u002F(%MAJOR_VERSION%[\d\.]+)_CL[\d]+\\u002FCinema4D_R%MAJOR_VERSION%_%MAJOR_VERSION%[\d\.]+_Mac\.dmg</string>
+				<string>https:\/\/stmaxonappprod\.blob\.core\.windows\.net\/mx-package-production\/website\/macos\/maxon\/cinema4d\/releases\/[\d\.]+\/Cinema4D_S%MAJOR_VERSION%_([\d\.]+)_Mac\.dmg</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
-				<string>https://www.maxon.net/%url_suffix%</string>
+				<string>https://www.maxon.net/en/downloads/cinema-4d-s%MAJOR_VERSION%-downloads</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -62,11 +62,11 @@ install_dir=`dirname $0`
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/Scripts/Maxon Cinema 4D Full Installer.app</string>
+				<string>%RECIPE_CACHE_DIR%/Scripts/Maxon Cinema 4D Installer.app</string>
 				<key>overwrite</key>
 				<true/>
 				<key>source_path</key>
-				<string>%pathname%/Maxon Cinema 4D Full Installer.app</string>
+				<string>%pathname%/Maxon Cinema 4D Installer.app</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>

@@ -6,16 +6,13 @@
 	<string>Downloads the latest version of Cinema 4D.
 
 NOTES:
-- Set MAJOR_VERSION to the desired major version of Cinema 4D
-- This recipe depends on homebysix's FindAndReplace.  Add homebysix's repo via:
-
-autopkg repo-add homebysix-recipes</string>
+- Set MAJOR_VERSION to the desired major version of Cinema 4D</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.Cinema4D</string>
 	<key>Input</key>
 	<dict>
 		<key>MAJOR_VERSION</key>
-		<string>25</string>
+		<string>26</string>
 		<key>NAME</key>
 		<string>Cinema4DPerpetual_R%MAJOR_VERSION%</string>
 	</dict>
@@ -27,11 +24,9 @@ autopkg repo-add homebysix-recipes</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>_nuxt\/static\/[\d]+\/en\/downloads\/cinema-4d-r%MAJOR_VERSION%-downloads\/payload\.js</string>
-				<key>result_output_var_name</key>
-				<string>url_suffix</string>
+				<string>https:\/\/stmaxonappprod\.blob\.core\.windows\.net\/mx-package-production\/website\/macos\/maxon\/cinema4d\/releases\/[\d\.]+\/Cinema4D_S%MAJOR_VERSION%_[\d\.]+_Mac\.dmg</string>
 				<key>url</key>
-				<string>https://www.maxon.net/en/downloads/cinema-4d-r%MAJOR_VERSION%-downloads/</string>
+				<string>https://www.maxon.net/en/downloads/cinema-4d-s%MAJOR_VERSION%-downloads</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -39,34 +34,8 @@ autopkg repo-add homebysix-recipes</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>re_pattern</key>
-				<string>https:\\u002F\\u002Fstmaxonappprod\.blob\.core\.windows\.net\\u002Fmx-package-production\\u002Fwebsite\\u002Fupdates\\u002F%MAJOR_VERSION%[\d\.]+_CL[\d]+\\u002FCinema4D_R%MAJOR_VERSION%_%MAJOR_VERSION%[\d\.]+_Mac\.dmg</string>
-				<key>result_output_var_name</key>
-				<string>encoded_download_url</string>
 				<key>url</key>
-				<string>https://www.maxon.net/%url_suffix%</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>find</key>
-				<string>\u002F</string>
-				<key>input_string</key>
-				<string>%encoded_download_url%</string>
-				<key>replace</key>
-				<string>/</string>
-			</dict>
-			<key>Processor</key>
-			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>%output_string%</string>
+				<string>%match%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -79,7 +48,7 @@ autopkg repo-add homebysix-recipes</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/Maxon Cinema 4D Full Installer.app</string>
+				<string>%pathname%/Maxon Cinema 4D Installer.app</string>
 				<key>requirement</key>
 				<string>identifier "net.maxon.cinema4d.installer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4ZY22YGXQG"</string>
 			</dict>
