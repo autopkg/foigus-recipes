@@ -19,9 +19,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>\/_nuxt\/static\/[\d]+\/en\/downloads\/payload\.js</string>
-				<key>result_output_var_name</key>
-				<string>url_stub</string>
+				<string>https:\/\/mx-app-blob-prod\.maxon\.net\/mx-package-production\/installer\/macos\/redgiant\/vfx\/releases\/[\d\.]+\/VfxSuite-[\d\.]+_Mac\.zip</string>
 				<key>url</key>
 				<string>https://www.maxon.net/en/downloads</string>
 			</dict>
@@ -31,34 +29,8 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>re_pattern</key>
-				<string>https:\\u002F\\u002Fmx-app-blob-prod.maxon.net\\u002Fmx-package-production\\u002Finstaller\\u002Fmacos\\u002Fredgiant\\u002Fvfx\\u002Freleases\\u002F[\d\.]+\\u002FVfxSuite-[\d\.]+_Mac.zip</string>
-				<key>result_output_var_name</key>
-				<string>encoded_download_url</string>
 				<key>url</key>
-				<string>https://www.maxon.net%url_stub%</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>find</key>
-				<string>\u002F</string>
-				<key>input_string</key>
-				<string>%encoded_download_url%</string>
-				<key>replace</key>
-				<string>/</string>
-			</dict>
-			<key>Processor</key>
-			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>%output_string%</string>
+				<string>%match%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
