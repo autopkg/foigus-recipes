@@ -3,12 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of the Maxon App and imports it into Munki.
-
-NOTE:
-- This recipe depends on homebysix's FindAndReplace.  Add homebysix's repo via:
-
-autopkg repo-add homebysix-recipes</string>
+	<string>Downloads the latest version of the Maxon App and imports it into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.MaxonApp</string>
 	<key>Input</key>
