@@ -51,7 +51,8 @@
 install_dir=`dirname $0`
 
 # Install Maxon App Installer using the script from the resources directory
-"${install_dir}/Maxon App Installer.app/Contents/MacOS/installbuilder.sh"</string>
+# Maxon documentation here: https://support.maxon.net/hc/en-us/articles/4687177301788-Running-Scripted-Installers
+"${install_dir}/Maxon App Installer.app/Contents/MacOS/installbuilder.sh --mode unattended --unattendedmodeui none"</string>
 				<key>file_mode</key>
 				<string>0755</string>
 				<key>file_path</key>
