@@ -47,7 +47,7 @@ NOTE:
 			<dict>
 				<key>expected_authority_names</key>
 				<array>
-					<string>Developer ID Installer: Redshift Rendering Technologies, Inc. (588NFGZ664)</string>
+					<string>Developer ID Installer: Maxon Computer GmbH (4ZY22YGXQG)</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>
