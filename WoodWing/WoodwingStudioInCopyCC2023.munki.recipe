@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Packages Woodwing Studio for InDesign 2023 and imports it into Munki.
+	<string>Packages Woodwing Studio for InCopy 2023 and imports it into Munki.
 
 NOTES:
 - This recipe depends on hjuutilainen's ChecksumVerifier.  Add this repos via:
@@ -13,35 +13,35 @@ autopkg repo-add hjuutilainen-recipes
 - Specific pkgs are disabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true
 - This recipe does not download the Woodwing Studio disk image--feed the disk image into the recipe via the following format:
 
-autopkg run WoodwingStudioInDesignCC2023.munki.recipe -p /path/to/WoodWing_Studio_for_InDesign_and_InCopy_2023_v18.0.2_Build15.dmg</string>
+autopkg run WoodwingStudioInCopyCC2023.munki.recipe -p /path/to/WoodWing_Studio_for_InDesign_and_InCopy_2023_v17.0.0_Build15.dmg</string>
 	<key>Identifier</key>
-	<string>com.github.foigus.munki.WoodwingSmartConnectionInDesignCC2023</string>
+	<string>com.github.foigus.munki.WoodwingSmartConnectionInCopyCC2023</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>plugins/woodwing</string>
 		<key>NAME</key>
-		<string>WoodwingStudioInDesignCC2023</string>
+		<string>WoodwingStudioInCopyCC2023</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>Comment</key>
 			<string>Choices installer_choice_1 (Woodwing Studio InDesign 2023), installer_choice_2 (Woodwing Studio InCopy 2023)</string>
 			<key>blocking_applications</key>
 			<array>
-				<string>Adobe InDesign 2023</string>
+				<string>Adobe InCopy 2023</string>
 			</array>
 			<key>catalogs</key>
 			<array>
-				<string>development-woodwing-WoodwingStudioInDesignCC2023</string>
+				<string>development-woodwing-WoodwingStudioInCopyCC2023</string>
 			</array>
 			<key>category</key>
 			<string>Plugins</string>
 			<key>description</key>
-			<string>Woodwing Studio plugins for InDesign 2023.</string>
+			<string>Woodwing Studio plugins for InCopy 2023.</string>
 			<key>developer</key>
 			<string>Woodwing</string>
 			<key>display_name</key>
-			<string>Woodwing Studio InDesign 2023</string>
+			<string>Woodwing Studio InCopy 2023</string>
 			<key>installer_choices_xml</key>
 			<array>
 				<dict>
@@ -50,14 +50,14 @@ autopkg run WoodwingStudioInDesignCC2023.munki.recipe -p /path/to/WoodWing_Studi
 					<key>choiceAttribute</key>
 					<string>selected</string>
 					<key>choiceIdentifier</key>
-					<string>installer_choice_1</string>
+					<string>installer_choice_2</string>
 				</dict>
 			</array>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>requires</key>
 			<array>
-				<string>InDesignCC2023</string>
+				<string>InCopyCC2023</string>
 			</array>
 			<key>unattended_install</key>
 			<true/>
@@ -101,7 +101,7 @@ autopkg run WoodwingStudioInDesignCC2023.munki.recipe -p /path/to/WoodWing_Studi
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Studio for InDesign and InCopy 2023.app/Contents/MacOS/Uninstall WoodWing Studio for InDesign and InCopy 2023</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 17.0.0, build 15 on the uninstall script</string>
+			<string>Verify MD5 matches 17.0.0, build 15 on the uninstall script--since a modified version of this script is part of this recipe it is imperative to ensure there have been no changes to the original source script.  Any changes would trigger a (hand) review of the changes to determine whether the script's activities are impacted and whether the modified script requires an update.</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
@@ -116,7 +116,7 @@ autopkg run WoodwingStudioInDesignCC2023.munki.recipe -p /path/to/WoodWing_Studi
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Studio for InDesign and InCopy 2023.app/Contents/Resources/Uninstall WoodWing Studio for InDesign and InCopy 2023.sh</string>
 			</dict>
 			<key>Comment</key>
-			<string>Verify MD5 matches 17.0.0, build 15 on the uninstall script</string>
+			<string>Verify MD5 matches 17.0.0, build 15 on the uninstall script--since a modified version of this script is part of this recipe it is imperative to ensure there have been no changes to the original source script.  Any changes would trigger a (hand) review of the changes to determine whether the script's activities are impacted and whether the modified script requires an update.</string>
 			<key>Processor</key>
 			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
 		</dict>
@@ -128,7 +128,7 @@ autopkg run WoodwingStudioInDesignCC2023.munki.recipe -p /path/to/WoodWing_Studi
 				<key>checksum</key>
 				<string>f831aa3b94ed254fb7d03d7db048fd62</string>
 				<key>pathname</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/WWSTUDIOID2023.pkg/Scripts/postinstall</string>
+				<string>%RECIPE_CACHE_DIR%/unpack/WWSTUDIOIC2023.pkg/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
 			<string>Verify MD5 matches 18.0.0, build 15 on the postinstall script--since the postinstall script is what does all the heavy lifting it is imperative to ensure there have been no changes since the last time the postinstall was reviewed.  Any changes would trigger a (hand) review of the changes to determine whether the script's activities are impacted and whether the modified script requires an update.</string>
@@ -141,7 +141,7 @@ autopkg run WoodwingStudioInDesignCC2023.munki.recipe -p /path/to/WoodWing_Studi
 				<key>pkgdirs</key>
 				<dict/>
 				<key>pkgroot</key>
-				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2023/Plug-Ins/WoodWing</string>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy 2023/Plug-Ins/WoodWing</string>
 			</dict>
 			<key>Comment</key>
 			<string>Create a root for the expanded scenterprise.pkg payload</string>
@@ -152,7 +152,7 @@ autopkg run WoodwingStudioInDesignCC2023.munki.recipe -p /path/to/WoodWing_Studi
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2023/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin</string>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy 2023/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin</string>
 				<key>overwrite</key>
 				<true/>
 				<key>source_path</key>
@@ -170,7 +170,7 @@ autopkg run WoodwingStudioInDesignCC2023.munki.recipe -p /path/to/WoodWing_Studi
 				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root</string>
 				<key>installs_item_paths</key>
 				<array>
-					<string>/Applications/Adobe InDesign 2023/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin</string>
+					<string>/Applications/Adobe InCopy 2023/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin</string>
 				</array>
 				<key>version_comparison_key</key>
 				<string>CFBundleShortVersionString</string>
@@ -194,7 +194,7 @@ autopkg run WoodwingStudioInDesignCC2023.munki.recipe -p /path/to/WoodWing_Studi
 				<key>result_output_var_name</key>
 				<string>discovered_version</string>
 				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2023/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy 2023/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
 			</dict>
 			<key>Comment</key>
 			<string>Extract the version number</string>
@@ -209,7 +209,7 @@ autopkg run WoodwingStudioInDesignCC2023.munki.recipe -p /path/to/WoodWing_Studi
 				<key>result_output_var_name</key>
 				<string>build</string>
 				<key>url</key>
-				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InDesign 2023/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy 2023/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
 			</dict>
 			<key>Comment</key>
 			<string>Extract the build number</string>
@@ -235,8 +235,8 @@ autopkg run WoodwingStudioInDesignCC2023.munki.recipe -p /path/to/WoodWing_Studi
 			<dict>
 				<key>additional_makepkginfo_options</key>
 				<array>
-					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts 2023/Fixed Scripts/wwuninstall_indesign2023_fixed.sh</string>
-					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts 2023/My Scripts/Forget InDesign Receipts 2023.sh</string>
+					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts 2023/Fixed Scripts/wwuninstall_incopy2023_fixed.sh</string>
+					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts 2023/My Scripts/Forget InCopy Receipts 2023.sh</string>
 				</array>
 				<key>force_munkiimport</key>
 				<true/>
