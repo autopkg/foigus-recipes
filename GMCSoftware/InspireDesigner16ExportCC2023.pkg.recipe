@@ -150,7 +150,7 @@ exit 0</string>
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack_pkg_recipe/tmp/InspireDesignerIn.InDesignPlugin/Versions/A/Frameworks/PrintNetTExporter.framework/Versions/A/Resources/Info.plist</string>
+				<string>%RECIPE_CACHE_DIR%/unpack_pkg_recipe/tmp/InspireDesignerIn.InDesignPlugin/Resources/Info.plist</string>
 				<key>plist_version_key</key>
 				<string>CFBundleShortVersionString</string>
 			</dict>
