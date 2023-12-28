@@ -49,7 +49,7 @@ install_dir=`dirname $0`
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\/\/mx-app-blob-prod\.maxon\.net\/mx-package-production\/installer\/macos\/maxon\/cinema4d\/releases\/[\d\.]+\/Cinema4D_2024_([\d\.]+)_Mac\.dmg</string>
+				<string>https:\/\/mx-app-blob-prod\.maxon\.net\/mx-package-production\/installer\/macos\/maxon\/cinema4d\/releases\/[\d\.]+\/Cinema4D_%MAJOR_VERSION%_([\d\.]+)_Mac\.dmg</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
 				<key>url</key>
