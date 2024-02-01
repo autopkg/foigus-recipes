@@ -19,7 +19,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>//update\.sharpnecdisplays\.us/spectraviewii/[A-Za-z_]+_v[\d.]+_multilanguage\.dmg</string>
+				<string>//update\.sharpnecdisplays\.us/spectraview/[A-Za-z_]+_v[\d.]+_multilanguage\.dmg</string>
 				<key>url</key>
 				<string>https://www.sharpnecdisplays.us/support-and-services/spectraviewii/4</string>
 			</dict>
