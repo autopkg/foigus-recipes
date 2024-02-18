@@ -21,9 +21,9 @@ Note this software may need .wma-capable playback libraries such as Telestream F
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>href="\/(.*DSSPlayer_Mac_V((?!Update).)*\.dmg)"</string>
+				<string>https:\/\/omds-support-storage\.s3\.amazonaws\.com\/support-files%2FDSSPlayer_Mac_V[\d]+\.dmg</string>
 				<key>url</key>
-				<string>https://download.omsystem.com/pages/odms_download/dss_player_v7/en/</string>
+				<string>https://audiosupport.omsystem.com/en/product/dss-player-for-mac/</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -34,7 +34,7 @@ Note this software may need .wma-capable playback libraries such as Telestream F
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 				<key>url</key>
-				<string>https://download.omsystem.com/%match%</string>
+				<string>%match%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
