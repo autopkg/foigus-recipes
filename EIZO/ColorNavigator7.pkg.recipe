@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest ColorNavigator 7 installer and modifies a postinstall to no longer open the ColorNavigator 7 window following installation. 
+	<string>Downloads the latest ColorNavigator 7 installer and modifies a postinstall to no longer open the ColorNavigator 7 window following installation.
 
 NOTES:
 - POSTINSTALL_SCRIPT_PATH must be set to reflect the location of the "postinstall" script--it can point back to the postinstall in the directory of the original recipe, but due to overrides it must be a piece of override-able INPUT
@@ -46,7 +46,7 @@ autopkg repo-add jessepeterson-recipes</string>
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>66840d489f66a5e9c0986723b2b09dfc</string>
+				<string>0097083918f66dc681dcb9331f863140</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/ColorNavigator_7.pkg/Scripts/postinstall</string>
 			</dict>

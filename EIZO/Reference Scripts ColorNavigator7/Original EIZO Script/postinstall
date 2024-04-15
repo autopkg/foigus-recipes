@@ -114,9 +114,19 @@ if [ -e "/Applications/CNNetAgent.app" ]; then
 	wait
 fi
 
+#-------------------------------------------------------------------------------
 # Create initSetting files
+#-------------------------------------------------------------------------------
+
+# Create check_update file
 if [ -e "${INST_FLAG_DIR}/checks_update" ]; then
 	cat /dev/null > "${INIT_SETTING_DIR}/checks_update"
+fi
+
+# When silent install is executed, create check_update file and silent_install file
+if [ ${COMMAND_LINE_INSTALL} == '1' ]; then
+	cat /dev/null > "${INIT_SETTING_DIR}/checks_update"
+	cat /dev/null > "${INIT_SETTING_DIR}/is_silent_install"
 fi
 
 #-------------------------------------------------------------------------------
@@ -124,7 +134,12 @@ fi
 #-------------------------------------------------------------------------------
 
 # Preferences
-cp "${PKG_DIR}/preferences.json" "${INIT_SETTING_DIR}/"
+PREF_FILE="preferences.json"
+if [ -e "${PKG_DIR}/${PREF_FILE}" ]; then
+	OUT_FILE_PATH="${INIT_SETTING_DIR}/${PREF_FILE}"
+	cp "${PKG_DIR}/${PREF_FILE}" "${OUT_FILE_PATH}"
+	chmod 666 "${OUT_FILE_PATH}"
+fi
 
 # Language packs
 mkdir "${LANG_PACK_DIR}" >& /dev/null
