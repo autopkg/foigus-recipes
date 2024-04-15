@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Packages Woodwing Studio for InCopy 2024 and imports it into Munki.
+
+NOTES:
+- This recipe depends on hjuutilainen's ChecksumVerifier.  Add this repos via:
+
+autopkg repo-add hjuutilainen-recipes
+
+- Specific pkgs are disabled via InstallerChoices depending on the product that's being installed.  Due to this, the packages are identical--thus force_munkiimport is set to true
+- This recipe does not download the Woodwing Studio disk image--feed the disk image into the recipe via the following format:
+
+autopkg run WoodwingStudioInCopyCC2024.munki.recipe -p /path/to/WoodWing_Studio_for_InDesign_and_InCopy_2024_v17.0.0_Build15.dmg</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.munki.WoodwingSmartConnectionInCopyCC2024</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>plugins/woodwing</string>
+		<key>NAME</key>
+		<string>WoodwingStudioInCopyCC2024</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>Comment</key>
+			<string>Choices installer_choice_1 (Woodwing Studio InDesign 2024), installer_choice_2 (Woodwing Studio InCopy 2024)</string>
+			<key>blocking_applications</key>
+			<array>
+				<string>Adobe InCopy 2024</string>
+			</array>
+			<key>catalogs</key>
+			<array>
+				<string>development-woodwing-WoodwingStudioInCopyCC2024</string>
+			</array>
+			<key>category</key>
+			<string>Plugins</string>
+			<key>description</key>
+			<string>Woodwing Studio plugins for InCopy 2024.</string>
+			<key>developer</key>
+			<string>Woodwing</string>
+			<key>display_name</key>
+			<string>Woodwing Studio InCopy 2024</string>
+			<key>installer_choices_xml</key>
+			<array>
+				<dict>
+					<key>attributeSetting</key>
+					<integer>1</integer>
+					<key>choiceAttribute</key>
+					<string>selected</string>
+					<key>choiceIdentifier</key>
+					<string>installer_choice_2</string>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>requires</key>
+			<array>
+				<string>InCopyCC2024</string>
+			</array>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Comment</key>
+			<string>Not going to tackle downloading the software right now</string>
+			<key>Processor</key>
+			<string>PackageRequired</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>flat_pkg_path</key>
+				<string>%PKG%/WoodWing_Studio_for_InDesign_and_InCopy_2024_v*.pkg</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Unpack the original package</string>
+			<key>Processor</key>
+			<string>FlatPkgUnpacker</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>88f44c5308414445efa5c6b25860a237</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Studio for InDesign and InCopy 2024.app/Contents/MacOS/Uninstall WoodWing Studio for InDesign and InCopy 2024</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 17.0.0, build 15 on the uninstall script--since a modified version of this script is part of this recipe it is imperative to ensure there have been no changes to the original source script.  Any changes would trigger a (hand) review of the changes to determine whether the script's activities are impacted and whether the modified script requires an update.</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>88f44c5308414445efa5c6b25860a237</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Studio for InDesign and InCopy 2024.app/Contents/Resources/Uninstall WoodWing Studio for InDesign and InCopy 2024.sh</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 17.0.0, build 15 on the uninstall script--since a modified version of this script is part of this recipe it is imperative to ensure there have been no changes to the original source script.  Any changes would trigger a (hand) review of the changes to determine whether the script's activities are impacted and whether the modified script requires an update.</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>algorithm</key>
+				<string>MD5</string>
+				<key>checksum</key>
+				<string>ab7bd00b87c4f8aa3bc17d18222e0576</string>
+				<key>pathname</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/WWSTUDIOIC2024.pkg/Scripts/postinstall</string>
+			</dict>
+			<key>Comment</key>
+			<string>Verify MD5 matches 18.0.0, build 15 on the postinstall script--since the postinstall script is what does all the heavy lifting it is imperative to ensure there have been no changes since the last time the postinstall was reviewed.  Any changes would trigger a (hand) review of the changes to determine whether the script's activities are impacted and whether the modified script requires an update.</string>
+			<key>Processor</key>
+			<string>io.github.hjuutilainen.SharedProcessors/ChecksumVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict/>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy 2024/Plug-Ins/WoodWing</string>
+			</dict>
+			<key>Comment</key>
+			<string>Create a root for the expanded scenterprise.pkg payload</string>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy 2024/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin</string>
+				<key>overwrite</key>
+				<true/>
+				<key>source_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Plug-ins/SCEnterprise.InDesignPlugin</string>
+			</dict>
+			<key>Comment</key>
+			<string>Copy SCEnterprise.InDesignPlugin into the destination</string>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/payload_scenterprise/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/Adobe InCopy 2024/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin</string>
+				</array>
+				<key>version_comparison_key</key>
+				<string>CFBundleShortVersionString</string>
+			</dict>
+			<key>Comment</key>
+			<string>Create an installs array item for SCEnterprise.InDesignPlugin</string>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>Merge the installs array into the pkginfo</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>"CFBundleShortVersionString" = "Studio v([\d\.]+)</string>
+				<key>result_output_var_name</key>
+				<string>discovered_version</string>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy 2024/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+			</dict>
+			<key>Comment</key>
+			<string>Extract the version number</string>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>"CFBundleShortVersionString" = .* build (\d+)</string>
+				<key>result_output_var_name</key>
+				<string>build</string>
+				<key>url</key>
+				<string>file:////%RECIPE_CACHE_DIR%/payload_scenterprise/root/Applications/Adobe InCopy 2024/Plug-Ins/WoodWing/SCEnterprise.InDesignPlugin/Versions/A/Resources/Resources/English.lproj/InfoPlist.strings</string>
+			</dict>
+			<key>Comment</key>
+			<string>Extract the build number</string>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%discovered_version%.%build%</string>
+				</dict>
+			</dict>
+			<key>Comment</key>
+			<string>Add Munki pkginfo, set "version" to version plus build as the Munki</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_makepkginfo_options</key>
+				<array>
+					<string>--uninstall_script=%RECIPE_DIR%/Reference Scripts 2024/Fixed Scripts/wwuninstall_incopy2024_fixed.sh</string>
+					<string>--postuninstall_script=%RECIPE_DIR%/Reference Scripts 2024/My Scripts/Forget InCopy Receipts 2024.sh</string>
+				</array>
+				<key>force_munkiimport</key>
+				<true/>
+				<key>pkg_path</key>
+				<string>%PKG%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Comment</key>
+			<string>Import the package into Munki</string>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
