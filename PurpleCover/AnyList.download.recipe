@@ -20,8 +20,8 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>prefetch_filename</key>
-				<true/>
+				<key>filename</key>
+				<string>AnyList.zip</string>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 			</dict>
