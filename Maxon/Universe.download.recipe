@@ -19,7 +19,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\/\/mx-app-blob-prod\.maxon\.net\/mx-package-production\/installer\/macos\/redgiant\/universe\/releases\/[\d\.]+\/Universe-[\d\.]+_Mac\.zip</string>
+				<string>https:\/\/mx-app-blob-prod\.maxon\.net\/mx-package-production\/installer\/macos\/redgiant\/universe\/releases\/[\d\.]+\/Universe-[\d\.]+_Mac\.dmg</string>
 				<key>url</key>
 				<string>https://www.maxon.net/en/downloads</string>
 			</dict>
@@ -42,19 +42,8 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
 				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/unarchive/Universe*Installer.app</string>
+				<string>%pathname%/Universe*Installer.app</string>
 			</dict>
 			<key>Processor</key>
 			<string>FileFinder</string>
@@ -63,9 +52,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%found_filename%</string>
+				<string>%pathname%/%dmg_found_filename%</string>
 				<key>requirement</key>
-				<string>anchor apple generic and identifier "com.redgiant.Universe-Suite-Installer" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4ZY22YGXQG")</string>
+				<string>identifier "net.maxon.universe.installer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4ZY22YGXQG"</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
