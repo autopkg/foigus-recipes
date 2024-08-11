@@ -8,10 +8,10 @@
 	<string>com.github.foigus.download.FontAgent10</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>FontAgent</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://store.insidersoftware.com/_downloads/FontAgent10.dmg</string>
+		<key>NAME</key>
+		<string>FontAgent</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.0</string>

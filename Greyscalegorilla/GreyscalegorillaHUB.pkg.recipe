@@ -17,10 +17,10 @@ autopkg run GreyscalegorillaHUB.pkg -p /path/to/the/appropriate/osx_rVERSION_gre
 	<dict>
 		<key>CINEMA4D_VERSION</key>
 		<string>##</string>
-		<key>NAME</key>
-		<string>GreyscalegorillaHUBR%CINEMA4D_VERSION%</string>
 		<key>GREYSCALEGORILLAHUB_VERSION</key>
 		<string>ChangeMePlease</string>
+		<key>NAME</key>
+		<string>GreyscalegorillaHUBR%CINEMA4D_VERSION%</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>

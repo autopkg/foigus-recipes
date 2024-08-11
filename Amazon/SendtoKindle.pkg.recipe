@@ -39,10 +39,10 @@ autopkg repo-add nmcspadden-recipes</string>
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>file_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/SendToKindle.pkg/Scripts/postinstall</string>
 				<key>file_content</key>
 				<string>exit 0</string>
+				<key>file_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/SendToKindle.pkg/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
 			<string>An edit of Amazon's postinstall, the changes here address a failure to install if nobody is logged in</string>

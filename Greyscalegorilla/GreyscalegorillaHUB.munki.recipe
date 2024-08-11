@@ -17,12 +17,12 @@ autopkg run GreyscalegorillaHUB.munki -p /path/to/the/appropriate/osx_rVERSION_g
 	<dict>
 		<key>CINEMA4D_VERSION</key>
 		<string>##</string>
+		<key>GREYSCALEGORILLAHUB_VERSION</key>
+		<string>ChangeMePlease</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>plugins/greyscalegorilla</string>
 		<key>NAME</key>
 		<string>GreyscalegorillaHUBR%CINEMA4D_VERSION%</string>
-		<key>GREYSCALEGORILLAHUB_VERSION</key>
-		<string>ChangeMePlease</string>
 		<key>pkginfo</key>
 		<dict>
 			<key>blocking_applications</key>

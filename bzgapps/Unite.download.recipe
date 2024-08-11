@@ -10,10 +10,10 @@
 	<string>com.github.foigus.download.Unite</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>Unite</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://bzgdownloads.s3.amazonaws.com/Unite/Unite.zip</string>
+		<key>NAME</key>
+		<string>Unite</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>

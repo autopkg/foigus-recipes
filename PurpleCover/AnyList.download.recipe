@@ -8,10 +8,10 @@
 	<string>com.github.foigus.download.AnyList</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>AnyList</string>
 		<key>DOWNLOAD_URL</key>
 		<string>https://www.anylist.com/mac/download</string>
+		<key>NAME</key>
+		<string>AnyList</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>

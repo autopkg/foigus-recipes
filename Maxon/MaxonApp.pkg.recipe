@@ -11,10 +11,10 @@ This recipe requires version 2024.1.0 or newer.</string>
 	<string>com.github.foigus.pkg.MaxonApp</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
-		<string>MaxonApp</string>
 		<key>INSTALL_OPTIONS</key>
 		<string></string>
+		<key>NAME</key>
+		<string>MaxonApp</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>

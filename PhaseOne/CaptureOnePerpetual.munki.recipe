@@ -98,8 +98,6 @@ Expected uses of this recipe:
 			<string>EndOfCheckPhase</string>
 		</dict>
 		<dict>
-			<key>Processor</key>
-			<string>com.github.jazzace.processors/TextSearcher</string>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
@@ -109,10 +107,10 @@ Expected uses of this recipe:
 				<key>text_in</key>
 				<string>%concatenated_catalog%</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>com.github.jazzace.processors/TextSearcher</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
@@ -122,10 +120,10 @@ Expected uses of this recipe:
 				<key>text_in</key>
 				<string>%concatenated_display_name%</string>
 			</dict>
-		</dict>
-		<dict>
 			<key>Processor</key>
 			<string>com.github.jazzace.processors/TextSearcher</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
@@ -135,6 +133,8 @@ Expected uses of this recipe:
 				<key>text_in</key>
 				<string>%concatenated_name%</string>
 			</dict>
+			<key>Processor</key>
+			<string>com.github.jazzace.processors/TextSearcher</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
