@@ -63,7 +63,7 @@ NOTE:
 install_dir=`dirname $0`
 
 # Install Universe using the script from the resources directory
-"${install_dir}/Universe.app/Contents/Scripts/install.sh"</string>
+"${install_dir}/Universe.app/Contents/MacOS/installbuilder.sh" --mode unattended --unattendedmodeui none</string>
 				<key>file_mode</key>
 				<string>0755</string>
 				<key>file_path</key>
