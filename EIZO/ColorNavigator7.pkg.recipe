@@ -46,7 +46,7 @@ autopkg repo-add jessepeterson-recipes</string>
 				<key>algorithm</key>
 				<string>MD5</string>
 				<key>checksum</key>
-				<string>0097083918f66dc681dcb9331f863140</string>
+				<string>cd18484da57402375fe278dabd2654a9</string>
 				<key>pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/ColorNavigator_7.pkg/Scripts/postinstall</string>
 			</dict>
