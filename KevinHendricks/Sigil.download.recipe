@@ -3,13 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Sigil.</string>
+	<string>Downloads the latest version of Sigil.
+
+The ARCH input variable accepts either "arm64" or "x86_64", referring to either Apple Silicon or Intel versions of Sigil</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.Sigil</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>Sigil</string>
+		<key>ARCH</key>
+		<string>arm64</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.5.0</string>
@@ -19,7 +23,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>asset_regex</key>
-				<string>Sigil-.*-Mac-Package.dmg</string>
+				<string>Sigil\.app-[\d\.]+-Mac-%ARCH%\.txz</string>
 				<key>github_repo</key>
 				<string>Sigil-Ebook/Sigil</string>
 			</dict>
@@ -30,7 +34,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%-%version%.dmg</string>
+				<string>%NAME%-%version%.txz</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -42,8 +46,21 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>archive_format</key>
+				<string>tar</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unarchive</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>input_path</key>
-				<string>%pathname%/Sigil.app</string>
+				<string>%RECIPE_CACHE_DIR%/unarchive/Sigil.app</string>
 				<key>requirement</key>
 				<string>identifier "com.sigil-ebook.Sigil.app" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "2SMCVQU3CJ"</string>
 			</dict>
