@@ -16,6 +16,15 @@
 	<key>Process</key>
 	<array>
 		<dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_message</key>
+				<string>Maxon has stopped offering standalone Red Giant tool installation packages, per https://support.maxon.net/hc/en-us/articles/8657965267356-Maxon-App-2025-1-0-October-7-2024 .  This recipe appears to no longer be necessary and will be removed soon.</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
