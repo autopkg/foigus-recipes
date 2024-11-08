@@ -19,7 +19,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>href="(http.*InData.*InDesign_2023_MacOS.pkg)"</string>
+				<string>href=\"(https:\/\/ftp\.emsoftware\.com\/installers\/indata\/InData_[\d]+_[\d]+_[\d]+_for_InDesign_2023_MacOS\.pkg)</string>
 				<key>url</key>
 				<string>http://emsoftware.com/products/emdata/</string>
 			</dict>
