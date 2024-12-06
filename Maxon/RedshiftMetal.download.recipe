@@ -22,7 +22,7 @@ NOTE:
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\/\/installer\.maxon\.net\/installer\/rs\/redshift_v[abcdef\d\._]+_macos_metal\.pkg</string>
+				<string>https:\/\/installer\.maxon\.net\/installer\/rs\/redshift_[_\d\.]+_macos\.pkg</string>
 				<key>url</key>
 				<string>https://www.maxon.net/en/downloads</string>
 			</dict>
