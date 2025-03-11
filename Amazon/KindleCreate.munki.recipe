@@ -94,6 +94,27 @@ Set the DERIVE_MIN_OS variable to a non-empty string to set the minimum_os_versi
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/Applications/Kindle Create.app/Contents/Info.plist</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>version</key>
+					<string>%version%</string>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>pkg_path</key>
 				<string>%pathname%</string>
 				<key>repo_subdirectory</key>
