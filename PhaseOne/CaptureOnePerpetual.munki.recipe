@@ -73,11 +73,11 @@ Expected uses of this recipe:
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>\"latestCOVersions\":.+?https://downloads\.captureone\.pro/d/mac/[A-Za-z\d]+/CaptureOne\.Mac\.([\d]+\.[\d]+)[\d\.]+\.dmg</string>
+				<string>https://downloads\.captureone\.pro/d/mac/[A-Za-z\d]+/CaptureOne\.Mac\.([\d]+\.[\d]+)[\d\.]+\.dmg</string>
 				<key>result_output_var_name</key>
 				<string>perpetual_version</string>
 				<key>url</key>
-				<string>https://www.captureone.com/en/account/download-trial</string>
+				<string>https://www.captureone.com/en/account/download/trial-confirmation?intent=trial-pro</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
