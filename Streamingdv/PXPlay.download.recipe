@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads latest PXPlay package.
+
+Valid values for the "ARCH" Input variable are "arm64" (Apple Silicon) and "amd64" (Intel)</string>
+	<key>Identifier</key>
+	<string>com.github.foigus.download.PXPlay</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>PXPlay</string>
+		<key>ARCH</key>
+		<string>arm64</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.2.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>https://github\.com/streamingdv/PSPlay-Application-Hosting/releases/download/v[\d\.]+_v[\d\.]+/PXPlay_[\d\.]+_macOSX_%ARCH%\.dmg</string>
+				<key>url</key>
+				<string>https://streamingdv.com/shop-list-ns.html</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>%match%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/PXPlay.app</string>
+				<key>requirement</key>
+				<string>identifier "com.grill.psplay.PXPlay" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = CHDS428K5R</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+	</array>
+</dict>
+</plist>
