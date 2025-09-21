@@ -13,7 +13,7 @@
 		<key>NAME</key>
 		<string>i1Studio</string>
 		<key>SPARKLE_FEED_URL</key>
-		<string>http://downloads.xrite.com/downloads/AutoUpdate/i1Studio/i1Studio_mac_appcast.xml</string>
+		<string>https://downloads.xrite.com/downloads/AutoUpdate/i1Studio/i1Studio_mac_appcast.xml</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
