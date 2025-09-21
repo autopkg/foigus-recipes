@@ -11,7 +11,7 @@
 		<key>NAME</key>
 		<string>Meteorologist</string>
 		<key>VERSION_URL</key>
-		<string>http://heat-meteo.sourceforge.net/VERSION2</string>
+		<string>https://heat-meteo.sourceforge.net/VERSION2</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>

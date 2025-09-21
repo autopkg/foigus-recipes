@@ -21,7 +21,7 @@
 				<key>re_pattern</key>
 				<string>href=\"(https:\/\/ftp\.emsoftware\.com\/installers\/indata\/InData_[\d]+_[\d]+_[\d]+_for_InDesign_2023_MacOS\.pkg)</string>
 				<key>url</key>
-				<string>http://emsoftware.com/products/emdata/</string>
+				<string>https://emsoftware.com/products/emdata/</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
