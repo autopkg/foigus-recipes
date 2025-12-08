@@ -57,7 +57,7 @@ autopkg run EvolphinZoom.pkg -p /path/to/EvolphinZoom.pkg</string>
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>b829d3f425856c5a0f06d7ad4b537af6</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/zoom.pkg/Scripts/preinstall</string>
 			</dict>
 			<key>Comment</key>
@@ -72,7 +72,7 @@ autopkg run EvolphinZoom.pkg -p /path/to/EvolphinZoom.pkg</string>
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>1ee65da5a523b1f227a1bf36baae193f</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/zoom.pkg/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
@@ -87,7 +87,7 @@ autopkg run EvolphinZoom.pkg -p /path/to/EvolphinZoom.pkg</string>
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>5c9aa8340bf5186d4baa4344f852cf77</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/payload_zoom/zoom/Resources/bin/uninstall</string>
 			</dict>
 			<key>Comment</key>
@@ -102,7 +102,7 @@ autopkg run EvolphinZoom.pkg -p /path/to/EvolphinZoom.pkg</string>
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>dcfaf53236397eab4ff0e9baf5e60d71</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/payload_zoom/zoom/Uninstall Zoom.app/Contents/Resources/Scripts/main.scpt</string>
 			</dict>
 			<key>Comment</key>

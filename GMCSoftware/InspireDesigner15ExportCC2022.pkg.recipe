@@ -60,7 +60,7 @@ autopkg run InspireDesigner15ExportCC2022.pkg -p /path/to/InstallerPackage-Adobe
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>c154c8a915963f28649c1c39870750e0</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%found_filename%/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>

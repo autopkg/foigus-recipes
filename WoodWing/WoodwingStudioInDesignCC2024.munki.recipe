@@ -97,7 +97,7 @@ autopkg run WoodwingStudioInDesignCC2024.munki.recipe -p /path/to/WoodWing_Studi
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>88f44c5308414445efa5c6b25860a237</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Studio for InDesign and InCopy 2024.app/Contents/MacOS/Uninstall WoodWing Studio for InDesign and InCopy 2024</string>
 			</dict>
 			<key>Comment</key>
@@ -112,7 +112,7 @@ autopkg run WoodwingStudioInDesignCC2024.munki.recipe -p /path/to/WoodWing_Studi
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>88f44c5308414445efa5c6b25860a237</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Studio for InDesign and InCopy 2024.app/Contents/Resources/Uninstall WoodWing Studio for InDesign and InCopy 2024.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -127,7 +127,7 @@ autopkg run WoodwingStudioInDesignCC2024.munki.recipe -p /path/to/WoodWing_Studi
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>ab7bd00b87c4f8aa3bc17d18222e0576</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/WWSTUDIOID2024.pkg/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>

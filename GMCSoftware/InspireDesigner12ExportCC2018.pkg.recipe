@@ -60,7 +60,7 @@ autopkg run InspireDesigner12ExportCC2018.pkg -p /path/to/Adobe-InDesign-CC-2018
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>533d15d864c8e0ac0be5ff574376c73a</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%found_filename%/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
