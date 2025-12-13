@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #-------------------------------------------------------------------------------
 # Defines
@@ -11,7 +11,7 @@ readonly APP_DATA_DIR="/Library/Application Support/EIZO/ColorNavigator 7"
 readonly INIT_SETTING_DIR="${APP_DATA_DIR}/_initialsetting"
 readonly PLUGINS_DIR="${APP_DATA_DIR}/plugins"
 
-readonly PKG_DIR=`dirname "${PACKAGE_PATH}"`
+readonly PKG_DIR=$(dirname "${PACKAGE_PATH}")
 readonly INST_FLAG_DIR="${HOME}/.com.eizo.cn7.inst"
 
 # since v7.1.1
@@ -67,7 +67,7 @@ readonly PLUGINS=(
 #-------------------------------------------------------------------------------
 
 umask 000
-for pluginName in ${PLUGINS[@]}; do
+for pluginName in "${PLUGINS[@]}"; do
 	"${PLUGS}" "${PLUGINS_DIR}" install "${SRC_PLUGINS_DIR}/${pluginName}.zip"
 	wait
 done
@@ -85,9 +85,9 @@ chmod 777 "${INIT_SETTING_DIR}"
 if [ -e "${INST_FLAG_DIR}/remove_cn6" ]; then
 	killall "ColorNavigator 6"
 	# terminate eacore and dummy
-	for i in `ps aux -w | grep 'ColorNavigator 6.app' | grep -v grep | awk '{print $2}'`
+	for i in $(ps aux -w | grep 'ColorNavigator 6.app' | grep -v grep | awk '{print $2}')
 	do
-		kill $i
+		kill "${i}"
 	done
 
 	rm -rf "/Applications/ColorNavigator 6.app"
@@ -98,9 +98,9 @@ fi
 if [ -e "/Applications/ColorNavigator NX.app" ]; then
 	killall "ColorNavigator NX"
 	# terminate eacore and dummy
-	for i in `ps aux -w | grep 'ColorNavigator NX.app' | grep -v grep | awk '{print $2}'`
+	for i in $(ps aux -w | grep 'ColorNavigator NX.app' | grep -v grep | awk '{print $2}')
 	do
-		kill $i
+		kill "${i}"
 	done
 
 	rm -rf "/Applications/ColorNavigator NX.app"
@@ -124,7 +124,7 @@ if [ -e "${INST_FLAG_DIR}/checks_update" ]; then
 fi
 
 # When silent install is executed, create check_update file and silent_install file
-if [ ${COMMAND_LINE_INSTALL} == '1' ]; then
+if [ "${COMMAND_LINE_INSTALL}" == '1' ]; then
 	cat /dev/null > "${INIT_SETTING_DIR}/checks_update"
 	cat /dev/null > "${INIT_SETTING_DIR}/is_silent_install"
 fi
@@ -147,12 +147,13 @@ chmod 777 "${LANG_PACK_DIR}"
 
 delete_backup_if_need() {
 	# find previous version backup file in langPacks folder
+	local file="$1"
 	for backup in "${LANG_PACK_DIR}/"*".zip"; do
-		fileName=`echo ${backup} | awk -F/ '{print $NF}'`
+		fileName=$(echo "${backup}" | awk -F/ '{print $NF}')
 		if [ "${fileName}" != "*.zip" ]; then
-			if "${PLUGS}" "${PLUGINS_DIR}" validate "${backup}"; [ $? -eq 0 ]; then
-				langName=`"${PLUGS}" "${PLUGINS_DIR}" name "${file}"`
-				backupLangName=`"${PLUGS}" "${PLUGINS_DIR}" name "${backup}"`
+			if "${PLUGS}" "${PLUGINS_DIR}" validate "${backup}"; [ "$?" -eq 0 ]; then
+				langName=$("${PLUGS}" "${PLUGINS_DIR}" name "${file}")
+				backupLangName=$("${PLUGS}" "${PLUGINS_DIR}" name "${backup}")
 				# delete old language pack if exist
 				if [ "${langName}" = "${backupLangName}" ]; then
 					rm -rf "${backup}"
@@ -163,11 +164,11 @@ delete_backup_if_need() {
 }
 
 for file in "${PKG_DIR}/"*".zip"; do
-	fileName=`echo ${file} | awk -F/ '{print $NF}'`
+	fileName=$(echo "${file}" | awk -F/ '{print $NF}')
 	if [ "${fileName}" != "*.zip" ]; then
 		# validate whether zip file is plugin file or not
-		if "${PLUGS}" "${PLUGINS_DIR}" validate "${file}"; [ $? -eq 0 ]; then
-			delete_backup_if_need
+		if "${PLUGS}" "${PLUGINS_DIR}" validate "${file}"; [ "$?" -eq 0 ]; then
+			delete_backup_if_need "${file}"
 			# copy new language pack to backup folder
 			cp -a "${file}" "${LANG_PACK_DIR}/"
 		fi
@@ -178,7 +179,10 @@ done
 ./bin/set_net_mac.sh -src "${PKG_DIR}" -dst "${INIT_SETTING_DIR}"
 
 # installer-config.json
-cp "${PKG_DIR}/installer-config.json" "${INIT_SETTING_DIR}/"
+CONFIG_FILE="installer-config.json"
+if [ -e "${PKG_DIR}/${CONFIG_FILE}" ]; then
+	cp "${PKG_DIR}/${CONFIG_FILE}" "${INIT_SETTING_DIR}/"
+fi
 
 #-------------------------------------------------------------------------------
 # Additional Setup
@@ -203,7 +207,7 @@ fi
 # Install lang pack
 umask 000
 for langPack in "${LANG_PACK_DIR}/"*".zip"; do
-	fileName=`echo ${langPack} | awk -F/ '{print $NF}'`
+	fileName=$(echo "${langPack}" | awk -F/ '{print $NF}')
 	if [ "${fileName}" != "*.zip" ]; then
 		"${PLUGS}" "${PLUGINS_DIR}" install "${langPack}"
 		wait
@@ -212,7 +216,7 @@ done
 umask 022
 
 #-------------------------------------------------------------------------------
-# Creanup
+# Cleanup
 #-------------------------------------------------------------------------------
 
 # Remove installer setting file
@@ -240,6 +244,6 @@ chmod -R 777 "${LOCK_FILE_DIR}"
 su "${USER}" -c "open /Applications/ColorNavigator\ 7.app"
 
 # Ignore error at app launch
-if [ $? -ne 0 ]; then
+if [ "$?" -ne 0 ]; then
 	exit 0
 fi
