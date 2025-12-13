@@ -97,7 +97,7 @@ autopkg run WoodwingSmartConnectionInDesignCC2018.munki -p /path/to/Smart_Connec
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>74ac73fa29d6cd08c50efa28cecc29ea</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe CC 2018.app/Contents/MacOS/Uninstall Smart Connection for Adobe CC 2018</string>
 			</dict>
 			<key>Comment</key>
@@ -112,7 +112,7 @@ autopkg run WoodwingSmartConnectionInDesignCC2018.munki -p /path/to/Smart_Connec
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>74ac73fa29d6cd08c50efa28cecc29ea</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Smart Connection for Adobe CC 2018.app/Contents/Resources/Uninstall Smart Connection for Adobe CC 2018.sh</string>
 			</dict>
 			<key>Comment</key>

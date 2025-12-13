@@ -53,7 +53,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>4506d51028b560c6bb7dfef0c26018fe</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesign.pkg/Scripts/addRight.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -68,7 +68,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesign.pkg/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
@@ -83,7 +83,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesign.pkg/Scripts/postinstall.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -98,7 +98,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>6a76506595c1492c08b21a904ea67759</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesign.pkg/Scripts/total.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -113,7 +113,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>4506d51028b560c6bb7dfef0c26018fe</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesigndm.pkg/Scripts/addRight.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -128,7 +128,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesigndm.pkg/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
@@ -143,7 +143,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesigndm.pkg/Scripts/postinstall.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -158,7 +158,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>6a76506595c1492c08b21a904ea67759</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/indesigndm.pkg/Scripts/total.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -173,7 +173,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>4506d51028b560c6bb7dfef0c26018fe</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopy.pkg/Scripts/addRight.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -188,7 +188,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopy.pkg/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
@@ -203,7 +203,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopy.pkg/Scripts/postinstall.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -218,7 +218,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>6a76506595c1492c08b21a904ea67759</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopy.pkg/Scripts/total.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -233,7 +233,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>4506d51028b560c6bb7dfef0c26018fe</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopyoverset.pkg/Scripts/addRight.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -248,7 +248,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopyoverset.pkg/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
@@ -263,7 +263,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>05ba5f4f28758ed795c3f6a412301d2d</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopyoverset.pkg/Scripts/postinstall.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -278,7 +278,7 @@ autopkg run WoodwingSmartConnectionCC2015.pkg -p /path/to/Smart_Connection_for_A
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>6a76506595c1492c08b21a904ea67759</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/incopyoverset.pkg/Scripts/total.sh</string>
 			</dict>
 			<key>Comment</key>

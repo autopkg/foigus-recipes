@@ -60,7 +60,7 @@ autopkg run InspireDesigner11ExportCC2017.pkg -p /path/to/Adobe-InDesign-CC-2017
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>09b113d35dda57c47c09ce91fdea057c</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%found_filename%/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>

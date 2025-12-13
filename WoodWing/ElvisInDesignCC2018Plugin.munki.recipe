@@ -93,7 +93,7 @@ autopkg run ElvisInDesignCC2018Plugin.munki -p /path/to/Elvis\ InDesign.pkg</str
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>3a78c255a552075bb97240abd60ebba5</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall Elvis InDesign Plug-ins.app/Contents/MacOS/Uninstall Elvis InDesign Plug-ins</string>
 			</dict>
 			<key>Comment</key>

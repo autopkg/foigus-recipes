@@ -67,7 +67,7 @@ autopkg run InspireDesignerExportCC2014.pkg -p /path/to/Adobe-InDesign-CC-Plugin
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>f638ab030aa7c4f58d607b0f905e3a48</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/copied_pkg_recipe/Inspire Designer Export CC 2014.mpkg/Contents/Resources/plugin-utils.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -168,7 +168,7 @@ TestInDesignFolder()
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>f638ab030aa7c4f58d607b0f905e3a48</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/copied_pkg_recipe/Inspire Designer Export CC 2014.mpkg/Contents/Resources/%fancy_package_name%.pkg/Contents/Resources/plugin-utils.sh</string>
 			</dict>
 			<key>Comment</key>
@@ -269,7 +269,7 @@ TestInDesignFolder()
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>f638ab030aa7c4f58d607b0f905e3a48</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/copied_pkg_recipe/Inspire Designer Export CC 2014.mpkg/Contents/Resources/%fancy_package_name% Configuration File.pkg/Contents/Resources/plugin-utils.sh</string>
 			</dict>
 			<key>Comment</key>

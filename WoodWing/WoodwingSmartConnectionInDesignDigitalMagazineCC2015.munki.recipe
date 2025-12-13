@@ -123,7 +123,7 @@ autopkg run WoodwingSmartConnectionInDesignDigitalMagazineCC2015.munki -p /path/
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>e6a61acf275e0e5c4b77480be1517b57</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/checksum</string>
 			</dict>
 			<key>Comment</key>
@@ -153,7 +153,7 @@ autopkg run WoodwingSmartConnectionInDesignDigitalMagazineCC2015.munki -p /path/
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>e6a61acf275e0e5c4b77480be1517b57</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/checksum.sh</string>
 			</dict>
 			<key>Comment</key>

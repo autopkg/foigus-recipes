@@ -98,7 +98,7 @@ autopkg run WoodwingStudioInDesignCC2020.munki.recipe -p /path/to/WoodWing_Studi
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>94044cb774d8f59525267e9be6d7c7ad</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Studio for InDesign and InCopy 2020.app/Contents/MacOS/Uninstall WoodWing Studio for InDesign and InCopy 2020</string>
 			</dict>
 			<key>Comment</key>
@@ -113,7 +113,7 @@ autopkg run WoodwingStudioInDesignCC2020.munki.recipe -p /path/to/WoodWing_Studi
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>94044cb774d8f59525267e9be6d7c7ad</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Studio for InDesign and InCopy 2020.app/Contents/Resources/Uninstall WoodWing Studio for InDesign and InCopy 2020.sh</string>
 			</dict>
 			<key>Comment</key>

@@ -93,7 +93,7 @@ autopkg run AssetsInDesignCC2018Plugin.munki -p /path/WoodWing\ Assets\ for\ InD
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>0d23f2cd06f7fe62eeeedfc3b5270439</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/payload.pkg/Scripts/Uninstall WoodWing Assets for InDesign.app/Contents/MacOS/Uninstall WoodWing Assets for InDesign</string>
 			</dict>
 			<key>Comment</key>

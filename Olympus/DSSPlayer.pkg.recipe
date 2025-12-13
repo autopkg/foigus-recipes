@@ -53,7 +53,7 @@ autopkg repo-add hjuutilainen-recipes
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>10a9bd1a5d7c14f71c666c1bc9bf2989</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/dssplayerv7.pkg/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
@@ -166,7 +166,7 @@ exit 0</string>
 				<string>MD5</string>
 				<key>checksum</key>
 				<string>c7e136d24d46f7ac207b610bc422e5e7</string>
-				<key>pathname</key>
+				<key>checksum_pathname</key>
 				<string>%RECIPE_CACHE_DIR%/unpack/dsslanguagepacksv.pkg/Scripts/postinstall</string>
 			</dict>
 			<key>Comment</key>
