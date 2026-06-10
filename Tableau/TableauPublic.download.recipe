@@ -8,10 +8,12 @@
 	<string>com.github.foigus.download.tableau-public</string>
 	<key>Input</key>
 	<dict>
-		<key>DOWNLOAD_URL</key>
-		<string>https://public.tableau.com/s/download/public/mac</string>
 		<key>NAME</key>
 		<string>TableauPublic</string>
+		<key>DOWNLOAD_URL</key>
+		<string>https://public.tableau.com/s/download/public/mac</string>
+        <key>USER_AGENT</key>
+        <string>Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) Tableau Safari/538.1</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
@@ -24,6 +26,11 @@
 				<string>%NAME%.dmg</string>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
+				<key>request_headers</key>
+				<dict>
+					<key>user-agent</key>
+					<string>%USER_AGENT%</string>
+				</dict>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
