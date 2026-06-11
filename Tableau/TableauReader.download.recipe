@@ -10,7 +10,7 @@
 	<dict>
 		<key>NAME</key>
 		<string>TableauReader</string>
-		<key>DOWNLOAD_URL</key>
+		<key>url</key>
 		<string>https://www.tableau.com/downloads/reader/mac</string>
         <key>USER_AGENT</key>
         <string>Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) Tableau Safari/538.1</string>
@@ -24,8 +24,6 @@
 			<dict>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
 				<key>request_headers</key>
 				<dict>
 					<key>user-agent</key>
