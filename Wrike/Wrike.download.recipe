@@ -3,36 +3,30 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest Wrike application.</string>
+	<string>Downloads the latest Wrike application.
+
+To download Intel/Universal use: "" in the DOWNLOAD_ARCH variable
+To download Apple Silicon use: ".arm64" in the DOWNLOAD_ARCH variable</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.download.Wrike</string>
 	<key>Input</key>
 	<dict>
+		<key>DOWNLOAD_ARCH</key>
+		<string></string>
 		<key>NAME</key>
 		<string>Wrike</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.3.1</string>
+	<string>1.1</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>re_pattern</key>
-				<string>https://.*\.dmg</string>
-				<key>url</key>
-				<string>https://www.wrike.com/api/v4/internal/integration_info?type=WrikeDesktopMac</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 				<key>url</key>
-				<string>%match%</string>
+				<string>https://dl.wrike.com/download/WrikeDesktopApp.latest%DOWNLOAD_ARCH%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
