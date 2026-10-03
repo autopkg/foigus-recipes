@@ -3,20 +3,29 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest Wrike application and imports it into Munki.</string>
+	<string>Downloads the latest Wrike application and imports it into Munki.
+
+For Intel use: "x86_64" in the SUPPORTED_ARCH variable
+For Apple Silicon use: "arm64" in the SUPPORTED_ARCH variable</string>
 	<key>Identifier</key>
 	<string>com.github.foigus.munki.Wrike</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps/wrike</string>
+		<string>apps/%NAME%</string>
 		<key>NAME</key>
 		<string>Wrike</string>
+		<key>SUPPORTED_ARCH</key>
+		<string>x86_64</string>
 		<key>pkginfo</key>
 		<dict>
+			<key>blocking_applications</key>
+			<array>
+				<string>Wrike for Mac.app</string>
+			</array>
 			<key>catalogs</key>
 			<array>
-				<string>development-wrike-Wrike</string>
+				<string>testing</string>
 			</array>
 			<key>category</key>
 			<string>Productivity</string>
@@ -28,12 +37,18 @@
 			<string>Wrike</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>supported_architectures</key>
+			<array>
+				<string>%SUPPORTED_ARCH%</string>
+			</array>
 			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
 			<true/>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.2.0</string>
+	<string>1.1</string>
 	<key>ParentRecipe</key>
 	<string>com.github.foigus.download.Wrike</string>
 	<key>Process</key>
