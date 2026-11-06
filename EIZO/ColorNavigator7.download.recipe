@@ -10,6 +10,10 @@
 	<dict>
 		<key>NAME</key>
 		<string>ColorNavigator7</string>
+		<key>SEARCH_URL</key>
+		<string>https://www.eizo.co.jp/update/cn7-update-v2-global.json</string>
+		<key>SEARCH_RE</key>
+		<string>https:\/\/www\.eizoglobal\.com/support/db/files/software/software/graphics/colornavigator7/ColorNavigator\d[\d\w]*\.pkg</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>
@@ -19,9 +23,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>re_pattern</key>
-				<string>https:\/\/www\.eizoglobal\.com/support/db/files/software/software/graphics/colornavigator7/ColorNavigator[\d]+.pkg</string>
+				<string>%SEARCH_RE%</string>
 				<key>url</key>
-				<string>https://www.eizo.co.jp/update/cn7-update-v2-global.json</string>
+				<string>%SEARCH_URL%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
