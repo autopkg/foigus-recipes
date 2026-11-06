@@ -42,9 +42,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/SF Symbols.pkg</string>
+				<string>%RECIPE_CACHE_DIR%/SFSymbols.pkg</string>
 				<key>source_path</key>
-				<string>%pathname%/SF Symbols.pkg</string>
+				<string>%pathname%/SFSymbols.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
@@ -53,7 +53,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
-				<string>%RECIPE_CACHE_DIR%/SF Symbols.pkg</string>
+				<string>%RECIPE_CACHE_DIR%/SFSymbols.pkg</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>

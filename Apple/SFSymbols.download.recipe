@@ -53,7 +53,7 @@
 					<string>Apple Root CA</string>
 				</array>
 				<key>input_path</key>
-				<string>%pathname%/SF Symbols.pkg</string>
+				<string>%pathname%/SFSymbols.pkg</string>
 			</dict>
 			<key>Processor</key>
 			<string>CodeSignatureVerifier</string>
