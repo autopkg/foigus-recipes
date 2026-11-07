@@ -12,7 +12,7 @@ For Apple Silicon use: "arm64" in the SUPPORTED_ARCH variable</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
-		<string>apps/%NAME%</string>
+		<string>apps/wrike</string>
 		<key>NAME</key>
 		<string>Wrike</string>
 		<key>SUPPORTED_ARCH</key>
