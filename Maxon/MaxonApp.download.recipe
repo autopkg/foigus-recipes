@@ -12,25 +12,18 @@
 		<string>MaxonApp</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.5.0</string>
+	<string>2.0</string>
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>re_pattern</key>
-				<string>https:\/\/mx-app-blob-prod\.maxon\.net\/mx-package-production\/website\/macos\/maxon\/maxonapp\/releases\/[\d\.]+\/Maxon_App_[\d\.]+_Mac\.dmg</string>
-				<key>url</key>
-				<string>https://www.maxon.net/en/downloads</string>
-			</dict>
 			<key>Processor</key>
-			<string>URLTextSearcher</string>
+			<string>MaxonAppURLProvider</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>%match%</string>
+				<string>%url%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
@@ -42,21 +35,21 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>re_pattern</key>
-				<string>https:\/\/mx-app-blob-prod\.maxon\.net\/mx-package-production\/website\/macos\/maxon\/maxonapp\/releases\/([\d\.]+)\/Maxon_App_[\d\.]+_Mac\.dmg</string>
-				<key>result_output_var_name</key>
-				<string>version</string>
-				<key>url</key>
-				<string>https://www.maxon.net/en/downloads</string>
+				<key>archive_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack</string>
+				<key>purge_destination</key>
+				<true/>
 			</dict>
 			<key>Processor</key>
-			<string>URLTextSearcher</string>
+			<string>Unarchiver</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>input_path</key>
-				<string>%pathname%/Maxon App Installer.app</string>
+				<string>%RECIPE_CACHE_DIR%/unpack/Maxon_App_%version%_Mac.app</string>
 				<key>requirement</key>
 				<string>identifier "net.maxon.maxonapp.installer" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "4ZY22YGXQG"</string>
 			</dict>
@@ -66,3 +59,4 @@
 	</array>
 </dict>
 </plist>
+

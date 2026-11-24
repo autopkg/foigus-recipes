@@ -41,7 +41,7 @@ This recipe requires version 2024.1.0 or newer.</string>
 				<key>overwrite</key>
 				<true/>
 				<key>source_path</key>
-				<string>%pathname%/Maxon App Installer.app</string>
+				<string>%RECIPE_CACHE_DIR%/unpack/Maxon_App_%version%_Mac.app</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>
